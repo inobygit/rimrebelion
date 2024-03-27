@@ -1,0 +1,56 @@
+@import "variables";
+@import "mixins";
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+$trianglew: 14px;
+a.button {
+  &.triangleright {
+    position: relative;
+    margin-right: $trianglew;
+    &:after {
+      content: '';
+      transition: $trans;
+      display: inline-block;
+      position: absolute;
+      right: calc(-#{$trianglew} - #{$btn-bw}); //-15px
+      top: calc(-#{$btn-bw});
+      width: $trianglew;
+      height: calc(100% + 2*#{$btn-bw});
+      background-color: $btn-bg;
+      clip-path: polygon(0 0, 0% 100%, 100% 50%);
+    }
+    &:hover{
+      &::after{
+        background-color: $btn-hover-bg;
+        transition: $trans-h;
+      }
+    }
+  }
+  &.triangleleft {
+    position: relative;
+    margin-left: $trianglew;
+    &:before {
+      content: '';
+      transition: $trans;
+      display: inline-block;
+      position: absolute;
+      left: calc(-#{$trianglew} - #{$btn-bw}); //-15px
+      top: calc(-#{$btn-bw});
+      width: $trianglew;
+      height: calc(100% + 2*#{$btn-bw});
+      background-color: $btn-bg;
+      clip-path: polygon(100% 0, 0 50%, 100% 100%);
+    }
+    &:hover{
+      &::before{
+        background-color: $btn-hover-bg;
+        transition: $trans-h;
+      }
+    }
+  }
+}
+
+.socials.icons .social-icon.social-icon-facebook {
+  height: inherit;
+}

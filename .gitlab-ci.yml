@@ -1,0 +1,59 @@
+variables:
+  MAIN_BRANCH_NAME:
+    value: ${CI_DEFAULT_BRANCH} #by default this is set for repository main branch
+    description: "The origin branch"
+  RELEASE_BRANCH_NAME:
+    value: "release"
+    description: "The release branch"
+  PARENT_THEME:
+    value: "inoby-theme"
+  PARENT_THEME_URL:
+    value: "https://${GITLAB_USER_LOGIN}:${CI_PAT}@gitlab.com/inoby/${PARENT_THEME}.git"
+
+image: node:16.0.0-stretch
+
+cache:
+  paths:
+    - .yarn
+    - node_modules/
+
+stages:
+  - build
+  - publish
+
+.branch-condition:
+  only:
+    variables:
+      - $CI_DEFAULT_BRANCH == $CI_COMMIT_REF_NAME && $CI_PARENT_THEME_VERSION
+  interruptible: true
+  before_script:
+    # list pipeline variables
+    - export
+    - cd ..
+    - git clone ${PARENT_THEME_URL}
+    - cd ${PARENT_THEME}
+    - git checkout ${CI_PARENT_THEME_VERSION}
+    - cd ${CI_PROJECT_DIR}
+
+build assets:
+  extends:
+    - .branch-condition
+  stage: build
+  script:
+    - sh ../${PARENT_THEME}/ci-build.sh
+  except:
+    variables:
+      - $CI_PAT == null
+
+publish to test:
+  extends:
+    - .branch-condition
+  stage: publish
+  needs: [build assets]
+  script:
+    - sh ../${PARENT_THEME}/ci-publish.sh
+  except:
+    variables:
+      - $CI_TEST_PRIVATE_KEY == null
+      - $CI_TEST_FOLDER == null
+      - $CI_TEST_SSH == null

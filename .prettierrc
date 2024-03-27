@@ -1,0 +1,21 @@
+{
+  "printWidth": 150,
+  "braceStyle": "1tbs",
+  "overrides": [
+    {
+      "files": "*.js, *.ts, *.tsx",
+      "options": {
+        "tabWidth": 2
+      }
+    },
+    {
+      "files": "*.php",
+      "options": {
+        "phpVersion": "8.1",
+        "tabWidth": 4
+      }
+    }
+  ],
+  "parser": "php",
+  "plugins": ["@prettier/plugin-php"]
+}

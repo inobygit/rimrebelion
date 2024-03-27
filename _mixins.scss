@@ -1,0 +1,21 @@
+@import "../inoby-theme/mixins-base";
+
+@mixin link-hover {
+  color: $gray400;
+  background-color: transparent;
+  transition: $trans-h;
+}
+
+@mixin link {
+  color: inherit;
+  text-transform: none;
+  font-size: inherit;
+  font-weight: inherit;
+  text-decoration: underline;
+  background-color: transparent;
+  transition: $trans;
+  &:hover,
+  &:focus {
+    @include link-hover;
+  }
+}

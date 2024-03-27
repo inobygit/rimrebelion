@@ -1,0 +1,49 @@
+{
+  "plugins": {
+    "woocommerce": {
+      "required": true,
+      "name": "WooCommerce",
+      "slug": "woocommerce",
+      "force_activation": true
+    },
+    "rootcommerce": {
+      "required": true,
+      "name": "Rootcommerce",
+      "slug": "rootcommerce",
+      "source": "https://plugins.inoby.sk/rootcommerce/rootcommerce.zip",
+      "force_activation": true
+    },
+    "inoby-cookies": {
+      "required": true,
+      "name": "Inoby Cookies",
+      "slug": "inoby-cookies-gtm",
+      "source": "https://plugins.inoby.sk/inoby-cookies-gtm/inoby-cookies-gtm.zip",
+      "force_activation": true
+    },
+    "easy-login-woocommerce": {
+      "required": true,
+      "name": "Login/Signup Popup",
+      "slug": "easy-login-woocommerce",
+      "force_activation": true
+    },
+    "woocommerce-product-search": {
+      "required": true,
+      "name": "Woocommerce Product Search",
+      "slug": "woocommerce-product-search",
+      "source": "https://plugins.inoby.sk/woocommerce-product-search/woocommerce-product-search.zip",
+      "force_activation": true
+    },
+    "contact-form-7": {
+      "required": true,
+      "name": "Contact Form 7",
+      "slug": "contact-form-7",
+      "force_activation": true
+    },
+    "webp-converter-for-media": {
+      "required": false,
+      "name": "Optimalizácia obrázkov | Konvertovanie WebP & AVIF",
+      "slug": "webp-converter-for-media",
+      "force_activation": true
+    }
+  }
+}

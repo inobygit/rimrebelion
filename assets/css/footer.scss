@@ -1,0 +1,147 @@
+@import "variables";
+@import "mixins";
+
+$footer-links: $white;
+$footer-links-hover: $gray400;
+$footer-color: $white;
+$footer-column-gap: 3rem;
+$footer-fs: 1.3rem;
+$copyright-fs: 1.2rem;
+$copyright-color: #ffffff;
+
+#footer {
+  background: $footer-bg;
+  padding: 5rem 0 6rem;
+  color: $footer-color;
+  .widget-area {
+    .footer-column-wrap {
+      ul {
+        li {
+          a {
+            padding: 0;
+            font-size: $footer-fs;
+          }
+        }
+      }
+      li,
+      p,
+      span {
+        color: $footer-color;
+        font-size: $footer-fs;
+        margin-bottom: $space-tiny;
+      }
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        color: $footer-color;
+        margin: 0 0 $space-xs;
+        font-size: $fs-h3;
+      }
+      a {
+        text-transform: none;
+        text-decoration: none;
+        font-size: $footer-fs;
+        color: $footer-links;
+        &:hover {
+          color: $footer-links-hover;
+        }
+      }
+      figure {
+        margin-bottom: 8rem;
+        @include bp('md'){
+          margin-bottom: $space-sm;
+        }
+
+      }
+    }
+    @include bp('md'){
+      text-align: left;
+    }
+  }
+}
+
+#copyright {
+  background: $footer-bg;
+  padding: 1.9rem 0;
+  color: $footer-color;
+  @include bp('md'){
+    padding: 0;
+  }
+  .widget-area {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    @include bp("md") {
+      margin-bottom: $space-sm;
+      text-align: left !important;
+    }
+    .copyright-column-wrap {
+      ul {
+        display: flex;
+        column-gap: 3.6rem;
+        align-items: center;
+        flex-direction: row;
+        flex-wrap: wrap;
+        @include bp('md'){
+          justify-content: flex-start;
+          column-gap: $space-xs;
+        }
+        li {
+          position: relative;
+          a {
+            padding: 0;
+            font-size: $copyright-fs;
+          }
+          &:after{
+            content: '';
+            height: 14px;
+            width: 1px;
+            background: $copyright-color;
+            position: absolute;
+            right: -1.8rem;
+            top: 50%;
+            transform: translate(0,-65%);
+            @include bp('md'){
+              content: none;
+            }
+          }
+          &:last-child:after{
+            content: none;
+          }
+        }
+      }
+      li,
+      p,
+      span {
+        color: $footer-color;
+        font-size: $copyright-fs;
+      }
+      a {
+        text-transform: uppercase;
+        text-decoration: none;
+        color: $copyright-color;
+        &:hover {
+          color: $footer-links-hover;
+        }
+      }
+      p,
+      ul,
+      figure {
+        margin: 0;
+      }
+      p{
+        a{
+          text-transform: none;
+        }
+      }
+    }
+  }
+}
+
+#copyright.copyright-left-and-right .widget-area{
+  @include bp('md'){
+    text-align: left !important;
+  }
+}

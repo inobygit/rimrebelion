@@ -1,0 +1,189 @@
+$theme-version: 2.1;
+
+@import "../inoby-theme/variables";
+
+$theme-name: "rimrebelion";
+
+$theme-version: 2.1;
+
+/*
+Typography
+*/
+$font-family: var(--font-family, "Roboto");
+// $font-family-headings: var(--font-family-headings, "HelveticaNeueLTPro-500");
+$fs-p: calc(1.6rem * var(--font-size-ratio, 1));
+$fs-p-l: calc(1.8rem * var(--font-size-ratio, 1));
+$fs-p-s: calc(1.3rem * var(--font-size-ratio, 1));
+$fs-h1: calc(5.6rem * var(--font-size-ratio, 1));
+$fs-h2: calc(4rem * var(--font-size-ratio, 1));
+$fs-h3: calc(2.4rem * var(--font-size-ratio, 1));
+$fs-h4: calc(2.4rem * var(--font-size-ratio, 1));
+$fs-h5: calc(1.4rem * var(--font-size-ratio, 1));
+$fs-h6: calc(1.4rem * var(--font-size-ratio, 1)); //not used in design guide but fallback as h5
+// $fs-1: calc(1.6rem * var(--font-size-ratio, 1));
+
+// Font-family
+// $ff-h1: $font-family-headings;
+// $ff-h2: $font-family-headings;
+// $ff-h3: $font-family-headings;
+// $ff-h4: $font-family-headings;
+// $ff-h5: $font-family-headings;
+// $ff-h6: $font-family;
+
+// Font-weight
+// $fw-h1: 500;
+// $fw-h2: 500;
+// $fw-h3: 400;
+// $fw-h4: 400;
+// $fw-h5: 400;
+// $fw-h6: 400;
+$fw-p: 400;
+$fw-p-s: 400;
+$fw-p-l: 400;
+$fw-semibold: 500;
+$fw-bold: 700;
+// $fw-light: 300;
+
+// Line-height
+$lh-h1: 110%;
+$lh-h2: 100%;
+$lh-h3: 120%;
+$lh-h4: 120%;
+$lh-h5: 140%;
+$lh-h6: 140%;
+$lh-p: 150%;
+$lh-p-s: 150%;
+$lh-p-l: 150%;
+
+// Text-transform
+// $tt-h1: uppercase;
+// $tt-h2: uppercase;
+// $tt-h3: none;
+// $tt-h4: none;
+// $tt-h5: none;
+// $tt-h6: none;
+
+/*
+Colors
+*/
+$col-prm: var(--color-primary, #000000); // tlacidla, vsetky hlavne ovladacie prvky, ...
+// $col-sec: var(--color-secondary, #000000); // hlavne containery, doplnkove prvky, ...
+$col-prm-l: var(--color-primary, #545454);
+$col-prm-d: var(--color-primary, #000000);
+// $col-sec-l: var(--color-secondary, #515151);
+// $col-sec-d: var(--color-secondary, #000000);
+
+// $col-danger: var(--color-danger, #FF8B8B); // error hlasky, chybne vyplnene polia, vsetky veci co zobrazuju chyby, ...
+// $col-success: var(--color-success, #C1F2DE); // potvrdzovacie tlacidla, tlacidla v kosiku, ...
+// $col-warn: var(--color-warn, #FFCA8B); // upozornenia
+
+$gray100: var(--color-gray100, #F5F5F5);
+$gray200: var(--color-gray200, #E3E3E3);
+$gray300: var(--color-gray300, #CCC9C9);
+$gray400: var(--color-gray400, #A7A7A7);
+$gray500: var(--color-gray500, #878787);
+$gray600: var(--color-gray600, #727272);
+$gray700: var(--color-gray700, #5F5E5E);
+$gray800: var(--color-gray800, #515151);
+$gray900: var(--color-gray900, #272727);
+
+/*
+Header
+*/
+// $header-bg: var(--color-header-bg, $gray100);
+// $header-color: var(--color-header-color, $black);
+// $fs-header-li: 1.4rem;
+// $fw-header: 400;
+// $header-item-active-fw: 400;
+// $header-pd: 2rem 0;
+// $header-tt: uppercase;
+// $sticky-header-pd: 1rem 0;
+// $header-item-pd: 0 1.6rem;
+// $header-item-a-pd: 1rem 0;
+// $header-item-bb: none;
+// $header-item-active-bb: none;
+// $header-item-active-col: $col-prm;
+
+/*
+Footer
+*/
+$footer-bg: #000000;
+$footer-color: #ffffff;
+
+/*
+Buttons
+*/
+$btn-fs: calc(1.4rem * var(--font-size-ratio, 1));
+$btn-fw: 700;
+$btn-br: 0px;
+$btn-bw: 2px;
+$btn-pd: 1.2rem 1.6rem;
+$btn-pd-mobile: 1.2rem 1.6rem;
+$btn-tt: uppercase;
+$btn-lh: 140%;
+
+//button
+$btn-bg: #000000;
+$btn-col: #ffffff;
+$btn-border-col: #000000;
+$btn-hover-col: #ffffff;
+$btn-hover-bg: #545454;
+$btn-hover-border-col: #545454;
+
+// button-outline
+// $btn-o-bg: transparent;
+// $btn-o-col: #000000;
+// $btn-o-border-col: #000000;
+// $btn-o-hover-col: #ffffff;
+$btn-o-hover-bg: #545454;
+$btn-o-hover-border-col: #545454;
+
+// light
+$btn-l-col: #000000;
+$btn-l-bg: #ffffff;
+$btn-l-border-col: #ffffff;
+$btn-l-hover-col: #ffffff;
+$btn-l-hover-bg: #545454;
+$btn-l-hover-border-col: #545454;
+$btn-l-o-hover-bg: #545454;
+$btn-l-o-hover-border-col: #545454;
+
+/*
+Inputs
+*/
+// $input-b-w: 1px;
+// $input-bg: #ffffff;
+// $input-b-col: #BDBCBC;
+// $input-b-radius: 2px;
+// $input-b-col-focus: #000000;
+// $input-placeholder-col: #BDBCBC;
+// $input-padding: 1.6rem 1.4rem;
+// $input-padding-left-right: 1.4rem;
+// $input-padding-top-bottom: 1.6rem;
+
+// $input-padding-top-bottom-mobile: 1.4rem;
+// $input-padding-left-right-mobile: 1.2rem;
+// $input-focus-box-shadow: none;
+// $inplace-fw: 400;
+// $inplace-fz: 1.2rem;
+// $inplace-font-color: $gray300;
+// $inplace-label-transform-start: 50%;
+// $inplace-label-transform-end: -50%;
+// $input-label-padding: 0.8rem;
+// $checkbox-border-width: 1px;
+
+/*
+Spaces
+*/
+$space-tiny: 0.8rem;
+// $space-xs: 1.6rem;
+// $space-sm: 2.4rem;
+// $space-md: 3.2rem;
+// $space-regular: 5.6rem;
+// $space-lg: 8rem;
+// $space-xl: 9.6rem;
+
+/*
+Checkbox
+*/
+// $checkbox-size: 1.6rem;

@@ -1,1 +1,1 @@
-# rimrebelion
+### Inoby child theme template

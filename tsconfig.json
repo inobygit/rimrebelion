@@ -1,0 +1,7 @@
+{
+  "extends": "../inoby-theme/tsconfig",
+  "compilerOptions": {
+    "outDir": "./build/"
+  },
+  "include": ["./**/*", "../inoby-theme/**/*"]
+}
