@@ -1,0 +1,1 @@
+jQuery((function(a){a(".switch-button").on("click",(function(){a(this).addClass("active").siblings().removeClass("active");var t=a(this).data("value");a("input[name='cat']").val(t).trigger("change")}))}));
