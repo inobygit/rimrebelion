@@ -10,7 +10,7 @@ $theme-version: 2.1;
 Typography
 */
 $font-family: var(--font-family, "Roboto");
-// $font-family-headings: var(--font-family-headings, "HelveticaNeueLTPro-500");
+$font-family-headings: var(--font-family-headings, "GreedNarrow");
 $fs-p: calc(1.6rem * var(--font-size-ratio, 1));
 $fs-p-l: calc(1.8rem * var(--font-size-ratio, 1));
 $fs-p-s: calc(1.3rem * var(--font-size-ratio, 1));
@@ -23,12 +23,12 @@ $fs-h6: calc(1.4rem * var(--font-size-ratio, 1)); //not used in design guide but
 // $fs-1: calc(1.6rem * var(--font-size-ratio, 1));
 
 // Font-family
-// $ff-h1: $font-family-headings;
-// $ff-h2: $font-family-headings;
-// $ff-h3: $font-family-headings;
-// $ff-h4: $font-family-headings;
-// $ff-h5: $font-family-headings;
-// $ff-h6: $font-family;
+$ff-h1: $font-family-headings;
+$ff-h2: $font-family-headings;
+$ff-h3: $font-family-headings;
+$ff-h4: $font-family-headings;
+$ff-h5: $font-family-headings;
+$ff-h6: $font-family;
 
 // Font-weight
 // $fw-h1: 500;
@@ -149,41 +149,57 @@ $btn-l-o-hover-bg: #545454;
 $btn-l-o-hover-border-col: #545454;
 
 /*
+Border radiuses
+*/
+$br-sm: 4px;
+
+/*
 Inputs
 */
-// $input-b-w: 1px;
-// $input-bg: #ffffff;
-// $input-b-col: #BDBCBC;
-// $input-b-radius: 2px;
-// $input-b-col-focus: #000000;
-// $input-placeholder-col: #BDBCBC;
-// $input-padding: 1.6rem 1.4rem;
-// $input-padding-left-right: 1.4rem;
-// $input-padding-top-bottom: 1.6rem;
+$input-b-w: 1px;
+$input-bg: transparent;
+$input-b-col: $gray400;
+$input-b-radius: $br-sm;
+$input-b-col-focus: $gray500;
+$input-placeholder-col: $gray500;
+$input-padding: 1.2rem 1.4rem;
+$input-padding-left-right: 1.4rem;
+$input-padding-top-bottom: 1.2rem;
 
-// $input-padding-top-bottom-mobile: 1.4rem;
-// $input-padding-left-right-mobile: 1.2rem;
-// $input-focus-box-shadow: none;
-// $inplace-fw: 400;
-// $inplace-fz: 1.2rem;
-// $inplace-font-color: $gray300;
-// $inplace-label-transform-start: 50%;
-// $inplace-label-transform-end: -50%;
-// $input-label-padding: 0.8rem;
-// $checkbox-border-width: 1px;
+$input-padding-top-bottom-mobile: 1.2rem;
+$input-padding-left-right-mobile: 1.4rem;
+$input-focus-box-shadow: none;
+$inplace-fw: 400;
+$inplace-fz: 1.1rem;
+$inplace-font-color: $gray400;
+$inplace-label-transform-start: 50%;
+$inplace-label-transform-end: -50%;
+$input-label-padding: 0.8rem;
+$checkbox-border-width: 1px;
 
 /*
 Spaces
 */
 $space-tiny: 0.8rem;
-// $space-xs: 1.6rem;
-// $space-sm: 2.4rem;
-// $space-md: 3.2rem;
-// $space-regular: 5.6rem;
-// $space-lg: 8rem;
-// $space-xl: 9.6rem;
+$space-xs: 1.6rem;
+$space-sm: 2.4rem;
+$space-md: 3.2rem;
+$space-regular: 5.6rem;
+$space-lg: 8rem;
+$space-xl: 9.6rem;
 
 /*
 Checkbox
 */
-// $checkbox-size: 1.6rem;
+$checkbox-size: 1.6rem;
+// $checkbox-bg: $col-prm !default;
+// $checkbox-selected-bg: $col-prm !default; // farba pozadia zakliknuteho checkboxu
+$checkbox-border-color: $gray400; // farba borderu checkboxu
+$checbox-border-radius: 0px;
+$checkbox-border-width: 1px;
+
+// $checkbox-disabled-bg: $gray200 !default; // farba pozadia vypnuteho checkboxu
+// $tick-disabled-color: $gray300 !default; // farba fajky vypnuteho checkboxu
+
+// $tick: polygon(38% 67%, 20% 50%, 14% 56%, 38% 79%, 88% 29%, 82% 23%) !default; // tvar fajky v checkboxe
+// $tick-color: $white !default; // farba fajky v checkboxe

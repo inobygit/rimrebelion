@@ -44,6 +44,13 @@
       "name": "Optimalizácia obrázkov | Konvertovanie WebP & AVIF",
       "slug": "webp-converter-for-media",
       "force_activation": true
+    },
+    "inoby-woocommerce-import": {
+      "required": true,
+      "name": "Inoby WooCommerce Import",
+      "slug": "inoby-woocommerce-import",
+      "source": "https://plugins.inoby.sk/inoby-woocommerce-import/inoby-woocommerce-import.zip",
+      "force_activation": true
     }
   }
 }

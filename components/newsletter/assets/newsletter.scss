@@ -1,0 +1,93 @@
+@import "variables";
+@import "mixins";
+
+.component-newsletter {
+  position: relative;
+  background-color: $gray900;
+  // padding: $space-regular 0;
+  color: $white;
+  @include bp('md'){
+    padding: $space-sm 0;
+  }
+  h2.newsletter-heading{
+    margin-bottom: 0.5rem;
+  }
+  p.newsletter-text{
+    margin-bottom: $space-sm;
+  }
+  .newsletter-form {
+    display: block;
+    .newsletter-inner-wrap{
+      display: grid;
+      grid-template-columns: 1fr 16rem;
+      gap: 1.5rem;
+      @include bp('sm'){
+        grid-template-columns: 1fr;
+      }
+      .input-wrap{
+        label.inplace-label{
+          color: $white;
+          &:after{
+              background: $gray900;
+          }
+          @include bp('md'){
+            display: none;
+          }
+        }
+        input{
+          width: 100%;
+          line-height: 1;
+          color: $white;
+        }
+      }
+      .button-wrap{
+        button{
+          height: 100%;
+          @include bp('sm'){
+            width: 100%;
+          }
+        }
+      }
+    }
+    .gdpr-inner-wrap{
+      display: flex;
+      align-items: center;
+      gap: $space-xs;
+      margin-top: $space-xs;
+      @include bp('sm'){
+        align-items: flex-start;
+      }
+      input{
+        cursor: pointer;
+      }
+      label{
+        font-size: 1.3rem;
+        color: $gray300;
+        cursor: pointer;
+        margin: 0 0 -2px;
+        @include bp('sm'){
+          margin: 0 0 -2px;
+        }
+      }
+    }
+  }
+  &:before{
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: calc(50% - 1.5rem);
+    height: 100%;
+    background: url(theme-url("/assets/img/bg-newsletter.webp"));
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    @include bp('md'){
+      position: relative;
+      display: block;
+      height: 40vh;
+      width: 100%;
+      top: -$space-sm;
+    }
+  }
+}

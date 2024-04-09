@@ -15,6 +15,12 @@ const def_child = {
     // post_type: child.post_type("post-type")
   },
 
+  checkout: [
+    ...child.assets(["css/checkout.scss"]),
+    ...child.assets(["js/checkout.js"]),
+    //
+  ],
+
   page_templates: {
     // page_template: child.template("page-template")
   },
