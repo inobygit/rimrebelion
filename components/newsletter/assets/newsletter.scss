@@ -43,6 +43,9 @@
       .button-wrap{
         button{
           height: 100%;
+          @include bp('md'){
+            max-width: calc(100% - 3rem);
+          }
           @include bp('sm'){
             width: 100%;
           }

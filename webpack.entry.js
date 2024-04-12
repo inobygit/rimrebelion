@@ -12,7 +12,7 @@ const def_child = {
   config: child.assets(["config.json", "image-sizes.json", "plugins.json"], "config"),
 
   post_types: {
-    // post_type: child.post_type("post-type")
+    product: child.post_type("product"),
   },
 
   checkout: [

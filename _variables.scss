@@ -203,3 +203,59 @@ $checkbox-border-width: 1px;
 
 // $tick: polygon(38% 67%, 20% 50%, 14% 56%, 38% 79%, 88% 29%, 82% 23%) !default; // tvar fajky v checkboxe
 // $tick-color: $white !default; // farba fajky v checkboxe
+
+
+/*
+Product card
+*/
+$product-card-padding: 0;
+$product-border-radius: 4px;
+// $product-card-box-shadow-on-hover: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px !default;
+$product-trnasition-in: all 0.5s ease-in-out;
+$product-trnasition-out: all 0.2s ease-in-out;
+$product-img-min-height: auto;
+$content-product-thumbnail-padding: 0;
+$content-product-thumbnail-img-padding: 0;
+$product-button-url: none;
+$content-wrap-row-gap: 1rem;
+$content-wrap-padding: 1.6rem 0 0 0;
+$product-title-size: 2.4rem;
+$product-title-weight: $fw-bold;
+$product-title-color: $black;
+$tags-position-top: 1rem;
+$tags-position-left: 1rem;
+$product-price-font-family: $font-family;
+$product-price-size: 1.4rem;
+$product-price-weight: 500;
+$product-price-color: $gray900;
+$product-stock-size: 1.3rem;
+$product-stock-weight: 400;
+$in-stock-color: #2ED477;
+$on-back-order-color: $col-warn;
+$out-of-stock-color: #F46363;
+
+/*
+Badges
+*/
+$tags-padding: 4px 16px;
+$tags-border-radius: 3px;
+$tags-font-family: $font-family;
+$tags-font-color: $black;
+$tags-font-weight: 400;
+$tags-margin-bottom: 0.8rem;
+$tags-font-size: 1.1rem;
+
+$tags-special-bg-col: $white;
+$tags-new-product-bg-col: $white;
+$tags-onsale-bg-col: $white;
+
+/*
+Pagination
+*/
+$pagination-ff: $font-family;
+$pagination-fw: 400;
+$pagination-fs: 1.6rem;
+$pagination-color: $gray500;
+$pagination-color-hover: $col-prm;
+$pagintation-next-icon: url(theme-url("/assets/svg/pagination-icon-next.svg"));
+$pagintation-prev-icon: url(theme-url("/assets/svg/pagination-icon-prev.svg"));

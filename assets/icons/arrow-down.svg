@@ -1,3 +1,5 @@
-<svg data-name="Icon/Arrows/Chevron/Down" xmlns="http://www.w3.org/2000/svg" width="24.091" height="24" viewBox="0 0 24.091 24">
-  <path data-name="Icon Color" d="M-2.182,24,0,21.818-9.818,12,0,2.182-2.182,0l-12,12Z" transform="translate(0.091 4.909) rotate(-90)" fill="#3f3b3b"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="14" height="8" viewBox="0 0 14 8" fill="none">
+  <path
+    d="M7.30005 5.65001L12.75 0.200012L13.8 1.25001L7.30005 7.80001L0.800049 1.30001L1.85005 0.250012L7.30005 5.65001Z"
+    fill="black" />
 </svg>

@@ -30,3 +30,19 @@ if (RC_ENABLED) {
 
     add_filter("rimrebelion_checkout_settings", "rimrebelion_checkout_settings");
 }
+
+add_filter("woocommerce_catalog_orderby", "rimrebellion_change_sorting_options_order", 5);
+function rimrebellion_change_sorting_options_order($options) {
+    $options = [
+        "rating" => __("Najlepšie hodnotené", "rimrebellion"),
+        "popularity" => __("Najpredávanejšie", "rimrebellion"),
+        "price" => __("Najnižšia cena", "rimrebellion"),
+        "price-desc" => __("Najvyššia cena", "rimrebellion"),
+    ];
+    return $options;
+}
+
+/**
+ * @snippet WooCommerce Disable Default CSS
+ */
+add_filter("woocommerce_enqueue_styles", "__return_empty_array");

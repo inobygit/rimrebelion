@@ -1,5 +1,5 @@
 <?php define("INOBY_THEME_CONFIG", [
-    "test" => false,
+    "test" => true,
     "show_topbar" => true,
     "show_footer" => true,
     "show_preloader" => true,
@@ -42,7 +42,7 @@
     "use_react" => false,
     "admin_styles" => false,
     "custom_theme_options" => false,
-    "rc_filter_engine" => "original",
+    "rc_filter_engine" => "indexed",
     "block_dark_mode" => false,
     "wishlist" => false,
     "free_shipping_notice" => false,
