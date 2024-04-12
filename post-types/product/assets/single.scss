@@ -1,0 +1,159 @@
+@import "variables";
+@import "mixins";
+
+body.single-product{
+  div#main{
+    background-color: $gray100;
+  }
+  .product-header{
+    .gallery-col{
+      .woocommerce-product-gallery__image[data-gallery-index="0"]{
+        a > img{
+          aspect-ratio: 1/1;
+          object-fit: cover;
+        }
+      }
+      .thumbs{
+        grid-template-columns: repeat(auto-fill, minmax(8.5rem, 1fr));
+        gap: 8px;
+        a > img{
+          aspect-ratio: 1/1;
+          object-fit: cover;
+        }
+      }
+    }
+    .summary-col{
+      .tags{
+        margin-bottom: 1rem;
+      }
+      h1{
+        margin-bottom: 0.8rem;
+      }
+      .collection-terms{
+        span{
+          color: $gray400;
+          font-size: 1.3rem;
+          font-weight: 400;
+          line-height: 150%;
+        }
+      }
+      .woocommerce-product-details__short-description{
+        p{
+          color: $gray600;
+          font-size: 1.6rem;
+          font-weight: 400;
+          line-height: 150%; 
+          margin-bottom: $space-sm;
+        }
+      }
+      .single_variation_wrap{
+        table.variations{
+          width: 100%;
+          select{
+            width: 100%;
+            max-width: 36rem;
+            cursor: pointer;
+          }
+        }
+        .single_variation{
+          .woocommerce-variation-price{
+            margin-top: $space-xs;
+            font-size: $fs-h2;
+            font-family: $font-family-headings;
+          }
+          .woocommerce-variation-sku{
+            float: left;
+            color: $gray500;
+            font-size: 1.3rem;
+            font-weight: 400;
+            line-height: 150%; /* 19.5px */
+          }
+          .woocommerce-variation-availability{
+            float: right;
+            p.stock{
+              font-size: 1.3rem;
+              font-weight: 400;
+              line-height: 150%; /* 19.5px */
+              &.instock{
+                color: $in-stock-color;
+              }
+              &.onbackorder{
+                color: $on-back-order-color;
+              }
+              &.outofstock{
+                color: $out-of-stock-color;
+              }
+            }
+          }
+        }
+        .woocommerce-variation-add-to-cart{
+          margin-top: $space-sm;
+          &.woocommerce-variation-add-to-cart-disabled{
+            opacity: .5;
+            pointer-events: none;
+            cursor: not-allowed !important;
+          }
+          .quantity {
+            display: inline-block;
+            border: 1px solid $gray200;
+            border-radius: 0px;
+            background-color: #F8F8F8;
+            margin-right: $space-sm;
+            input {
+              color: $gray900;
+              padding: 13px;
+              border: none;
+              border-radius: 0px;
+              font-size: 1.4rem;
+              font-weight: 400;
+              text-align: center;
+              &.minus {
+                cursor: pointer;
+                padding-left: 1.6rem;
+              }
+              &.plus {
+                cursor: pointer;
+                padding-right: 1.6rem;
+                color: $gray900;
+              }
+              &.qty {
+                width: 5rem;
+                position: relative;
+                padding: 0px 1rem;
+                color: $gray900;
+                border-left: 1px solid $gray200;
+                border-right: 1px solid $gray200;
+              }
+              &:hover,&:focus{
+                box-shadow: none;
+                color: $gray900;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  section.product-description{
+    padding: $space-regular 0;
+    margin-top: $space-md;
+    background-color: $white;
+  }
+  section.product-tabs{
+    padding: $space-regular 0;
+    margin-top: $space-md;
+    .row{
+      justify-content: center;
+    }
+  }
+  section.related.products{
+    margin-bottom: $space-lg;
+    h3{
+      text-transform: uppercase;
+      margin-bottom: $space-md;
+    }
+  }
+}
+.button.disabled, button:not(.gbtn):not([class*=plyr]).disabled{
+  cursor: not-allowed !important;
+}

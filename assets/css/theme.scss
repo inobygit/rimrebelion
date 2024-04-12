@@ -116,6 +116,102 @@ label.inplace-label{
   }
 }
 
-.woocommerce:where(body:not(.woocommerce-block-theme-has-button-styles)) #respond input#submit, .woocommerce:where(body:not(.woocommerce-block-theme-has-button-styles)) a.button, .woocommerce:where(body:not(.woocommerce-block-theme-has-button-styles)) button.button, .woocommerce:where(body:not(.woocommerce-block-theme-has-button-styles)) input.button, :where(body:not(.woocommerce-block-theme-has-button-styles)) .woocommerce #respond input#submit, :where(body:not(.woocommerce-block-theme-has-button-styles)) .woocommerce a.button, :where(body:not(.woocommerce-block-theme-has-button-styles)) .woocommerce button.button, :where(body:not(.woocommerce-block-theme-has-button-styles)) .woocommerce input.button{
-  @include button;
+nav.breadcrumbs {
+  padding: $space-sm 0;
+  .container{
+    max-width: $container-xxl !important;
+    @include bp('xxl'){
+      max-width: $container-xl !important;
+    }
+    @include bp('xl'){
+      max-width: $container-lg !important;
+    }
+    @include bp('lg'){
+      max-width: $container-md !important;
+    }
+    p#breadcrumbs{
+      margin-left: 1.8rem;
+      >span{
+        span{
+          position: relative;
+          display: inline-block;
+          line-height: 30px;
+          height: 35px;
+          font-size: 1.2rem;
+          margin-right: 15px;
+          border-top: 2px solid $gray400;
+          border-bottom: 2px solid $gray400;
+          padding-left: 2.5rem;
+          padding-right: 0.5rem;
+          &:before{
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translate(-50%, -50%) rotate(45deg);
+            height: 25px;
+            width: 25px;
+            display: inline-block;
+            border-right: 2px solid $gray400;
+            border-top: 2px solid $gray400;
+          }
+          &:after{
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translate(50%, -50%) rotate(45deg);
+            height: 25px;
+            width: 25px;
+            display: inline-block;
+            border-right: 2px solid $gray400;
+            border-top: 2px solid $gray400;
+          }
+          &:first-of-type{
+            padding-left: 0;
+            &:before{
+              content: '';
+              position: absolute;
+              left: 0;
+              top: 50%;
+              transform: translate(-50%, -50%) rotate(45deg);
+              height: 25px;
+              width: 25px;
+              display: inline-block;
+              border-left: 2px solid $gray400;
+              border-bottom: 2px solid $gray400;
+              border-right: none;
+              border-top: none;
+            }
+            &:after{
+              content: '';
+              position: absolute;
+              right: 0;
+              top: 50%;
+              transform: translate(50%, -50%) rotate(45deg);
+              height: 25px;
+              width: 25px;
+              display: inline-block;
+              border-right: 2px solid $gray400;
+              border-top: 2px solid $gray400;
+            }
+          }
+          &:last-of-type{
+            border-color: $col-prm;
+            &:before, &:after{
+              border-color: $col-prm;
+            }
+          }
+          a{
+            margin: 0;
+            text-decoration: none;
+            color: $gray400;
+            &:hover{
+              color: $col-prm;
+            }
+          }
+        }
+      }
+    }
+  }
 }
