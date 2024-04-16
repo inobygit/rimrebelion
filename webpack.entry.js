@@ -5,6 +5,7 @@ const def_child = {
   core: [
     ...child.assets(["css/theme.scss"]),
     ...child.assets(["css/footer.scss"]),
+    ...child.assets(["css/cart.scss"]),
     ...child.entry("components"),
     //
   ],

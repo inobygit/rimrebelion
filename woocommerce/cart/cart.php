@@ -165,7 +165,7 @@ do_action("woocommerce_before_cart");
 <?php if ($minicart): ?>
 <div class="cart-buttons">
   <a class="link prev-arrow close-btn" href="#0"><?= $close_btn_text ?></a>
-  <a class="button button-primary" href="<?= $cart_url ?>"><?= $order_title ?></a>
+  <a class="button triangleright" href="<?= $cart_url ?>"><?= $order_title ?></a>
 </div>
 <?php endif; ?>
 
