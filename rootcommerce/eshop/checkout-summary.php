@@ -19,14 +19,14 @@ $notes = WC()->session->get("order_comments");
 
 <div class="row">
   <div class="col-12">
-    <h3><?= __("Zhrnutie objednávky", "rimrebelion") ?></h3>
+    <h2><?= __("Zhrnutie objednávky", "rimrebelion") ?></h2>
   </div>
 </div>
 
 <div class="row ship-pay-info">
   <?php if ($shipping_method): ?>
   <div class="col-12 ship">
-    <h4><?= __("Doprava", "rimrebelion") ?></h4>
+    <h3><?= __("Doprava", "rimrebelion") ?></h3>
     <div class="wrp">
       <div class="wrp-head">
         <div class="icon">
@@ -43,7 +43,7 @@ $notes = WC()->session->get("order_comments");
 
   <?php if ($payment_method): ?>
   <div class="col-12 pay">
-    <h4><?= __("Platba", "rimrebelion") ?></h4>
+    <h3><?= __("Platba", "rimrebelion") ?></h3>
     <div class="wrp">
       <div class="wrp-head">
         <div class="icon">
@@ -68,7 +68,7 @@ $notes = WC()->session->get("order_comments");
 
 <div class="row shipping-billing-info">
   <div class="col-4 col-md-12 shipping">
-    <h4><?= __("Dodacie údaje", "rimrebelion") ?></h4>
+    <h3><?= __("Dodacie údaje", "rimrebelion") ?></h3>
     <address>
       <?= $ship_to_different_address || $ship_to_packeta_place ? $shipping_address : $billing_address ?>
       <hr>
@@ -82,7 +82,7 @@ $notes = WC()->session->get("order_comments");
     </address>
   </div>
   <div class="col-4 col-md-12 bill">
-    <h4><?= __("Fakturačné údaje", "rimrebelion") ?></h4>
+    <h3><?= __("Fakturačné údaje", "rimrebelion") ?></h3>
     <address>
       <?= $billing_address ?>
       <hr>
@@ -98,7 +98,7 @@ $notes = WC()->session->get("order_comments");
   </div>
   <?php if (!empty($billing_business_id) || !empty($billing_vat) || !empty($billing_tax_id)): ?>
   <div class="col-4 col-md-12 company-additional-info">
-    <h4><?= __("Firemné údaje", "rimrebelion") ?></h4>
+    <h3><?= __("Firemné údaje", "rimrebelion") ?></h3>
     <address>
       <?php if (!empty($billing_company)): ?>
       <div><?= $billing_company ?></div>
@@ -122,7 +122,7 @@ $notes = WC()->session->get("order_comments");
 <?php if (!empty($notes)): ?>
 <div class="row">
   <div class="col-12 note-wrp">
-    <h4><?= __("Poznámka", "rimrebelion") ?></h4>
+    <h3><?= __("Poznámka", "rimrebelion") ?></h3>
     <div class="note"><?= $notes ?></div>
   </div>
 </div>

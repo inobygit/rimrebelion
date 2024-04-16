@@ -4,12 +4,6 @@ define("RIMREBELLION_CHILD_URI", get_stylesheet_directory_uri());
 require_once RIMREBELLION_CHILD . "/inc/product-taxonomies.php";
 require_once RIMREBELLION_CHILD . "/inc/product-tabs.php";
 
-// Enqueue Dashicons to load on the front-end
-add_action("wp_enqueue_scripts", "dashicons_front_end");
-function dashicons_front_end() {
-    wp_enqueue_style("dashicons");
-}
-
 add_action("inoby_before_footer", "footer_newsletter");
 function footer_newsletter() {
     if (!is_checkout() && !is_cart()) {
