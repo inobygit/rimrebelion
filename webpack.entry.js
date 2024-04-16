@@ -6,6 +6,7 @@ const def_child = {
     ...child.assets(["css/theme.scss"]),
     ...child.assets(["css/footer.scss"]),
     ...child.assets(["css/cart.scss"]),
+    ...child.assets(["css/notifications.scss"]),
     ...child.entry("components"),
     //
   ],
