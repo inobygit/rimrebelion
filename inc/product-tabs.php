@@ -15,6 +15,8 @@ function rimrebellion_product_tab_additional_info() {
     $additional_info = get_post_meta($product->get_id(), "additional-info", true);
     if (!empty($additional_info)) {
         echo wpautop($additional_info);
+    } else {
+        echo get_the_excerpt($product->get_id());
     }
 }
 
