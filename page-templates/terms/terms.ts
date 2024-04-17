@@ -7,7 +7,8 @@ class PtTerms extends InobyModule {
     const url = window.location.href;
     const buttons = document.querySelectorAll('a');
     buttons.forEach(button => {
-      if (url.includes(button.getAttribute('href'))) {
+      const buttonHref = button.getAttribute('href').split('#')[0];
+      if(url.includes(buttonHref)) {
         button.classList.add('active');
       }
     });
