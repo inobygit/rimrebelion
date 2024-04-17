@@ -17,13 +17,13 @@
 
 defined("ABSPATH") || exit();
 
-$odred_id = $order->get_id();
+$order_id = $order->get_id();
 ?>
 
 <div class="woocommerce-order">
 
   <?php if ($order):
-      do_action("woocommerce_before_thankyou", $odred_id); ?>
+      do_action("woocommerce_before_thankyou", $order_id); ?>
 
   <?php if ($order->has_status("failed")): ?>
 
@@ -55,7 +55,12 @@ $odred_id = $order->get_id();
     </div>
   </section>
 
-  <?php else: ?>
+  <?php //do_action("woocommerce_thankyou_" . $order->get_payment_method(), $order_id);
+      //do_action("woocommerce_thankyou_" . $order->get_payment_method(), $order_id);
+      //do_action("woocommerce_thankyou_" . $order->get_payment_method(), $order_id);
+      //do_action("woocommerce_thankyou_" . $order->get_payment_method(), $order_id);
+
+      else: ?>
 
 
   <section class="thank-you-section">
@@ -65,15 +70,17 @@ $odred_id = $order->get_id();
 
           <div class="thank-you-wrapper">
             <h1><?= __("Ďakujeme za vašu objednávku", "rimrebelion") ?></h1>
-            <p>
-              <?php echo sprintf(
-                  __("Vašu objednávku #%s sme úspešne zaevidovali. O jej stave Vás budeme informovať na Vašu e-mailovú adresu.", "rimrebelion"),
-                  $odred_id,
-              ); ?>
+            <p class="heading-like">
+              <?php echo sprintf(__("Vašu objednávku #%s sme úspešne zaevidovali.", "rimrebelion"), $order_id); ?>
             </p>
-            <?php do_action("woocommerce_thankyou_" . $order->get_payment_method(), $odred_id); ?>
-            <a class="button light"
-              href="<?= get_home_url() ?>"><?= __("Späť na domovskú stránku", "rimrebelion") ?></a>
+            <p class="fancy">
+              <?php echo __("O jej stave Vás budeme informovať na Vašu e-mailovú adresu.", "rimrebelion"); ?>
+            </p>
+            <?php
+      //do_action("woocommerce_thankyou_" . $order->get_payment_method(), $order_id);
+      ?>
+            <a class="button light triangleright triangleleft"
+              href="<?= get_home_url() ?>"><?= __("Naspäť domov", "rimrebelion") ?></a>
           </div>
 
 
@@ -82,12 +89,18 @@ $odred_id = $order->get_id();
     </div>
   </section>
   <section class="thank-you-order">
-    <?php do_action("woocommerce_thankyou", $odred_id); ?>
+    <?php do_action("woocommerce_thankyou", $order_id); ?>
   </section>
 
   <?php endif; ?>
 
   <?php // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+      // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+      // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+      // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+      // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+      // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+      // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
       // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
       // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
       // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
@@ -119,7 +132,8 @@ $odred_id = $order->get_id();
       ?>
             </p>
 
-            <a class="button" href="<?= get_home_url() ?>"><?= __("Späť na domovskú stránku", "rimrebelion") ?></a>
+            <a class="button triangleright triangleleft light"
+              href="<?= get_home_url() ?>"><?= __("Naspäť domov", "rimrebelion") ?></a>
           </div>
 
         </div>

@@ -1,0 +1,57 @@
+@import "variables";
+@import "mixins";
+
+.woocommerce-error,
+.woocommerce-info,
+.woocommerce-message {
+  padding: 1.6rem 3.2rem;
+  border: none;
+  border-radius: 5px !important;
+  color: $white;
+  font-size: 1.3rem;
+  a.button,
+  a.wc-backward {
+    @include link;
+    border: none !important;
+    background-color: transparent !important;
+    padding: 0 !important;
+    margin: 0 1rem !important;
+    color: $white !important;
+    font-weight: 500 !important;
+    &:hover {
+      color: $white !important;
+      text-decoration: none !important;
+    }
+  }
+}
+.woocommerce-message {
+  background: $col-success !important;
+}
+.woocommerce-error {
+  background: $col-danger !important;
+}
+.woocommerce-info {
+  background: $col-warn !important;
+}
+
+.woocommerce-notices-wrapper {
+  @include bp("sm") {
+    margin: 1.5rem 1.5rem;
+  }
+}
+
+.woocommerce-notices-wrapper .woocommerce-error,
+.woocommerce-notices-wrapper .woocommerce-info,
+.woocommerce-notices-wrapper .woocommerce-message {
+  @include bp("sm") {
+    padding: 1rem 2rem 1rem 4.5rem !important;
+    font-size: 1.1rem !important;
+  }
+}
+.woocommerce-notices-wrapper .woocommerce-error::before,
+.woocommerce-notices-wrapper .woocommerce-info::before,
+.woocommerce-notices-wrapper .woocommerce-message::before {
+  @include bp("sm") {
+    left: 1.5rem !important;
+  }
+}

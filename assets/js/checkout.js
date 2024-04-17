@@ -1,15 +1,15 @@
 jQuery(function ($) {
-  $(".init-payment").on("click", function(e) {
-    e.preventDefault();
+  // $(".init-payment").on("click", function(e) {
+  //   e.preventDefault();
     
-    if (!$('#terms-checkbox').is(':checked')) {
-      $('#terms-checkbox')[0].scrollIntoView({
-        behavior: 'smooth'
-      });
-    }
+  //   if (!$('#terms-checkbox').is(':checked')) {
+  //     $('#terms-checkbox')[0].scrollIntoView({
+  //       behavior: 'smooth'
+  //     });
+  //   }
 
-    $("button[name='woocommerce_checkout_place_order']").trigger('click');
-  });
+  //   $("button[name='woocommerce_checkout_place_order']").trigger('click');
+  // });
 
   jQuery(document).ready(function($) {
     // Funkcia na zmenu tabu
@@ -29,24 +29,23 @@ jQuery(function ($) {
                 scrollTop: 0
             }, 500);
         }
-
         // Pridanie triedy na body podľa aktívneho tabu
         $('body').removeClass(currentTab).addClass(tabNameToShow);
     };
 
     // Pri každom kliknutí na .tab-btn
-    $('.tab-btn').on('click', function(e) {
-        e.preventDefault(); // Zabránenie predvolenému správaniu odkazu/buttonu
+    // $('.tab-btn').on('click', function(e) {
+    //     e.preventDefault(); // Zabránenie predvolenému správaniu odkazu/buttonu
 
-        // Získanie cieľového tabu z atribútu data-next-tab alebo data-prev-tab
-        var targetTab = $(this).data('next-tab') || $(this).data('prev-tab');
+    //     // Získanie cieľového tabu z atribútu data-next-tab alebo data-prev-tab
+    //     var targetTab = $(this).data('next-tab') || $(this).data('prev-tab');
 
-        // Získanie aktuálneho tabu z atribútu data-current-tab
-        var currentTab = $(this).data('current-tab');
+    //     // Získanie aktuálneho tabu z atribútu data-current-tab
+    //     var currentTab = $(this).data('current-tab');
 
-        // Zmena tabu
-        changeTab(targetTab, currentTab);
-    });
+    //     // Zmena tabu
+    //     changeTab(targetTab, currentTab);
+    // });
 });
 
 });

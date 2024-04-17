@@ -92,17 +92,17 @@ Header
 */
 // $header-bg: var(--color-header-bg, $gray100);
 // $header-color: var(--color-header-color, $black);
-// $fs-header-li: 1.4rem;
-// $fw-header: 400;
-// $header-item-active-fw: 400;
-// $header-pd: 2rem 0;
-// $header-tt: uppercase;
-// $sticky-header-pd: 1rem 0;
-// $header-item-pd: 0 1.6rem;
-// $header-item-a-pd: 1rem 0;
-// $header-item-bb: none;
-// $header-item-active-bb: none;
-// $header-item-active-col: $col-prm;
+$fs-header-li: 1.4rem;
+$fw-header: 500;
+$header-item-active-fw: 500;
+$header-pd: 1.5rem 0 1rem;
+$header-tt: uppercase;
+$sticky-header-pd: 1rem 0;
+$header-item-pd: 0 1.6rem;
+$header-item-a-pd: 1rem 0;
+$header-item-bb: none;
+$header-item-active-bb: none;
+$header-item-active-col: $col-prm;
 
 /*
 Footer
@@ -114,8 +114,8 @@ $footer-color: #ffffff;
 Buttons
 */
 $btn-fs: calc(1.4rem * var(--font-size-ratio, 1));
-$btn-fw: 700;
-$btn-br: 0px;
+$btn-fw: 500;
+$btn-br: 5px;
 $btn-bw: 2px;
 $btn-pd: 1.2rem 1.6rem;
 $btn-pd-mobile: 1.2rem 1.6rem;
