@@ -4,6 +4,7 @@ const theme = new AssetsHelper(path.resolve(__dirname, "./../"));
 
 const components = [
   ...theme.component("newsletter"),
+  ...theme.component("payment"),
 ];
 
 module.exports = components;

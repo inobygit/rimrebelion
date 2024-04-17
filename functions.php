@@ -46,3 +46,36 @@ function rimrebellion_change_sorting_options_order($options) {
  * @snippet WooCommerce Disable Default CSS
  */
 add_filter("woocommerce_enqueue_styles", "__return_empty_array");
+
+  //terms and conditions sidebar
+add_action( 'widgets_init', 'my_register_sidebars' );
+  function my_register_sidebars() {
+    register_sidebar(
+      array(
+        'id'            => 'terms',
+        'name'          => __( 'Sidebar - Terms and conditions' ),
+        'description'   => __( 'Sidebar used in terms and conditions page.' ),
+        'before_widget' => '<div id="%1$s" class="widget %2$s">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<h3 class="widget-title">',
+        'after_title'   => '</h3>',
+      )
+    );
+}
+
+function rimrebelion_contact_info_shortcode($atts) {
+    $atts = shortcode_atts( array(
+        'email' => '',
+        'phone' => '',
+    ), $atts, 'rimrebelion_contact_info' );
+    $contact_info = '';
+    if (!empty($atts['email'])) {
+        $contact_info .= '<a class="email-btn" href="mailto:' . esc_attr($atts['email']) . '">' . file_get_contents(get_stylesheet_directory_uri() . '/assets/svg/mail.svg') . esc_html($atts['email']) . '</a>';
+    }
+    if (!empty($atts['phone'])) {
+        $contact_info .= '<a class="phone-btn" href="tel:' . esc_attr($atts['phone']) . '">' . file_get_contents(get_stylesheet_directory_uri() . '/assets/svg/phone-call.svg') . esc_html($atts['phone']) . '</a>';
+    }
+
+    return '<div class="contact-info">' . $contact_info . '</div>';
+}
+add_shortcode('rimrebelion_contact_info', 'rimrebelion_contact_info_shortcode');
