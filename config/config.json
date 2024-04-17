@@ -4,9 +4,9 @@
     "page-templates/termsAndConditions.php"
   ],
   "page404": {
-    "title": "<?php __(\"STRÁNKA NENÁJDENÁ\", \"inoby\")",
-    "headline": "<?php __(\"STRÁNKA NEEXISTUJE.\", \"inoby\")",
-    "text": "<?php __(\"Skúste ešte raz skontrolovať odkaz alebo použite vyhľadávanie a nájdite to, čo hľadáte\", \"inoby\")",
-    "btn_home_text": "<?php __(\"Naspäť domov\", \"inoby\")"
+    "title": "<?php __(\"PAGE NOT FOUND\", \"inoby\")",
+    "headline": "<?php __(\"THIS PAGE DOESN'T EXIST.\", \"inoby\")",
+    "text": "<?php __(\"Try checking the link again or use the search to find what you're looking for.\", \"inoby\")",
+    "btn_home_text": "<?php __(\"Back home\", \"inoby\")"
   }
 }

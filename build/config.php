@@ -15,10 +15,10 @@
     "contact_form" => true,
     "promo_banner" => true,
     "page404" => [
-        "title" => __("STRÁNKA NENÁJDENÁ", "inoby"),
-        "headline" => __("STRÁNKA NEEXISTUJE.", "inoby"),
-        "text" => __("Skúste ešte raz skontrolovať odkaz alebo použite vyhľadávanie a nájdite to, čo hľadáte", "inoby"),
-        "btn_home_text" => __("Naspäť domov", "inoby"),
+        "title" => __("PAGE NOT FOUND", "inoby"),
+        "headline" => __("THIS PAGE DOESN'T EXIST.", "inoby"),
+        "text" => __("Try checking the link again or use the search to find what you're looking for.", "inoby"),
+        "btn_home_text" => __("Back home", "inoby"),
     ],
     "faq_use_wysiwyg" => false,
     "admin_duplicate" => [
