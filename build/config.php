@@ -10,14 +10,15 @@
     "login_popup" => true,
     "allowed_editors" => [
         "page-templates/multitab-page.php",
+        "page-templates/termsAndConditions.php",
     ],
     "contact_form" => true,
     "promo_banner" => true,
     "page404" => [
-        "title" => __("Error 404", "inoby"),
-        "headline" => __("OOPS...", "inoby"),
-        "text" => __("WE ARE SORRY, THIS PAGE CAN NOT BE FOUND", "inoby"),
-        "btn_home_text" => __("Back home", "inoby"),
+        "title" => __("STRÁNKA NENÁJDENÁ", "inoby"),
+        "headline" => __("STRÁNKA NEEXISTUJE.", "inoby"),
+        "text" => __("Skúste ešte raz skontrolovať odkaz alebo použite vyhľadávanie a nájdite to, čo hľadáte", "inoby"),
+        "btn_home_text" => __("Naspäť domov", "inoby"),
     ],
     "faq_use_wysiwyg" => false,
     "admin_duplicate" => [

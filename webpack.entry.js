@@ -25,6 +25,8 @@ const def_child = {
 
   page_templates: {
     // page_template: child.template("page-template")
+    terms: child.template("terms"),
+    page404: child.assets(["css/404.scss"]),
   },
 
   gutenberg: [...child.entry("components")],

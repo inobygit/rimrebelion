@@ -1,3 +1,12 @@
 {
-  "rc_filter_engine": "indexed"
+  "rc_filter_engine": "indexed",
+  "allowed_editors": [
+    "page-templates/termsAndConditions.php"
+  ],
+  "page404": {
+    "title": "<?php __(\"STRÁNKA NENÁJDENÁ\", \"inoby\")",
+    "headline": "<?php __(\"STRÁNKA NEEXISTUJE.\", \"inoby\")",
+    "text": "<?php __(\"Skúste ešte raz skontrolovať odkaz alebo použite vyhľadávanie a nájdite to, čo hľadáte\", \"inoby\")",
+    "btn_home_text": "<?php __(\"Naspäť domov\", \"inoby\")"
+  }
 }

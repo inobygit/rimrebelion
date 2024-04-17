@@ -1,0 +1,72 @@
+@import "variables";
+@import "mixins";
+
+.component-payment {
+  padding: 8px 0;
+  .payment-box{
+    background-color: $white;
+    border-radius: 4px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    gap: 10px;
+    .payment-box-header{
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      flex-wrap: wrap;
+      gap: 16px;
+      img{
+        width: 40px;
+        height: auto;
+        min-width: 40px;
+        object-fit: contain;
+      }
+      h5{
+        text-transform: uppercase;
+        color: $col-prm;
+        font-weight: $fw-semi;
+        margin: 0;
+      }
+    }
+    .payment-box-content{
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      flex: 1 0 auto;
+      gap: 20px;
+      @include bp(md){
+        flex-wrap: wrap;
+      }
+      p{
+        color: $gray500;
+        margin: 0;
+      }
+      .desc{
+        flex-basis: 80%;
+        @include bp(md){
+          flex-basis: 100%;
+        }
+      }
+      .payment-box-price{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        justify-content: flex-start;
+        flex-basis: 20%;
+        @include bp(md){
+          align-items: flex-start;
+          flex-basis: 100%;
+        }
+        *{
+          text-transform: uppercase;
+          color: $gray700;
+          font-size: $fs-h5;
+          font-weight: $fw-bold;
+        }
+      }
+    }
+  }
+}
