@@ -11,6 +11,7 @@
     "allowed_editors" => [
         "page-templates/multitab-page.php",
         "page-templates/termsAndConditions.php",
+        "page-templates/landing.php",
     ],
     "contact_form" => true,
     "promo_banner" => true,

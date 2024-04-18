@@ -13,7 +13,7 @@ get_header();
 <main id="primary" class="site-main">
     <section class="page-404">
         <div class="bg-image">
-            <img src="<?= get_theme_file_uri("/assets/img/404.png") ?>" alt="404" />
+            <img src="<?= get_theme_file_uri("/assets/img/404.webp") ?>" alt="404" />
         </div>
         <div class="container">
             <div class="row items-center">
