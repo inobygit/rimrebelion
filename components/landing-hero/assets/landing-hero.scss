@@ -1,0 +1,128 @@
+@import "variables";
+@import "mixins";
+
+section.landing-hero {
+  width: 100%;
+  height: calc(100vh - 47px);
+  position: relative;
+  .logo-big{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    max-width: 100%;
+    @include bp(md){
+        width: 150px;
+        height: auto;
+      }
+    svg{
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+    }
+  }
+  .landing-hero-wrap{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    height: 100%;
+    position: relative;
+    @include bp(md){
+        flex-direction: column;
+      }
+    .landing-hero-box{
+      flex: 1 0 50%;
+      @include bp(md){
+        max-height: 50%;
+      }
+      width: 100%;
+      height: 100%;
+      position: relative;
+      text-decoration: none !important;
+      &:hover{
+        .img-wrap{
+          &::after{
+            transform: scale(1.5);
+          }
+        }
+      }
+      .content-wrap{
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        padding: 40px;
+        @include bp(md){
+          padding: 40px 1.5rem;
+        }
+        h2{
+          color: $white;
+          font-size: $fs-h1;
+          overflow-wrap: break-word;
+          width: min-content;
+          margin-bottom: .5em;
+        }
+        .arrow-link{
+          color: $white;
+          display: flex;
+          align-items: center;
+          justify-content: flex-start;
+          gap: 5px;
+          &::after{
+            content: '';
+            background-image: url(theme-url('/assets/icons/arrow-light.svg'));
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: contain;
+            display: block;
+            width: 16px;
+            min-width: 16px;
+            height: 16px;
+            min-height: 16px;
+            transition: .3s;
+          }
+          &:hover{
+            &::after{
+              transform: translateX(5px);
+            }
+          }
+        }
+      }
+      .img-wrap{
+        height: 100%;
+        width: 100%;
+        position: relative;
+        overflow: hidden;
+        &::after{
+          content: '';
+          background: linear-gradient(0deg, hsla(0, 0%, 0%, 0.55), hsla(0, 0%, 0%, 0));
+          position: absolute;
+          top: 0;
+          left: 0;
+          bottom: 0;
+          right: 0;
+          z-index: 0;
+          transition: .3s;
+        }
+        img{
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+      &:nth-of-type(2){
+        .content-wrap{
+          left: unset;
+          right: 0;
+          h2{
+            text-align: right;
+          }
+          .arrow-link{
+            justify-content: flex-end;
+            text-align: right;
+          }
+        }
+      }
+    }
+  }
+}

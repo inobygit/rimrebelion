@@ -1,7 +1,8 @@
 {
   "rc_filter_engine": "indexed",
   "allowed_editors": [
-    "page-templates/termsAndConditions.php"
+    "page-templates/termsAndConditions.php",
+    "page-templates/landing.php"
   ],
   "page404": {
     "title": "<?php __(\"PAGE NOT FOUND\", \"inoby\")",

@@ -8,6 +8,7 @@ const def_child = {
     ...child.assets(["css/cart.scss"]),
     ...child.assets(["css/notifications.scss"]),
     ...child.entry("components"),
+    
     //
   ],
 
@@ -26,6 +27,7 @@ const def_child = {
   page_templates: {
     // page_template: child.template("page-template")
     terms: child.template("terms"),
+    landing: child.template("landing"),
     page404: child.assets(["css/404.scss"]),
   },
 

@@ -1,0 +1,179 @@
+@import "variables";
+@import "mixins";
+
+
+#search {
+  opacity: 0;
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  transform: translate(100%, 0);
+  transition: 0.3s;
+  top: var(--header-height);
+  width: 603px;
+  max-width: 100%;
+  z-index: 100;
+  height: calc(100vh - #{var(--header-height)});
+  overflow-y: scroll;
+  overflow-x: hidden;
+  z-index: 999;
+  background: $white;
+  border-top: 10px solid $col-prm;
+  margin-bottom: 4rem;
+  .search-wrapper {
+    background: $white;
+    padding-top: 15px;
+  }
+  @include bp("md") {
+    top: 70px;
+    height: calc(100vh - 70px);
+  }
+  .product-info {
+    .title {
+      font-weight: $fw-bold;
+    }
+    .description {
+      color: $black;
+    }
+  }
+  &.active {
+    opacity: 1;
+    transform: translate(0, 0);
+    transition: 0.4s;
+  }
+  #search-close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: $gray100;
+    cursor: pointer;
+    display: block;
+    border: 1px solid $gray300;
+    padding: 1rem;
+    line-height: 0.8;
+    transition: 0.4s;
+    z-index: 999;
+    display: none;
+    &:hover {
+      background-color: $col-bg;
+      transition: 0.3s;
+    }
+    @include bp("md") {
+      display: block;
+    }
+  }
+  .product-search {
+    padding: 0.5rem 0rem;
+    @include bp("md") {
+      padding: 0;
+    }
+  }
+  .product-search-results-content {
+    border: none;
+    display: block !important;
+  }
+  .search-results {
+    .s_product_cat {
+      text-align: center;
+      a {
+        color: $white;
+        background: $black;
+        text-decoration: none;
+        display: block;
+        text-align: center;
+        padding: 1rem;
+      }
+      span {
+        text-decoration: none;
+      }
+      &:hover {
+        background: $black !important;
+        a {
+          color: $col-prm;
+        }
+      }
+    }
+    a {
+      text-decoration: none !important;
+    }
+  }
+  .entry {
+    transition: 0.3s;
+  }
+  .product-search-results .entry:hover,
+  .product-search-results .entry.active {
+    transition: 0.4s;
+    background-color: $gray100;
+  }
+  .product-search-form {
+    width: calc(100% - 2rem);
+    background: $white;
+    margin: 0 auto;
+  }
+  .product-search-form form input {
+    padding: 1rem 2rem;
+    margin: 0;
+    border-radius: 0px !important;
+    border: none;
+    color: $black;
+    outline: none;
+    background: transparent;
+    @include bp("md") {
+      padding: 4.8rem 2.4rem;
+      margin: 0;
+    }
+    &::placeholder {
+      color: $black;
+    }
+  }
+  div.product-search-form span.product-search-field-clear {
+    top: -0.5rem;
+    right: 16px;
+    color: $black;
+  }
+  .product-search-field {
+    border: 1px solid $gray300;
+    padding: 1rem;
+  }
+}
+
+
+.copyright-landing{
+  padding: 1rem 0 !important;
+  #copyright-left{
+    img{
+      max-width: 34px;
+      height: auto;
+      object-fit: contain;
+    }
+  }
+  #copyright-right{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+    @include bp(md){
+      justify-content: center;
+    }
+    .popup-trigger-btn{
+      position: relative;
+      .cart-count-badge{
+        .badge{
+          position: absolute;
+          right: -.5rem;
+          top: .5rem;
+          background: $white;
+          width: 2rem;
+          height: 2rem;
+          line-height: 2rem;
+          text-align: center;
+          border-radius: 50%;
+          transform: translate(50%, -60%);
+          font-size: 1.2rem;
+          font-weight: 700;
+          color: $col-prm;
+        }
+      }
+    }
+  }
+}
