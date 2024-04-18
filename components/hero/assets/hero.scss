@@ -1,0 +1,58 @@
+@import "variables";
+@import "mixins";
+
+section.hero {
+  position: relative;
+  padding: $space-md 0;
+  z-index: 1;
+  &::after{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, hsla(0, 0%, 0%, 0.55), #00000000);
+    z-index: -1;
+    @include bp(md){
+    background: linear-gradient(180deg, hsla(0, 0%, 0%, 0.55), #00000000);
+    }
+  }
+  .container {
+    position: relative;
+  }
+  .hero-main {
+    margin-bottom: $space-xs;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    h1,
+    h3{
+      text-transform: uppercase;
+      color: $white;
+      margin-bottom: .3em;
+    }
+    h3{
+      margin-bottom: .2em;
+      line-height: normal;
+    }
+    .desc{
+      p{
+        color: $white;
+      }
+    }
+    .button{
+      margin-top: 1em;
+    }
+  }
+  
+  .hero-image{
+    @include bp(md){
+      margin-top: 2em;
+    }
+    img{
+      object-fit: scale-down;
+    }
+  }
+}
