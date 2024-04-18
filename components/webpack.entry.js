@@ -6,6 +6,7 @@ const components = [
   ...theme.component("newsletter"),
   ...theme.component("payment"),
   ...theme.component("landing-hero"),
+  ...theme.component("hero"),
 ];
 
 module.exports = components;
