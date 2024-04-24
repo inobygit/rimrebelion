@@ -78,6 +78,9 @@ $trianglew: 14px;
         align-items: flex-start;
         justify-content: flex-start;
         gap: 10px;
+        @include bp(md){
+          margin-top: 2em;
+        }
         .email-btn,
         .phone-btn{
           width: 100%;
@@ -549,6 +552,17 @@ span.active-orders{
       width: 100%;
     }
   }
+  .form-submit{
+    flex: 1 0 100%;
+    max-width: 100%;
+    @include bp("md") {
+      flex: unset;
+      max-width: unset;
+    }
+    .button{
+      width: fit-content;
+    }
+  }
   .woocommerce-address-fields__field-wrapper {
     display: flex;
     flex-direction: row;
@@ -556,14 +570,6 @@ span.active-orders{
     gap: 30px;
     row-gap: 24px;
     justify-content: flex-start;
-    .form-submit{
-      flex: 1 0 100%;
-      max-width: 100%;
-      @include bp("md") {
-        flex: unset;
-        max-width: unset;
-      }
-    }
     .form-row {
       flex: 1 0 calc(50% - 15px);
       max-width: calc(50% - 15px);
