@@ -3,6 +3,7 @@ define("RIMREBELLION_CHILD", get_stylesheet_directory());
 define("RIMREBELLION_CHILD_URI", get_stylesheet_directory_uri());
 require_once RIMREBELLION_CHILD . "/inc/product-taxonomies.php";
 require_once RIMREBELLION_CHILD . "/inc/product-tabs.php";
+require_once RIMREBELLION_CHILD . "/inc/my-account-change-password.php";
 
 add_action("inoby_before_footer", "footer_newsletter");
 function footer_newsletter() {
@@ -10,6 +11,13 @@ function footer_newsletter() {
         rwmb_meta_render_block("newsletter", [
             "newsletter_popup_check" => 0,
         ]);
+    }
+}
+
+add_action( 'wp_enqueue_scripts', 'enqueue_my_account_style' );
+function enqueue_my_account_style() {
+    if ( is_account_page() ) {
+        wp_enqueue_style( 'my_account', get_theme_file_uri( '/build/css/my_account.css' ) );
     }
 }
 

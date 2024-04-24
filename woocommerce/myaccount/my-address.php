@@ -45,32 +45,40 @@ $col    = 1;
 <?php if ( ! wc_ship_to_billing_address_only() && wc_shipping_enabled() ) : ?>
 <div class="row woocommerce-Addresses addresses">
     <?php endif; ?>
-
-    <?php foreach ( $get_addresses as $name => $address_title ) : ?>
-    <?php
-		$address = wc_get_account_formatted_address( $name );
-		$col     = $col * -1;
-		$oldcol  = $oldcol * -1;
-	?>
-
-    <div class="col-12 woocommerce-Address">
-        <div class="address-wrapper">
-            <h4><?php echo esc_html( $address_title ); ?></h4>
-            <address>
-                <?php
-					echo $address ? wp_kses_post( $address ) : esc_html_e( 'You have not set up this type of address yet.', 'woocommerce' );
-				?>
-            </address>
-            <a href="<?php echo esc_url( wc_get_endpoint_url( 'edit-address', $name ) ); ?>"
-                class="edit"><?php echo $address ? esc_html__( 'Edit', 'woocommerce' ) : esc_html__( 'Add', 'woocommerce' ); ?></a>
-        </div>
+    <div class="col-12 header">
+        <h2>
+            <?= __("Addresses", 'inoby') ?>
+        </h2>
+        <p>
+            <?php echo apply_filters( 'woocommerce_my_account_my_address_description', esc_html__( 'Nasledujúce adresy budú použité ako predvolené adresy.', 'rootscope' ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+        </p>
     </div>
 
-    <?php endforeach; ?>
+    <div class="row">
+        <?php foreach ( $get_addresses as $name => $address_title ) : ?>
+        <?php
+            $address = wc_get_account_formatted_address( $name );
+            $col     = $col * -1;
+            $oldcol  = $oldcol * -1;
+        ?>
 
-    <p>
-        <?php echo apply_filters( 'woocommerce_my_account_my_address_description', esc_html__( 'Nasledujúce adresy budú použité ako predvolené adresy.', 'rootscope' ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
-    </p>
+        <div class="col-4 col-md-12 woocommerce-Address">
+            <h3><?php echo esc_html( $address_title ); ?></h3>
+            <div class="address-wrapper">
+                <address>
+                    <?php
+                        echo $address ? wp_kses_post( $address ) : esc_html_e( 'You have not set up this type of address yet.', 'woocommerce' );
+                    ?>
+
+                </address>
+                <a href="<?php echo esc_url( wc_get_endpoint_url( 'edit-address', $name ) ); ?>"
+                    class="edit"><?php echo $address ? esc_html__( 'Edit', 'woocommerce' ) : esc_html__( 'Add', 'woocommerce' ); ?></a>
+            </div>
+        </div>
+
+        <?php endforeach; ?>
+    </div>
+
 
 
     <?php if ( ! wc_ship_to_billing_address_only() && wc_shipping_enabled() ) : ?>

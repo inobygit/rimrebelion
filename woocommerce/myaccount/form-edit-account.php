@@ -19,68 +19,65 @@ defined( 'ABSPATH' ) || exit;
 
 do_action( 'woocommerce_before_edit_account_form' ); ?>
 
-<?= '<h4>'. __( 'Osobné údaje' , 'rootscope' ) .'</h4>' ?>
-
+<?= '<h2>'. __( 'Account details' , 'rootscope' ) .'</h2>' ?>
+<?= '<h5>'. __( 'Personal data' , 'rootscope' ) .'</h5>' ?>
 <form class="woocommerce-EditAccountForm edit-account edit-account-form" action="" method="post"
     <?php do_action( 'woocommerce_edit_account_form_tag' ); ?>>
 
-    <?php do_action( 'woocommerce_edit_account_form_start' ); ?>
+    <div class="woocommerce-address-fields">
+        <div class="woocommerce-address-fields__field-wrapper">
+            <?php do_action( 'woocommerce_edit_account_form_start' ); ?>
 
-    <div class="row">
-        <div class="col-6 col-lg-12">
             <p class="woocommerce-form-row woocommerce-form-row--first form-row form-row-first">
-                <label for="account_first_name"><?php esc_html_e( 'Meno', 'rootscope' ); ?>&nbsp;<span
-                        class="required">*</span></label>
+                <label for="account_first_name"><?php esc_html_e( 'First name', 'rootscope' ); ?>&nbsp;<abbr
+                        class="required" title="required">*</abbr></label>
                 <input type="text" class="woocommerce-Input woocommerce-Input--text input-text"
                     name="account_first_name" id="account_first_name" autocomplete="given-name"
                     value="<?php echo esc_attr( $user->first_name ); ?>" />
             </p>
-        </div>
-        <div class="col-6 col-lg-12">
             <p class="woocommerce-form-row woocommerce-form-row--last form-row form-row-last">
-                <label for="account_last_name"><?php esc_html_e( 'Priezvisko', 'rootscope' ); ?>&nbsp;<span
-                        class="required">*</span></label>
+                <label for="account_last_name"><?php esc_html_e( 'Last name', 'rootscope' ); ?>&nbsp;<abbr
+                        class="required" title="required">*</abbr></label>
                 <input type="text" class="woocommerce-Input woocommerce-Input--text input-text" name="account_last_name"
                     id="account_last_name" autocomplete="family-name"
                     value="<?php echo esc_attr( $user->last_name ); ?>" />
             </p>
-        </div>
-    </div>
 
-    <div class="clear"></div>
-
-    <div class="row">
-        <div class="col-6 col-lg-12">
             <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
-                <label for="account_email"><?php esc_html_e( 'Email', 'rootscope' ); ?>&nbsp;<span
-                        class="required">*</span></label>
-                <input type="email" class="woocommerce-Input woocommerce-Input--email input-text" name="account_email"
-                    id="account_email" autocomplete="email" value="<?php echo esc_attr( $user->user_email ); ?>" />
-            </p>
-        </div>
-        <div class="col-6 col-lg-12">
-            <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
-                <label for="account_display_name"><?php esc_html_e( 'Meno profilu', 'rootscope' ); ?>&nbsp;<span
-                        class="required">*</span></label>
+                <label for="account_display_name"><?php esc_html_e( 'My nickname', 'rootscope' ); ?>&nbsp;<abbr
+                        class="required" title="required">*</abbr></label>
                 <input type="text" class="woocommerce-Input woocommerce-Input--text input-text"
                     name="account_display_name" id="account_display_name"
                     value="<?php echo esc_attr( $user->display_name ); ?>" />
+                <span class="message">
+                    <?= __('This is how your name will appear in the account section and in reviews.', 'inoby') ?>
+                </span>
+            </p>
+            <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
+                <label for="account_email"><?php esc_html_e( 'Email', 'rootscope' ); ?>&nbsp;<abbr class="required"
+                        title="required">*</abbr></label>
+                <input type="email" class="woocommerce-Input woocommerce-Input--email input-text" name="account_email"
+                    id="account_email" autocomplete="email" value="<?php echo esc_attr( $user->user_email ); ?>" />
+            </p>
+
+            <?php do_action( 'woocommerce_edit_account_form' ); ?>
+
+            <p>
+                <?php wp_nonce_field( 'save_account_details', 'save-account-details-nonce' ); ?>
+                <button type="submit" class="woocommerce-Button button triangleright triangleleft"
+                    name="save_account_details"
+                    value="<?php esc_attr_e( 'Save changes', 'rootscope' ); ?>"><?php esc_html_e( 'Save changes', 'woocommerce' ); ?></button>
+                <input type="hidden" name="action" value="save_account_details" />
             </p>
         </div>
     </div>
 
-    <div class="clear"></div>
-
-    <?php do_action( 'woocommerce_edit_account_form' ); ?>
-
-    <p>
-        <?php wp_nonce_field( 'save_account_details', 'save-account-details-nonce' ); ?>
-        <button type="submit" class="woocommerce-Button button color" name="save_account_details"
-            value="<?php esc_attr_e( 'Uložiť zmeny', 'rootscope' ); ?>"><?php esc_html_e( 'Save changes', 'woocommerce' ); ?></button>
-        <input type="hidden" name="action" value="save_account_details" />
-    </p>
 
     <?php do_action( 'woocommerce_edit_account_form_end' ); ?>
 </form>
+<?php
+    echo '<h5>'. __('Change password', 'inoby') .'</h5>';
+   echo do_shortcode('[changepassword_form]');
+?>
 
 <?php do_action( 'woocommerce_after_edit_account_form' ); ?>

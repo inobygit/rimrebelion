@@ -1,5 +1,6 @@
 @import "variables";
 @import "mixins";
+$trianglew: 14px;
 
 // MY ACCOUNT
 .woocommerce-account {
@@ -175,6 +176,10 @@
                 a {
                   color: $white;
                   background-color: $col-prm;
+                  border-color: $col-prm;
+                  &::after{
+                    background-color: $col-prm;
+                  }
                   &::before{
                     filter: invert(1);
                   }
@@ -204,6 +209,23 @@
                   left: 16px;
                   transition: .3s;
                 }
+                position: relative;
+                margin-right: $trianglew;
+                border: 1px solid transparent;
+                border-radius: 0 1px 1px 0;
+                &:after {
+                  content: '';
+                  transition: inherit;
+                  display: inline-block;
+                  position: absolute;
+                  right: calc(-#{$trianglew}); //-15px
+                  top: calc(-#{$btn-bw});
+                  width: $trianglew;
+                  height: calc(100% + 2*#{$btn-bw});
+                  background-color: transparent;
+                  clip-path: polygon(0 0, 0% 100%, 100% 50%);
+                  border-radius: $btn-br;
+                }
               }
               &:last-child {
                 a {
@@ -213,6 +235,9 @@
               &:hover {
                 a {
                   color: $white;
+                  &::after{
+                    background-color: $col-prm;
+                  }
                   &::before{
                     filter: invert(1);
                   }
@@ -280,7 +305,7 @@
         max-width: 100%;
         width: 100%;
         margin-bottom: 4rem;
-        padding-top: 140px;
+        padding-top: 3em;
         @include bp("lg") {
           flex: 1 0 100%;
           max-width: 100%;
@@ -289,6 +314,11 @@
           padding-bottom: 2rem;
           padding-top: 2em;
           margin-bottom: 2rem;
+        }
+        .error-message{
+          color: $col-danger;
+          font-size: 1.3rem;
+          font-weight: $fw-regular;
         }
         h3,
         h4 {
@@ -331,7 +361,18 @@
 }
 // MY ACCOUNT
 
-.woocommerce-orders-table {
+span.orders-history{
+    &:not(:has(.orders-completed)){
+      display: none;
+    }
+}
+span.active-orders{
+    &:not(:has(.active-order)){
+      display: none;
+    }
+}
+.woocommerce-orders-table,
+.account-orders-table-single {
   width: 100%;
   .woocommerce-orders-table__row {
     border-bottom: 1px solid $gray200;
@@ -342,6 +383,14 @@
       align-content: center;
       border-bottom: none;
       border-top: 1px solid $gray200;
+    }
+    &.orders-completed{
+      .completed{
+        color: $col-success !important;
+      }
+      .refunded{
+        color: $col-danger !important;
+      }
     }
     .woocommerce-orders-table__cell {
       padding: 1rem 0 2rem;
@@ -354,7 +403,7 @@
         width: 100%;
         padding: 1rem 0 1rem;
       }
-      :after {
+      &::after {
         content: "";
         position: absolute;
         right: -1px;
@@ -383,6 +432,18 @@
         text-align: center;
         @include bp("md") {
           text-align: left;
+        }
+      }
+      &.woocommerce-orders-table__cell-order-status{
+        &.completed,
+        &.pending{
+          color: $col-success !important;
+        }
+        &.cancelled,
+        &.refunded,
+        &.failed{
+          color: $col-danger !important;
+        
         }
       }
     }
@@ -437,8 +498,23 @@
   }
 }
 
+.woocommerce-edit-account{
+  h5{
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+}
+
+.edit-account-form{
+  margin-bottom: 24px;
+}
 .edit-account-form,
 .edit-address-form {
+  .message{
+    color: $gray500;
+    font-size: 1.1rem;
+    font-weight: $fw-regular;
+  }
   label {
     display: block;
     font-size: $fs-p;
@@ -468,7 +544,7 @@
   .button {
     min-width: 250px;
     width: auto;
-    margin-top: 1rem;
+    margin-top: 24px;
     @include bp("md") {
       width: 100%;
     }
@@ -477,13 +553,51 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-between;
+    gap: 30px;
+    row-gap: 24px;
+    justify-content: flex-start;
+    .form-submit{
+      flex: 1 0 100%;
+      max-width: 100%;
+      @include bp("md") {
+        flex: unset;
+        max-width: unset;
+      }
+    }
     .form-row {
-      flex: 1 0 32%;
-      max-width: 32%;
+      flex: 1 0 calc(50% - 15px);
+      max-width: calc(50% - 15px);
+      position: relative;
+      margin: 0;
       @include bp("md") {
         flex: 1 0 100%;
         max-width: 100%;
+      }
+      &#billing_company_field{
+        display: none;
+      }
+      label{
+        position: absolute !important;
+        top: -6px;
+        left: 12px;
+        font-size: 1.1rem;
+        padding: 0 5px !important;
+        margin: 0 !important;
+        opacity: 1 !important;
+        line-height: normal;
+        background-color: #F8F8F8;
+        font-weight: $fw-regular;
+        z-index: 1;
+        .optional{
+          font-size: 1.1rem;
+          font-weight: inherit;
+          line-height: normal;
+        }
+      }
+      input{
+        color: $col-prm;
+        max-width: unset;
+        margin: 0;
       }
     }
   }
@@ -502,13 +616,27 @@
   .woocommerce-Address {
     padding: 0 1.5rem;
   }
+  .header{
+    margin-bottom: $space-md;
+  }
+  h2{
+    color: $col-prm;
+    text-transform: uppercase;
+    margin-bottom: .3em;
+  }
   p{
-    padding: 0 1.5rem;
+    margin: 0;
+    color: $gray500;
+  }
+  .row{
+    width: 100%;
+    margin: 0;
   }
   .address-wrapper {
-    border-bottom: 1px solid $gray200;
+    background-color: $white;
+    border-radius: 4px;
     width: auto;
-    padding: 0 0 1.5rem;
+    padding: 16px;
     margin: 0rem 0 2rem 0rem;
     position: relative;
     color: $gray400;
@@ -516,15 +644,21 @@
       margin: 0 0 2rem 0;
     }
     .edit {
-      position: absolute;
-      right: 0;
-      top: 0;
       text-transform: none;
+    }
+    address,
+    .edit{
+      color: $gray500;
+      font-size: 1.3rem;
+      font-weight: $fw-regular;
     }
   }
 }
 
 .woocommerce-order-details {
+  h3{
+    text-transform: uppercase;
+  }
   .woocommerce-order-details-hero {
     display: flex;
     align-items: center;
@@ -537,15 +671,15 @@
     @include bp("md") {
       margin: 0;
     }
-    h3 {
-      margin: 0 !important;
-      @include bp("md") {
-        display: block;
-        width: 100%;
-      }
-    }
     .button {
       margin: 0;
+      background: none !important;
+      border: none;
+      padding: 0;
+      transition: .3s;
+      &:hover{
+        transform: translateX(-5px);
+      }
       @include bp("md") {
         width: 100%;
         margin: 2rem 0;
@@ -557,114 +691,168 @@
   }
   .woocommerce-order-details-info {
     address {
-      color: $gray400;
+      color: $gray500;
+      font-size: 1.3rem;
+      font-weight: $fw-regular;
+      padding: 16px;
+      background-color: $white;
+      border-radius: 4px;
+      p:first-of-type{
+        border-top: 1px solid $gray500;
+        margin-top: .5em;
+        padding-top: .5em;
+      }
+      p{
+        margin: 0;
+        color: $gray500;
+        font-size: 1.3rem;
+        font-weight: $fw-regular;
+      }
     }
     section.woocommerce-customer-details {
       width: 100%;
       .woocommerce-columns--addresses {
         display: flex;
+        flex-wrap: wrap;
+        gap: 18px;
         @include bp("md") {
           flex-direction: column;
         }
         .woocommerce-column {
-          flex: 1 0 50%;
-          max-width: 50%;
-          margin-bottom: 2rem;
+          flex: 1 0 calc(33.33% - 12px);
+          max-width: calc(33.33% - 12px);
           @include bp("md") {
             flex: 1 0 100%;
             max-width: 100%;
             padding: auto;
+          }
+          .woocommerce-column__title {
+            text-transform: uppercase;
           }
         }
       }
     }
   }
   .woocommerce-order-details-products {
-    margin: 0 0 2.5rem 0;
+    margin: 1rem 0 2rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 2px;
     .product-wrapper {
-      border-bottom: 1px solid $gray200;
-      display: flex;
+      background-color: $white;
+      border-radius: 4px;
+      display: grid;
+      grid-template-columns: repeat(9, 1fr);
       width: 100%;
-      padding: 0.5rem 0;
-      justify-content: flex-start;
-      align-items: center;
-      flex-wrap: wrap;
-      flex-direction: row;
+      padding: 16px;
+      position: relative;
       @include bp("md") {
-        flex: 1 0 100%;
-        max-width: 100%;
-        padding: 1rem 0;
+        grid-template-columns: repeat(6, 1fr);
       }
-      .product-quantity {
-        flex: 1 0 25%;
-        text-align: right;
-      }
-      a {
-        font-weight: $fw-regular;
-        text-decoration: none;
-        text-transform: none;
-        flex: 1 0 50%;
-        color: $col-prm;
-        &:hover {
-          color: $col-sec;
+      .item-thumbnail{
+        height: 100px;
+        width: 100px;
+        aspect-ratio: 1/1;
+        position: relative;
+        @include bp("md") {
+          height: 50px;
+          width: 50px;
+        }
+        img{
+          width: 100px;
+          height: 100px;
+          aspect-ratio: 1/1;
+          object-fit: contain;
+          @include bp("md") {
+            height: 50px;
+            width: 50px;
+          }
         }
       }
-      .woocommerce-Price-amount {
+      .item-qty {
+        text-align: right;
+      }
+      .item-info{
+        grid-column: span 3;
+        padding-inline: 16px;
+        a {
+          font-weight: $fw-regular;
+          font-size: $fs-p;
+          text-decoration: none;
+          text-transform: none;
+          color: $col-prm;
+          &:hover {
+            color: $col-prm-d;
+          }
+        }
+        .wc-item-meta{
+          padding: 0;
+          li{
+            list-style-type: none;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 3px;
+            color: $gray400 !important;
+            font-size: 1.3rem !important;
+            font-weight: $fw-regular !important;
+            p{
+              margin: 0;
+              color: $gray400 !important;
+              font-size: 1.3rem !important;
+            font-weight: $fw-regular !important;
+            }
+          }
+        }
+      }
+      .item-qty{
+        grid-column: span 2;
+          @include bp("md") {
+          grid-column: span 1;
+        }
+      }
+      .item-price{
+        grid-column: span 3;
+          @include bp("md") {
+          grid-column: span 1;
+        }
+      }
+      .item-price {
         font-weight: $fw-regular;
         font-size: $fs-p;
-        flex: 1 0 25%;
         text-align: right;
       }
     }
   }
   .woocommerce-order-details-summary {
     margin: 0;
-    @include bp("md") {
-      margin-bottom: -2rem;
-    }
     .summary-item {
       display: flex;
       justify-content: space-between;
       width: 100%;
-      padding: 0.5rem 0 0.5rem;
-      border-bottom: 1px solid $gray200;
+      padding: 0.5rem 0 40px;
+      border-bottom: 1px solid $gray500;
       @include bp("md") {
         flex: 1 0 100%;
         max-width: 100%;
         padding: 1rem 0;
         margin: 0;
-        border-bottom: 1px solid $gray200;
-      }
-      &:last-child {
-        @include bp("md") {
-          border-bottom: none;
-        }
       }
       .summary-label {
         display: block;
-        font-weight: $fw-regular;
+        font-weight: $fw-bold;
+        font-size: $fs-h3;
         color: $col-prm;
+        text-transform: uppercase;
       }
       .summary-text {
         display: block;
-        font-weight: $fw-regular;
+        font-weight: $fw-bold;
+        font-size: $fs-h3;
         color: $col-prm;
-      }
-      &:last-child {
-        background: $col-prm;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        .summary-text {
-          text-align: right;
-          small {
-            display: block;
-          }
-          .woocommerce-Price-amount {
-            color: $col-sec;
-            font-weight: 600;
-          }
-        }
+        text-transform: uppercase;
       }
     }
   }
@@ -675,11 +863,7 @@
   @include bp("md") {
     margin-left: 0;
   }
-  mark {
-    background: transparent;
-    color: $col-prm;
-    font-weight: $fw-semi;
-  }
+
 }
 
 .change_password_form {
@@ -726,22 +910,106 @@
     }
     
   }
-  table.my_account_orders{
+
+  .customer-note{
+    color: $gray500;
+  }
+
+.woocommerce-order-details-footer{
+  margin-top: $space-md;
+  .btn{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    svg{
+      transition: .3s;
+    }
+    &:hover{
+      color: $col-prm;
+      svg{
+        transform: translateX(-5px);
+      }
+    }
+  }
+}
+
+  table.my_account_orders,
+  table.account-orders-table-single{
     border: none;
     border-collapse: collapse;
+    .woocommerce-orders-table__row{
+      background-color: $white;
+      border: none !important;
+    }
     .woocommerce-orders-table__cell{
       padding: 1em;
-      .order-legend{
-        color: $gray500;
+      font-size: 1.3rem;
+      font-weight: $fw-regular;
+      color: $gray500;
+      &.woocommerce-orders-table__cell-order-status{
+        color: #FF9138;
       }
       .button{
-        padding: 8px 14px;
-        @include bp('md'){
-          text-align: center;
-          justify-content: center;
+        padding: 4px;
+        background-color: transparent;
+        border-color: transparent;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: fit-content;
+        margin-left: auto;
+        transition: .3s;
+        border-radius: 0;
+        svg{
+          path{
+            transition: .3s;
+          }
+        }
+        &:hover{
+          background-color: $black;
+          border-color: $black;
+          svg{
+            path{
+              fill: $white;
+            }
+          }
         }
         &::after{
           content: none !important;
+        }
+      }
+      &::after{
+        content: "";
+        position: absolute;
+        right: -1px;
+          top: 50%;
+          width: 1px;
+          height: 50%;
+          background: #F5F5F5;
+          transform: translate(0, -50%);
+          background: $gray300 !important;
+          @include bp(md){
+            content: none;
+          }
+      }
+      &:last-child{
+        &::after{
+          content: none;
+        }
+      }
+    }
+    .orders-table-headings{
+      @include bp(md){
+        display: none;
+      }
+      td{
+        font-size: 1.1rem;
+        font-weight: $fw-regular;
+        span{
+          color: $black !important;
+        }
+        &:first-child{
+          padding: 0;
         }
       }
     }
