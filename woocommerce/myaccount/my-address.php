@@ -50,7 +50,7 @@ $col    = 1;
             <?= __("Addresses", 'inoby') ?>
         </h2>
         <p>
-            <?php echo apply_filters( 'woocommerce_my_account_my_address_description', esc_html__( 'Nasledujúce adresy budú použité ako predvolené adresy.', 'rootscope' ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+            <?php echo apply_filters( 'woocommerce_my_account_my_address_description', esc_html__( 'The following addresses will be used for default billing.', 'rootscope' ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
         </p>
     </div>
 
