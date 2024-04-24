@@ -24,6 +24,13 @@ const def_child = {
     //
   ],
 
+  my_account: [
+    ...child.assets([
+      "css/my-account.scss",
+      //
+    ]),
+  ],
+
   page_templates: {
     // page_template: child.template("page-template")
     terms: child.template("terms"),

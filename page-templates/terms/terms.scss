@@ -1,6 +1,9 @@
 @import "variables";
 @import "mixins";
 
+$trianglew: 14px;
+
+
 #pt-terms {
   background-color: #F8F8F8;
   section.component-contact-form{
@@ -94,6 +97,10 @@
               background-color: $col-prm;
               opacity: 1;
               color: $white;
+              border-color: $col-prm;
+              &::after{
+                background-color: $col-prm;
+              }
             }
             img{
               filter: invert(1);
@@ -113,6 +120,7 @@
             height: 16px;
             min-height: 16px;
             min-width: 16px;
+            z-index: 1;
             transition: .3s;
           }
           a{
@@ -123,9 +131,30 @@
             width: 100%;
             font-weight: $fw-semi;
             font-size: $fs-p-s;
+            margin-right: $trianglew;
+            position: relative;
+                border: 1px solid transparent;
+                border-radius: 0 1px 1px 0;
+                &:after {
+                  content: '';
+                  transition: inherit;
+                  display: inline-block;
+                  position: absolute;
+                  right: calc(-#{$trianglew}); //-15px
+                  top: calc(-#{$btn-bw});
+                  width: $trianglew;
+                  height: calc(100% + 2*#{$btn-bw});
+                  background-color: transparent;
+                  clip-path: polygon(0 0, 0% 100%, 100% 50%);
+                  border-radius: $btn-br;
+                }
             &.active{
               background-color: $col-prm;
               color: $white;
+              border-color: $col-prm;
+              &::after{
+                background-color: $col-prm;
+              }
             }
           }
         }

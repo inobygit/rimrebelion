@@ -33,12 +33,14 @@ do_action( 'woocommerce_before_account_navigation' );
 <div class="my-account-navigation-wrap">
     <nav id="my-account-navigation" class="woocommerce-MyAccount-navigation">
         <ul>
-            <?php foreach ( wc_get_account_menu_items() as $endpoint => $label ) : ?>
+            <?php foreach ( wc_get_account_menu_items() as $endpoint => $label ) :
+                if($endpoint !== 'downloads'){
+                ?>
             <li class="<?php echo wc_get_account_menu_item_classes( $endpoint ); ?>">
                 <a
                     href="<?php echo esc_url( wc_get_account_endpoint_url( $endpoint ) ); ?>"><?php echo esc_html( $label ); ?></a>
             </li>
-            <?php endforeach; ?>
+            <?php } endforeach; ?>
         </ul>
     </nav>
 </div>
@@ -49,9 +51,11 @@ do_action( 'woocommerce_before_account_navigation' );
     </h3>
     <?php 
         $email = rwmb_meta("contact_form_email_to", ["object_type" => "setting"], "options");
+        if(!empty($email)) {
     ?>
-    <a class="email-btn" href="mailto:info@rimrebellion.sk">
-        info@rimrebellion.sk</a>
+    <a class="email-btn" href="mailto:<?= $email ?>">
+        <?= $email ?></a>
+    <?php } ?>
     <a class="phone-btn" href="tel:+421 910 511 244">
         +421 910 511 244</a>
 </div>

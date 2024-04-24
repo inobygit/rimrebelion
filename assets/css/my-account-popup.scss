@@ -1,0 +1,113 @@
+
+.xoo-el-form-container button.btn.button.xoo-el-action-btn{
+  border-radius: 2px 0 0 2px;
+  position: relative;
+  margin-right: $trianglew;
+  border: 1px solid $col-prm;
+  &:after {
+    content: '';
+    transition: $trans;
+    display: inline-block;
+    position: absolute;
+    right: calc(-#{$trianglew}); //-15px
+    top: calc(-#{$btn-bw});
+    width: $trianglew;
+    height: calc(100% + 2*#{$btn-bw});
+    background-color: $btn-bg;
+    clip-path: polygon(0 0, 0% 100%, 100% 50%);
+    border-radius: $btn-br;
+  }
+  &:hover{
+    border-color: $btn-hover-bg;
+    &::after{
+      background-color: $btn-hover-bg;
+      transition: $trans-h;
+    }
+  }
+}
+
+.woocommerce-account .xoo-el-form-container{
+  padding: $space-lg 0 !important;
+}
+.xoo-el-modal,
+.xoo-el-form-container{
+  .xoo-el-form-txt{
+    color: $gray500;
+  }
+  .xoo-aff-pw-toggle{
+    > *{
+      line-height: normal;
+    }
+  }
+  .xoo-el-main,
+  .xoo-el-fields{
+    a{
+      color: $gray500;
+      font-size: 1.3rem;
+      font-weight: $fw-regular;
+      transition: .3s;
+      &:hover{
+        color: $col-prm;
+      }
+    }
+    label{
+      margin-top: -3px;
+      font-size: 1.3rem;
+      font-weight: $fw-regular;
+      color: $gray500;
+      line-height: normal;
+      cursor: pointer;
+      span{
+        color: $gray500;
+        line-height: normal;
+        font-size: 1.3rem;
+        font-weight: $fw-regular;
+      }
+      input{
+        margin-bottom: -3px;
+      }
+    }
+  }
+  .xoo-el-close{
+    right: 16px;
+    top: 16px;
+    border-radius: 0;
+    background-color: $col-prm;
+    width: 26px;
+    height: 26px;
+    min-width: 26px;
+    min-width: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: .3s;
+    &:hover{
+      background-color: $gray800;
+    }
+    &::before{
+      color: $white;
+    }
+  }
+  .xoo-el-tabs{
+    align-items: center;
+    justify-content: center;
+    gap: 4rem;
+    padding-bottom: 0 !important;
+    li{
+      background-color: transparent !important;
+      color: $gray500 !important;
+      text-decoration: underline;
+      padding: 12px 0 !important;
+      flex-grow: unset !important;
+      font-size: $fs-p !important;
+      font-weight: $fw-regular !important;
+      transition: .3s;
+      &:hover{
+        color: $col-prm !important;
+      }
+      &.xoo-el-active{
+        color: $col-prm !important;
+      }
+    }
+  }
+}
