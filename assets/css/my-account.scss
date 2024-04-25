@@ -563,13 +563,18 @@ span.active-orders{
       width: fit-content;
     }
   }
-  .woocommerce-address-fields__field-wrapper {
+  .woocommerce-address-fields__field-wrapper,
+  .change-password {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     gap: 30px;
     row-gap: 24px;
     justify-content: flex-start;
+    h5{
+      width: 100%;
+      margin-bottom: 0;
+    }
     .form-row {
       flex: 1 0 calc(50% - 15px);
       max-width: calc(50% - 15px);
@@ -606,6 +611,9 @@ span.active-orders{
         margin: 0;
       }
     }
+  }
+  .change-password{
+    margin-top: 2rem;
   }
 }
 

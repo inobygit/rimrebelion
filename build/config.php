@@ -1190,4 +1190,16 @@
             "defaultSpaceMobile" => "24",
         ],
     ],
+    "allowed_blocks" => [
+        "meta-box/inoby-text",
+        "meta-box/inoby-spacer",
+        "meta-box/inoby-image",
+        "meta-box/inoby-buttons",
+        "meta-box/inoby-wysiwyg",
+        "meta-box/inoby-hero-child",
+        "meta-box/inoby-cta-grid-child",
+        "meta-box/inoby-landing-hero",
+        "meta-box/inoby-payment",
+        "meta-box/newsletter",
+    ],
 ]);
