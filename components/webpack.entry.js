@@ -7,6 +7,7 @@ const components = [
   ...theme.component("payment"),
   ...theme.component("landing-hero"),
   ...theme.component("hero"),
+  ...theme.component("cta-grid"),
 ];
 
 module.exports = components;
