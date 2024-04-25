@@ -12,6 +12,11 @@ add_filter("rwmb_meta_boxes", function ($meta_boxes) {
                 "type" => "text",
             ],
             [
+                "id" => "style-number",
+                "name" => __("Style number", "rimrebellion"),
+                "type" => "text",
+            ],
+            [
                 "id" => "color",
                 "name" => __("Color", "rimrebellion"),
                 "type" => "text",

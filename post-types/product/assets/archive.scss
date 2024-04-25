@@ -1,56 +1,56 @@
 @import "variables";
 @import "mixins";
 
-body{
-  &.filter-opened{
+body {
+  &.filter-opened {
     overflow: hidden;
   }
 }
 
-body.archive{
-  div#main{
+body.archive {
+  div#main {
     background-color: $gray100;
-    .woocommerce-hero{
+    .woocommerce-hero {
       background-color: $gray900;
       color: $white;
-      .text-column{
+      .text-column {
         display: flex;
         align-items: center;
-        @include bp('lg'){
+        @include bp("lg") {
           padding: $space-lg 0;
         }
-        .products-header-content-wrap{
+        .products-header-content-wrap {
           text-align: center;
           max-width: 43.5rem;
           margin: 0 auto;
-          h1{
+          h1 {
             text-transform: uppercase;
             margin-bottom: $space-xs;
           }
-          p{
+          p {
             margin-bottom: $space-xs;
           }
         }
       }
-      .image-column{
+      .image-column {
         padding: 0;
         display: flex;
         align-items: center;
-        @include bp('lg'){
+        @include bp("lg") {
           display: none;
         }
-        img{
+        img {
           min-width: 50vh;
         }
       }
     }
-    #shop-sidebar{
-      .filter-row{
+    #shop-sidebar {
+      .filter-row {
         display: grid;
         grid-template-columns: 1fr max-content;
-        form.woocommerce-ordering{
+        form.woocommerce-ordering {
           float: none;
-          select{
+          select {
             text-transform: uppercase;
             font-size: 1.4rem;
             font-weight: 500;
@@ -60,52 +60,52 @@ body.archive{
           }
         }
       }
-      #rc-product-count{
+      #rc-product-count {
         float: right;
         color: $gray500;
         font-size: 1.3rem;
         font-weight: 400;
-        line-height: 150%; 
-        @include bp('md'){
+        line-height: 150%;
+        @include bp("md") {
           float: none;
           margin: $space-xs 0;
         }
       }
-      #products-filter{
+      #products-filter {
         margin-bottom: 0;
-        .fields{
-          @include bp('md-up'){
+        .fields {
+          @include bp("md-up") {
             display: flex;
             gap: 4rem;
             align-items: center;
           }
-          @include bp('md'){
+          @include bp("md") {
             gap: $space-tiny;
             margin: $space-xs 0;
           }
-          .input-group{
+          .input-group {
             padding: 0;
             border-bottom: none;
-            .expandable-wrp{
+            .expandable-wrp {
               cursor: pointer;
             }
-            label{
+            label {
               text-transform: uppercase;
               font-size: 1.4rem;
               font-weight: 500;
               cursor: pointer;
               margin-bottom: 0;
             }
-            .expandable-wrp::after{
+            .expandable-wrp::after {
               padding: 0;
               transform-origin: center;
               transform: scale(1);
-            }  
-            .expandable-wrp.expanded::after{
+            }
+            .expandable-wrp.expanded::after {
               transform: scale(1) scaleY(-1);
-            }  
+            }
             .expandable-wrp.expanded + .filter-wrp {
-              @include bp('md-up'){
+              @include bp("md-up") {
                 position: absolute;
                 z-index: 999;
                 background-color: $white;
@@ -116,37 +116,40 @@ body.archive{
                 gap: 16px;
                 padding: 24px;
                 border-radius: 4px;
-                box-shadow: 0 0 10px rgba(0,0,0,0.1);
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
               }
             }
             .input-wrp label {
               margin-bottom: 2px;
-              > span{
+              > span {
                 font-size: 1.3rem;
                 font-weight: 400;
                 white-space: nowrap;
               }
             }
+            input[type="checkbox"]:checked {
+              background: $checkbox-selected-bg !important;
+            }
           }
           label[for*="filter-gender"] {
-            @include bp('md-up'){
+            @include bp("md-up") {
               display: none !important;
             }
           }
-          div#filter-gender{
-            @include bp('md-up'){
+          div#filter-gender {
+            @include bp("md-up") {
               display: flex;
               gap: 0.5rem;
-              .count{
+              .count {
                 display: none;
               }
-              input + label{
+              input + label {
                 background-color: $white;
                 padding: 0.8rem 1.6rem;
                 cursor: pointer;
                 display: inline-block;
                 margin: 0;
-                span{
+                span {
                   font-size: 1.4rem;
                   font-weight: 500;
                   white-space: nowrap;
@@ -154,47 +157,51 @@ body.archive{
                   text-transform: uppercase;
                 }
               }
-              input:checked + label{
+              input:checked + label {
                 background-color: $col-prm;
-                span{
+                span {
                   color: $white;
                 }
               }
-              input[type="checkbox"]{
+              input[type="checkbox"] {
                 display: none;
               }
+            }
+            .input-wrp:has([data-content="Unisex"]) {
+              display: none;
             }
           }
         }
       }
-      &.active{
+      &.active {
         padding: 2rem 4rem;
-        #rc-product-count, form.woocommerce-ordering{
+        #rc-product-count,
+        form.woocommerce-ordering {
           display: none;
         }
-        .mobile-header{
+        .mobile-header {
           padding: 0;
         }
       }
     }
-    div#products-main{
+    div#products-main {
       margin: $space-md 0;
-      #products{
+      #products {
         grid-template-columns: repeat(4, 1fr);
         gap: 3rem;
-        @include bp('xl'){
+        @include bp("xl") {
           grid-template-columns: repeat(3, 1fr);
         }
-        @include bp('md'){
+        @include bp("md") {
           grid-template-columns: repeat(2, 1fr);
           gap: 2rem;
         }
-        @include bp('sm'){
+        @include bp("sm") {
           grid-template-columns: repeat(1, 1fr);
         }
       }
     }
-    a.page-numbers{
+    a.page-numbers {
       text-decoration: none;
     }
   }
