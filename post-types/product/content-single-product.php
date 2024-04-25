@@ -93,6 +93,7 @@ $collections = wp_get_post_terms($product->get_id(), "collection");
             echo "</div>";
         }
         woocommerce_template_single_excerpt();
+        display_related_product_thumbnails();
         // TODO color switching
         if ($product->is_type("simple")) {
             woocommerce_template_single_price();

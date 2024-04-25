@@ -29,7 +29,7 @@ a.button, button {
       clip-path: polygon(0 0, 0% 100%, 100% 50%);
       border-radius: $btn-br;
     }
-    &:hover{
+    &:hover, &:focus, &:active{
       &::after{
         background-color: $btn-hover-bg;
         transition: $trans-h;
@@ -39,7 +39,7 @@ a.button, button {
       &::after{
         background-color: $btn-l-bg;
       }
-      &:hover{
+      &:hover, &:focus, &:active{
         &::after{
           background-color: $btn-hover-bg;
         }
@@ -62,7 +62,7 @@ a.button, button {
       clip-path: polygon(100% 0, 0 50%, 100% 100%);
       border-radius: $btn-br;
     }
-    &:hover{
+    &:hover, &:focus, &:active{
       &::before{
         background-color: $btn-hover-bg;
         transition: $trans-h;
@@ -72,7 +72,7 @@ a.button, button {
       &::before{
         background-color: $btn-l-bg;
       }
-      &:hover{
+      &:hover, &:focus, &:active{
         &::before{
           background-color: $btn-hover-bg;
         }
@@ -107,7 +107,7 @@ label.inplace-label{
     transform: translate(0, 2px);
     padding-right: $space-tiny;
   }
-  &:hover{
+  &:hover, &:focus, &:active{
     transition: $trans-h;
     &:before{
       transition: $trans;
@@ -115,7 +115,7 @@ label.inplace-label{
     }
   }
   &.link{
-    &:hover{
+    &:hover, &:focus, &:active{
       text-decoration: underline;
     }
   }
@@ -211,7 +211,7 @@ nav.breadcrumbs {
             margin: 0;
             text-decoration: none;
             color: $gray400;
-            &:hover{
+            &:hover, &:focus, &:active{
               color: $col-prm;
             }
           }
