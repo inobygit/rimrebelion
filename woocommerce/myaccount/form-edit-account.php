@@ -33,6 +33,7 @@ do_action( 'woocommerce_before_edit_account_form' ); ?>
                         class="required" title="required">*</abbr></label>
                 <input type="text" class="woocommerce-Input woocommerce-Input--text input-text"
                     name="account_first_name" id="account_first_name" autocomplete="given-name"
+                    placeholder="<?php esc_html_e( 'First name', 'rootscope' ); ?>"
                     value="<?php echo esc_attr( $user->first_name ); ?>" />
             </p>
             <p class="woocommerce-form-row woocommerce-form-row--last form-row form-row-last">
@@ -40,6 +41,7 @@ do_action( 'woocommerce_before_edit_account_form' ); ?>
                         class="required" title="required">*</abbr></label>
                 <input type="text" class="woocommerce-Input woocommerce-Input--text input-text" name="account_last_name"
                     id="account_last_name" autocomplete="family-name"
+                    placeholder="<?php esc_html_e( 'Last name', 'rootscope' ); ?>"
                     value="<?php echo esc_attr( $user->last_name ); ?>" />
             </p>
 
@@ -48,7 +50,8 @@ do_action( 'woocommerce_before_edit_account_form' ); ?>
                         class="required" title="required">*</abbr></label>
                 <input type="text" class="woocommerce-Input woocommerce-Input--text input-text"
                     name="account_display_name" id="account_display_name"
-                    value="<?php echo esc_attr( $user->display_name ); ?>" />
+                    value="<?php echo esc_attr( $user->display_name ); ?>"
+                    placeholder="<?php esc_html_e( 'My nickname', 'rootscope' ); ?>" />
                 <span class="message">
                     <?= __('This is how your name will appear in the account section and in reviews.', 'inoby') ?>
                 </span>
@@ -57,27 +60,49 @@ do_action( 'woocommerce_before_edit_account_form' ); ?>
                 <label for="account_email"><?php esc_html_e( 'Email', 'rootscope' ); ?>&nbsp;<abbr class="required"
                         title="required">*</abbr></label>
                 <input type="email" class="woocommerce-Input woocommerce-Input--email input-text" name="account_email"
-                    id="account_email" autocomplete="email" value="<?php echo esc_attr( $user->user_email ); ?>" />
+                    id="account_email" autocomplete="email" placeholder="<?php esc_html_e( 'Email', 'rootscope' ); ?>"
+                    value="<?php echo esc_attr( $user->user_email ); ?>" />
             </p>
 
             <?php do_action( 'woocommerce_edit_account_form' ); ?>
 
-            <p>
-                <?php wp_nonce_field( 'save_account_details', 'save-account-details-nonce' ); ?>
-                <button type="submit" class="woocommerce-Button button triangleright triangleleft"
-                    name="save_account_details"
-                    value="<?php esc_attr_e( 'Save changes', 'rootscope' ); ?>"><?php esc_html_e( 'Save changes', 'woocommerce' ); ?></button>
-                <input type="hidden" name="action" value="save_account_details" />
-            </p>
+
         </div>
     </div>
 
 
+
+    <fieldset class="change-password">
+        <h5><?php esc_html_e("Change password", "woocommerce"); ?></h5>
+
+        <p class="woocommerce-form-row woocommerce-form-row--wide form-row">
+            <label for="password_current" class="inplace-label"><?php esc_html_e("Actual password", "inoby"); ?></label>
+            <input type="password" class="woocommerce-Input woocommerce-Input--password input-text"
+                name="password_current" id="password_current" autocomplete="off"
+                placeholder="<?php esc_html_e("Actual password", "inoby"); ?>" />
+        </p>
+        <p class="woocommerce-form-row woocommerce-form-row--wide form-row">
+            <label for="password_1" class="inplace-label"><?php esc_html_e("New password", "inoby"); ?></label>
+            <input type="password" class="woocommerce-Input woocommerce-Input--password input-text" name="password_1"
+                id="password_1" autocomplete="off" placeholder="<?php esc_html_e("New password", "inoby"); ?>" />
+        </p>
+        <p class="woocommerce-form-row woocommerce-form-row--wide form-row">
+            <label for="password_2" class="inplace-label"><?php esc_html_e("New password again", "inoby"); ?></label>
+            <input type="password" class="woocommerce-Input woocommerce-Input--password input-text" name="password_2"
+                id="password_2" autocomplete="off" placeholder="<?php esc_html_e("New password again", "inoby"); ?>" />
+        </p>
+    </fieldset>
+
+    <?php do_action("woocommerce_edit_account_form"); ?>
+
+    <p>
+        <?php wp_nonce_field( 'save_account_details', 'save-account-details-nonce' ); ?>
+        <button type="submit" class="woocommerce-Button button triangleright triangleleft" name="save_account_details"
+            value="<?php esc_attr_e( 'Save changes', 'rootscope' ); ?>"><?php esc_html_e( 'Save changes', 'woocommerce' ); ?></button>
+        <input type="hidden" name="action" value="save_account_details" />
+    </p>
+
     <?php do_action( 'woocommerce_edit_account_form_end' ); ?>
 </form>
-<?php
-    echo '<h5>'. __('Change password', 'inoby') .'</h5>';
-   echo do_shortcode('[changepassword_form]');
-?>
 
 <?php do_action( 'woocommerce_after_edit_account_form' ); ?>
