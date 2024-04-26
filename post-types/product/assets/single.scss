@@ -46,6 +46,28 @@ body.single-product{
           margin-bottom: $space-sm;
         }
       }
+      .related-products-thumbnails{
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        margin: $space-sm 0;
+        .related-product-thumbnail{
+          height: 2rem;
+          width: 3rem;
+          max-width: 3rem;
+          &.current-selected{
+            pointer-events: none;
+            &:hover{
+             border: 2px solid $col-sec;
+            }
+          }
+          &:hover{
+            img{
+              border: 2px solid $gray300;
+            }
+          }
+        }
+      }
       .single_variation_wrap{
         table.variations{
           width: 100%;
