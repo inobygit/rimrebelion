@@ -70,6 +70,11 @@ $copyright-color: #ffffff;
   @include bp('md'){
     padding: 0;
   }
+
+.container-fluid{
+  max-width: 100%;
+  padding-inline: 40px;
+}
   .widget-area {
     padding-left: 1.5rem;
     padding-right: 1.5rem;

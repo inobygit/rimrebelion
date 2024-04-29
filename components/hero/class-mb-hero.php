@@ -61,15 +61,6 @@ class MBHeroChild extends MBComponentBase {
         "type" => "text",
         "translate" => true,
       ],
-      [
-        "id" => "hero_image",
-        "name" => __("Malý obrázok", "inoby"),
-        "type" => "image_advanced",
-        "force_delete" => false,
-        "max_file_uploads" => 1,
-        "max_status" => false,
-        "image_size" => "thumbnail",
-      ],
     ];
   }
 }

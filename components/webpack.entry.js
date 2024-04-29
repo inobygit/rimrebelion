@@ -8,6 +8,7 @@ const components = [
   ...theme.component("landing-hero"),
   ...theme.component("hero"),
   ...theme.component("cta-grid"),
+  ...theme.component("article-boxes"),
 ];
 
 module.exports = components;

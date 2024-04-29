@@ -1,5 +1,5 @@
 <div id="copyright" class="copyright-left-right-center copyright-landing">
-    <div class="container">
+    <div class="container container-fluid">
         <div class="row">
 
             <div id="copyright-left" class="widget-area">

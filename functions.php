@@ -4,7 +4,7 @@ define("RIMREBELLION_CHILD_URI", get_stylesheet_directory_uri());
 require_once RIMREBELLION_CHILD . "/inc/product-taxonomies.php";
 require_once RIMREBELLION_CHILD . "/inc/product-tabs.php";
 require_once RIMREBELLION_CHILD . "/inc/product-functions.php";
-// require_once RIMREBELLION_CHILD . "/inc/my-account-change-password.php";
+require_once RIMREBELLION_CHILD . "/inc/custom-import-mapper.php";
 
 add_action("inoby_before_footer", "footer_newsletter");
 function footer_newsletter() {
