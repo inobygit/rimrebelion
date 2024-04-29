@@ -5,6 +5,12 @@ section.hero {
   position: relative;
   padding: $space-md 0;
   z-index: 1;
+  height: 550px;
+  display: flex;
+  align-items: center;
+  @include bp(xxl-up){
+    height: 650px;
+  }
   &::after{
     content: '';
     position: absolute;
@@ -47,12 +53,4 @@ section.hero {
     }
   }
   
-  .hero-image{
-    @include bp(md){
-      margin-top: 2em;
-    }
-    img{
-      object-fit: scale-down;
-    }
-  }
 }

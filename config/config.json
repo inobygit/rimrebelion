@@ -4,6 +4,7 @@
     "page-templates/termsAndConditions.php",
     "page-templates/landing.php"
   ],
+  "mega_menu": true,
   "allowed_blocks": [
     "meta-box/inoby-text",
     "meta-box/inoby-spacer",
@@ -14,7 +15,8 @@
     "meta-box/inoby-cta-grid-child",
     "meta-box/inoby-landing-hero",
     "meta-box/inoby-payment",
-    "meta-box/newsletter"
+    "meta-box/newsletter",
+    "meta-box/inoby-article-boxes"
   ],
   "page404": {
     "title": "<?php __(\"PAGE NOT FOUND\", \"inoby\")",

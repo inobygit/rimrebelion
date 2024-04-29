@@ -31,7 +31,7 @@
     "team" => false,
     "downloads" => false,
     "cookie_bar" => true,
-    "mega_menu" => false,
+    "mega_menu" => true,
     "mobile_menu_slide" => false,
     "child_theme_settings_tab" => false,
     "stock_status" => [
@@ -1201,5 +1201,6 @@
         "meta-box/inoby-landing-hero",
         "meta-box/inoby-payment",
         "meta-box/newsletter",
+        "meta-box/inoby-article-boxes",
     ],
 ]);
