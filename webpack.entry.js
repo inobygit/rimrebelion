@@ -7,6 +7,7 @@ const def_child = {
     ...child.assets(["css/footer.scss"]),
     ...child.assets(["css/cart.scss"]),
     ...child.assets(["css/notifications.scss"]),
+    ...child.assets(["js/mega-menu.js"]),
     ...child.entry("components"),
     
     //
