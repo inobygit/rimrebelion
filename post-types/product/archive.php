@@ -103,7 +103,7 @@ if ($cat instanceof WP_Term) {
                         <a href="<?= get_term_link($category) ?>">
                             <div class="category-slide-inner">
                                 <div class="category-slide-image">
-                                    <?= wp_get_attachment_image(get_term_meta($category->term_id, "thumbnail_id", true), "o-2") ?>
+                                    <?= wp_get_attachment_image(get_term_meta($category->term_id, "product_search_image_id", true), "o-2") ?>
                                 </div>
                                 <div class="category-slide-content">
                                     <p><?= $category->name ?></p>
