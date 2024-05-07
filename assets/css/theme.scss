@@ -11,6 +11,10 @@
   src: local("GreedNarrow"), local("GreedNarrow"), url(theme-url("/assets/fonts/GreedNarrow-Bold.otf")) format("opentype");
 }
 
+body{
+  background-color: #F8F8F8;
+}
+
 $trianglew: 14px;
 a.button, button {
   &.triangleright {
