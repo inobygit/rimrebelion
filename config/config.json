@@ -16,7 +16,8 @@
     "meta-box/inoby-landing-hero",
     "meta-box/inoby-payment",
     "meta-box/newsletter",
-    "meta-box/inoby-article-boxes"
+    "meta-box/inoby-article-boxes",
+    "meta-box/inoby-category-slider"
   ],
   "page404": {
     "title": "<?php __(\"PAGE NOT FOUND\", \"inoby\")",

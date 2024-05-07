@@ -81,6 +81,45 @@ if ($cat instanceof WP_Term) {
 
 <?php get_template_part("template-parts/yoast-breadcrumbs", "yoast-breadcrumbs"); ?>
 
+<?php if (is_product_category()) {
+    $current_category = get_queried_object();
+    $args = array(
+        'taxonomy' => 'product_cat',
+        'hide_empty' => false,
+        'parent' => $current_category->term_id
+    );
+    $subcategories = get_terms($args);
+    $slides = array();
+    foreach ($subcategories as $subcategory) {
+        $slides[] = $subcategory;
+    }?>
+<div <?= inoby_block_attrs($attributes, ["class" => "component-category-slider"]) ?>>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="category-slider">
+                    <?php foreach($slides as $category): ?>
+                    <div class="category-slide">
+                        <a href="<?= get_term_link($category) ?>">
+                            <div class="category-slide-inner">
+                                <div class="category-slide-image">
+                                    <?= wp_get_attachment_image(get_term_meta($category->term_id, "thumbnail_id", true), "o-2") ?>
+                                </div>
+                                <div class="category-slide-content">
+                                    <p><?= $category->name ?></p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<?php } ?>
+
+
 <div class="container container-fluid products-wrp">
     <?php if (!is_search() && Inoby_Config::show_shop_sidebar("true")): ?>
     <div class="row">

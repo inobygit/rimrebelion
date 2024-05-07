@@ -9,6 +9,7 @@ const components = [
   ...theme.component("hero"),
   ...theme.component("cta-grid"),
   ...theme.component("article-boxes"),
+  ...theme.component("category-slider"),
 ];
 
 module.exports = components;

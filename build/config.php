@@ -1202,5 +1202,6 @@
         "meta-box/inoby-payment",
         "meta-box/newsletter",
         "meta-box/inoby-article-boxes",
+        "meta-box/inoby-category-slider",
     ],
 ]);
