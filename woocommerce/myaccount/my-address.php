@@ -58,6 +58,9 @@ $col    = 1;
         <?php foreach ( $get_addresses as $name => $address_title ) : ?>
         <?php
             $address = wc_get_account_formatted_address( $name );
+            $customer = new WC_Customer( $customer_id );
+            $phone = $customer->get_billing_phone();
+            $email = $customer->get_billing_email();
             $col     = $col * -1;
             $oldcol  = $oldcol * -1;
         ?>
@@ -69,7 +72,14 @@ $col    = 1;
                     <?php
                         echo $address ? wp_kses_post( $address ) : esc_html_e( 'You have not set up this type of address yet.', 'woocommerce' );
                     ?>
-
+                    <hr>
+                    <?php if ($phone) : ?>
+                    <span class="woocommerce-customer-phone"><?php echo esc_html($phone); ?></span>
+                    <?php endif; ?>
+                    <br>
+                    <?php if ($email) : ?>
+                    <span class="woocommerce-customer-email"><?php echo esc_html($email); ?></span>
+                    <?php endif; ?>
                 </address>
                 <a href="<?php echo esc_url( wc_get_endpoint_url( 'edit-address', $name ) ); ?>"
                     class="edit"><?php echo $address ? esc_html__( 'Edit', 'woocommerce' ) : esc_html__( 'Add', 'woocommerce' ); ?></a>
