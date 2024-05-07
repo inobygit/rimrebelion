@@ -50,6 +50,33 @@ section.hero {
     }
     .button{
       margin-top: 1em;
+      &.btn-background{
+        color: $white;
+        border: none;
+        position: relative;
+        background-color: transparent;
+        z-index: 1;
+        width: 150px;
+        text-align: center;
+        svg{
+          position: absolute;
+          overflow: visible;
+          top: 0;
+          left: 0;
+          width: 150px;
+          height: 100%;
+          z-index: -1;
+          path{
+            transition: .3s;
+          }
+        }
+        &:hover{
+          color: $col-prm;
+          svg path{
+            fill: $white;
+          }
+        }
+      }
     }
   }
   
