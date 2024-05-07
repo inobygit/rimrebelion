@@ -41,6 +41,9 @@ body.archive {
         }
         img {
           min-width: 50vh;
+          height: 360px;
+          object-fit: cover;
+          clip-path: url(#customClipPath);
         }
       }
     }
