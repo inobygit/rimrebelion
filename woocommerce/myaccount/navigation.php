@@ -47,17 +47,19 @@ do_action( 'woocommerce_before_account_navigation' );
 
 <div class="contact-info">
     <h3>
-        <?= __("Do you have any questions?") ?>
+        <?= __("Do you have any questions?", 'inoby') ?>
     </h3>
     <?php 
         $email = rwmb_meta("contact_form_email_to", ["object_type" => "setting"], "options");
         if(!empty($email)) {
     ?>
     <a class="email-btn" href="mailto:<?= $email ?>">
+        <?= file_get_contents(get_stylesheet_directory_uri() . '/assets/icons/mail.svg') ?>
         <?= $email ?></a>
     <?php } ?>
-    <a class="phone-btn" href="tel:+421 910 511 244">
-        +421 910 511 244</a>
+    <a class="phone-btn" href="tel:+421915111199">
+        <?= file_get_contents(get_stylesheet_directory_uri() . '/assets/icons/phone-call.svg') ?>
+        + 421 915 111 199</a>
 </div>
 
 <?php do_action( 'woocommerce_after_account_navigation' ); ?>

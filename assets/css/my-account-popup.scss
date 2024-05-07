@@ -17,12 +17,30 @@
     clip-path: polygon(0 0, 0% 100%, 100% 50%);
     border-radius: $btn-br;
   }
+  margin-left: $trianglew;
+    &:before {
+      content: '';
+      transition: $trans;
+      display: inline-block;
+      position: absolute;
+      left: calc(-#{$trianglew}); //-15px
+      top: calc(-#{$btn-bw});
+      width: $trianglew;
+      height: calc(100% + 2*#{$btn-bw});
+      background-color: $btn-bg;
+      clip-path: polygon(100% 0, 0 50%, 100% 100%);
+      border-radius: $btn-br;
+    }
   &:hover{
     border-color: $btn-hover-bg;
     &::after{
       background-color: $btn-hover-bg;
       transition: $trans-h;
     }
+    &::before{
+        background-color: $btn-hover-bg;
+        transition: $trans-h;
+      }
   }
 }
 
