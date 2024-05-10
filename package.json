@@ -34,6 +34,7 @@
   "dependencies": {
     "bootstrap": "4.5.3",
     "glightbox": "^3.1.0",
+    "keen-slider": "^6.8.6",
     "popper.js": "~1.16.0"
   }
 }
