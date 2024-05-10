@@ -44,8 +44,7 @@ add_filter("rwmb_meta_boxes", function ($meta_boxes) {
             [
                 "id" => "slider-images",
                 "name" => __("Slider Images", "rimrebellion"),
-                "type" => "text",
-                'clone' => true,
+                "type" => "image_advanced",
             ],
         ],
     ];

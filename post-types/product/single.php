@@ -22,6 +22,7 @@ if (!defined("ABSPATH")) {
 inoby_enqueue_parted_style("product", "post_types");
 inoby_enqueue_parted_script("product", "post_types");
 get_header("shop");
+
 ?>
 <?php woocommerce_output_content_wrapper(); ?>
 
@@ -34,15 +35,41 @@ get_header("shop");
 
 <?php woocommerce_output_content_wrapper_end(); ?>
 
-<!-- todo product-slider -->
-<section class="product-description">
-  <div class="container">
-    <div class="row">
-      <div class="col-12">
-        <?php the_content(); ?>
-      </div>
+<?php 
+$gallery_id = uniqid("inoby-slider-gallery-");
+$sliderImagesGallery = rwmb_meta('slider-images');
+$settings = apply_filters("inoby_slider_gallery_default_settings", [
+  "has_lightbox" => false,
+  "has_thumbs" => false,
+  "has_arrows" => true,
+  "per_view" => 1,
+]);
+if(!empty($sliderImagesGallery)){
+?>
+<div class="inoby-slider-gallery" id="<?= $gallery_id ?>" data-settings=<?= json_encode($settings) ?>>
+    <div class="keen-slider gallery">
+        <?php 
+        foreach ($sliderImagesGallery as $image):
+           ?>
+        <div class="image-wrapper gallery-slide">
+            <img src="<?= wp_get_attachment_image_url($image['ID'], 'o-12') ?>" alt="gb-image" loading="lazy">
+        </div>
+        <?php 
+      endforeach; ?>
     </div>
-  </div>
+</div>
+<?php } ?>
+
+<section class="product-description">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+
+                <?php 
+                the_content(); ?>
+            </div>
+        </div>
+    </div>
 </section>
 
 <?php woocommerce_output_product_data_tabs(); ?>
