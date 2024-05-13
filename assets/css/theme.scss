@@ -280,6 +280,8 @@ nav.breadcrumbs {
         padding-right: 10px !important;
           padding-left: 85px !important;
         > a {
+          text-transform: uppercase;
+
           img{
             position: absolute;
             pointer-events: none;
@@ -297,7 +299,6 @@ nav.breadcrumbs {
         > a {
           margin-bottom: 1.6rem;
           color: $black;
-          text-transform: uppercase;
           font-size: 1.3rem;
           line-height: 125%; 
           display: inline-block;

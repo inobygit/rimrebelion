@@ -9,6 +9,18 @@ class MBCategorySlider extends MBComponentBase {
     $options->render_template = get_theme_file_path("components/category-slider/template.php");
     $options->fields = [
       [
+        "id" => "category-slider-genders",
+        "type" => "taxonomy_advanced",
+        "name" => __("Pohlavie", "inoby"),
+        'taxonomy'  => 'gender',
+        'field_type' => 'radio_list',
+        'query_args' => [
+          'hide_empty' => false,
+          'hierarchical' => false,
+          'depth' => 0,
+        ],
+      ],
+      [
         "id" => "category-slider-categories",
         "type" => "taxonomy_advanced",
         "name" => __("Kategórie", "inoby"),
