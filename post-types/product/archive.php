@@ -112,7 +112,7 @@ if ($cat instanceof WP_Term) {
                             echo "<div class='category-item'>
                                     <a class='cat' rel='keep-search' href='" . get_term_link($child) . "'>
                                         <div class='img-wrp'>
-                                            " . wp_get_attachment_image(get_term_meta($child->term_id, "thumbnail_id", true), "o-2") . "
+                                            " . wp_get_attachment_image(get_term_meta($child->term_id, "product_search_image_id", true), "o-2") . "
                                         </div>
                                         <div class='name'>" . $child->name . "</div>
                                     </a>
@@ -142,7 +142,7 @@ if ($cat instanceof WP_Term) {
                                 <a class='cat' rel='keep-search' href='" . get_term_link($sibling) . "'>
                                 <div class='img-wrp'>
                                     " .
-                                    wp_get_attachment_image(get_term_meta($sibling->term_id, "thumbnail_id", true), "o-2") . "
+                                    wp_get_attachment_image(get_term_meta($sibling->term_id, "product_search_image_id", true), "o-2") . "
                                 </div>
                                 <div class='name'>" . $sibling->name . "</div></a>
                                 </div>";
