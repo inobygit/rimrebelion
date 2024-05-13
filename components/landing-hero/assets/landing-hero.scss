@@ -14,7 +14,7 @@ section.landing-hero {
     max-width: 100%;
     pointer-events: none;
     @include bp(md){
-        width: 150px;
+        width: 100px;
         height: auto;
       }
     svg{
