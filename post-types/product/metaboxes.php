@@ -7,11 +7,6 @@ add_filter("rwmb_meta_boxes", function ($meta_boxes) {
         "post_types" => ["product"],
         "fields" => [
             [
-                "id" => "product-type",
-                "name" => __("Product type", "rimrebellion"),
-                "type" => "text",
-            ],
-            [
                 "id" => "style-number",
                 "name" => __("Style number", "rimrebellion"),
                 "type" => "text",
