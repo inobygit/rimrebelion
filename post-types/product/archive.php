@@ -122,6 +122,7 @@ if ($cat instanceof WP_Term) {
                     } else {
                         // This category does not have subcategories, showing sibling categories
                         $term_parent_id = $term->parent;
+                        if ($term_parent && !is_wp_error($term_parent)) {
                         $term_siblings = get_terms([
                             "taxonomy" => "product_cat",
                             "parent" => $term_parent_id,
@@ -129,26 +130,25 @@ if ($cat instanceof WP_Term) {
                         ]);
 
                         echo '<div class="cats-wrp">';
-                        if ($term_parent && !is_wp_error($term_parent)) {
                             echo "<div class='category-item back'>
                             <a class='cat' rel='keep-search' href='" . get_term_link($term_parent) . "'>
                             <div class='name'> " . __("Back to ", 'inoby') . $term_parent->name . "</div>
                             </a>
                             </div>";
-                        }
-                        if (!empty($term_siblings)) {
-                            foreach ($term_siblings as $sibling) {
-                                echo "<div class='category-item'>
-                                <a class='cat' rel='keep-search' href='" . get_term_link($sibling) . "'>
-                                <div class='img-wrp'>
+                            if (!empty($term_siblings)) {
+                                foreach ($term_siblings as $sibling) {
+                                    echo "<div class='category-item'>
+                                    <a class='cat' rel='keep-search' href='" . get_term_link($sibling) . "'>
+                                    <div class='img-wrp'>
                                     " .
                                     wp_get_attachment_image(get_term_meta($sibling->term_id, "product_search_image_id", true), "o-2") . "
-                                </div>
-                                <div class='name'>" . $sibling->name . "</div></a>
-                                </div>";
+                                    </div>
+                                    <div class='name'>" . $sibling->name . "</div></a>
+                                    </div>";
+                                }
                             }
+                            echo '</div>';
                         }
-                        echo '</div>';
                     }
                 } else {
                     rc_shop_subcategories();
