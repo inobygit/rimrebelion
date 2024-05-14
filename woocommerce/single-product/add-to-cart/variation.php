@@ -12,7 +12,7 @@
 
 defined("ABSPATH") || exit(); ?>
 <script type="text/template" id="tmpl-variation-template">
-    <div class="woocommerce-variation-price">{{{ data.variation.display_price + ' €'}}}</div>
+    <div class="woocommerce-variation-price">{{{ data.variation.price_html }}}</div>
 	<div class="woocommerce-variation-sku"><span class="sku-label"><?= __("Kód produktu: ", "rimrebelion") ?></span>{{{ data.variation.sku }}}</div>
 	<div class="woocommerce-variation-availability">{{{ data.variation.availability_html }}}</div>
 </script>
