@@ -34,9 +34,9 @@ function display_related_product_thumbnails() {
             echo '">';
             ?>
 <svg xmlns="http://www.w3.org/2000/svg" width="29" height="20" viewBox="0 0 29 20" fill="none">
-  <path
-    d="M17.2471 0.846551L25.6583 5.69707C27.2065 6.5899 28.1605 8.24123 28.1605 10.0285V20H0V10.0125C0 8.22483 0.954459 6.57314 2.50335 5.68048L10.891 0.846551C12.8525 -0.282184 15.2855 -0.282184 17.2471 0.846551Z"
-    fill="<?= esc_attr($swatch_bg) ?>" />
+    <path
+        d="M17.2471 0.846551L25.6583 5.69707C27.2065 6.5899 28.1605 8.24123 28.1605 10.0285V20H0V10.0125C0 8.22483 0.954459 6.57314 2.50335 5.68048L10.891 0.846551C12.8525 -0.282184 15.2855 -0.282184 17.2471 0.846551Z"
+        fill="<?= esc_attr($swatch_bg) ?>" />
 </svg>
 <?php echo "</a>";
         }
@@ -100,4 +100,11 @@ function preselect_first_instock_variable($args) {
 }
 add_filter("woocommerce_dropdown_variation_attribute_options_args", "preselect_first_instock_variable", 10, 1);
 
+add_filter('woocommerce_available_variation', function($available_variations, \WC_Product_Variable $variable, \WC_Product_Variation $variation) {
+    if (empty($available_variations['price_html'])) {
+        $available_variations['price_html'] = '<span class="price">' . $variation->get_price_html() . '</span>';
+    }
+
+    return $available_variations;
+}, 10, 3);
 ?>
