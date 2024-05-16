@@ -74,7 +74,6 @@ body.single-product{
           width: 100%;
           select{
             width: 100%;
-            max-width: 36rem;
             cursor: pointer;
           }
         }
@@ -313,6 +312,86 @@ body.single-product{
     h3{
       text-transform: uppercase;
       margin-bottom: $space-md;
+    }
+  }
+  .product-type-simple{
+    .price{
+      font-size: 4rem;
+      font-family: $font-family-headings;
+      margin-bottom: 1rem !important;
+    }
+    .simple-row{
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      flex-wrap: wrap;
+      gap: 2rem;
+      &.between{
+        justify-content: space-between;
+        margin-bottom: 1rem;
+      }
+      .woocommerce-variation-sku{
+            float: left;
+            color: $gray500;
+            font-size: 1.3rem;
+            font-weight: 400;
+            line-height: 150%; /* 19.5px */
+          }
+          .woocommerce-variation-availability{
+            float: right;
+            p.stock{
+              font-size: 1.3rem;
+              font-weight: 400;
+              line-height: 150%; /* 19.5px */
+              margin: 0;
+              &.instock{
+                color: $in-stock-color;
+              }
+              &.onbackorder{
+                color: $on-back-order-color;
+              }
+              &.outofstock{
+                color: $out-of-stock-color;
+              }
+            }
+          }
+      .quantity {
+            display: inline-block;
+            border: 1px solid $gray200;
+            border-radius: 0px;
+            background-color: #F8F8F8;
+            margin-right: $space-sm;
+            input {
+              color: $gray900;
+              padding: 13px;
+              border: none;
+              border-radius: 0px;
+              font-size: 1.4rem;
+              font-weight: 400;
+              text-align: center;
+              &.minus {
+                cursor: pointer;
+                padding-left: 1.6rem;
+              }
+              &.plus {
+                cursor: pointer;
+                padding-right: 1.6rem;
+                color: $gray900;
+              }
+              &.qty {
+                width: 5rem;
+                position: relative;
+                padding: 0px 1rem;
+                color: $gray900;
+                border-left: 1px solid $gray200;
+                border-right: 1px solid $gray200;
+              }
+              &:hover,&:focus{
+                box-shadow: none;
+                color: $gray900;
+              }
+            }
+          }
     }
   }
 }
