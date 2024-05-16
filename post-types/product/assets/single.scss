@@ -11,7 +11,8 @@ body.single-product{
       .woocommerce-product-gallery__image[data-gallery-index="0"]{
         a > img{
           aspect-ratio: 1/1;
-          object-fit: cover;
+          object-fit: contain;
+          background-color: $white;
         }
       }
       .thumbs{
@@ -19,7 +20,8 @@ body.single-product{
         gap: 8px;
         a > img{
           aspect-ratio: 1/1;
-          object-fit: cover;
+          object-fit: contain;
+          background-color: $white;
         }
       }
     }
@@ -172,6 +174,7 @@ body.single-product{
         img {
           object-fit: cover;
           height: 700px;
+          object-position: top;
           width: 100%;
           transition: .3s;
           @include bp(md){
