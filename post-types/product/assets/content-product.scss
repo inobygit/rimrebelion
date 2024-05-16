@@ -16,7 +16,8 @@
     img{
       height: auto !important;
       aspect-ratio: 3/4;
-      object-fit: cover !important;
+      object-fit: contain !important;
+      background-color: $white;
     }
     .product-mask{
       opacity: 0;
