@@ -13,6 +13,7 @@ body.archive {
     .woocommerce-hero {
       background-color: $gray900;
       color: $white;
+      overflow: hidden;
       .text-column {
         display: flex;
         align-items: center;
