@@ -79,7 +79,7 @@ if (empty($product) || !$product->is_visible()) {
                 $original_ID = icl_object_id( null, 'post', false, 'en' );
 
                 // Get original post title
-                $original_title = get_the_title( $original_ID );
+                echo get_the_title( $original_ID );
             ?></h3>
         </div>
         <div class="content-product-excerpt">
