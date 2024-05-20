@@ -76,7 +76,7 @@ if (empty($product) || !$product->is_visible()) {
         <div class="content-product-title">
             <h3 class="woocommerce-loop-product__title notranslate"><?php 
                             // Get the post ID of original post
-                $original_ID = icl_object_id( null, 'post', false, 'en' );
+                $original_ID = icl_object_id( null, 'product', false, 'en' );
 
                 // Get original post title
                 echo get_the_title( $original_ID );
