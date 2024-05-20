@@ -74,7 +74,7 @@ if (empty($product) || !$product->is_visible()) {
     </div>
     <div class="content-product">
         <div class="content-product-title">
-            <?php woocommerce_template_loop_product_title(); ?>
+            <h3 class="woocommerce-loop-product__title notranslate"><?= get_the_title() ?></h3>
         </div>
         <div class="content-product-excerpt">
             <?= the_excerpt() ?>
