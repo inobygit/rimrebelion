@@ -17,6 +17,10 @@
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
-}
+} ?>
 
-the_title( '<h1 class="product_title entry-title notranslate">', '</h1>' );
+<h1 class="product_title entry-title notranslate"><?php 
+                $original_ID = icl_object_id( get_the_ID(), 'product', false, 'en' );
+
+                echo get_the_title( $original_ID );
+            ?></h1>
