@@ -74,7 +74,13 @@ if (empty($product) || !$product->is_visible()) {
     </div>
     <div class="content-product">
         <div class="content-product-title">
-            <h3 class="woocommerce-loop-product__title notranslate"><?= get_the_title() ?></h3>
+            <h3 class="woocommerce-loop-product__title notranslate"><?php 
+                            // Get the post ID of original post
+                $original_ID = icl_object_id( null, 'post', false, 'en' );
+
+                // Get original post title
+                $original_title = get_the_title( $original_ID );
+            ?></h3>
         </div>
         <div class="content-product-excerpt">
             <?= the_excerpt() ?>
