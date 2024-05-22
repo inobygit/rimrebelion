@@ -56,24 +56,52 @@ section.hero {
         position: relative;
         background-color: transparent;
         z-index: 1;
-        width: 150px;
         text-align: center;
-        svg{
-          position: absolute;
-          overflow: visible;
-          top: 0;
-          left: 0;
-          width: 150px;
-          height: 100%;
-          z-index: -1;
-          path{
-            transition: .3s;
+        padding-left: 1rem;
+        border-radius: 0;
+        height: 45px;
+        text-wrap: nowrap;
+        margin: 0;
+        margin-left: 30px;
+          border-top: 1px solid white;
+          line-height: normal;
+          border-bottom: 1px solid white;
+          transition: 0s;
+          &::before{
+            content: '';
+            background-image: url(theme-url("/assets/icons/button-right-arrow-white.svg"));
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            transform: rotate(180deg);
+            height: 46px;
+            width: 28px;
+            top: -1.5px;
+            bottom: 0px;
+            right: calc(100% - 5px);
+            position: absolute;
+            display: block;
           }
-        }
+          &::after{
+            content: '';
+            background-image: url(theme-url("/assets/icons/button-right-arrow-white.svg"));
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            height: 46px;
+            width: 28px;
+            top: -1.5px;
+            bottom: 0px;
+            left: calc(100% - 5px);
+            position: absolute;
+            display: block;
+          }
         &:hover{
           color: $col-prm;
-          svg path{
-            fill: $white;
+          background-color: $white;
+          &::before,
+          &::after{
+            background-image: url(theme-url("/assets/icons/button-right-arrow-white-filled.svg"));
           }
         }
       }

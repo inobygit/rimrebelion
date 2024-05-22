@@ -75,9 +75,13 @@ if (empty($product) || !$product->is_visible()) {
     <div class="content-product">
         <div class="content-product-title">
             <h3 class="woocommerce-loop-product__title notranslate"><?php 
-                $original_ID = icl_object_id( get_the_ID(), 'product', false, 'en' );
+                if(function_exists('icl_object_id')){
+                    $original_ID = icl_object_id( get_the_ID(), 'product', false, 'en' );
 
-                echo get_the_title( $original_ID );
+                    echo get_the_title( $original_ID );
+                } else {
+                    echo get_the_title(get_the_ID());
+                }
             ?></h3>
         </div>
         <div class="content-product-excerpt">
