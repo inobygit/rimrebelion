@@ -16,6 +16,33 @@ class ProductSingleModule extends InobyModule {
       );
       this.createSlider($gallery, settings);
     });
+
+    const selectElement = $('.single_variation_wrap').find('select').get(0) as HTMLSelectElement;
+    const customOrder = ['xxs', 'xs', 's', 'm', 'l', 'xl', 'xxl', '3xl'];
+    if(selectElement){
+      const options = Array.from(selectElement.options);
+
+      options.sort((a, b) => {
+        const baseSizeA = a.value.split('-')[0];
+        const baseSizeB = b.value.split('-')[0];
+
+        const valueA = (baseSizeA === '3xl') ? 10 : (isNaN(parseFloat(baseSizeA)) ? customOrder.indexOf(baseSizeA) : parseFloat(baseSizeA));
+        const valueB = (baseSizeB === '3xl') ? 10 : (isNaN(parseFloat(baseSizeB)) ? customOrder.indexOf(baseSizeB) : parseFloat(baseSizeB));
+
+        if (valueA < valueB) {
+            return -1;
+        } else if (valueA > valueB) {
+            return 1;
+        } else {
+            // Compare language strings if they exist
+            const langA = a.value.split('-')[1] || '';
+            const langB = b.value.split('-')[1] || '';
+            return langA.localeCompare(langB);
+        }
+    });
+      
+      options.forEach(option => selectElement.add(option));
+    }
   }
 
   private createSlider(
