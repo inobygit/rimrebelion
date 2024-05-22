@@ -41,8 +41,10 @@
         }
       }
       .button-wrap{
+        display: flex;
+        align-items: center;
+        justify-content: center;
         button{
-          height: 100%;
           @include bp('md'){
             max-width: calc(100% - 3rem);
           }

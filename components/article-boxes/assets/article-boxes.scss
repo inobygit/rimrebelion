@@ -15,41 +15,36 @@
     border: none;
     position: relative;
     margin: 0;
-    padding-right: 2.6rem;
+    border-radius: 8px 0 0 8px;
     background-color: transparent;
-    &:hover{
-      &::before{
-        background-color: $col-prm !important;
-      }
-    }
-    &:focus{
-      color: $col-prm;
-    }
-    &::after,
-    &::before{
-      position: absolute;
-      left: -1px;
-      right: 0;
-      top: -1px;
-      bottom: 0;
-      width: calc(100% + 2px);
-      height: calc(100% + 2px);
-      border: none !important;
-      clip-path: polygon(0% 0%, 90% 0%, 100% 50%, 90% 100%, 0% 100%);
-      background-color: $col-prm !important;
-      z-index: -2;
-      border-radius: 2px;
-      transition: .3s;
-    }
-    &::before{
+    border: 1px solid $black;
+    height: 45px !important;
+    min-height: 45px !important;
+    max-height: 45px !important;
+    border-right: none;
+    color: $black;
+    transition: 0s !important;
+    &::after{
       content: '';
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      clip-path: polygon(0% 0%, 90.2% 0%, 99.8% 50%, 90.2% 100%, 0% 100%);
-      background-color: #F8F8F8 !important;
-      z-index: -1;
+      background-image: url(theme-url("/assets/icons/button-arrow-black.svg")) !important;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      height: 46px;
+      width: 28px;
+      top: -1.5px;
+      bottom: 0px;
+      left: calc(100% - 5px);
+      position: absolute;
+      display: block;
+    }
+    &:hover,
+    &:focus{
+      background-color: $black;
+      color: $white;
+      &::after{
+        background-image: url(theme-url("/assets/icons/button-arrow-black-filled.svg")) !important;
+      }
     }
   }
   .article-grid-wrap-inner {

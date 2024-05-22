@@ -25,7 +25,7 @@ $article_grid = mb_get_block_field("article-boxes");
 
             <div class="col-6 col-md-12 end">
                 <?php if(!empty($blockBtnText) && !empty($blockBtnUrl)){ ?>
-                <a href="<?= $blockBtnUrl ?>" class="button light triangleright">
+                <a href="<?= $blockBtnUrl ?>" class="button triangleright">
                     <?= $blockBtnText ?>
                 </a>
                 <?php } ?>

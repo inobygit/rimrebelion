@@ -64,7 +64,7 @@ section.hero {
         margin: 0;
         margin-left: 30px;
           border-top: 1px solid white;
-          line-height: normal;
+          line-height: inherit;
           border-bottom: 1px solid white;
           transition: 0s;
           &::before{
