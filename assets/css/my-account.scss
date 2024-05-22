@@ -184,7 +184,7 @@ $trianglew: 14px;
                   background-color: $col-prm;
                   border-color: $col-prm;
                   &::after{
-                    background-color: $col-prm;
+                    opacity: 1;
                   }
                   &::before{
                     filter: invert(1);
@@ -199,6 +199,7 @@ $trianglew: 14px;
                 position: relative;
                 font-weight: $fw-p;
                 border: none;
+                transition: .3s !important;
                 &::before{
                   content: '';
                   background-image: url(theme-url('/assets/svg/my-orders.svg'));
@@ -213,24 +214,31 @@ $trianglew: 14px;
                   position: absolute;
                   top: auto;
                   left: 16px;
-                  transition: .3s;
+                  transition: .3s !important;
                 }
+                height: 45px !important;
+                min-height: 45px !important;
+                max-height: 45px !important;
                 position: relative;
                 margin-right: $trianglew;
                 border: 1px solid transparent;
                 border-radius: 0 1px 1px 0;
-                &:after {
+                border-right: none;
+                &::after{
                   content: '';
-                  transition: inherit;
-                  display: inline-block;
+                  background-image: url(theme-url("/assets/icons/button-arrow-black-filled.svg"));
+                  background-size: contain;
+                  background-repeat: no-repeat;
+                  background-position: center;
+                  height: 46px;
+                  width: 28px;
+                  top: -1.5px;
+                  bottom: 0px;
+                  left: calc(100% - 2px);
                   position: absolute;
-                  right: calc(-#{$trianglew}); //-15px
-                  top: calc(-#{$btn-bw});
-                  width: $trianglew;
-                  height: calc(100% + 2*#{$btn-bw});
-                  background-color: transparent;
-                  clip-path: polygon(0 0, 0% 100%, 100% 50%);
-                  border-radius: $btn-br;
+                  display: block;
+                  opacity: 0;
+                  transition: .3s;
                 }
               }
               &:last-child {
@@ -242,7 +250,7 @@ $trianglew: 14px;
                 a {
                   color: $white;
                   &::after{
-                    background-color: $col-prm;
+                    opacity: 1;
                   }
                   &::before{
                     filter: invert(1);
