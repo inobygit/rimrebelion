@@ -3,14 +3,16 @@
     $genders = mb_get_block_field("category-slider-genders");
     $gender = '';
     
-$original_ID = icl_object_id( get_the_ID(), 'page', false, 'en' );
-if(!empty($genders)){
-    if($original_ID === get_the_ID()){
-        $gender = "page/1/?gender=".$genders->term_id."&disable_auto_apply_filter=false";
-    } else {
-        $gender = "&gender=".$genders->term_id."&disable_auto_apply_filter=false";
+    if(function_exists('icl_object_id')){
+        $original_ID = icl_object_id( get_the_ID(), 'page', false, 'en' );
+        if(!empty($genders)){
+            if($original_ID === get_the_ID()){
+                $gender = "page/1/?gender=".$genders->term_id."&disable_auto_apply_filter=false";
+            } else {
+                $gender = "&gender=".$genders->term_id."&disable_auto_apply_filter=false";
+            }
+        }
     }
-}
 
 ?>
 <div <?= inoby_block_attrs($attributes, ["class" => "component-category-slider"]) ?>>
