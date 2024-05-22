@@ -1,10 +1,17 @@
 <?php
-  $slider = mb_get_block_field("category-slider-categories");
-  $genders = mb_get_block_field("category-slider-genders");
+    $slider = mb_get_block_field("category-slider-categories");
+    $genders = mb_get_block_field("category-slider-genders");
     $gender = '';
-  if(!empty($genders)){
-    $gender = "&gender=".$genders->term_id."&disable_auto_apply_filter=false";
+    
+$original_ID = icl_object_id( get_the_ID(), 'post', false, 'en' );
+if(!empty($genders)){
+    if($original_ID === get_the_ID()){
+        $gender = "page/1/?gender=".$genders->term_id."&disable_auto_apply_filter=false";
+    } else {
+        $gender = "&gender=".$genders->term_id."&disable_auto_apply_filter=false";
+    }
 }
+
 ?>
 <div <?= inoby_block_attrs($attributes, ["class" => "component-category-slider"]) ?>>
     <div class="container">
