@@ -3,7 +3,7 @@
     $genders = mb_get_block_field("category-slider-genders");
     $gender = '';
     
-$original_ID = icl_object_id( get_the_ID(), 'post', false, 'en' );
+$original_ID = icl_object_id( get_the_ID(), 'page', false, 'en' );
 if(!empty($genders)){
     if($original_ID === get_the_ID()){
         $gender = "page/1/?gender=".$genders->term_id."&disable_auto_apply_filter=false";
