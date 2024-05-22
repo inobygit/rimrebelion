@@ -141,82 +141,72 @@ nav.breadcrumbs {
     p#breadcrumbs{
       margin-left: 1.8rem;
       >span{
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        column-gap: 2.6rem;
+        row-gap: 1.6rem;
         span{
           position: relative;
           display: inline-block;
-          line-height: 30px;
-          height: 35px;
+          line-height: inherit;
+          height: 25px;
           font-size: 1.2rem;
-          margin-right: 15px;
-          border-top: 2px solid $gray400;
-          border-bottom: 2px solid $gray400;
-          padding-left: 2.5rem;
-          padding-right: 0.5rem;
-          &:before{
+          padding: 0;
+          padding-left: 1rem;
+          text-wrap: nowrap;
+          margin: 0;
+          border-top: 1px solid black;
+          border-bottom: 1px solid black;
+          &::before{
             content: '';
+            background-image: url(theme-url("/assets/icons/button-left-arrow.svg"));
+            background-size: auto;
+            background-repeat: no-repeat;
+            background-position: center;
+            height: calc(100% + 2px);
+            width: 15px;
+            top: -1px;
+            bottom: 0px;
+            right: calc(100% - 5px);
             position: absolute;
-            left: 0;
-            top: 50%;
-            transform: translate(-50%, -50%) rotate(45deg);
-            height: 25px;
-            width: 25px;
-            display: inline-block;
-            border-right: 2px solid $gray400;
-            border-top: 2px solid $gray400;
+            display: block;
           }
-          &:after{
+          &::after{
             content: '';
+            background-image: url(theme-url("/assets/icons/button-right-arrow.svg"));
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            height: calc(100% + 2px);
+            width: 15px;
+            top: -1px;
+            bottom: 0px;
+            left: 100%;
             position: absolute;
-            right: 0;
-            top: 50%;
-            transform: translate(50%, -50%) rotate(45deg);
-            height: 25px;
-            width: 25px;
-            display: inline-block;
-            border-right: 2px solid $gray400;
-            border-top: 2px solid $gray400;
+            display: block;
           }
           &:first-of-type{
             padding-left: 0;
             &:before{
-              content: '';
-              position: absolute;
-              left: 0;
-              top: 50%;
-              transform: translate(-50%, -50%) rotate(45deg);
-              height: 25px;
-              width: 25px;
-              display: inline-block;
-              border-left: 2px solid $gray400;
-              border-bottom: 2px solid $gray400;
-              border-right: none;
-              border-top: none;
-            }
-            &:after{
-              content: '';
-              position: absolute;
-              right: 0;
-              top: 50%;
-              transform: translate(50%, -50%) rotate(45deg);
-              height: 25px;
-              width: 25px;
-              display: inline-block;
-              border-right: 2px solid $gray400;
-              border-top: 2px solid $gray400;
+              transform: rotate(180deg);
+              background-image: url(theme-url("/assets/icons/button-right-arrow.svg"));
+              right: 100%;
             }
           }
-          &:last-of-type{
-            border-color: $col-prm;
-            &:before, &:after{
-              border-color: $col-prm;
+          &:has(a){
+            opacity: .5;
+            transition: .3s;
+            &:hover{
+              opacity: 1;
             }
           }
           a{
             margin: 0;
             text-decoration: none;
-            color: $gray400;
             &:hover, &:focus, &:active{
-              color: $col-prm;
+              opacity: 1;
             }
           }
         }
