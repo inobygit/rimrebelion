@@ -102,7 +102,7 @@ if ($cat instanceof WP_Term) {
                         echo '<div class="cats-wrp">';
                         if ($term_parent && !is_wp_error($term_parent)) {
                             echo "<div class='category-item back'>
-                                    <a class='cat' href='" . get_term_link($term_parent) . "'>
+                                    <a class='cat' rel='keep-search' href='" . get_term_link($term_parent) . "'>
                                         <div class='name'> " . __("Späť na ", 'inoby') . $term_parent->name . "</div>
                                     </a>
                                 </div>";
@@ -110,7 +110,7 @@ if ($cat instanceof WP_Term) {
                         foreach ($term_children as $child_id) {
                             $child = get_term($child_id, "product_cat");
                             echo "<div class='category-item'>
-                                    <a class='cat' href='" . get_term_link($child) . "'>
+                                    <a class='cat' rel='keep-search' href='" . get_term_link($child) . "'>
                                         <div class='img-wrp'>
                                             " . wp_get_attachment_image(get_term_meta($child->term_id, "product_search_image_id", true), "o-2") . "
                                         </div>
@@ -131,14 +131,14 @@ if ($cat instanceof WP_Term) {
 
                         echo '<div class="cats-wrp">';
                             echo "<div class='category-item back'>
-                            <a class='cat' href='" . get_term_link($term_parent) . "'>
+                            <a class='cat' rel='keep-search' href='" . get_term_link($term_parent) . "'>
                             <div class='name'> " . __("Back to ", 'inoby') . $term_parent->name . "</div>
                             </a>
                             </div>";
                             if (!empty($term_siblings)) {
                                 foreach ($term_siblings as $sibling) {
                                     echo "<div class='category-item'>
-                                    <a class='cat' href='" . get_term_link($sibling) . "'>
+                                    <a class='cat' rel='keep-search' href='" . get_term_link($sibling) . "'>
                                     <div class='img-wrp'>
                                     " .
                                     wp_get_attachment_image(get_term_meta($sibling->term_id, "product_search_image_id", true), "o-2") . "
