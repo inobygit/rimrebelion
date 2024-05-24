@@ -34,16 +34,17 @@ $(function () {
     $("a[rel~=keep-search").off('click');
     $("a[rel~=keep-search]").on("click", (e) => {
       const link = e.currentTarget;
-      if (link?.href) {
-        e.preventDefault();
-        const searchParams = new URLSearchParams(window.location.search);
-        if (searchParams.has('lang')) {
+        if (link?.href) {
+            e.preventDefault();
+            const searchParams = new URLSearchParams(window.location.search);
+            const langParams = searchParams.getAll('lang');
+            const uniqueLangParams = Array.from(new Set(langParams));
             searchParams.delete('lang');
+            uniqueLangParams.slice(0, 1).forEach(lang => {
+                searchParams.append('lang', lang);
+            });
             const newUrl = `${window.location.pathname}?${searchParams.toString()}${window.location.hash}`;
             window.location.href = newUrl;
-        } else {
-            window.location.href = `${link.href}${window.location.search}`;
         }
-      }
     });
 });
