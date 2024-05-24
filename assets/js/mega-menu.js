@@ -38,13 +38,8 @@ $(function () {
             e.preventDefault();
             const searchParams = new URLSearchParams(window.location.search);
             if(searchParams.has('lang')){
-                const langParams = searchParams.getAll('lang');
-                const uniqueLangParams = Array.from(new Set(langParams));
-                if (langParams.length > 1) {
-                    searchParams.delete('lang');
-                    searchParams.append('lang', uniqueLangParams[0]);
-                }
-                const newUrl = `${link.href}?${searchParams.toString()}${window.location.hash}`;
+                searchParams.delete('lang');
+                const newUrl = `${link.href}&${searchParams.toString()}`;
                 window.location.href = newUrl;
             } else {
                 window.location.href = `${link.href}${window.location.search}`;
