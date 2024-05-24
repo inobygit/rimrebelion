@@ -40,10 +40,10 @@ $(function () {
             if(searchParams.has('lang')){
                 const langParams = searchParams.getAll('lang');
                 const uniqueLangParams = Array.from(new Set(langParams));
-                searchParams.delete('lang');
-                uniqueLangParams.slice(0, 1).forEach(lang => {
-                    searchParams.append('lang', lang);
-                });
+                if (langParams.length > 1) {
+                    searchParams.delete('lang');
+                    searchParams.append('lang', uniqueLangParams[0]);
+                }
                 const newUrl = `${link.href}?${searchParams.toString()}${window.location.hash}`;
                 window.location.href = newUrl;
             } else {
