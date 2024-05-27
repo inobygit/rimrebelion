@@ -88,8 +88,16 @@ RC()->last_seen_products()->enqueue_scripts($product->get_id());
         $gender_terms = wp_get_post_terms($product->get_id(), 'gender');
         if (!empty($gender_terms) && !is_wp_error($gender_terms)) {
             echo '<div class="product-genders">';
-            foreach ($gender_terms as $term) {
-                echo '<span class="gender-term-box">' . esc_html($term->name) . '</span>';
+            $unisex_only = array_filter($gender_terms, function($term) {
+                return strtolower($term->name) === 'unisex';
+            });
+
+            if (!empty($unisex_only)) {
+                echo '<span class="gender-term-box">' . esc_html('Unisex', 'rimrebellion') . '</span>';
+            } else {
+                foreach ($gender_terms as $term) {
+                    echo '<span class="gender-term-box">' . esc_html($term->name, 'rimrebellion') . '</span>';
+                }
             }
             echo '</div>';
         }
