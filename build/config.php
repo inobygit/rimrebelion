@@ -1203,5 +1203,6 @@
         "meta-box/newsletter",
         "meta-box/inoby-article-boxes",
         "meta-box/inoby-category-slider",
+        "meta-box/inoby-last-viewed",
     ],
 ]);

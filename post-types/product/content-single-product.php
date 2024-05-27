@@ -47,6 +47,7 @@ if (post_password_required()) {
 }
 
 $collections = wp_get_post_terms($product->get_id(), "collection");
+RC()->last_seen_products()->enqueue_scripts($product->get_id());
 
 // Zobrazenie termínov nad excerptom
 ?>

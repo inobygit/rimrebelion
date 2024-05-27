@@ -40,11 +40,20 @@ $article_grid = mb_get_block_field("article-boxes");
                 foreach ($article_grid as $article) {
                   $article_url = $article["url"] ?? "";
                   if (isset($article["bg"])) {
-                    echo '<a href="' . $article_url . '" class="article-section" style="background-image: url(' . wp_get_attachment_image_src(reset($article["bg"]), "o-6")[0] . ');">';
+                    echo '<a href="' . $article_url . '" class="article-section '. (isset($article['style-2']) && $article["style-2"] == 1 ? 'style-2' : '') .'" style="background-image: url(' . wp_get_attachment_image_src(reset($article["bg"]), "o-6")[0] . ');">';
                   } else {
-                    echo '<a href="' . $article_url . '" class="article-section article-section-placeholder">';
+                    echo '<a href="' . $article_url . '" class="article-section article-section-placeholder '. (isset($article['style-2']) && $article["style-2"] == 1 ? 'style-2' : '') .'">';
                   }
                   ?>
+                <?php if(isset($article["style-2"]) && $article["style-2"] == 1) { ?>
+                <svg class="illustration style-2" width="640" height="271" viewBox="0 0 640 271" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M385.848 18.9371L640 159.72V271H0V159.344L243.65 18.9371C287.534 -6.31235 341.964 -6.31235 385.848 18.9371Z"
+                        fill="<?= (isset($article['illustration-color']) ? $article['illustration-color'] : '#ffffff') ?>"
+                        fill-opacity="0.7" />
+                </svg>
+                <?php } else { ?>
                 <svg class="illustration" width="316" height="289" viewBox="0 0 316 289" fill="none"
                     xmlns="http://www.w3.org/2000/svg">
                     <path
@@ -54,6 +63,7 @@ $article_grid = mb_get_block_field("article-boxes");
 
                     </text>
                 </svg>
+                <?php } ?>
                 <?php
                 if(isset($article['text'])){ 
                     echo '<div class="info">';
@@ -62,12 +72,15 @@ $article_grid = mb_get_block_field("article-boxes");
                     ?>
                 <p class='link'>
                     <?= $article['text'] ?>
+                    <?php if(isset($article["style-2"]) && $article["style-2"] == 1) { ?>
+                    <?php } else { ?>
                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" clip-rule="evenodd" d="M0.5 7.25H14.5V8.75H0.5V7.25Z" fill="white" />
                         <path fill-rule="evenodd" clip-rule="evenodd"
                             d="M13.3853 7.99617L10.4194 5.03033L11.4801 3.96967L15.5143 8.00382L11.4763 11.9841L10.4233 10.9159L13.3853 7.99617Z"
                             fill="white" />
                     </svg>
+                    <?php } ?>
 
                 </p>
 
