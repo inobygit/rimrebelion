@@ -9,6 +9,17 @@ require_once RIMREBELLION_CHILD . "/inc/custom-import-mapper.php";
 RC()
     ->last_seen_products()
     ->init_ajax();
+
+function modify_rc_vars($rc_vars) {
+    $my_default_lang = apply_filters('wpml_default_language', NULL );
+    // Add your custom variable to the array
+    $rc_vars['rc_default_lang'] = $my_default_lang;  // Replace 'my_value' with the actual value you need
+
+    return $rc_vars;
+}
+
+// Add the filter to modify rc_vars
+add_filter('rc_vars', 'modify_rc_vars');
     
 add_action("inoby_before_footer", "footer_newsletter");
 function footer_newsletter() {
