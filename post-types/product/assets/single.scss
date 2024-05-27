@@ -157,6 +157,27 @@ body.single-product{
         }
       }
     }
+
+    .product-genders {
+      margin-bottom: 1.6rem;
+              display: flex;
+              align-items: center;
+              justify-content: flex-start;
+              flex-wrap: wrap;
+              gap: 0.5rem;
+              .gender-term-box {
+                background-color: $white;
+                padding: 0.8rem 1.6rem;
+                display: inline-block;
+                margin: 0;
+                font-size: 1.4rem;
+                font-weight: 500;
+                white-space: nowrap;
+                color: $black;
+                text-transform: uppercase;
+                color: $black;
+              }
+            }
   }
   .inoby-slider-gallery {
     .gallery {

@@ -84,14 +84,19 @@ $collections = wp_get_post_terms($product->get_id(), "collection");
                 </div>
                 <?php
         woocommerce_template_single_title(); // Inoby_Product::get_manufacturer_name();
-        if (!empty($collections) && !is_wp_error($collections)) {
+        $gender_terms = wp_get_post_terms($product->get_id(), 'gender');
+        if (!empty($gender_terms) && !is_wp_error($gender_terms)) {
+            echo '<div class="product-genders">';
+            foreach ($gender_terms as $term) {
+                echo '<span class="gender-term-box">' . esc_html($term->name) . '</span>';
+            }
+            echo '</div>';
+        }
             echo '<div class="collection-terms">';
-            echo '<span class="collection-label">' . __("Collection: ", "rimrebellion") . "</span>";
             foreach ($collections as $collection) {
-                echo '<span class="collection-term">' . esc_html($collection->name) . "</span>";
+                echo '<span class="collection-term">'.__('CAFÉ DU CYCLISTE', 'rimrebellion').'</span>';
             }
             echo "</div>";
-        }
         woocommerce_template_single_excerpt();
         display_related_product_thumbnails();
         // TODO color switching
