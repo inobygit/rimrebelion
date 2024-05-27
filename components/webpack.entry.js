@@ -10,6 +10,7 @@ const components = [
   ...theme.component("cta-grid"),
   ...theme.component("article-boxes"),
   ...theme.component("category-slider"),
+  ...theme.component("last-viewed"),
 ];
 
 module.exports = components;
