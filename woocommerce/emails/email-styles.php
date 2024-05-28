@@ -58,7 +58,7 @@ margin: 0 auto;
 padding: 70px 0;
 -webkit-text-size-adjust: none !important;
 width: 100%;
-max-width: 600px;
+max-width: 100%;
 }
 
 #template_container {
@@ -90,7 +90,7 @@ margin-left: 0;
 margin-right: 0;
 }
 
-#template_footer_container:nth-of-type(3){
+#template_footer_container:nth-of-type(4){
 display: none;
 }
 
