@@ -14,7 +14,3 @@
  * @package WooCommerce\Templates\Emails
  * @version 7.0
  */
-
-
-echo '<p>'.__('In case of any questions, do not hasitate to contact us by e-mail: ', 'rimrebellion').' <a href="mailto:help@rimrebellion.com">'. __("help@rimrebellion.com ", 'rimrebellion') .' </a> '.__("or by phone: ", 'rimrebellion').' <a href="tel:+421915111199">'. __("+ 421 915 111 199.", 'rimrebellion') .' </a></p>';
-echo '<p><b>'.__("Thank you for shopping at ").' <a href="https://rimrebelion.com">'.__("rimrebelion.com!", 'rimrebellion').'</a></b></p>';
