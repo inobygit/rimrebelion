@@ -28,19 +28,22 @@ class CategorySliderComponent extends InobyModule {
             },
             "(max-width: 920px)": {
                 slides: {
-                    perView: 3,
+                    origin: 'auto',
+                    perView: 3.5,
                     spacing: 10,
                 },
             },
             "(max-width: 768px)": {
                 slides: {
-                    perView: 2,
+                    origin: 'auto',
+                    perView: 2.5,
                     spacing: 10,
                 },
             },
             "(max-width: 420px)": {
                 slides: {
-                    perView: 1,
+                    origin: 'auto',
+                    perView: 1.5,
                     spacing: 10,
                 },
             },

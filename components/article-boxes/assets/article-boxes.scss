@@ -12,6 +12,9 @@
       flex-direction: column;
       align-items: flex-end;
       justify-content: flex-start;
+      @include bp("md") {
+        align-items: flex-start;
+        }
     }
   }
   .button.triangleright{
