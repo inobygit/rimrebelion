@@ -5,6 +5,7 @@ require_once RIMREBELLION_CHILD . "/inc/product-taxonomies.php";
 require_once RIMREBELLION_CHILD . "/inc/product-tabs.php";
 require_once RIMREBELLION_CHILD . "/inc/product-functions.php";
 require_once RIMREBELLION_CHILD . "/inc/custom-import-mapper.php";
+require_once RIMREBELLION_CHILD . "/inc/custom-mail-footer.php";
     
 RC()
     ->last_seen_products()
