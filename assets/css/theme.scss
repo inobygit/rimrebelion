@@ -248,6 +248,7 @@ nav.breadcrumbs {
     }
     a{
       border: none;
+      background: none !important;
       &:hover{
         background: none;
       }
@@ -256,6 +257,7 @@ nav.breadcrumbs {
         align-items: center;
         justify-content: flex-end;
         gap: .8rem;
+        padding-right: 0;
         &:hover{
           &::after{
             transform: rotate(180deg);
@@ -270,8 +272,12 @@ nav.breadcrumbs {
           content: '';
           border: none !important;
           position: relative;
+          width: 10px;
           right: unset;
           top: unset;
+          height: 10px;
+          min-width: 10px;
+          min-height: 10px;
         }
       }
     }
