@@ -29,6 +29,10 @@ function filter_title( $fields, $post_id ) {
             $value->field_translate = 0;
             $value->field_data_translated = $value->field_data;
         }
+        if ($value->field_type == "field-color") {
+            $value->field_translate = 0;
+            $value->field_data_translated = $value->field_data;
+        }
     }
     return $fields;
 }
