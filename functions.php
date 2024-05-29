@@ -21,7 +21,18 @@ function modify_rc_vars($rc_vars) {
 
 // Add the filter to modify rc_vars
 add_filter('rc_vars', 'modify_rc_vars');
-    
+ 
+add_filter( 'icl_job_elements', 'filter_title', 10, 2 );
+function filter_title( $fields, $post_id ) {
+    foreach ($fields as $field => $value){
+        if ($value->field_type == "title") {
+            $value->field_translate = 0;
+            $value->field_data_translated = $value->field_data;
+        }
+    }
+    return $fields;
+}
+
 add_action("inoby_before_footer", "footer_newsletter");
 function footer_newsletter() {
     if (!is_checkout() && !is_cart()) {
