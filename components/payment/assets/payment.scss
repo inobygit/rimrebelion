@@ -19,7 +19,7 @@
       flex-wrap: wrap;
       gap: 16px;
       img{
-        width: 40px;
+        width: 40px !important;
         height: auto;
         min-width: 40px;
         object-fit: contain;
