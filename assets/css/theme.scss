@@ -284,6 +284,33 @@ nav.breadcrumbs {
   }
 }
 
+.widget-area{
+  #lang-switcher{
+    .wpml-ls-legacy-dropdown 
+    {
+      a{
+        color: $white !important;
+        &.wpml-ls-item-toggle{
+          &::after{
+            background-image: url("data:image/svg+xml,%3Csvg width='10' height='10' viewBox='0 0 10 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4.6875 6.53125L8.09375 3.125L8.75 3.78125L4.6875 7.875L0.625 3.8125L1.28125 3.15625L4.6875 6.53125Z' fill='white'/%3E%3C/svg%3E%0A");
+          }
+        }
+      }
+      .wpml-ls-sub-menu{
+        background-color: $black;
+        width: fit-content;
+        top: unset;
+        bottom: 100%;
+        transition: .3s;
+        opacity: 0;
+      }
+    }
+    .wpml-ls-current-language:hover .wpml-ls-sub-menu{
+      opacity: 1;
+    }
+  }
+}
+
 #header .header{
   .row{
     @include bp(lg){

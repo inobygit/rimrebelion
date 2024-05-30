@@ -21,6 +21,9 @@
             "woocommerce-product-search/woocommerce-product-search.php",
           )
         ) { ?>
+                <div id="lang-switcher" class="lang-switcher">
+                    <?= do_shortcode('[wpml_language_selector_widget]') ?>
+                </div>
                 <div id="search-trigger" class="menu-search">
                     <a href="#0">
                         <img src="<?= get_theme_file_uri("/assets/icons/search-light.svg") ?>" alt="Hladať">
