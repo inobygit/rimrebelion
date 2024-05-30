@@ -182,6 +182,18 @@ font-size: 14px;
 line-height: 150%;
 text-align: <?php echo is_rtl() ? 'right' : 'left'; ?>;
 }
+#body_content_inner a{
+color: black;
+}
+
+#body_content_inner a:hover{
+text-decoration: underline;
+opacity: .6;
+}
+#body_content_inner .center{
+color: black;
+text-align: center;
+}
 
 .td {
 color: <?php echo esc_attr( $text_lighter_20 ); ?>;
