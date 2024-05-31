@@ -73,7 +73,7 @@ function onYouTubeIframeAPIReady() {
             wmode: 'opaque',
             playsinline: 1,
         },
-        videoId: 'AGvhqwSjYAs',
+        videoId: '<?php echo $src ?? '' ?>',
         events: {
             'onReady': onPlayerReady,
             'onStateChange': onPlayerStateChange

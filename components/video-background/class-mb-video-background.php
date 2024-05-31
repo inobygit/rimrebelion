@@ -42,7 +42,7 @@ class MbVideoBackground extends MBComponentBase implements MBRetrievesVideoThumb
         "image_size" => "thumbnail",
       ],
       [
-        "name" => __("Odkaz na video", "inoby"),
+        "name" => __("Youtube Video ID", "inoby"),
         "id" => "video-background-src",
         "type" => "text",
       ],
