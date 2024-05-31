@@ -1,0 +1,131 @@
+@import "variables";
+@import "mixins";
+
+.component-video-background {
+  overflow: hidden;
+  height: 100dvh;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .button{
+      margin-top: 1em;
+      &.btn-background{
+        color: $white;
+        border: none;
+        position: relative;
+        background-color: transparent;
+        z-index: 1;
+        text-align: center;
+        padding-left: 1rem;
+        border-radius: 0;
+        height: 45px;
+        text-wrap: nowrap;
+        margin: 0;
+        margin-left: 30px;
+          border-top: 1px solid white;
+          line-height: inherit;
+          border-bottom: 1px solid white;
+          transition: 0s;
+          &::before{
+            content: '';
+            background-image: url(theme-url("/assets/icons/button-right-arrow-white.svg"));
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            transform: rotate(180deg);
+            height: 46px;
+            width: 28px;
+            top: -1.5px;
+            bottom: 0px;
+            right: calc(100% - 5px);
+            position: absolute;
+            display: block;
+          }
+          &::after{
+            content: '';
+            background-image: url(theme-url("/assets/icons/button-right-arrow-white.svg"));
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            height: 46px;
+            width: 28px;
+            top: -1.5px;
+            bottom: 0px;
+            left: calc(100% - 5px);
+            position: absolute;
+            display: block;
+          }
+        &:hover{
+          color: $col-prm;
+          background-color: $white;
+          &::before,
+          &::after{
+            background-image: url(theme-url("/assets/icons/button-right-arrow-white-filled.svg"));
+          }
+        }
+      }
+    }
+  .video-wrap{
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: -1;
+    img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    &::before{
+      content: '';
+      background-color: $black;
+      opacity: .4;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 1;
+    }
+    iframe {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 100vw;
+      height: 100vh;
+      transform: translate(-50%, -50%) scale(1.2);
+      pointer-events: none;
+      user-select: none;
+      z-index: -1;
+    }
+  }
+  h1{
+    color: $white;
+    margin-bottom: 2.4rem;
+  }
+  p{
+    color: $white;
+    font-size: $fs-h3;
+    font-style: italic;
+    margin-bottom: 2.4rem;
+  }
+  
+}
+
+@media (min-aspect-ratio: 16/9) {
+  .component-video-background .video-wrap iframe {
+    /* height = 100 * (9 / 16) = 56.25 */
+    height: 56.25vw;
+  }
+}
+@media (max-aspect-ratio: 16/9) {
+  .component-video-background .video-wrap iframe {
+    /* width = 100 / (9 / 16) = 177.777777 */
+    width: 177.78vh;
+  }
+}
+
