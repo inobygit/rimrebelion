@@ -84,7 +84,6 @@ function onYouTubeIframeAPIReady() {
 // 3. The API will call this function when the video player is ready.
 function onPlayerReady(event) {
     player.playVideo();
-
     player.mute();
 }
 
@@ -99,6 +98,9 @@ function onPlayerStateChange(event) {
             opacity: 0
         }, 500);
 
+    }
+    if (event.data === 0) {
+        player.playVideo();
     }
 }
 </script>
