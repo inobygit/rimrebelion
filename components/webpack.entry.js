@@ -11,6 +11,7 @@ const components = [
   ...theme.component("article-boxes"),
   ...theme.component("category-slider"),
   ...theme.component("last-viewed"),
+  ...theme.component("video-background"),
 ];
 
 module.exports = components;

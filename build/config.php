@@ -1204,5 +1204,6 @@
         "meta-box/inoby-article-boxes",
         "meta-box/inoby-category-slider",
         "meta-box/inoby-last-viewed",
+        "meta-box/inoby-video-background",
     ],
 ]);

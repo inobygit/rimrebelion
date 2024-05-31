@@ -317,6 +317,59 @@ nav.breadcrumbs {
       justify-content: space-between;
     }
   }
+  &.transparent{
+    background-color: transparent;
+    background: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    &:has(.trigger-mobile-menu.active){
+      position: relative;
+      background: $black;
+    }
+    &.sticky-header{
+      box-shadow: none !important;
+    }
+    .inline-svg{
+      fill: white;
+    }
+    .logo{
+      > a {
+        content: url(theme-url("/assets/svg/logo-landing.svg"));
+      }
+    }
+    .top-menu > div > ul.menu li.menu-item a{
+      color: $white;
+    }
+    .top-menu > div > ul.menu li.menu-item.menu-item-megamenu > a::after,
+    #lang-switcher .wpml-ls-legacy-dropdown a.wpml-ls-item-toggle::after{
+      background-image: url("data:image/svg+xml,%3Csvg width='10' height='10' viewBox='0 0 10 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4.6875 6.53125L8.09375 3.125L8.75 3.78125L4.6875 7.875L0.625 3.8125L1.28125 3.15625L4.6875 6.53125Z' fill='white'/%3E%3C/svg%3E%0A");
+    }
+    .wpml-ls-legacy-dropdown a{
+      color: $white;
+    }
+    .top-menu > div > ul.menu li.menu-item.menu-item-megamenu.active > a{
+      color: $black !important;
+    }
+    .top-menu > div > ul.menu li.menu-item.menu-item-megamenu.active > a::before{
+      background-color: $white;
+    }
+    .top-menu > div > ul.menu li.menu-item.menu-item-megamenu.active > a::after{
+      transform: rotate(180deg);
+      background-image: url("data:image/svg+xml,%3Csvg width='10' height='10' viewBox='0 0 10 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4.6875 6.53125L8.09375 3.125L8.75 3.78125L4.6875 7.875L0.625 3.8125L1.28125 3.15625L4.6875 6.53125Z' fill='black'/%3E%3C/svg%3E%0A");
+    }
+    .top-menu > div > ul.menu > li.menu-item > a:hover{
+      color: $black !important;
+    }
+    .top-menu > div > ul.menu > li.menu-item > a:hover::before{
+      background-color: $white;
+    }
+    .right-navigation .menu-cart .cart-count-badge .badge{
+      background: $white;
+      color: $black;
+    }
+  }
   padding: 0 !important;
   .logo{
     display: flex;
