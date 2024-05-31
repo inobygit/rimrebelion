@@ -241,14 +241,23 @@ nav.breadcrumbs {
 }
 
 #lang-switcher{
-  .wpml-ls-legacy-dropdown{
+  .wpml-ls-legacy-dropdown-click{
     width: fit-content;
     .wpml-ls-sub-menu{
       border: none;
+      background-color: $black;
+      width: fit-content;
+      min-width: 100%;
+      a{
+        color: $white;
+      }
     }
     a{
       border: none;
       background: none !important;
+      color: $black;
+      padding: 5px 8px !important;
+      position: relative;
       &:hover{
         background: none;
       }
@@ -258,6 +267,19 @@ nav.breadcrumbs {
         justify-content: flex-end;
         gap: .8rem;
         padding-right: 0;
+        &::before{
+          content: '';
+          position: absolute;
+          top: auto;
+          left: 0;
+          right: 0;
+          height: 24px;
+          width: 100%;
+          background-color: transparent;
+          z-index: -1;
+          border-radius: 2px;
+          transition: .3s;
+        }
         &:hover{
           &::after{
             transform: rotate(180deg);
@@ -281,15 +303,29 @@ nav.breadcrumbs {
         }
       }
     }
+    &:has(.wpml-ls-sub-menu[style*="visible"]){
+      a.wpml-ls-item-toggle{
+        color: $white;
+        z-index: 1;
+        &::before{
+          background-color: $black;
+        }
+        &::after{
+          background-image: url("data:image/svg+xml,%3Csvg width='10' height='10' viewBox='0 0 10 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4.6875 6.53125L8.09375 3.125L8.75 3.78125L4.6875 7.875L0.625 3.8125L1.28125 3.15625L4.6875 6.53125Z' fill='white'/%3E%3C/svg%3E%0A");
+          transform: rotate(180deg);
+        }
+      }
+    }
   }
 }
 
 .widget-area{
   #lang-switcher{
-    .wpml-ls-legacy-dropdown 
+    .wpml-ls-legacy-dropdown-click
     {
       a{
         color: $white !important;
+        padding: 5px 10px !important;
         &.wpml-ls-item-toggle{
           &::after{
             background-image: url("data:image/svg+xml,%3Csvg width='10' height='10' viewBox='0 0 10 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4.6875 6.53125L8.09375 3.125L8.75 3.78125L4.6875 7.875L0.625 3.8125L1.28125 3.15625L4.6875 6.53125Z' fill='white'/%3E%3C/svg%3E%0A");
@@ -344,10 +380,18 @@ nav.breadcrumbs {
       color: $white;
     }
     .top-menu > div > ul.menu li.menu-item.menu-item-megamenu > a::after,
-    #lang-switcher .wpml-ls-legacy-dropdown a.wpml-ls-item-toggle::after{
+    #lang-switcher .wpml-ls-legacy-dropdown-click a.wpml-ls-item-toggle::after{
       background-image: url("data:image/svg+xml,%3Csvg width='10' height='10' viewBox='0 0 10 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4.6875 6.53125L8.09375 3.125L8.75 3.78125L4.6875 7.875L0.625 3.8125L1.28125 3.15625L4.6875 6.53125Z' fill='white'/%3E%3C/svg%3E%0A");
     }
-    .wpml-ls-legacy-dropdown a{
+    #lang-switcher .wpml-ls-legacy-dropdown-click a{
+      color: $white;
+    }
+    #lang-switcher {
+      .wpml-ls-sub-menu{
+        background-color: $black;
+      }
+    }
+    .wpml-ls-legacy-dropdown-click a{
       color: $white;
     }
     .top-menu > div > ul.menu li.menu-item.menu-item-megamenu.active > a{
