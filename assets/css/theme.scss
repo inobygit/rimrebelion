@@ -13,11 +13,9 @@
 
 html[lang="eu-US"] {
   .product-search-results table.search-results{
-    .product-info{
-      a{
-        &[href*="lang=sk"] {
-          display: none;
-        }
+    .entry{
+      &:has(.product-info a[href*="lang=sk"]){
+        display: none;
       }
     }
   }
@@ -25,11 +23,12 @@ html[lang="eu-US"] {
 
 html[lang="sk-SK"] {
   .product-search-results table.search-results{
-    .product-info{
-      a{
-        &:not([href*="lang=sk"]) {
-          display: none;
-        }
+    .entry{
+      display: none;
+    }
+    .entry{
+      &:has(.product-info a[href*="lang=sk"]){
+        display: block;
       }
     }
   }
