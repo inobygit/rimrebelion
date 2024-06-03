@@ -239,6 +239,24 @@ nav.breadcrumbs {
     margin: 0;
   }
 }
+#search {
+  border-top: 0;
+}
+#search .search-results .s_product_cat{
+  display: none;
+}
+
+#search .product-search-form form .product-search-field{
+  border-radius: 4px !important;
+  border: 1px solid $gray500;
+}
+
+#search .product-search-results-content{
+  padding: 1.5rem;
+}
+#search div.product-search-form span.product-search-field-clear{
+  top: -1em;
+}
 
 #lang-switcher{
   .wpml-ls-legacy-dropdown-click{
