@@ -32,11 +32,14 @@ function rimrebellion_add_product_tab_delivery_info($tabs) {
 
 function rimrebellion_product_tab_delivery_info() {
     global $product;
-    echo "Delivery info for " . $product->get_name();
+    echo '<p>'.__("Delivery info for ", 'rimrebellion') . $product->get_name() . '</p>';
     // $additional_info = get_post_meta($product->get_id(), "delivery-info", true);
     // if (!empty($additional_info)) {
     //     echo wpautop($additional_info);
     // }
+    echo '<p>'.__('FREE EU SHIPPING FOR ANY REGISTERED CUSTOMER WITH ANY ORDER over 200 EUR' ,'rimrebellion').'</p>';
+    echo '<p>'.__('FREE AND CONVENIENT RETURN OF ANY ORDER, FOR ANY REGISTERED CUSTOMER WITHOUT RESTRICTIONS' ,'rimrebellion').'</p>';
+
 }
 
 /**
