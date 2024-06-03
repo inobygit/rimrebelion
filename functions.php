@@ -128,3 +128,4 @@ function rimrebelion_contact_info_shortcode($atts) {
     return '<div class="contact-info">' . $contact_info . "</div>";
 }
 add_shortcode("rimrebelion_contact_info", "rimrebelion_contact_info_shortcode");
+

@@ -10,6 +10,10 @@ $(function () {
         showLessText = 'Show less';
     }
 
+    $( document ).on( 'ixProductFilterRequestProcessed', function( event ) {
+    console.log('test');
+} );
+
     $('#header .header .top-menu > div > ul.menu .sub-menu .menu-item-has-children').each(function() {
         const $subMenuList = $(this).find('.menu-item');
         if ($subMenuList.length > 4) {

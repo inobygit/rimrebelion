@@ -11,15 +11,6 @@
   src: local("GreedNarrow"), local("GreedNarrow"), url(theme-url("/assets/fonts/GreedNarrow-Bold.otf")) format("opentype");
 }
 
-html[lang="eu-US"] {
-  .product-search-results table.search-results{
-    .entry{
-      &:has(.product-info a[href*="lang=sk"]){
-        display: none;
-      }
-    }
-  }
-}
 
 html[lang="sk-SK"] {
   .product-search-results table.search-results{
@@ -29,6 +20,18 @@ html[lang="sk-SK"] {
     .entry{
       &:has(.product-info a[href*="lang=sk"]){
         display: block;
+      }
+    }
+  }
+}
+
+
+html[lang="eu-US"] {
+  .product-search-results table.search-results{
+    .entry{
+      display: block;
+      &:has(.product-info a[href*="lang=sk"]){
+        display: none;
       }
     }
   }
