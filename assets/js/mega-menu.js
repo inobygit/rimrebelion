@@ -14,6 +14,18 @@ $(function () {
     console.log('test');
 } );
 
+    $('.product-search-form').on('submit', function(event) {
+        event.preventDefault();
+        const form = $(this);
+        const actionUrl = form.attr('action');
+        const currentLang = Cookies.get('wp-wpml_current_language');
+        const langParam = `&lang=${currentLang}`;
+        const newActionUrl = actionUrl.includes('?') ? `${actionUrl}${langParam}` : `${actionUrl}?${langParam}`;
+        form.attr('action', newActionUrl);
+        form.off('submit').submit();
+    });
+
+
     $('#header .header .top-menu > div > ul.menu .sub-menu .menu-item-has-children').each(function() {
         const $subMenuList = $(this).find('.menu-item');
         if ($subMenuList.length > 4) {
