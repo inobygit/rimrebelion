@@ -32,6 +32,7 @@ $src = mb_get_block_field("video-background-src");
                         alt="sound off icon" class="sound-off">
                     <img src="<?= get_stylesheet_directory_uri() . '/assets/icons/sound-on.svg' ?>" alt="sound on icon"
                         class="sound-on">
+
                 </div>
             </div>
         </div>
@@ -69,8 +70,8 @@ $('.sound-on').on('click', function(e) {
     } else {
         player.mute();
     }
-    $('.sound-on').hide('slow');
-    $('.sound-off').show('slow');
+    $('.sound-on').hide(300);
+    $('.sound-off').show(300);
 });
 
 $('.sound-off').on('click', function(e) {
@@ -80,8 +81,8 @@ $('.sound-off').on('click', function(e) {
     } else {
         player.mute();
     }
-    $('.sound-off').hide('slow');
-    $('.sound-on').show('slow');
+    $('.sound-off').hide(300);
+    $('.sound-on').show(300);
 });
 
 // 2. This function creates an <iframe> (and YouTube player)
