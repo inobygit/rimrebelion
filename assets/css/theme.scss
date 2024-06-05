@@ -47,6 +47,22 @@ html[lang="en-US"] {
   }
 }
 
+.product-search-results table.search-results{
+  .more-info{
+    .title{
+      position: relative;
+      &::after{
+        content: '<svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4.6875 6.53125L8.09375 3.125L8.75 3.78125L4.6875 7.875L0.625 3.8125L1.28125 3.15625L4.6875 6.53125Z" fill="#878787"/></svg>';
+        display: block;
+        width: 10px;
+        height: 10px;
+        position: relative;
+        
+      }
+    }
+  }
+}
+
 body{
   background-color: #F8F8F8;
 }
