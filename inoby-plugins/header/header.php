@@ -116,6 +116,7 @@
 									categories="yes"
 									category_results="yes"
 									delay="250"
+                                    wpml="yes"
 								]',
           ); ?>
                 </div>
