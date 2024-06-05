@@ -11,6 +11,16 @@
   src: local("GreedNarrow"), local("GreedNarrow"), url(theme-url("/assets/fonts/GreedNarrow-Bold.otf")) format("opentype");
 }
 
+@font-face {
+  font-family: "ItalianPlateItalic";
+  src: local("ItalianPlateItalic"), local("ItalianPlateItalic"), url(theme-url("/assets/fonts/ItalianPlateNo4Expanded-Italic.otf")) format("opentype");
+}
+
+@font-face {
+  font-family: "ItalianPlate";
+  src: local("ItalianPlate"), local("ItalianPlate"), url(theme-url("/assets/fonts/ItalianPlateNo4Expanded-Regular.otf")) format("opentype");
+}
+
 
 html[lang="sk-SK"] {
   .product-search-results table.search-results{
