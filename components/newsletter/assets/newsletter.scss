@@ -42,9 +42,9 @@
       }
       .input-wrap{
         label.inplace-label{
-          color: $white;
+          color: $black;
           &:after{
-              background: $gray900;
+              background: $white;
           }
           @include bp('md'){
             display: none;
