@@ -76,8 +76,7 @@ body{
 }
 
 $trianglew: 14px;
-a.button, button,
-#search .search-results .s_product_cat a {
+a.button, button {
   height: 45px !important;
   min-height: 45px !important;
   max-height: 45px !important;
@@ -156,6 +155,55 @@ a.button, button,
       }
     }
   }
+}
+#search .search-results .s_product_cat{
+  display: block !important;
+}
+#search .search-results .s_product_cat a{
+  height: 45px !important;
+  min-height: 45px !important;
+  max-height: 45px !important;
+  border-top: 1px solid $black;
+  border-bottom: 1px solid $black;
+  text-wrap: nowrap;
+  border-width: 1px !important;
+  position: relative;
+    &::after{
+      content: '';
+      background-image: url(theme-url("/assets/icons/button-arrow-black-filled.svg"));
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      height: 46px;
+      width: 28px;
+      top: -1.5px;
+      bottom: 0px;
+      left: calc(100% - 5px);
+      position: absolute;
+      display: block;
+    }
+    &::before{
+      content: '';
+      background-image: url(theme-url("/assets/icons/button-arrow-black-filled.svg"));
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      transform: rotate(180deg);
+      height: 46px;
+      width: 28px;
+      top: -1.5px;
+      bottom: 0px;
+      right: calc(100% - 5px);
+      position: absolute;
+      display: block;
+    }
+    &:hover, &:focus, &:active{
+      background-color: $black !important;
+      border-color: $black !important;
+      opacity: .6 !important;
+      background: $black !important;
+      color: $white !important;
+    }
 }
 
 .socials.icons .social-icon.social-icon-facebook {
