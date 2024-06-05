@@ -48,6 +48,12 @@ html[lang="en-US"] {
 }
 
 .product-search-results table.search-results{
+  .entry.s_more{
+    display: block !important;
+  }
+}
+
+.product-search-results table.search-results{
   .more-info{
     .title{
       position: relative;
@@ -68,7 +74,8 @@ body{
 }
 
 $trianglew: 14px;
-a.button, button {
+a.button, button,
+#search .search-results .s_product_cat a {
   height: 45px !important;
   min-height: 45px !important;
   max-height: 45px !important;
@@ -294,9 +301,7 @@ nav.breadcrumbs {
 #search {
   border-top: 0;
 }
-#search .search-results .s_product_cat{
-  display: none;
-}
+
 
 #search .product-search-form form .product-search-field{
   border-radius: 4px !important;
