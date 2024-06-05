@@ -13,23 +13,23 @@ $subscribe_label = __("Prihlásiť sa", "rimrebelion");
 $form_id = uniqid("newsletter_form");
 ?>
 <form id="<?= $form_id ?>" class="newsletter-form">
-  <div class="overlay"></div>
-  <div class="newsletter-inner-wrap">
-    <div class="input-wrap">
-      <label for="email" class="inplace-label"><?= __("Vaša e-mailová adresa", "rimrebelion") ?></label>
-      <input type="email" class="input-text email" name="email"
-        placeholder="<?= __("Vaša e-mailová adresa", "rimrebelion") ?>" autocomplete="email" required />
+    <div class="overlay"></div>
+    <div class="newsletter-inner-wrap">
+        <div class="input-wrap">
+            <label for="email" class="inplace-label"><?= __("Vaša e-mailová adresa", "rimrebelion") ?></label>
+            <input type="email" class="input-text email" name="email"
+                placeholder="<?= __("Vaša e-mailová adresa", "rimrebelion") ?>" autocomplete="email" required />
+        </div>
+    </div>
+    <div class="gdpr-inner-wrap">
+        <input id="gdpr" type="checkbox" class="input-checkbox gdpr" name="gdpr" required />
+        <label for="gdpr"><span><?= $gdpr_label ?></span></label>
     </div>
     <div class="button-wrap">
-      <button type="submit" class="button light submit triangleleft triangleright" name="subscribe_newsletter"
-        value="<?= $subscribe_label ?>"><?= $subscribe_label ?></button>
+        <button type="submit" class="button submit triangleright" name="subscribe_newsletter"
+            value="<?= $subscribe_label ?>"><?= $subscribe_label ?></button>
     </div>
-  </div>
-  <div class="gdpr-inner-wrap">
-    <input id="gdpr" type="checkbox" class="input-checkbox gdpr" name="gdpr" required />
-    <label for="gdpr"><span><?= $gdpr_label ?></span></label>
-  </div>
-  <p class="message error-message">
-    <?= __("Pri pokuse odoslať požiadavku nastala chyba. Prosím skúste to znovu.", "rimrebelion") ?></p>
-  <p class="message success-message"><?= __("Ďakujeme za váš odber.", "rimrebelion") ?></p>
+    <p class="message error-message">
+        <?= __("Pri pokuse odoslať požiadavku nastala chyba. Prosím skúste to znovu.", "rimrebelion") ?></p>
+    <p class="message success-message"><?= __("Ďakujeme za váš odber.", "rimrebelion") ?></p>
 </form>
