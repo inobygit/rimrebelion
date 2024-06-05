@@ -156,8 +156,22 @@ a.button, button {
     }
   }
 }
-#search .search-results .s_product_cat{
+#search .search-results tr.s_product_cat{
   display: block !important;
+  padding: 0 1.6rem;
+  &.first{
+    border: none;
+    margin-top: 1.6rem;
+  }
+  &:hover{
+    background: none !important;
+    a{
+      color: $white !important;
+    }
+  }
+  td{
+    display: block !important;
+  }
 }
 #search .search-results .s_product_cat a{
   height: 45px !important;
