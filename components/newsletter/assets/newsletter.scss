@@ -3,17 +3,33 @@
 
 .component-newsletter {
   position: relative;
-  background-color: $gray900;
+  background-color: $white;
   // padding: $space-regular 0;
   color: $white;
+  padding: 10rem 0;
   @include bp('md'){
-    padding: $space-sm 0;
+    padding: $space-md 0;
   }
   h2.newsletter-heading{
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.8rem;
+    color: $black;
   }
   p.newsletter-text{
-    margin-bottom: $space-sm;
+    margin-bottom: 0;
+    color: $gray700;
+  }
+  h4.newsletter-curved{
+    color: $black;
+    font-family: 'ItalianPlateItalic', sans-serif;
+    margin-bottom: 1.6rem;
+  }
+  .newsletter-col{
+    .newsletter-box{
+      max-width: 70%;
+      @include bp(md){
+        max-width: 100%;
+      }
+    }
   }
   .newsletter-form {
     display: block;
@@ -40,17 +56,18 @@
           color: $white;
         }
       }
-      .button-wrap{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        button{
-          @include bp('md'){
-            max-width: calc(100% - 3rem);
-          }
-          @include bp('sm'){
-            width: 100%;
-          }
+    }
+    .button-wrap{
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      margin-top: 1.6rem;
+      button{
+        @include bp('md'){
+          max-width: calc(100% - 3rem);
+        }
+        @include bp('sm'){
+          width: 100%;
         }
       }
     }
@@ -67,32 +84,13 @@
       }
       label{
         font-size: 1.3rem;
-        color: $gray300;
+        color: $gray700;
         cursor: pointer;
         margin: 0 0 -2px;
         @include bp('sm'){
           margin: 0 0 -2px;
         }
       }
-    }
-  }
-  &:before{
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: calc(50% - 1.5rem);
-    height: 100%;
-    background: url(theme-url("/assets/img/bg-newsletter.webp"));
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    @include bp('md'){
-      position: relative;
-      display: block;
-      height: 40vh;
-      width: 100%;
-      top: -$space-sm;
     }
   }
 }

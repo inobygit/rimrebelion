@@ -8,7 +8,8 @@
  */
 
 // prettier-ignore
-$heading = __("JOIN OUR COMMUNITY AND DON'T MISS A GREAT CHANCE", "rimrebelion");
+$heading = __("NEWSLETTER", "rimrebelion");
+$curved = __("JOIN OUR COMMUNITY AND DON'T MISS A GREAT CHANCE", "rimrebelion");
 $text = __("Explore uncharted paths and places with our latest collections and exclusive deals.", "rimrebelion");
 $btn_text = mb_get_block_field("newsletter_btn_text");
 
@@ -33,26 +34,30 @@ $form_id = uniqid("newsletter_form");
                 <div class="newsletter-box">
                     <div class="content-wrap">
                         <div class="content-text">
-                            <?= isset($heading) ? '<h2 class="newsletter-heading">' . $heading . "</h2>" : ". __('test','rimrebelion') ." ?>
+                            <?= isset($heading) ? '<h2 class="newsletter-heading">' . $heading . "</h2>" : ". __('Newsletter','rimrebelion') ." ?>
+                            <?= isset($curved) ? '<h4 class="newsletter-curved">' . $curved . "</h4>" : ". __('Newsletter','rimrebelion') ." ?>
                             <?= isset($text) ? '<p class="newsletter-text">' . $text . "</p>" : "" ?>
                         </div>
                     </div>
-                    <?php if ($popup_check == 1) { ?>
-                    <div class="button-wrap">
-                        <?php echo isset($btn_text) ? '<a href="#0" class="button triangleleft triangleright form-button">' . $btn_text . "</a>" : ""; ?>
-                    </div>
-                    <div class="newsletter-popup">
-                        <div class="newsletter-wrap">
-                            <div class="close-btn">✕</div>
-                            <?php get_template_part("template-parts/newsletter"); ?>
-                        </div>
-                    </div>
-                    <?php } else { ?>
+                </div>
+            </div>
+            <div class="col-6 col-md-12">
+                <?php if ($popup_check == 1) { ?>
+                <div class="button-wrap">
+                    <?php echo isset($btn_text) ? '<a href="#0" class="button triangleleft triangleright form-button">' . $btn_text . "</a>" : ""; ?>
+                </div>
+                <div class="newsletter-popup">
                     <div class="newsletter-wrap">
+                        <div class="close-btn">✕</div>
                         <?php get_template_part("template-parts/newsletter"); ?>
                     </div>
-                    <?php } ?>
                 </div>
+                <?php } else { ?>
+                <div class="newsletter-wrap">
+                    <?php get_template_part("template-parts/newsletter"); ?>
+                </div>
+                <?php } ?>
+
             </div>
         </div>
     </div>
