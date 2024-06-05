@@ -1,9 +1,8 @@
 <?php
 
 function custom_more_title($title) {
-    $more_text = esc_html(__('Show more ', 'rimrebellion'));
-    $svg_icon = '<svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4.6875 6.53125L8.09375 3.125L8.75 3.78125L4.6875 7.875L0.625 3.8125L1.28125 3.15625L4.6875 6.53125Z" fill="#878787"/></svg>';
-    return $more_text . $svg_icon;
+    $more_text = esc_html(__('Show more ', 'rimrebellion') . '<svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4.6875 6.53125L8.09375 3.125L8.75 3.78125L4.6875 7.875L0.625 3.8125L1.28125 3.15625L4.6875 6.53125Z" fill="#878787"/></svg>');
+    return $more_text;
 }
 add_filter('woocommerce_product_search_field_more_title', 'custom_more_title');
 
