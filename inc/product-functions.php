@@ -18,27 +18,18 @@ function display_related_product_thumbnails() {
     if ($related_products_query->have_posts()) {
         echo '<div class="related-products-thumbnails">';
         while ($related_products_query->have_posts()) {
-
             $related_products_query->the_post();
-            $product_id = get_the_ID();
-            $color_terms = get_the_terms($product_id, "color");
-            if ($color_terms && !is_wp_error($color_terms) && is_array($color_terms) && count($color_terms) > 0) {
-                $color_term = reset($color_terms); // Get the first color term
-                $swatch_bg = rwmb_meta("rc_attribute_term_color", ["object_type" => "term"], $color_term->term_id);
-            }
-
-            echo '<a href="' . get_permalink() . '" class="related-product-thumbnail';
+            echo '<div class="related-product-thumbnail';
             if (get_the_ID() === $current_product_id) {
                 echo " current-selected";
             }
             echo '">';
-            ?>
-<svg xmlns="http://www.w3.org/2000/svg" width="29" height="20" viewBox="0 0 29 20" fill="none">
-    <path
-        d="M17.2471 0.846551L25.6583 5.69707C27.2065 6.5899 28.1605 8.24123 28.1605 10.0285V20H0V10.0125C0 8.22483 0.954459 6.57314 2.50335 5.68048L10.891 0.846551C12.8525 -0.282184 15.2855 -0.282184 17.2471 0.846551Z"
-        fill="<?= esc_attr($swatch_bg) ?>" />
-</svg>
-<?php echo "</a>";
+            if (has_post_thumbnail()) {
+                echo '<a href="' . get_permalink() . '">' . get_the_post_thumbnail(get_the_ID(), "o-2") . "</a>";
+            } else {
+                echo '<a href="' . get_permalink() . '"><img src="' . wc_placeholder_img_src() . '" alt="Placeholder" /></a>';
+            }
+            echo "</div>";
         }
         echo "</div>";
         wp_reset_postdata();
