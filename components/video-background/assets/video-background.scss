@@ -3,13 +3,15 @@
 
 .component-video-background {
   overflow: hidden;
-  height: 100dvh;
+  min-height: calc(100dvh - 48px);
   width: 100%;
   position: relative;
   z-index: 1;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
+  padding-bottom: 6rem;
   .button{
       margin-top: 1em;
       &.btn-background{
@@ -103,15 +105,48 @@
       z-index: -1;
     }
   }
+  .container{
+    margin-top: 15rem;
+    @include bp(md){
+      margin-top: 10rem;
+    }
+    &.controls{
+      opacity: 0;
+    }
+    .end{
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      justify-content: center;
+      @include bp(md){
+        padding-inline: 2rem;
+      }
+      .sound-on{
+        display: none;
+      }
+      img{
+        cursor: pointer;
+        transform-origin: center;
+      }
+    }
+  }
+  .container.content{
+    margin-top: auto;
+  }
   h1{
     color: $white;
     margin-bottom: 2.4rem;
   }
   p{
+    font-family: 'ItalianPlate', sans-serif;
     color: $white;
     font-size: $fs-h3;
-    font-style: italic;
     margin-bottom: 2.4rem;
+    max-width: 70%;
+    text-wrap: balance;
+    @include bp(md){
+      max-width: 100%;
+    }
   }
   
 }

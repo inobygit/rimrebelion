@@ -24,9 +24,21 @@ $src = mb_get_block_field("video-background-src");
         <div id="player" data-src="<?= $src ?>"></div>
         <?php endif; ?>
     </div>
-    <div class="container">
+    <div class="container controls">
         <div class="row">
-            <div class="col-6 col-sm-12">
+            <div class="col-12 end">
+                <div class="sound-control">
+                    <img src="<?= get_stylesheet_directory_uri() . '/assets/icons/sound-off.svg' ?>"
+                        alt="sound off icon" class="sound-off">
+                    <img src="<?= get_stylesheet_directory_uri() . '/assets/icons/sound-on.svg' ?>" alt="sound on icon"
+                        class="sound-on">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container content">
+        <div class="row">
+            <div class="col-7 col-sm-12">
                 <?php
           if (!empty($headline)) { ?>
                 <h1><?= $headline ?></h1>
@@ -49,6 +61,28 @@ var tag = document.createElement('script');
 tag.src = "https://www.youtube.com/iframe_api";
 var firstScriptTag = document.getElementsByTagName('script')[0];
 firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+$('.sound-on').on('click', function(e) {
+    e.preventDefault();
+    if (player.isMuted()) {
+        player.unMute();
+    } else {
+        player.mute();
+    }
+    $('.sound-on').hide('slow');
+    $('.sound-off').show('slow');
+});
+
+$('.sound-off').on('click', function(e) {
+    e.preventDefault();
+    if (player.isMuted()) {
+        player.unMute();
+    } else {
+        player.mute();
+    }
+    $('.sound-off').hide('slow');
+    $('.sound-on').show('slow');
+});
 
 // 2. This function creates an <iframe> (and YouTube player)
 //    after the API code downloads.
@@ -97,7 +131,9 @@ function onPlayerStateChange(event) {
         $(".video-wrap img").animate({
             opacity: 0
         }, 500);
-
+        $(".container.controls").animate({
+            opacity: 1
+        }, 500);
     }
     if (event.data === 0) {
         player.playVideo();
