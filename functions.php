@@ -129,3 +129,13 @@ function rimrebelion_contact_info_shortcode($atts) {
 }
 add_shortcode("rimrebelion_contact_info", "rimrebelion_contact_info_shortcode");
 
+add_action("woocommerce_after_shipping_rate", "inoby_add_info_to_local_shipping_rate");
+
+/**
+ * Adds desciption to local pickup shipping method
+ */
+function inoby_add_info_to_local_shipping_rate(WC_Shipping_Rate $method) {
+  if (str_starts_with($method->get_id(), "local_pickup")) {
+    printf("<span class='description'>%s</span>", __("RimRebellion HQ<br/>  Námestie Mateja Korvína 2<br/> 811 07 Bratislava<br/> 10:00 - 16:00", "inoby"));
+  }
+}

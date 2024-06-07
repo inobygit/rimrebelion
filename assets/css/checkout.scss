@@ -23,6 +23,9 @@ body.woocommerce-checkout #copyright.copyright-left-and-right .widget-area{
 
 $progressbar-height: 0px;
 body.woocommerce-checkout {
+  span.description{
+    font-size: 1.3rem;
+  }
   div#header > .header{
     position: relative;
     border-bottom: $progressbar-height solid $gray300;
