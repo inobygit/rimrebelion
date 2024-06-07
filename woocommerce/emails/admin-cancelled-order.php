@@ -19,14 +19,19 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-/*
- * @hooked WC_Emails::email_header() Output the email header
-*/
-do_action( 'woocommerce_email_header', $email_heading, $email ); ?>
 
-<?php /* translators: %1$s: Order number, %2$s: Customer full name.  */ ?>
-<p><?php printf( esc_html__( 'Notification to let you know &mdash; order #%1$s belonging to %2$s has been cancelled:', 'woocommerce' ), esc_html( $order->get_order_number() ), esc_html( $order->get_formatted_billing_full_name() ) ); ?>
-</p>
+/**
+ * @hooked WC_Emails::email_header() Output the email header
+ */
+do_action( 'woocommerce_email_header', $email_heading, $email ); 
+?>
+
+<?php
+
+/**
+ * @hooked Kadence_Woomail_Designer::email_main_text_area
+ */
+do_action( 'kadence_woomail_designer_email_details', $order, $sent_to_admin, $plain_text, $email );?>
 
 <?php
 /*
@@ -48,10 +53,11 @@ do_action( 'woocommerce_email_order_meta', $order, $sent_to_admin, $plain_text, 
  */
 do_action( 'woocommerce_email_customer_details', $order, $sent_to_admin, $plain_text, $email );
 
+
 /**
  * Show user-defined additional content - this is set in each email's settings.
  */
-echo '<p class="center">'.__('In case of any questions, do not hasitate to contact us by e-mail: ', 'rimrebellion').' <a href="mailto:help@rimrebellion.com">'. __("help@rimrebellion.com ", 'rimrebellion') .' </a> '.__("or by phone: ", 'rimrebellion').' <a href="tel:+421915111199">'. __("+ 421 915 111 199.", 'rimrebellion') .' </a></p>';
+echo '<p class="center">'.__('In case of any questions, do not hasitate to contact us by e-mail: ', 'rimrebellion').' <a href="mailto:help@rimrebellion.com">'. __("help@rimrebellion.com ", 'rimrebellion') .' </a></p>';
 echo '<p class="center"><b>'.__("Thank you for shopping at ").' <a href="https://rimrebellion.com">'.__("rimrebellion.com!", 'rimrebellion').'</a></b></p>';
 
 /*
@@ -88,9 +94,3 @@ do_action( 'woocommerce_email_footer', $email );
     margin: 0 10px;
 }
 </style>
-
-<div class="terms-table-row">
-    <a
-        href="<?= __('/terms-and-conditions/#terms', 'rimrebellion') ?>"><?= __("Terms and conditions", 'rimrebellion') ?></a>
-    <a href="<?= __('/privacy-policy/#privacy', 'rimrebellion') ?>"><?= __("GDPR", 'rimrebellion') ?></a>
-</div>

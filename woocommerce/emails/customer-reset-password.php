@@ -21,29 +21,32 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 ?>
 
-<?php do_action( 'woocommerce_email_header', $email_heading, $email ); ?>
+<?php do_action( 'woocommerce_email_header', $email_heading, $email ); 
 
-<?php /* translators: %s: Customer username */ ?>
-<p><?php printf( esc_html__( 'Hi %s,', 'woocommerce' ), esc_html( $user_login ) ); ?></p>
-<?php /* translators: %s: Store name */ ?>
-<p><?php printf( esc_html__( 'Someone has requested a new password for the following account on %s:', 'woocommerce' ), esc_html( wp_specialchars_decode( get_option( 'blogname' ), ENT_QUOTES ) ) ); ?>
-</p>
-<?php /* translators: %s: Customer username */ ?>
-<p><?php printf( esc_html__( 'Username: %s', 'woocommerce' ), esc_html( $user_login ) ); ?></p>
-<p><?php esc_html_e( 'If you didn\'t make this request, just ignore this email. If you\'d like to proceed:', 'woocommerce' ); ?>
-</p>
+
+/**
+ * @hooked Kadence_Woomail_Designer::email_main_text_area_no_order
+ */
+do_action( 'kadence_woomail_designer_email_text', $email ); 
+
+if ( true == $button_check ) {
+	echo '<p class="btn-container"><a href="' . esc_url( add_query_arg( array( 'key' => $reset_key, 'id' => $user_id ), wc_get_endpoint_url( 'lost-password', '', wc_get_page_permalink( 'myaccount' ) ) ) ) . '" class="btn">' . esc_html__( 'Reset Password', 'kadence-woocommerce-email-designer' ) . '</a></p>';
+} else {
+	?>
 <p>
     <a class="link"
-        href="<?php echo esc_url( add_query_arg( array( 'key' => $reset_key, 'id' => $user_id ), wc_get_endpoint_url( 'lost-password', '', wc_get_page_permalink( 'myaccount' ) ) ) ); ?>"><?php // phpcs:ignore ?>
-        <?php esc_html_e( 'Click here to reset your password', 'woocommerce' ); ?>
-    </a>
+        href="<?php echo esc_url( add_query_arg( array( 'key' => $reset_key, 'id' => $user_id ), wc_get_endpoint_url( 'lost-password', '', wc_get_page_permalink( 'myaccount' ) ) ) ); ?>">
+        <?php esc_html_e( 'Click here to reset your password', 'kadence-woocommerce-email-designer' ); ?></a>
 </p>
-
+<?php
+}
+?>
+<p></p>
 <?php
 /**
  * Show user-defined additional content - this is set in each email's settings.
  */
-echo '<p class="center">'.__('In case of any questions, do not hasitate to contact us by e-mail: ', 'rimrebellion').' <a href="mailto:help@rimrebellion.com">'. __("help@rimrebellion.com ", 'rimrebellion') .' </a> '.__("or by phone: ", 'rimrebellion').' <a href="tel:+421915111199">'. __("+ 421 915 111 199.", 'rimrebellion') .' </a></p>';
+echo '<p class="center">'.__('In case of any questions, do not hasitate to contact us by e-mail: ', 'rimrebellion').' <a href="mailto:help@rimrebellion.com">'. __("help@rimrebellion.com ", 'rimrebellion') .' </a></p>';
 echo '<p class="center"><b>'.__("Thank you for shopping at ").' <a href="https://rimrebellion.com">'.__("rimrebellion.com!", 'rimrebellion').'</a></b></p>';
 
 do_action( 'woocommerce_email_footer', $email );

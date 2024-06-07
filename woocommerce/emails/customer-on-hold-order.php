@@ -20,14 +20,13 @@ defined( 'ABSPATH' ) || exit;
 /*
  * @hooked WC_Emails::email_header() Output the email header
  */
-do_action( 'woocommerce_email_header', $email_heading, $email ); ?>
+do_action( 'woocommerce_email_header', $email_heading, $email ); 
 
-<?php /* translators: %s: Customer first name */ ?>
-<p><?php printf( esc_html__( 'Hi %s,', 'woocommerce' ), esc_html( $order->get_billing_first_name() ) ); ?></p>
-<p><?php esc_html_e( 'Thanks for your order. It’s on-hold until we confirm that payment has been received.', 'woocommerce' ); ?>
-</p>
+/**
+* @hooked Kadence_Woomail_Designer::email_main_text_area
+*/
+do_action( 'kadence_woomail_designer_email_details', $order, $sent_to_admin, $plain_text, $email );
 
-<?php
 
 /*
  * @hooked WC_Emails::order_details() Shows the order details table.
@@ -51,7 +50,7 @@ do_action( 'woocommerce_email_customer_details', $order, $sent_to_admin, $plain_
 /**
  * Show user-defined additional content - this is set in each email's settings.
  */
-echo '<p class="center">'.__('In case of any questions, do not hasitate to contact us by e-mail: ', 'rimrebellion').' <a href="mailto:help@rimrebellion.com">'. __("help@rimrebellion.com ", 'rimrebellion') .' </a> '.__("or by phone: ", 'rimrebellion').' <a href="tel:+421915111199">'. __("+ 421 915 111 199.", 'rimrebellion') .' </a></p>';
+echo '<p class="center">'.__('In case of any questions, do not hasitate to contact us by e-mail: ', 'rimrebellion').' <a href="mailto:help@rimrebellion.com">'. __("help@rimrebellion.com ", 'rimrebellion') .' </a></p>';
 echo '<p class="center"><b>'.__("Thank you for shopping at ").' <a href="https://rimrebellion.com">'.__("rimrebellion.com!", 'rimrebellion').'</a></b></p>';
 
 /*
