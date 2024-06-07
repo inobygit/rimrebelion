@@ -90,10 +90,6 @@ margin-left: 0;
 margin-right: 0;
 }
 
-#template_footer_container:nth-of-type(4){
-display: none;
-}
-
 .terms-table-row {
 background-color: black;
 display: flex;
@@ -169,6 +165,10 @@ padding: 0;
 
 #body_content td ul.wc-item-meta li p {
 margin: 0;
+}
+
+#template_header_image_container{
+background-color: transparent !important;
 }
 
 #body_content p {

@@ -24,39 +24,15 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * @hooked WC_Emails::email_header() Output the email header
  */
-do_action( 'woocommerce_email_header', $email_heading, $email ); ?>
+do_action( 'woocommerce_email_header', $email_heading, $email ); 
 
-<?php /* translators: %s: Customer first name */ ?>
-<p><?php printf( esc_html__( 'Hi %s,', 'woocommerce' ), esc_html( $order->get_billing_first_name() ) ); ?></p>
+/**
+ * Add Main Email Text
+ *
+ * @hooked Kadence_Woomail_Designer::email_main_text_area
+ */
+do_action( 'kadence_woomail_designer_email_details', $order, $sent_to_admin, $plain_text, $email );
 
-<?php if ( $order->needs_payment() ) { ?>
-<p>
-    <?php
-	printf(
-		wp_kses(
-			/* translators: %1$s Site title, %2$s Order pay link */
-			__( 'An order has been created for you on %1$s. Your invoice is below, with a link to make payment when you’re ready: %2$s', 'woocommerce' ),
-			array(
-				'a' => array(
-					'href' => array(),
-				),
-			)
-		),
-		esc_html( get_bloginfo( 'name', 'display' ) ),
-		'<a href="' . esc_url( $order->get_checkout_payment_url() ) . '">' . esc_html__( 'Pay for this order', 'woocommerce' ) . '</a>'
-	);
-	?>
-</p>
-
-<?php } else { ?>
-<p>
-    <?php
-	/* translators: %s Order date */
-	printf( esc_html__( 'Here are the details of your order placed on %s:', 'woocommerce' ), esc_html( wc_format_datetime( $order->get_date_created() ) ) );
-	?>
-</p>
-<?php
-}
 
 /**
  * Hook for the woocommerce_email_order_details.
@@ -86,7 +62,7 @@ do_action( 'woocommerce_email_customer_details', $order, $sent_to_admin, $plain_
 /**
  * Show user-defined additional content - this is set in each email's settings.
  */
-echo '<p class="center">'.__('In case of any questions, do not hasitate to contact us by e-mail: ', 'rimrebellion').' <a href="mailto:help@rimrebellion.com">'. __("help@rimrebellion.com ", 'rimrebellion') .' </a> '.__("or by phone: ", 'rimrebellion').' <a href="tel:+421915111199">'. __("+ 421 915 111 199.", 'rimrebellion') .' </a></p>';
+echo '<p class="center">'.__('In case of any questions, do not hasitate to contact us by e-mail: ', 'rimrebellion').' <a href="mailto:help@rimrebellion.com">'. __("help@rimrebellion.com ", 'rimrebellion') .' </a></p>';
 echo '<p class="center"><b>'.__("Thank you for shopping at ").' <a href="https://rimrebellion.com">'.__("rimrebellion.com!", 'rimrebellion').'</a></b></p>';
 
 /**
