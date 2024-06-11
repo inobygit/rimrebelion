@@ -1,19 +1,16 @@
 <?php
 
-defined("ABSPATH") || exit();
+$product = $args['product'] ?? null;
 
-/**
- * @var WC_Product $product
- */
-global $product;
+defined("ABSPATH") || exit();
 
 $post_thumbnail_id = $product->get_image_id();
 $attachment_ids = $product->get_gallery_image_ids();
 
-
 if ($post_thumbnail_id) {
   $attrs = [
     "data-gallery-index" => 0,
+    "data-gallery-parent" => '#slider-' . $product->get_id(),
   ];
     $master_img_html = get_gallery_image_html($post_thumbnail_id, 'o-6', $attrs);
 } else {
@@ -28,13 +25,14 @@ if ($post_thumbnail_id) {
         <?= $master_img_html ?>
     </div>
 
-    <div class="slider keen-slider">
+    <div class="slider keen-slider" id="slider-<?= $product->get_id() ?>">
         <?php
     echo $master_img_html;
 
     if ($post_thumbnail_id && $attachment_ids) {
       foreach ($attachment_ids as $i => $attachment_id) {
         echo get_gallery_image_html($attachment_id, "o-4", [
+          "data-gallery-parent" => '#slider-' . $product->get_id(),
           "data-gallery-index" => $i + 1,
         ]);
       }
@@ -54,11 +52,13 @@ if ($post_thumbnail_id) {
             echo get_gallery_image_html($attachment_id, "o-4", [
               "class" => "woocommerce-product-gallery__image more",
               "data-more-text" => "+ $remaining",
+              "data-gallery-parent" => '#slider-' . $product->get_id(),
               "data-gallery-index" => $i + 1, // +1 because there is no master image in thumbs
             ]);
             break;
           }
           echo get_gallery_image_html($attachment_id, "o-4", [
+            "data-gallery-parent" => '#slider-' . $product->get_id(),
             "data-gallery-index" => $i + 1, // +1 because there is no master image in thumbs
           ]);
         }

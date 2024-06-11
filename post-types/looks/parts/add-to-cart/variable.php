@@ -4,8 +4,12 @@
  */
 
 defined("ABSPATH") || exit();
+		wp_enqueue_script( 'wc-add-to-cart-variation' );
 
-global $product;
+$product = $args['product'] ?? null;
+$attributes = $product->get_variation_attributes();
+$get_variations = count( $product->get_children() ) <= apply_filters( 'woocommerce_ajax_variation_threshold', 30, $product );
+$available_variations = $get_variations ? $product->get_available_variations() : false;
 
 $attribute_keys = array_keys($attributes);
 $variations_json = wp_json_encode($available_variations);
@@ -14,9 +18,7 @@ $variations_attr = function_exists("wc_esc_json") ? wc_esc_json($variations_json
 do_action("woocommerce_before_add_to_cart_form");
 ?>
 
-<form class="variations_form cart" action="<?php echo esc_url(
-    apply_filters("woocommerce_add_to_cart_form_action", $product->get_permalink()),
-); ?>" method="post" enctype='multipart/form-data' data-product_id="<?php echo absint(
+<form class="variations_form cart" method="post" enctype='multipart/form-data' data-product_id="<?php echo absint(
     $product->get_id(),
 ); ?>" data-product_variations="<?php echo $variations_attr; ?>">
     <?php do_action("woocommerce_before_variations_form"); ?>
@@ -32,7 +34,6 @@ do_action("woocommerce_before_add_to_cart_form");
         <table class="variations" cellspacing="0" role="presentation">
             <tbody>
                 <?php foreach ($attributes as $attribute_name => $options): 
-                    
                     ?>
                 <tr>
                     <td class="value">
@@ -55,7 +56,14 @@ do_action("woocommerce_before_add_to_cart_form");
 
         <?php do_action("woocommerce_before_single_variation"); ?>
         <?php
-    do_action("woocommerce_single_variation");
+		echo '<div class="woocommerce-variation single_variation">'; ?>
+        <script type="text/template" id="tmpl-variation-template">
+            <div class="woocommerce-variation-price">{{{ data.variation.price_html }}}</div>
+	<div class="woocommerce-variation-sku"><span class="sku-label"><?= __("Kód produktu: ", "rimrebelion") ?></span>{{{ data.variation.sku }}}</div>
+	<div class="woocommerce-variation-availability">{{{ data.variation.availability_html }}}</div>
+</script>
+        <?php echo '</div>';
+    get_template_part( 'post-types/looks/parts/add-to-cart/variation-add-to-cart-button', null, ['product' => $product]);
     do_action("woocommerce_after_single_variation");
     ?>
     </div>

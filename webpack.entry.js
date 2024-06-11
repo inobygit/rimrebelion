@@ -16,6 +16,7 @@ const def_child = {
 
   post_types: {
     product: child.post_type("product"),
+    looks: child.post_type("looks"),
   },
 
   checkout: [
