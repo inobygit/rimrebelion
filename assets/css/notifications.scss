@@ -11,6 +11,9 @@
   font-size: 1.3rem;
   a.button,
   a.wc-backward {
+    height: unset !important;
+    min-height: unset !important;
+    max-height: unset !important;
     @include link;
     border: none !important;
     background-color: transparent !important;

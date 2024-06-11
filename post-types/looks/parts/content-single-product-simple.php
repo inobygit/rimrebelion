@@ -17,14 +17,8 @@
 
 defined("ABSPATH") || exit();
 
-global $product;
-
-/**
- * Hook: woocommerce_before_single_product.
- *
- * @hooked woocommerce_output_all_notices - 10
- */
-do_action("woocommerce_before_single_product");
+$product_id = $args['product_id'] ?? null;
+$product = wc_get_product($product_id);
 $args = apply_filters(
     "inoby_product_args",
     [
@@ -46,45 +40,64 @@ if (post_password_required()) {
     return;
 }
 
-$collections = wp_get_post_terms($product->get_id(), "collection");
-RC()->last_seen_products()->enqueue_scripts($product->get_id());
+$collections = wp_get_post_terms($product_id, "collection");
 
-// Zobrazenie termínov nad excerptom
 ?>
-<?php get_template_part("template-parts/yoast-breadcrumbs", "yoast-breadcrumbs"); ?>
-
 
 <div id="product-<?php the_ID(); ?>" <?php wc_product_class("", $product); ?>>
 
     <div class="row product-header">
         <div class="gallery-col column <?= $gallery_class ?>">
-            <?php do_action("woocommerce_before_single_product_summary"); ?>
+            <?php get_template_part("post-types/looks/parts/product-image-simple", null, ['product' => $product]); ?>
         </div>
         <div class="summary-col column <?= $summary_class ?>">
             <div class="summary entry-summary">
-                <?php
-/**
-			 * Hook: woocommerce_single_product_summary.
-			 *
-			 * @hooked woocommerce_template_single_title - 5
-			 * @hooked woocommerce_template_single_rating - 10
-			 * @hooked woocommerce_template_single_price - 10
-			 * @hooked woocommerce_template_single_excerpt - 20
-			 * @hooked woocommerce_template_single_add_to_cart - 30
-			 * @hooked woocommerce_template_single_meta - 40
-			 * @hooked woocommerce_template_single_sharing - 50
-			 * @hooked WC_Structured_Data::generate_product_data() - 60
-			 */
-?>
                 <div class="tags">
                     <?php
-          Inoby_Product::product_special_badge();
-          Inoby_Product::new_product_badge();
-          Inoby_Product::sale_badge_percentage();
+                    $taxonomy = "product_specials";
+                    $terms = get_the_terms($product->get_id(), $taxonomy);
+
+                    if ($terms) {
+                        foreach ($terms as $term) {
+                            echo '<span class="tag special ' . $term->slug . '">' . esc_html__($term->name, "inoby") . "</span>";
+                        }
+                    }
+
+                    $newness_days = 30;
+                    $created = strtotime($product->get_date_created());
+
+                    if ($product->is_on_sale() || time() - 60 * 60 * 24 * $newness_days < $created) {
+                        if (time() - 60 * 60 * 24 * $newness_days < $created) {
+                            echo '<span class="tag new-product">' . esc_html__("Novinka", "inoby") . "</span>";
+                        }
+                    }
+
+                    if ($product->is_on_sale()) {
+                        $max_percentage = 0;
+                        if ($product->is_type("simple")) {
+                        $max_percentage = (($product->get_regular_price() - $product->get_sale_price()) / $product->get_regular_price()) * 100;
+                        } elseif ($product->is_type("variable")) {
+                        foreach ($product->get_children() as $child_id) {
+                            $variation = wc_get_product($child_id);
+                            $price = $variation->get_regular_price();
+                            $sale = $variation->get_sale_price();
+                            if ($price != 0 && !empty($sale)) {
+                            $percentage = (($price - $sale) / $price) * 100;
+                            }
+                            if ($percentage > $max_percentage) {
+                            $max_percentage = $percentage;
+                            }
+                        }
+                        }
+                        if ($max_percentage > 0) {
+                        echo "<span class='tag on-sale'>-" . round($max_percentage) . "%</span>";
+                        } 
+                    }
+
           ?>
                 </div>
                 <?php
-        woocommerce_template_single_title(); // Inoby_Product::get_manufacturer_name();
+                get_template_part("post-types/looks/parts/title-simple", null, ['product' => $product]); // Inoby_Product::get_manufacturer_name();
         $gender_terms = wp_get_post_terms($product->get_id(), 'gender');
         if (!empty($gender_terms) && !is_wp_error($gender_terms)) {
             echo '<div class="product-genders">';
@@ -101,23 +114,25 @@ RC()->last_seen_products()->enqueue_scripts($product->get_id());
             }
             echo '</div>';
         }
-        woocommerce_template_single_excerpt();
+        get_template_part("post-types/looks/parts/short-description-simple", null, ['product' => $product]);
         echo '<div class="collection-terms">';
         foreach ($collections as $collection) {
             echo '<span class="collection-term">'.__('CAFÉ DU CYCLISTE', 'rimrebellion').'</span>';
         }
         echo "</div>";
-        display_related_product_thumbnails();
-        // TODO color switching
-        $colorMeta = rwmb_meta('color', null, $product->get_id());
+        display_related_product_thumbnails($product->get_id());
+
+            $colorMeta = rwmb_meta('color', null, $product->get_id());
 
             if(!empty($colorMeta)){
                 echo '<p class="color-term">' . __('Color: ', 'rimrebellion') . $colorMeta . '</p>';
             }
+
         if ($product->is_type("simple")) {
-            woocommerce_template_single_price();
+            get_template_part("post-types/looks/parts/price-simple", null, ['product' => $product]);
         }
-        woocommerce_template_single_add_to_cart();
+        	get_template_part( 'post-types/looks/parts/add-to-cart/' . $product->get_type(), null, ['product' => $product]);
+
         ?>
             </div>
         </div>
