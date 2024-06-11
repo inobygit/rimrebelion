@@ -22,9 +22,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 $post = $args['product'] ?? null;
 
 
-$short_description = apply_filters( 'woocommerce_short_description', $post->short_description );
 
 ?>
 <div class="woocommerce-product-details__short-description">
-    <?php echo $short_description; // WPCS: XSS ok. ?>
+    <?php echo $post->get_short_description(); // WPCS: XSS ok. ?>
 </div>

@@ -63,6 +63,11 @@ if ( $product->is_in_stock() ) : ?>
     <?php do_action( 'woocommerce_after_add_to_cart_button' ); ?>
 </form>
 
-<?php do_action( 'woocommerce_after_add_to_cart_form' ); ?>
+<?php 
+$GLOBALS['product'] = $product;
+ob_start();
+do_action("woocommerce_after_add_to_cart_form");
+ob_clean();
+?>
 
 <?php endif; ?>
