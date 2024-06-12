@@ -40,4 +40,32 @@
   }
 
   add_action('init', 'pt_register_looks', 0);
+
+
+function custom_taxonomy_look_gender() {
+    $labels = [
+        "name" => _x("Gender", "taxonomy general name"),
+        "singular_name" => _x("Gender", "taxonomy singular name"),
+        "search_items" => __("Search Gender"),
+        "all_items" => __("All Gender"),
+        "edit_item" => __("Edit Gender"),
+        "update_item" => __("Update Gender"),
+        "add_new_item" => __("Add New Gender"),
+        "new_item_name" => __("New Gender Name"),
+        "menu_name" => __("Gender"),
+    ];
+
+    $args = [
+        "hierarchical" => true,
+        "labels" => $labels,
+        "show_ui" => true,
+        "public" => false,
+        "show_admin_column" => true,
+        "query_var" => true,
+        "rewrite" => ["slug" => "look-gender"],
+    ];
+
+    register_taxonomy("look-gender", "looks", $args);
+}
+add_action("init", "custom_taxonomy_look_gender", 0);
 ?>

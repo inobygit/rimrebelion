@@ -12,6 +12,7 @@ const components = [
   ...theme.component("category-slider"),
   ...theme.component("last-viewed"),
   ...theme.component("video-background"),
+  ...theme.component("build-your-look"),
 ];
 
 module.exports = components;
