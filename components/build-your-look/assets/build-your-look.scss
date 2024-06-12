@@ -1,0 +1,142 @@
+@import "variables";
+@import "mixins";
+
+.build-your-look {
+  background-color: $white;
+  padding: $space-lg 0 4rem 0;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .header-tag{
+    position: absolute;
+    top: 0;
+    left: auto;
+    z-index: 1;
+    transform-origin: top;
+    @include bp(xl){
+      transform: scale(.8);
+    }
+    @include bp(lg){
+      transform: scale(.7);
+    }
+    @include bp(md){
+      transform: scale(.6);
+    }
+    @include bp(sm){
+      transform: scale(.5);
+    }
+    .content{
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      width: 100%;
+      height: 100%;
+      padding: 4rem;
+      overflow: hidden;
+      h3,
+      p{
+        text-align: center;
+        color: $white;
+      }
+      h3{
+        text-transform: uppercase;
+      }
+      .italic{
+        font-family: 'ItalianPlateItalic', sans-serif;
+        font-size: $fs-h4;
+      }
+    }
+  }
+  .slider-wrapper{
+    align-content: flex-start;
+    display: flex;
+    flex-wrap: nowrap;
+    overflow: hidden;
+    position: relative;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+    -khtml-user-select: none;
+    touch-action: pan-y;
+    -webkit-tap-highlight-color: transparent;
+    width: 100%;
+    align-items: stretch;
+    margin: 0;
+    padding-bottom: 4rem;
+    cursor: grab;
+    .post-card{
+            width: 100%;
+            height: 100%;
+            max-height: 400px;
+            aspect-ratio: 3/4;
+            a{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: 100%;
+                width: 100%;
+                overflow: hidden;
+                background-color: #F4E7D5;
+                &:hover{
+                    img{
+                        transform: scale(1.05);
+                    }
+                }
+            }
+            img{
+                height: 100%;
+                max-width: unset;
+                object-fit: contain;
+                transition: .3s ease-in-out;
+            }
+        }
+  }
+.dots{
+  position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      gap: .8rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      .dot{
+        background: none;
+        width: fit-content;
+        padding: 0;
+        margin: 0;
+        height: fit-content;
+        cursor: pointer;
+        &::after{
+          content: '';
+          background-image: url("data:image/svg+xml,%3Csvg width='17' height='14' viewBox='0 0 17 14' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M15.8908 6.44408L14.7276 4.434C14.5286 4.09263 14.1651 3.88094 13.7691 3.88094H11.7182V2.48876C11.7182 2.09399 11.5059 1.72974 11.1634 1.53331L8.75288 0.148754C8.41043 -0.0495845 7.98954 -0.0495845 7.64326 0.148754L5.23846 1.53331C4.89601 1.73164 4.68366 2.09399 4.68366 2.48876V3.88285H2.6347C2.23868 3.88285 1.87518 4.09263 1.67622 4.434L0.509209 6.44408C0.310244 6.78545 0.310244 7.20883 0.509209 7.5502L1.67622 9.56409C1.87518 9.90546 2.23868 10.1172 2.6347 10.1172H4.68366V11.5093C4.68366 11.9041 4.8941 12.2684 5.23655 12.4648L7.64135 13.8512C7.9838 14.0496 8.40852 14.0496 8.75097 13.8512L11.1596 12.4648C11.502 12.2664 11.7144 11.9041 11.7144 11.5093V10.1172H13.7634C14.1594 10.1172 14.5248 9.90546 14.7218 9.56409L15.8908 7.54829C16.0897 7.20692 16.0897 6.78736 15.8908 6.44217H15.8927L15.8908 6.44408Z' fill='black'/%3E%3C/svg%3E%0A");
+          background-repeat: no-repeat;
+          background-position: center;
+          background-size: contain;
+          display: block;
+          width: 16px;
+          height: 14px;
+          min-height: 14px;
+          min-width: 16px;
+          transition: .3s;
+        }
+        &:not(.active){
+          &::after{
+            opacity: .3;
+          }
+        }
+        &:hover{
+          &::after{
+            opacity: 1;
+          }
+        
+        }
+      }
+    }
+
+}

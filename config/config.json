@@ -19,7 +19,8 @@
     "meta-box/inoby-article-boxes",
     "meta-box/inoby-category-slider",
     "meta-box/inoby-last-viewed",
-    "meta-box/inoby-video-background"
+    "meta-box/inoby-video-background",
+    "meta-box/inoby-build-your-look"
   ],
   "page404": {
     "title": "<?php __(\"PAGE NOT FOUND\", \"inoby\")",

@@ -5,6 +5,7 @@
  * @var WP_Post
  */
 $post = $args["post"] ?? false;
+
 if (!$post) {
   return;
 }
