@@ -17,8 +17,9 @@ class Custom_Woomail_Designer extends Kadence_Woomail_Designer {
 
 <div class="terms-table-row">
     <a
-        href="<?= __('/terms-and-conditions/#terms', 'rimrebellion') ?>"><?= __("Terms and conditions", 'rimrebellion') ?></a>
-    <a href="<?= __('/privacy-policy/#privacy', 'rimrebellion') ?>"><?= __("GDPR", 'rimrebellion') ?></a>
+        href="<?= __('https://rimrebellion.com/terms-and-conditions/#terms', 'rimrebellion') ?>"><?= __("Terms and conditions", 'rimrebellion') ?></a>
+    <a
+        href="<?= __('https://rimrebellion.com/privacy-policy/#privacy', 'rimrebellion') ?>"><?= __("GDPR", 'rimrebellion') ?></a>
 </div>
 <?php
 	}
