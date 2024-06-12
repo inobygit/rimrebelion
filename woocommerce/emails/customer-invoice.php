@@ -62,7 +62,7 @@ do_action( 'woocommerce_email_customer_details', $order, $sent_to_admin, $plain_
 /**
  * Show user-defined additional content - this is set in each email's settings.
  */
-echo '<p class="center">'.__('In case of any questions, do not hasitate to contact us by e-mail: ', 'rimrebellion').' <a href="mailto:help@rimrebellion.com">'. __("help@rimrebellion.com ", 'rimrebellion') .' </a></p>';
+echo '<p class="center">'.__('In case of any questions, do not hasitate to contact us by e-mail: ', 'rimrebellion').' <a href="mailto:hello@rimrebellion.com">'. __("hello@rimrebellion.com ", 'rimrebellion') .' </a></p>';
 echo '<p class="center"><b>'.__("Thank you for shopping at ").' <a href="https://rimrebellion.com">'.__("rimrebellion.com!", 'rimrebellion').'</a></b></p>';
 
 /**
