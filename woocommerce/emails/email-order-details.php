@@ -38,14 +38,14 @@ do_action( 'woocommerce_email_before_order_table', $order, $sent_to_admin, $plai
 	}
 	?>
         <tr>
-            <td style="padding: 0;">
+            <td style="padding: 1rem 0;">
                 <i>
                     <u>
                         <?= wp_kses_post( $before . sprintf( __( 'Order number: %s', 'rimrebellion' ) . $after, $order->get_order_number() ) ) ?>
                     </u>
                 </i>
             </td>
-            <td>
+            <td style="padding: 1rem 0; text-align: right;">
                 <i>
                     <u>
                         <?= wp_kses_post( sprintf( __('Order date: ', 'rimrebellion') . ' <time datetime="%s">%s</time>', $order->get_date_created()->format( 'c' ), wc_format_datetime( $order->get_date_created() ) ) ) ?>
