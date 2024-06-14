@@ -21,6 +21,10 @@ $text_align = is_rtl() ? 'right' : 'left';
 
 do_action( 'woocommerce_email_before_order_table', $order, $sent_to_admin, $plain_text, $email ); ?>
 
+<h2>
+    <?= __("Order details", 'rimrebellion') ?>
+</h2>
+
 <table cellspacing="0" cellpadding="6"
     style="text-align: left; width: 100%; font-family: 'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif; border: none; border-bottom: 3px solid black;">
     <thead>
@@ -34,20 +38,20 @@ do_action( 'woocommerce_email_before_order_table', $order, $sent_to_admin, $plai
 	}
 	?>
         <tr>
-            <td style="padding: 1rem 0;">
+            <td style="padding: 0;">
                 <i>
                     <u>
                         <?= wp_kses_post( $before . sprintf( __( 'Order number: %s', 'rimrebellion' ) . $after, $order->get_order_number() ) ) ?>
                     </u>
                 </i>
             </td>
-            <td style="padding: 1rem 0; text-align: right;">
+            <td>
                 <i>
                     <u>
                         <?= wp_kses_post( sprintf( __('Order date: ', 'rimrebellion') . ' <time datetime="%s">%s</time>', $order->get_date_created()->format( 'c' ), wc_format_datetime( $order->get_date_created() ) ) ) ?>
                     </u>
                 </i>
-                </tds>
+            </td>
         </tr>
     </thead>
 </table>
