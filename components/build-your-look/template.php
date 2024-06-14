@@ -7,7 +7,7 @@ $gender = mb_get_block_field("build-your-look-category");
 
 <section class="build-your-look">
     <?php if(!empty($heading)){ ?>
-    <div class="header-tag">
+    <a class="header-tag" href="<?php echo get_post_type_archive_link('looks'); ?>">
         <svg width="270" height="193" viewBox="0 0 270 193" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
                 d="M104.637 184.831L19.4227 135.372C7.39966 128.394 6.77149e-06 115.543 7.9868e-06 101.642L1.68726e-05 -2.36041e-05L270 0L270 101.797C270 115.702 262.596 128.555 250.568 135.532L165.578 184.831C146.771 195.723 123.444 195.723 104.637 184.831Z"
@@ -21,7 +21,7 @@ $gender = mb_get_block_field("build-your-look-category");
             <p class="italic"><?= $desc ?></p>
             <?php } ?>
         </div>
-    </div>
+    </a>
     <?php } ?>
     <?php if(!empty($gender) && isset($gender)){?>
     <div class="container">

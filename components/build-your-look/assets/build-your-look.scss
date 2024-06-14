@@ -26,6 +26,15 @@
     @include bp(sm){
       transform: scale(.5);
     }
+    &:hover{
+      svg{
+        transform: scaleY(1.05);
+      }
+    }
+    svg{
+      transition: .3s;
+      transform-origin: top center;
+    }
     .content{
       position: absolute;
       top: 0;

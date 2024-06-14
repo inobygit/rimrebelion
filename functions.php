@@ -157,3 +157,24 @@ function inoby_add_info_to_local_shipping_rate(WC_Shipping_Rate $method) {
     printf("<span class='description'>%s</span>", __("RimRebellion HQ<br/>  Námestie Mateja Korvína 2<br/> 811 07 Bratislava<br/> 10:00 - 16:00", "inoby"));
   }
 }
+
+
+function posts_load_more_scripts_child() {
+  global $wp_query;
+  // register our main script but do not enqueue it yet
+  wp_register_script(
+    "posts_loadmore_child",
+    get_stylesheet_directory_uri() . "/assets/js/postsloadmore.js",
+    ["jquery"],
+  );
+  // we have to pass parameters to postsloadmore.js script but we can get the parameters values only in PHP
+  // you can define variables directly in your HTML but I decided that the most proper way is wp_localize_script()
+  wp_localize_script("posts_loadmore_child", "posts_loadmore_child_params", [
+    "ajaxurl" => site_url() . "/wp-admin/admin-ajax.php", // WordPress AJAX
+    "posts" => json_encode($wp_query->query_vars), // everything about your loop is here
+    "current_page" => get_query_var("paged") ? get_query_var("paged") : 1,
+    "max_page" => $wp_query->max_num_pages,
+  ]);
+  wp_enqueue_script("posts_loadmore_child");
+}
+add_action("wp_enqueue_scripts", "posts_load_more_scripts_child");
