@@ -6,12 +6,25 @@ require_once RIMREBELLION_CHILD . "/inc/product-tabs.php";
 require_once RIMREBELLION_CHILD . "/inc/product-functions.php";
 require_once RIMREBELLION_CHILD . "/inc/custom-import-mapper.php";
 require_once RIMREBELLION_CHILD . "/inc/custom-mail-footer.php";
+
 // To ensure the action is removed, you can try adding the removal in a later hook
 add_action('after_setup_theme', 'remove_parent_theme_redirect');
 
+
 function remove_parent_theme_redirect() {
     remove_action('template_redirect', 'misha_redirect_to_orders_from_dashboard');
-}    
+}   
+
+function misha_redirect_to_orders_from_dashboard_child(){
+    if( is_account_page() && empty( WC()->query->get_current_endpoint() ) && empty($_GET) ){
+      wp_safe_redirect( wc_get_account_endpoint_url( 'orders' ) );
+      exit;
+    }
+    
+}
+
+add_action('template_redirect', 'misha_redirect_to_orders_from_dashboard_child');
+
 RC()
     ->last_seen_products()
     ->init_ajax();
