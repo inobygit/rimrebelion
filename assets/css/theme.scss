@@ -361,6 +361,31 @@ nav.breadcrumbs {
   .menu-cart{
     margin: 0;
   }
+  .menu-account{
+    .logged-in{
+      padding: .6rem;
+      background-color: $black;
+      border-radius: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      aspect-ratio: 1/1;
+      min-height: 24px;
+      position: relative;
+      min-width: 24px;
+      transition: .3s;
+      &:hover{
+        opacity: .6;
+      }
+      img{
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+    }
+  }
 }
 #search {
   border-top: 0;

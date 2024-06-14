@@ -37,8 +37,8 @@
                     <?php else: ?>
                     <a href="<?= get_permalink(
             get_option("woocommerce_myaccount_page_id"),
-          ) ?>" title="<?= __("My Account", "inoby") ?>">
-                        <img src="<?= get_theme_file_uri("/assets/svg/user-white.svg") ?>"
+          ) ?>" title="<?= __("My Account", "inoby") ?>" class="logged-in">
+                        <img src="<?= get_theme_file_uri("/assets/icons/person-logged.svg") ?>"
                             alt="<?= __("My Account", "inoby") ?>"></a>
                     <?php endif; ?>
                 </div>

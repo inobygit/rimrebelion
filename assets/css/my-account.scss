@@ -8,13 +8,47 @@ $trianglew: 14px;
   overflow-x: hidden;
 
   section.header{
-    height: 227px;
+    min-height: 227px;
     width: 100%;
     position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 2.7rem;
+    &::after{
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      width: 100%;
+      height: 100%;
+      background-image: linear-gradient(270deg, #00000000, hsla(0, 0%, 0%, 0.4));
+      z-index: -1;
+    }
     img{
       width: 100%;
       height: 100%;
       object-fit: cover;
+      position: absolute;
+      top: 0;
+      z-index: -1;
+      left: 0;
+      right: 0;
+      bottom: 0;
+    }
+    h1,
+    p{
+      color: $white;
+      text-transform: uppercase;
+    }
+    h1{
+      margin-bottom: 1rem;
+    }
+    p{
+      margin-bottom: 0;
     }
   }
     .woocommerce {
