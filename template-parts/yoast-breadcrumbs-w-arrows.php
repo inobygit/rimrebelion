@@ -8,8 +8,8 @@
             </div>
             <div class="col-6 end">
                 <div class="prev-next">
-                    <?php $prev_post = get_previous_post();
-                    $next_post = get_next_post();
+                    <?php $prev_post = get_previous_post(true, '', 'look-gender');
+                    $next_post = get_next_post(true, '', 'look-gender');
                   if($next_post) { ?>
                     <div class="prev-post">
                         <a href="<?= get_permalink($next_post->ID) ?>" class="button">

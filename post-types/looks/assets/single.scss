@@ -146,6 +146,9 @@
         align-items: center;
         justify-content: flex-start;
         gap: 1.6rem;
+        .tag{
+          background-color: $gray100;
+        }
       }
       h1{
         margin-bottom: 0.8rem;
@@ -319,7 +322,7 @@
               flex-wrap: wrap;
               gap: 0.5rem;
               .gender-term-box {
-                background-color: $white;
+                background-color: $gray100;
                 padding: 0.8rem 1.6rem;
                 display: inline-block;
                 margin: 0;
