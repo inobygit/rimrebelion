@@ -6,8 +6,12 @@ require_once RIMREBELLION_CHILD . "/inc/product-tabs.php";
 require_once RIMREBELLION_CHILD . "/inc/product-functions.php";
 require_once RIMREBELLION_CHILD . "/inc/custom-import-mapper.php";
 require_once RIMREBELLION_CHILD . "/inc/custom-mail-footer.php";
+// To ensure the action is removed, you can try adding the removal in a later hook
+add_action('after_setup_theme', 'remove_parent_theme_redirect');
 
-    
+function remove_parent_theme_redirect() {
+    remove_action('template_redirect', 'misha_redirect_to_orders_from_dashboard');
+}    
 RC()
     ->last_seen_products()
     ->init_ajax();
