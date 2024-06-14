@@ -10,13 +10,17 @@ if($args['gender']){
 
   $posts_args = [
     "post_type" => "looks",
-    "posts_per_page" => -1,
+    "posts_per_page" => get_option("posts_per_page"),
     'post_status' => 'publish',
     "orderby" => "date",
     "order" => "desc",
+    'offset'  => Inoby_Config::latest_posts(),
   ];
 
-if(!empty($gender)){
+
+if($gender){
+    $posts_args['posts_per_page'] = -1;
+    $posts_args['offset'] = 0;
     $posts_args['tax_query'] = [
         [
             'taxonomy' => 'look-gender',

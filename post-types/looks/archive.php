@@ -73,17 +73,19 @@ get_header();
         </div>
     </section>
 
-    <!-- <section class="pagination">
+    <?php if(!isset($_GET['gender'])){ ?>
+    <section class="pagination">
         <div class="container">
             <?php 
-            // $args = [
-            //     'card_template' => 'post-types/looks/parts/card',
-            //     'card-classes'  => 'col-3 col-md-6 col-sm-12',
-            //     'gender'    => $gender,
-            // ];
-            // get_template_part("post-types/looks/parts/pagination", null, $args); ?>
+            $args = [
+                'card_template' => 'post-types/looks/parts/card',
+                'card-classes'  => 'col-3 col-md-6 col-sm-12',
+                'gender'    => $gender,
+            ];
+            get_template_part("post-types/looks/parts/pagination", null, $args); ?>
         </div>
-    </section> -->
+    </section>
+    <?php } ?>
 </div>
 
 <?php
