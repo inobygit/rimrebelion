@@ -1,4 +1,11 @@
 <?php
+if($args['gender']){
+  $gender = $args['gender'];
+} else {
+  $gender = null;
+}
+
+
   echo apply_filters("inoby_looks_list_before", "<div class=\"row\">");
 
   $posts_args = [
@@ -9,6 +16,16 @@
     "order" => "desc",
     'offset'  => Inoby_Config::latest_posts(),
   ];
+
+if(!empty($gender)){
+    $posts_args['tax_query'] = [
+        [
+            'taxonomy' => 'look-gender',
+            'field'    => 'term_id',
+            'terms'    => $gender,
+        ],
+    ];
+}
   $posts_query = new WP_Query($posts_args);
   if ($posts_query->have_posts()):
     $posts_query_index = 0;

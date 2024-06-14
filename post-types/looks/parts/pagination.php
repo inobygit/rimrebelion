@@ -1,6 +1,7 @@
 <?php
 $card_template = $args["card_template"] ?? "";
 $card_classes = $args["card-classes"] ?? "";
+$looks_gender = $args['gender'] ?? "";
 $more_text = __("Show more", "rimrebellion");
 $load_text = __("Loading...", "rimrebellion");
 
@@ -9,6 +10,7 @@ $button_args .= $card_template ? " card-template=\"{$card_template}\"" : "";
 $button_args .= $card_classes ? " card-classes=\"{$card_classes}\"" : "";
 $button_args .= "more-text=\"{$more_text}\"";
 $button_args .= "load-text=\"{$load_text}\"";
+$button_args .= "gender=\"{$looks_gender}\"";
 
 if (Inoby_Config::latest_posts() > 0) {
   // todo: pri latest_posts zobrazi tlacidlo aj pri poslednej page kvoli ofsettu

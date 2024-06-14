@@ -1,12 +1,12 @@
 jQuery(function ($) {
-  console.log('test');
   $(".posts_loadmore_child").on("click", function () {
     var button = $(this),
       data = {
-        action: "loadmore",
+        action: "loadmore_child",
         query: posts_loadmore_params.posts, // that's how we get params from wp_localize_script() function
         card_template: button.attr("card-template") ?? "",
         card_classes: button.attr("card-classes") ?? "",
+        looks_gender: button.attr('gender') ?? "",
         page: posts_loadmore_params.current_page,
       };
     $.ajax({

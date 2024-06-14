@@ -14,6 +14,12 @@ $archive_looks_heading = rwmb_meta("archive_looks_heading", ["object_type" => "s
 $archive_looks_italic_text = rwmb_meta("archive_looks_italic_text", ["object_type" => "setting"], "options");
 $archive_looks_text = rwmb_meta("archive_looks_text", ["object_type" => "setting"], "options");
 
+if(isset($_GET['gender'])){
+    $gender = $_GET['gender'];
+} else {
+    $gender = null;
+}
+
 get_header();
 ?>
 
@@ -63,7 +69,7 @@ get_header();
 
     <section class="list">
         <div class="container">
-            <?php get_template_part("post-types/looks/parts/looks-list"); ?>
+            <?php get_template_part("post-types/looks/parts/looks-list", null, ['gender' => $gender]); ?>
         </div>
     </section>
 
@@ -72,7 +78,8 @@ get_header();
             <?php 
             $args = [
                 'card_template' => 'post-types/looks/parts/card',
-                'card-classes'  => 'col-3 col-md-6 col-sm-12'
+                'card-classes'  => 'col-3 col-md-6 col-sm-12',
+                'gender'    => $gender,
             ];
             get_template_part("post-types/looks/parts/pagination", null, $args); ?>
         </div>

@@ -178,3 +178,51 @@ function posts_load_more_scripts_child() {
   wp_enqueue_script("posts_loadmore_child");
 }
 add_action("wp_enqueue_scripts", "posts_load_more_scripts_child");
+
+
+function posts_loadmore_ajax_handler_child() {
+  // prepare our arguments for the query
+  $args = json_decode(stripslashes($_POST["query"]), true);
+  $cardTemplate = $_POST["card_template"] ?? "" ?: "post-types/post/parts/card";
+  $cardClasses = $_POST["card_classes"] ?? "" ?: "col-3 col-md-6 col-sm-12";
+  $looksGender = $_POST["looks_gender"] ?? "";
+  if (Inoby_Config::latest_posts() > 0) {
+    $current_page = max(1, $_POST["page"] + 1);
+    $per_page = get_option("posts_per_page");
+    $offset_start = Inoby_Config::latest_posts();
+    $offset = ($current_page - 1) * $per_page + $offset_start;
+
+    $args["paged"] = $_POST["page"] + 1; // we need next page to be loaded
+    $args["offset"] = $offset; // we need next page to be loaded
+  } else {
+    $args["paged"] = $_POST["page"] + 1; // we need next page to be loaded
+  }
+  $args["post_status"] = "publish";
+  // it is always better to use WP_Query but not here
+  if(!empty($looksGender)){
+        $args['tax_query'] = [
+            [
+                'taxonomy' => 'look-gender',
+                'field'    => 'term_id',
+                'terms'    => $looksGender,
+            ],
+        ];
+    }
+  query_posts($args);
+  if (have_posts()):
+    // run the loop
+    while (have_posts()):
+      the_post();
+      global $post;
+      echo apply_filters(
+        "inoby_post_list_card_before",
+        "<div class=\"$cardClasses\">",
+      );
+      get_template_part($cardTemplate, null, ["post" => $post]);
+      echo apply_filters("inoby_post_list_card_after", "</div>");
+    endwhile;
+  endif;
+  die(); // here we exit the script and even no wp_reset_query() required!
+}
+add_action("wp_ajax_loadmore_child", "posts_loadmore_ajax_handler_child"); // wp_ajax_{action}
+add_action("wp_ajax_nopriv_loadmore_child", "posts_loadmore_ajax_handler_child"); // wp_ajax_nopriv_{action}
