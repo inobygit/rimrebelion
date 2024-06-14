@@ -2,12 +2,11 @@
 $heading = mb_get_block_field("build-your-look-heading");
 $desc = mb_get_block_field("build-your-look-desc");
 $gender = mb_get_block_field("build-your-look-category");
-
 ?>
 
 <section class="build-your-look">
     <?php if(!empty($heading)){ ?>
-    <a class="header-tag" href="<?php echo get_post_type_archive_link('looks'); ?>">
+    <a class="header-tag" href="<?= get_post_type_archive_link('looks') . '?gender=' . $gender->term_id ?>">
         <svg width="270" height="193" viewBox="0 0 270 193" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
                 d="M104.637 184.831L19.4227 135.372C7.39966 128.394 6.77149e-06 115.543 7.9868e-06 101.642L1.68726e-05 -2.36041e-05L270 0L270 101.797C270 115.702 262.596 128.555 250.568 135.532L165.578 184.831C146.771 195.723 123.444 195.723 104.637 184.831Z"
