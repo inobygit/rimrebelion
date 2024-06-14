@@ -21,6 +21,19 @@ defined( 'ABSPATH' ) || exit;
 
 <section class="header">
     <img src="<?= get_theme_file_uri("/assets/img/bg-header.webp") ?>" alt="404" />
+    <div class="container">
+        <div class="row">
+            <div class="col-6 col-md-12">
+                <h1>
+                    <?= __('Welcome to your account', 'rimrebellion') ?>
+                </h1>
+                <p>
+                    <?= __('Here you can see and manage your orders and data.', 'rimrebellion') ?>
+                </p>
+
+            </div>
+        </div>
+    </div>
 </section>
 
 <?php
