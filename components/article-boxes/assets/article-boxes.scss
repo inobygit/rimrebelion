@@ -7,6 +7,10 @@
     h3{
       text-transform: uppercase;
     }
+    p{
+      font-family: "ItalianPlateItalic", sans-serif;
+      font-size: 2rem;
+    }
     .end{
       display: flex;
       flex-direction: column;
@@ -137,6 +141,8 @@
           .link{
             font-size: $fs-h3;
             font-style: italic;
+              font-family: "ItalianPlateItalic", sans-serif;
+
             font-weight: 400;
             overflow: hidden;
             display: -webkit-box;
@@ -208,6 +214,7 @@
             em{
               text-transform: none;
               font-weight: 400;
+              font-family: "ItalianPlateItalic", sans-serif;
             }
           }
         }
