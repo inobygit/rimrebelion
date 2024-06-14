@@ -46,10 +46,15 @@ section.hero {
     .desc{
       p{
         color: $white;
+        font-family: "ItalianPlateItalic", sans-serif;
+        font-size: 2.6rem;
       }
     }
     .button{
       margin-top: 1em;
+        font-family: "Helvetica Neue", sans-serif;
+        font-weight: 400;
+        line-height: normal !important;
       &.btn-background{
         color: $white;
         border: none;

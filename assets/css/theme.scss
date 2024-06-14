@@ -423,6 +423,10 @@ nav.breadcrumbs {
       color: $black;
       padding: 5px 8px !important;
       position: relative;
+      font-weight: 400;
+      font-family: 'Helvetica', sans-serif;
+      font-size: 1.4rem;
+
       &:hover{
         background: none;
       }
@@ -432,6 +436,9 @@ nav.breadcrumbs {
         justify-content: flex-end;
         gap: .8rem;
         padding-right: 0;
+        font-weight: 400;
+      font-family: 'Helvetica', sans-serif;
+      font-size: 1.4rem;
         &::before{
           content: '';
           position: absolute;
@@ -542,7 +549,9 @@ nav.breadcrumbs {
       }
     }
     .top-menu > div > ul.menu li.menu-item a{
+      font-family: 'Helvetica', sans-serif;
       color: $white;
+      font-size: 1.4rem;
     }
     .top-menu > div > ul.menu li.menu-item.menu-item-megamenu > a::after,
     #lang-switcher .wpml-ls-legacy-dropdown-click a.wpml-ls-item-toggle::after{
@@ -621,8 +630,8 @@ nav.breadcrumbs {
     padding-right: 0;
     >a{
       padding: 3.2rem 8px !important;
-      font-size: 1.3rem !important;
-      font-weight: 700 !important;
+      font-size: 1.4rem !important;
+      font-weight: 400 !important;
       &:hover{
         color: $white !important;
         &::before{
@@ -676,6 +685,8 @@ nav.breadcrumbs {
       gap: .8rem;
       line-height: normal;
       z-index: 1;
+      font-weight: 400;
+      font-size: 1.4rem;
       &::before{
         content: '';
         position: absolute;
@@ -747,7 +758,6 @@ nav.breadcrumbs {
           line-height: 125%; 
           display: inline-block;
           padding: 0;
-          font-weight: 700;
           &:hover{
             color: $btn-hover-bg;
           }
@@ -786,8 +796,8 @@ nav.breadcrumbs {
     }
     >a{
       padding: 3.2rem 8px !important;
-      font-size: 1.3rem !important;
-      font-weight: 700 !important;
+      font-size: 1.4rem !important;
+      font-weight: 400 !important;
     }
     li.menu-item{
       padding: 0;
