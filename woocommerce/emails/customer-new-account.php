@@ -55,6 +55,6 @@ if ( true == $account_section ) {
  * Show user-defined additional content - this is set in each email's settings.
  */
 echo '<p class="center">'.__('In case of any questions, do not hasitate to contact us by e-mail: ', 'rimrebellion').' <a href="mailto:hello@rimrebellion.com">'. __("hello@rimrebellion.com ", 'rimrebellion') .' </a></p>';
-echo '<p class="center"><b>'.__("Thank you for shopping at ").' <a href="https://rimrebellion.com">'.__("rimrebellion.com!", 'rimrebellion').'</a></b></p>';
+echo '<p class="center"><b>'.__("Thank you for shopping at ", 'rimrebellion').' <a href="https://rimrebellion.com">'.__("rimrebellion.com!", 'rimrebellion').'</a></b></p>';
 
 do_action( 'woocommerce_email_footer', $email );

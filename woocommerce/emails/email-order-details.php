@@ -21,8 +21,10 @@ $text_align = is_rtl() ? 'right' : 'left';
 
 do_action( 'woocommerce_email_before_order_table', $order, $sent_to_admin, $plain_text, $email ); ?>
 
-<h2>
-    <?php
+<table cellspacing="0" cellpadding="6"
+    style="text-align: left; width: 100%; font-family: 'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif; border: none; border-bottom: 3px solid black;">
+    <thead>
+        <?php
 	if ( $sent_to_admin ) {
 		$before = '<a class="link" href="' . esc_url( $order->get_edit_order_url() ) . '">';
 		$after  = '</a>';
@@ -30,10 +32,25 @@ do_action( 'woocommerce_email_before_order_table', $order, $sent_to_admin, $plai
 		$before = '';
 		$after  = '';
 	}
-	/* translators: %s: Order ID. */
-	echo wp_kses_post( $before . sprintf( __( '[Order #%s]', 'woocommerce' ) . $after . ' (<time datetime="%s">%s</time>)', $order->get_order_number(), $order->get_date_created()->format( 'c' ), wc_format_datetime( $order->get_date_created() ) ) );
 	?>
-</h2>
+        <tr>
+            <td style="padding: 1rem 0;">
+                <i>
+                    <u>
+                        <?= wp_kses_post( $before . sprintf( __( 'Order number: %s', 'rimrebellion' ) . $after, $order->get_order_number() ) ) ?>
+                    </u>
+                </i>
+            </td>
+            <td style="padding: 1rem 0; text-align: right;">
+                <i>
+                    <u>
+                        <?= wp_kses_post( sprintf( __('Order date: ', 'rimrebellion') . ' <time datetime="%s">%s</time>', $order->get_date_created()->format( 'c' ), wc_format_datetime( $order->get_date_created() ) ) ) ?>
+                    </u>
+                </i>
+                </tds>
+        </tr>
+    </thead>
+</table>
 
 <div style="margin-bottom: 40px;">
     <table class="td" cellspacing="0" cellpadding="6"
