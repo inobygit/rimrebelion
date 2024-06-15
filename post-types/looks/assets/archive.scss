@@ -100,4 +100,264 @@
             justify-content: center;
         }
     }
+
+$filter-bg-color: $gray100 !default;
+
+//HEADINGS
+$filter-headings-ff: $font-family !default;
+$filter-headings-color: $col-prm !default;
+$filter-headings-fw: $fw-semi !default;
+$filter-headings-fs: 1.8rem !default;
+
+//HEADINGS ON MOBILE
+$filter-headings-padding-mobile: (2rem * 1.6) !default;
+
+//INPUTS GROUP
+$filter-input-group-padding: (2rem * 1.6) !default;
+$filter-input-group-padding-mobile: (2rem * 1.6) !default;
+$filter-input-group-border-bottom: 1px solid $col-prm !default;
+
+//LABELS
+$filter-labels-ff: $font-family !default;
+$filter-labels-fz: 1.4rem !default;
+$filter-labels-fW: $fw-semi !default;
+$filter-labels-color: $col-text !default;
+
+//COUNT
+$filter-count-ff: $font-family !default;
+$filter-count-fz: 1rem !default;
+$filter-count-color: $col-text !default;
+
+#shop-sidebar {
+  position: relative;
+  &.hidden-shop-sidebar {
+    display: none;
+  }
+  #products-filter {
+    .fields {
+      display: grid;
+      grid-template-columns: 1fr;
+    }
+    margin-bottom: (3rem * 1.6);
+    .input-group {
+      position: relative;
+            padding: 0;
+            border-bottom: none;
+      @include bp("md") {
+        padding: 1rem 0;
+      }
+      &.slider-range-wrapper {
+        border-bottom: none;
+      }
+      > label {
+        font-family: $filter-headings-ff;
+        font-weight: $filter-headings-fw;
+        color: $filter-headings-color;
+        font-size: $filter-headings-fs;
+        margin-right: (2rem * 1.6);
+      }
+      > .filter-values {
+        margin-top: (2rem * 1.6);
+      }
+      
+    }
+    
+    @include bp("md") {
+      display: none;
+    }
+  }
+  .mobile-header {
+    display: none;
+  }
+  .products-filter-init {
+    width: 100%;
+    margin-bottom: (3rem * 1.6);
+    transition: none;
+    display: none;
+    @include bp("md") {
+      display: block;
+    }
+  }
+  .filter-trigger {
+    display: none;
+  }
+  @include bp("md") {
+    &.active {
+      display: flex;
+      flex-direction: column;
+      background: $filter-bg-color;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      max-height: 100vh;
+      z-index: 999;
+      overflow-y: auto;
+        padding: 2rem 4rem;
+        #rc-product-count,
+        form.woocommerce-ordering {
+          display: none;
+        }
+        .mobile-header {
+          padding: 0 !important;
+        }
+
+      #products-filter {
+        display: block;
+        background: $filter-bg-color;
+        .fields {
+          grid-template-columns: grid-auto-template();
+        }
+      }
+      .mobile-header {
+        display: block;
+        padding: $filter-headings-padding-mobile;
+        border-bottom: 1px solid $gray100;
+        margin-bottom: 2rem;
+      }
+      .products-filter-init {
+        display: block;
+        font-size: 0;
+        position: absolute;
+        top: 3.2rem;
+        right: 1.5rem;
+        width: 2rem;
+        height: 2rem;
+        margin: 0;
+        background: transparent;
+        box-shadow: none;
+        border: none;
+        padding: 1.5rem;
+        padding-right: 0;
+        &:after {
+          content: "✕";
+          font-size: 2.4rem;
+          font-weight: $fw-light;
+          position: absolute;
+          top: 0;
+          left: 0;
+          color: $gray900;
+        }
+      }
+      .filter-trigger {
+        width: 100%;
+        display: block;
+        position: sticky;
+        bottom: 0;
+      }
+    }
+  }
+}
+
+.checkboxes-wrapper-looks {
+  .input-wrp-looks {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    label {
+      margin-left: 0.5em;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      line-height: 1;
+      & > span {
+        font-family: $filter-labels-ff;
+        font-size: $filter-labels-fz;
+        font-weight: $filter-labels-fW;
+        color: $filter-labels-color;
+      }
+    }
+    .count {
+      font-weight: $filter-count-ff;
+      font-size: $filter-count-fz;
+      color: $filter-count-color;
+      margin-left: 0.5rem;
+      line-height: 1.8rem;
+      opacity: 0.5;
+      white-space: nowrap;
+    }
+
+    &.hidden {
+      display: none;
+    }
+  }
+
+  .search-wrp {
+    display: flex;
+    flex-flow: row nowrap;
+    padding-bottom: 1rem;
+    align-items: center;
+
+    .search-input {
+      flex: 1 1;
+    }
+
+    .icon {
+      color: $col-prm;
+      aspect-ratio: 1;
+      height: 2.4rem;
+      margin-left: -3rem;
+    }
+  }
+
+  input {
+    &:disabled {
+      ~ label {
+        opacity: 0.5;
+
+        ~ .count {
+          opacity: 0.5;
+        }
+      }
+    }
+  }
+
+  label[for*="filter-gender"] {
+            @include bp("md-up") {
+              display: none !important;
+            }
+          }
+          div#filter-gender {
+            @include bp("md-up") {
+              display: flex;
+              gap: 0.5rem;
+              .count {
+                display: none;
+              }
+              input + label {
+                background-color: $white;
+                padding: 0.8rem 1.6rem;
+                cursor: pointer;
+                display: inline-block;
+                margin: 0;
+                span {
+                    font-size: 1.4rem;
+                    font-weight: 500;
+                    white-space: nowrap;
+                    color: $black;
+                    text-transform: uppercase;
+                }
+                &.active{
+                    background-color: $black;
+                    span{
+                        color: $white;
+                    }
+                }
+              }
+              input:checked + label {
+                background-color: $col-prm;
+                span {
+                  color: $white;
+                }
+              }
+              input[type="checkbox"] {
+                display: none;
+              }
+            }
+            .input-wrp-looks:has([data-content="Unisex"]) {
+              display: none;
+            }
+        }
+}
+
 }

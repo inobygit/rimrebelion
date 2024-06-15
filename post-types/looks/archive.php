@@ -7,6 +7,7 @@
 defined("ABSPATH") || exit();
 
 inoby_enqueue_parted_style("looks", "post_types");
+inoby_enqueue_parted_script("looks", "post_types");
 
 $archive_looks_heroimg = rwmb_meta("archive_looks_heroimg", ["limit" => 1, "size" => "archive-banner", "object_type" => "setting"], "options");
 $archive_looks_hero = reset($archive_looks_heroimg);
@@ -67,6 +68,59 @@ get_header();
     <?php get_template_part("template-parts/yoast-breadcrumbs", "yoast-breadcrumbs"); ?>
 
 
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div id="products-top-sidebar">
+                    <?php 
+                    $terms = get_terms( array(
+                        'taxonomy' => 'look-gender',
+                        'post_type' => 'looks',
+                        'hide_empty' => true,
+                    ) );
+                    if(!empty($terms)) { 
+                        ?>
+                    <div id="shop-sidebar" class="sticky-side-menu">
+                        <div class="mobile-header">
+                            <h3><?= __("Filtrovať produkty", "rootscope") ?></h3>
+                        </div>
+                        <form id="products-filter">
+                            <div class="fields">
+                                <div class="checkboxes-wrapper-looks input-group ">
+                                    <label for=" filter-gender"><?= __("Gender", 'rimrebellion') ?></label>
+                                    <div id="filter-gender" class="filter-wrp-looks">
+                                        <?php foreach($terms as $gen) { 
+                                            ?>
+                                        <div class="input-wrp-looks">
+                                            <input type="checkbox" id="option-<?= $gen->term_id ?>" name="gender[]"
+                                                value="<?= $gen->term_id ?>">
+                                            <label for="option-<?= $gen->term_id ?>">
+                                                <span data-content="<?= $gen->name ?>"><?= $gen->name ?></span>
+                                            </label>
+                                            <div class="count">(<?= $gen->count ?>)</div>
+                                        </div>
+                                        <?php } ?>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <input type="hidden" name="disable_auto_apply_filter" value="false">
+
+                            <?php
+                                // tento button sa zobrazi len na mobile - (product/archive.ts, product/filter.scss)
+                            ?>
+                            <button class="button filter-trigger"><?= __("Filtrovať", "inoby") ?></button>
+                        </form>
+
+
+                        <button class="button color products-filter-init"><?= __("Filter", "rootscope") ?></button>
+                    </div>
+                    <?php } ?>
+                </div>
+            </div>
+        </div>
+    </div>
     <section class="list">
         <div class="container">
             <?php get_template_part("post-types/looks/parts/looks-list", null, ['gender' => $gender]); ?>
