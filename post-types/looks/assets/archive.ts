@@ -47,6 +47,9 @@ class LooksArchiveModule extends InobyModule {
         }
     });
 
+    $(".filter-wrp-looks input[type=checkbox]:checked").on('click', function(e) {
+        e.preventDefault();
+    });
     $(".filter-wrp-looks input[type=checkbox]").on("change", function(e) {
         e.preventDefault();
         $(".filter-wrp-looks input[type=checkbox]").each(function() {
