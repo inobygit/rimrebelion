@@ -40,9 +40,9 @@ class LooksArchiveModule extends InobyModule {
             const currentUrlParams = new URLSearchParams(window.location.search);
             currentUrlParams.delete("gender");
             if (currentUrlParams.toString() === "") {
-                window.location.href = window.location.pathname + `/?gender=${checkedBox.val()}`;
+                window.location.href = window.location.pathname + `?gender=${checkedBox.val()}`;
             } else {
-                window.location.href = window.location.pathname + '/?' + currentUrlParams + `&gender=${checkedBox.val()}`;
+                window.location.href = window.location.pathname + '?' + currentUrlParams + `&gender=${checkedBox.val()}`;
             }
         }
     });
@@ -61,9 +61,9 @@ class LooksArchiveModule extends InobyModule {
             const currentUrlParams = new URLSearchParams(window.location.search);
             currentUrlParams.delete("gender");
             if (currentUrlParams.toString() === "") {
-                window.location.href = window.location.pathname + `/?gender=${$(this).val()}`;
+                window.location.href = window.location.pathname + `?gender=${$(this).val()}`;
             } else {
-                window.location.href = window.location.pathname + '/?' + currentUrlParams + `&gender=${$(this).val()}`;
+                window.location.href = window.location.pathname + '?' + currentUrlParams + `&gender=${$(this).val()}`;
             }
         }
     });
