@@ -161,4 +161,218 @@ function custom_taxonomy_main_category() {
 }
 add_action("init", "custom_taxonomy_main_category", 0);
 
+function custom_taxonomy_size_chart() {
+    $labels = [
+        "name" => _x("Size charts", "taxonomy general name"),
+        "singular_name" => _x("Size chart", "taxonomy singular name"),
+        "search_items" => __("Search Size charts"),
+        "all_items" => __("All Size charts"),
+        "edit_item" => __("Edit Size chart"),
+        "update_item" => __("Update Size chart"),
+        "add_new_item" => __("Add New Size chart"),
+        "new_item_name" => __("New Size chart Name"),
+        "menu_name" => __("Size charts"),
+    ];
+
+    $args = [
+        "hierarchical" => true,
+        "labels" => $labels,
+        "show_ui" => true,
+        "public" => false,
+        "show_admin_column" => true,
+        "query_var" => true,
+    ];
+
+    register_taxonomy("size-chart", "product", $args);
+}
+add_action("init", "custom_taxonomy_size_chart", 0);
+
+add_filter("rwmb_meta_boxes", function ($meta_boxes) {
+    $meta_boxes[] = [
+        "taxonomies" => "size-chart",
+        "title" => __("Tabuľka", "rimrebellion"),
+        "fields" => [
+            [
+                'id'  => 'table-heading',
+                'name'  => __('Nadpis tabuľky', 'inoby'),
+                'type'  => 'text',
+            ],
+            [
+                'id'  => 'table-desc',
+                'name'  => __('Popis tabuľky', 'inoby'),
+                'type'  => 'wysiwyg',
+                'raw'   => true,
+            ],
+            [
+                'id'  => 'table-number-columns',
+                'name'  => __('Počet stĺpcov', 'inoby'),
+                'type'  => 'range',
+                'min' => 1,
+                'step'  => 1,
+                'max' => 10,
+                'std'   => 1,
+            ],
+            [
+                'id'  => 'table-headings-group',
+                'group_title' => __("Nadpisy", 'inoby'),
+                'type'  => 'group',
+                'clone' => false,
+                'collapsible' => true,
+                'default_state' => 'collapsed',
+                'fields'  => [
+                [
+                    'id'  => 'table-heading-1',
+                    'name'  => __("Nadpis stĺpca 1", 'inoby'),
+                    'type'  => 'text',
+                    'visible' => ['table-number-columns', '>', 0],
+                ],
+                [
+                    'id'  => 'table-heading-2',
+                    'name'  => __("Nadpis stĺpca 2", 'inoby'),
+                    'type'  => 'text',
+                    'visible' => ['table-number-columns', '>', 1],
+                ],
+                [
+                    'id'  => 'table-heading-3',
+                    'name'  => __("Nadpis stĺpca 3", 'inoby'),
+                    'type'  => 'text',
+                    'visible' => ['table-number-columns', '>', 2],
+                ],
+                [
+                    'id'  => 'table-heading-4',
+                    'name'  => __("Nadpis stĺpca 4", 'inoby'),
+                    'type'  => 'text',
+                    'visible' => ['table-number-columns', '>', 3],
+                ],
+                [
+                    'id'  => 'table-heading-5',
+                    'name'  => __("Nadpis stĺpca 5", 'inoby'),
+                    'type'  => 'text',
+                    'visible' => ['table-number-columns', '>', 4],
+                ],
+                [
+                    'id'  => 'table-heading-6',
+                    'name'  => __("Nadpis stĺpca 6", 'inoby'),
+                    'type'  => 'text',
+                    'visible' => ['table-number-columns', '>', 5],
+                ],
+                [
+                    'id'  => 'table-heading-7',
+                    'name'  => __("Nadpis stĺpca 7", 'inoby'),
+                    'type'  => 'text',
+                    'visible' => ['table-number-columns', '>', 6],
+                ],
+                [
+                    'id'  => 'table-heading-8',
+                    'name'  => __("Nadpis stĺpca 8", 'inoby'),
+                    'type'  => 'text',
+                    'visible' => ['table-number-columns', '>', 7],
+                ],
+                [
+                    'id'  => 'table-heading-9',
+                    'name'  => __("Nadpis stĺpca 9", 'inoby'),
+                    'type'  => 'text',
+                    'visible' => ['table-number-columns', '>', 8],
+                ],
+                [
+                    'id'  => 'table-heading-10',
+                    'name'  => __("Nadpis stĺpca 10", 'inoby'),
+                    'type'  => 'text',
+                    'visible' => ['table-number-columns', '>', 9],
+                ],
+                ],
+            ],
+            [
+                'id'  => 'table-rows-group',
+                'group_title' => __("Riadky", 'inoby'),
+                'type'  => 'group',
+                'clone' => false,
+                'collapsible' => true,
+                'default_state' => 'collapsed',
+                'fields'  => [
+                [
+                    'id'  => 'row',
+                    'group_title' => __("Riadok {row-1}", 'inoby'),
+                    'type'  => 'group',
+                    'clone' => true,
+                    'collapsible' => true,
+                    'sort_clone' => true,
+                    'default_state' => 'collapsed',
+                    'fields'  => [
+                    [
+                        'id'  => 'row-icon',
+                        'name'  => __("Ikona riadku", 'inoby'),
+                        'type'  => 'image_advanced',
+                        'max_file_uploads' => 1,
+                    ],
+                    [
+                        'id'  => 'row-1',
+                        'name'  => __("Stĺpec 1", 'inoby'),
+                        'type'  => 'text',
+                        'visible' => ['table-number-columns', '>', 0],
+                    ],
+                    [
+                        'id'  => 'row-2',
+                        'name'  => __("Stĺpec 2", 'inoby'),
+                        'type'  => 'text',
+                        'visible' => ['table-number-columns', '>', 1],
+                    ],
+                    [
+                        'id'  => 'row-3',
+                        'name'  => __("Stĺpec 3", 'inoby'),
+                        'type'  => 'text',
+                        'visible' => ['table-number-columns', '>', 2],
+                    ],
+                    [
+                        'id'  => 'row-4',
+                        'name'  => __("Stĺpec 4", 'inoby'),
+                        'type'  => 'text',
+                        'visible' => ['table-number-columns', '>', 3],
+                    ],
+                    [
+                        'id'  => 'row-5',
+                        'name'  => __("Stĺpec 5", 'inoby'),
+                        'type'  => 'text',
+                        'visible' => ['table-number-columns', '>', 4],
+                    ],
+                    [
+                        'id'  => 'row-6',
+                        'name'  => __("Stĺpec 6", 'inoby'),
+                        'type'  => 'text',
+                        'visible' => ['table-number-columns', '>', 5],
+                    ],
+                    [
+                        'id'  => 'row-7',
+                        'name'  => __("Stĺpec 7", 'inoby'),
+                        'type'  => 'text',
+                        'visible' => ['table-number-columns', '>', 6],
+                    ],
+                    [
+                        'id'  => 'row-8',
+                        'name'  => __("Stĺpec 8", 'inoby'),
+                        'type'  => 'text',
+                        'visible' => ['table-number-columns', '>', 7],
+                    ],
+                    [
+                        'id' => 'row-9',
+                        'name' => __("Stĺpec 9", 'inoby'),
+                        'type' => 'text',
+                        'visible' => ['table-number-columns', '>', 8],
+                    ],
+                    [
+                        'id' => 'row-10',
+                        'name' => __("Stĺpec 10", 'inoby'),
+                        'type' => 'text',
+                        'visible' => ['table-number-columns', '>', 9],
+                    ],
+                    ],
+                ],
+                ],
+            ],
+        ],
+    ];
+    return $meta_boxes;
+});
+
+
 ?>
