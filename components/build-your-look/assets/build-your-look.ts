@@ -47,7 +47,8 @@ class LastViewedComponent extends InobyModule {
                 },
                 "(max-width: 420px)": {
                     slides: {
-                        perView: 1,
+                      
+                        perView: 1.5,
                         spacing: 10,
                     },
                 },
