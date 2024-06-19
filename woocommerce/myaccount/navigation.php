@@ -25,7 +25,7 @@ do_action( 'woocommerce_before_account_navigation' );
     <div class="my-account-profile-content">
         <?php
 			$current_user = wp_get_current_user();
-			echo '<h3 class="profile-name">'. esc_html( $current_user->display_name ) .'</h3>';	
+			echo '<h3 class="profile-name">'. esc_html( $current_user->user_email ) .'</h3>';	
 		?>
     </div>
 </div>
