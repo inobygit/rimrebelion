@@ -454,6 +454,14 @@ body.single-product{
       }
     }
   }
+  &.columns-12{
+    .grid-row{
+      grid-template-columns: repeat(12, minmax(80px, 1fr));
+      .grid-item{
+        padding-inline: 5px;
+      }
+    }
+  }
 }
 
 .grid-item {
