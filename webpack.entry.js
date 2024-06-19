@@ -9,6 +9,7 @@ const def_child = {
     ...child.assets(["css/notifications.scss"]),
     ...child.assets(["js/mega-menu.js"]),
     ...child.entry("components"),
+    ...child.plugin("topbar", "webpack.entry", "show_topbar"),
     //
   ],
 

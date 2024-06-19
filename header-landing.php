@@ -61,9 +61,6 @@
     <div id="main">
         <div id="header">
             <?php
-      if (Inoby_Config::show_topbar()) {
-        get_template_part("inoby-plugins/topbar/topbar");
-      }
       get_template_part("inoby-plugins/header/header-landing");
       ?>
         </div>

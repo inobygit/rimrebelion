@@ -1,0 +1,54 @@
+@import "variables";
+@import "mixins";
+
+$topbar-pd: 1rem;
+$topbar-spacing: 1rem !default;
+
+#topbar {
+  display: flex;
+  justify-content: space-between;
+  background: $black;
+  color: $white;
+  padding: $topbar-pd;
+
+  span,
+  a{
+    font-size: 1.2rem;
+    font-weight: $fw-regular;
+    font-family: 'Helvetica Neue', sans-serif;
+  }
+  .marquee {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+        background: black;
+        transition: all 0.5s;
+        position: unset !important;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        &:hover {
+          text-decoration: none;
+        }
+        span,
+        a {
+          padding: 0 10rem;
+          white-space: nowrap;
+        }
+        .marquee-inner {
+          width: fit-content;
+          display: flex;
+          width: 1320px;
+          min-width: 1320px;
+          align-items: center;
+          justify-content: space-between;
+          position: relative;
+        }
+      }
+
+  &.sticky-topbar {
+    display: none;
+  }
+}

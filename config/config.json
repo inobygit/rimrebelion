@@ -1,5 +1,6 @@
 {
   "rc_filter_engine": "indexed",
+  "show_topbar": true,
   "allowed_editors": [
     "page-templates/termsAndConditions.php",
     "page-templates/landing.php"
