@@ -432,7 +432,7 @@ body.single-product{
   }
   &.columns-9{
     .grid-row{
-      grid-template-columns: repeat(9, minmax(70px, 1fr));
+      grid-template-columns: repeat(9, minmax(80px, 1fr));
       .grid-item{
         padding-inline: 5px;
       }
@@ -440,7 +440,15 @@ body.single-product{
   }
   &.columns-10{
     .grid-row{
-      grid-template-columns: repeat(10, minmax(60px, 1fr));
+      grid-template-columns: repeat(10, minmax(80px, 1fr));
+      .grid-item{
+        padding-inline: 5px;
+      }
+    }
+  }
+  &.columns-11{
+    .grid-row{
+      grid-template-columns: repeat(11, minmax(80px, 1fr));
       .grid-item{
         padding-inline: 5px;
       }
