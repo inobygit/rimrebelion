@@ -181,6 +181,7 @@ function custom_taxonomy_size_chart() {
         "public" => false,
         "show_admin_column" => true,
         "query_var" => true,
+        "rewrite" => ["slug" => "size-chart"],
     ];
 
     register_taxonomy("size-chart", "product", $args);
