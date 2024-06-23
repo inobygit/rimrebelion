@@ -98,6 +98,8 @@ if ($cat instanceof WP_Term) {
                         $args = [
                             'post_type' => 'product',
                             'posts_per_page' => -1,
+                            'post_status'   => 'publish',
+                            'suppress_filters'  => true,
                             'fields' => 'ids',
                             'tax_query' => [
                                 'relation' => 'AND',
@@ -140,11 +142,13 @@ if ($cat instanceof WP_Term) {
                             "parent" => $term_id,
                             "exclude" => $term_id,
                             'hide_empty'    => true,
-                            'fields'    => 'ids',
                         ]);
+
+                        $termlist = array_unique( wp_list_pluck( $term_children, 'term_id' ) ); 
+
                         $term_parent = get_term($term->parent, "product_cat");
                         
-                    if (count($term_children) > 0) {
+                    if (count($termlist) > 0) {
                         echo '<div class="cats-wrp">';
                         if ($term_parent && !is_wp_error($term_parent)) {
                             echo "<div class='category-item back'>
@@ -153,7 +157,7 @@ if ($cat instanceof WP_Term) {
                                     </a>
                                 </div>";
                         }
-                        foreach ($term_children as $child_id) {
+                        foreach ($termlist as $child_id) {
                             $child = get_term($child_id, "product_cat");
                             echo "<div class='category-item'>
                                     <a class='cat' rel='keep-search' href='" . get_term_link($child) . "'>
@@ -191,8 +195,9 @@ if ($cat instanceof WP_Term) {
                             "parent" => $term_parent_id,
                             "exclude" => $term_id,
                             'hide_empty'    => true,
-                            'fields'    => 'ids',
                         ]);
+
+                        $termlist = array_unique( wp_list_pluck( $term_siblings, 'term_id' ) ); 
 
                         echo '<div class="cats-wrp">';
                             echo "<div class='category-item back'>
@@ -200,8 +205,8 @@ if ($cat instanceof WP_Term) {
                             <div class='name'> " . __("Back to ", 'inoby') . $term_parent->name . "</div>
                             </a>
                             </div>";
-                            if (!empty($term_siblings)) {
-                                foreach ($term_siblings as $sibling) {
+                            if (!empty($termlist)) {
+                                foreach ($termlist as $sibling) {
                                     echo "<div class='category-item'>
                                     <a class='cat' rel='keep-search' href='" . get_term_link($sibling) . "'>
                                     <div class='img-wrp'>
@@ -227,7 +232,7 @@ if ($cat instanceof WP_Term) {
                             'posts_per_page' => -1,
                             'fields' => 'ids',
                             'suppress_filters'  => true,
-                            'post_status'   => 'published',
+                            'post_status'   => 'publish',
                             'tax_query' => [
                                 'relation' => 'AND',
                             ],
@@ -271,12 +276,14 @@ if ($cat instanceof WP_Term) {
                             'hide_empty'    => true,
                             'parent' => 0,
                             'suppress_filters'  => true,
-                            'fields'    => 'ids',
                         ]);
+
+
+                        $termlist = array_unique( wp_list_pluck( $term_children, 'term_id' ) ); 
                         
-                    if (count($term_children) > 0) {
+                    if (count($termlist) > 0) {
                         echo '<div class="cats-wrp">';
-                        foreach ($term_children as $child_id) {
+                        foreach ($termlist as $child_id) {
                             $child = get_term($child_id, "product_cat");
 
                             echo "<div class='category-item'>
