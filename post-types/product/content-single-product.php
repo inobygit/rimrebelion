@@ -84,6 +84,8 @@ RC()->last_seen_products()->enqueue_scripts($product->get_id());
           ?>
                 </div>
                 <?php
+
+                echo '<img src="'. get_stylesheet_directory_uri() . '/assets/svg/cdc.svg' . '" alt="CDC" class="cdc-logo">';
         woocommerce_template_single_title(); // Inoby_Product::get_manufacturer_name();
         $gender_terms = wp_get_post_terms($product->get_id(), 'gender');
         if (!empty($gender_terms) && !is_wp_error($gender_terms)) {
@@ -102,17 +104,16 @@ RC()->last_seen_products()->enqueue_scripts($product->get_id());
             echo '</div>';
         }
         woocommerce_template_single_excerpt();
-        echo '<div class="collection-terms">';
-        foreach ($collections as $collection) {
-            echo '<span class="collection-term">'.__('CAFÉ DU CYCLISTE', 'rimrebellion').'</span>';
-        }
-        echo "</div>";
+        
+        $colorMeta = rwmb_meta('color', null, $product->get_id());
+        if(!empty($colorMeta)){
+                echo '<p class="color-term heading">' . __('Color', 'rimrebellion') .'</p>';
+            }
         display_related_product_thumbnails();
         // TODO color switching
-        $colorMeta = rwmb_meta('color', null, $product->get_id());
 
             if(!empty($colorMeta)){
-                echo '<p class="color-term">' . __('Color: ', 'rimrebellion') . $colorMeta . '</p>';
+                echo '<p class="color-term">'  . $colorMeta . '</p>';
             }
         if ($product->is_type("simple")) {
             woocommerce_template_single_price();

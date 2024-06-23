@@ -2,6 +2,10 @@
 @import "mixins";
 
 #looks-single{
+  .single_variation_wrap{
+    display: flex;
+    flex-direction: column;
+  }
     .header{
         position: relative;
         width: 100%;
@@ -169,6 +173,11 @@
           font-weight: 400;
           line-height: 150%;
           margin-top: 1rem;
+          &.heading{
+            font-weight: 700;
+            text-transform: uppercase;
+
+          }
       }
       .woocommerce-product-details__short-description{
         color: $gray600;
@@ -244,7 +253,7 @@
             line-height: 150%; /* 19.5px */
           }
           .woocommerce-variation-availability{
-            float: right;
+            float: left;
             p.stock{
               font-size: 1.3rem;
               font-weight: 400;
@@ -262,7 +271,7 @@
           }
         }
         .woocommerce-variation-add-to-cart{
-          margin-top: $space-sm;
+          margin-top: 1rem;
           display: flex;
           align-items: center;
           justify-content: flex-start;
@@ -386,7 +395,7 @@
             line-height: 150%; /* 19.5px */
           }
           .woocommerce-variation-availability{
-            float: right;
+            float: left;
             p.stock{
               font-size: 1.3rem;
               font-weight: 400;

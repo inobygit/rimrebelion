@@ -7,6 +7,12 @@ import { arrows, dots } from "@lib/keen-slider-plugins";
 class ProductSingleModule extends InobyModule {
 
   run() { 
+
+    setTimeout(() => {
+      $('.wc-tabs li.active').removeClass('active');
+      $('.woocommerce-Tabs-panel').hide();
+    }, 10);
+
     // create slider for each component on page
     $(".inoby-slider-gallery").each((i, gallery) => {
       const $gallery = $(gallery);
