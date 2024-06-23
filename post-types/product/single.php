@@ -64,9 +64,11 @@ if(!empty($sliderImagesGallery)){
     <div class="container">
         <div class="row">
             <div class="col-12">
-
-                <?php 
+                <div class="content-wrap">
+                    <?php 
                 the_content(); ?>
+
+                </div>
             </div>
         </div>
     </div>

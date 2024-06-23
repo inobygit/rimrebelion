@@ -32,7 +32,6 @@ function rimrebellion_add_product_tab_delivery_info($tabs) {
 
 function rimrebellion_product_tab_delivery_info() {
     global $product;
-    echo '<p>'.__("Delivery info for ", 'rimrebellion') . $product->get_name() . '</p>';
     // $additional_info = get_post_meta($product->get_id(), "delivery-info", true);
     // if (!empty($additional_info)) {
     //     echo wpautop($additional_info);
@@ -157,5 +156,17 @@ function rimrebellion_remove_info_tab($tabs) {
     unset($tabs["additional_information"]);
     return $tabs;
 }
+
+/**
+ * @snippet WooCommerce Deselect All Tabs
+ */
+add_filter("woocommerce_product_tabs", "rimrebellion_deselect_all_tabs", 9999);
+function rimrebellion_deselect_all_tabs($tabs) {
+    foreach ($tabs as $key => $tab) {
+        $tabs[$key]["class"] = "";
+    }
+    return $tabs;
+}
+
 
 ?>

@@ -32,9 +32,6 @@ if ( $product->is_in_stock() ) : ?>
     <?php do_action( 'woocommerce_before_add_to_cart_button' ); ?>
 
     <div class="simple-row between">
-        <div class="woocommerce-variation-sku"><span class="sku-label"><?= __("Kód produktu: ", "rimrebelion") ?></span>
-            <?=  $product->get_sku()?>
-        </div>
         <div class="woocommerce-variation-availability">
             <?=
 			 wc_get_stock_html( $product );

@@ -99,45 +99,6 @@ add_filter("rwmb_meta_boxes", function ($meta_boxes) {
     return $meta_boxes;
 });
 
-//Preselect first in stock product variation
-function preselect_first_instock_variable($args) {
-    if (count($args["options"]) > 0) {
-        $options = [];
-        $product = $args["product"];
-        $has_default = count($product->get_default_attributes());
-        if (!$has_default) {
-            if (is_a($product, "WC_Product_Variable")) {
-                foreach ($product->get_available_variations() as $key => $variation) {
-                    $is_in_stock = $variation["is_in_stock"];
-                    $attributes = $variation["attributes"];
-                    if ($is_in_stock) {
-                        foreach ($attributes as $key => $attribute) {
-                            array_push($options, $attribute);
-                        }
-                        break;
-                    }
-                }
-            }
-            if (count($options) > 0) {
-                $option_key = "";
-                foreach ($options as $key => $option) {
-                    $i = 0;
-                    while ($i < count($args["options"])) {
-                        if ($option == $args["options"][$i]) {
-                            $option_key = $i;
-                        }
-                        $i++;
-                    }
-                }
-                $args["selected"] = $args["options"][$option_key];
-            } else {
-                $args["selected"] = "";
-            }
-        }
-    }
-    return $args;
-}
-add_filter("woocommerce_dropdown_variation_attribute_options_args", "preselect_first_instock_variable", 10, 1);
 
 add_filter('woocommerce_available_variation', function($available_variations, \WC_Product_Variable $variable, \WC_Product_Variation $variation) {
     if (empty($available_variations['price_html'])) {
