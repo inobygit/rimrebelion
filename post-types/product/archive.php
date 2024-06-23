@@ -311,7 +311,7 @@ if ($cat instanceof WP_Term) {
                         $termlist = array_unique( wp_list_pluck( $term_children, 'term_id' ) ); 
                         
                     if (count($termlist) > 0) {
-                        echo '<div class="cats-wrp">';
+                        echo '<div class="cats-wrp shop">';
                         foreach ($termlist as $child_id) {
                             $child = get_term($child_id, "product_cat");
 
