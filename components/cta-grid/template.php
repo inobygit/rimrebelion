@@ -29,12 +29,15 @@ $cta_grid = mb_get_block_field("cta-grid");
                 <?php 
                 echo '<div class="cta-grid-wrap-inner">';
 
-                foreach ($cta_grid as $cta) {
+                foreach ($cta_grid as $i => $cta) {
                   $cta_url = $cta["url"] ?? "";
                   if (isset($cta["bg"])) {
                     echo '<a href="' . $cta_url . '" class="cta-section" style="background-image: url(' . wp_get_attachment_image_src(reset($cta["bg"]), "o-6")[0] . ');">';
                   } else {
                     echo '<a href="' . $cta_url . '" class="cta-section cta-section-placeholder">';
+                  }
+                  if($i === 2){
+                    echo file_get_contents(get_stylesheet_directory() . '/assets/svg/pattern.svg');
                   }
                   echo isset($cta["headline"]) ? "<h2>" . $cta["headline"] . "</h2>" : ""; 
                   if(isset($cta['text'])){
