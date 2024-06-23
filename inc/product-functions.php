@@ -72,8 +72,11 @@ function display_related_product_thumbnails($product_id = null) {
                 echo " current-selected";
             }
             echo '">';
-            if (has_post_thumbnail()) {
-                echo '<a href="' . get_permalink() . '">' . get_the_post_thumbnail(get_the_ID(), "o-2") . "</a>";
+            $gallery_images = get_post_meta(get_the_ID(), '_product_image_gallery', true);
+            if ($gallery_images) {
+                $gallery_images = explode(',', $gallery_images);
+                $first_image_id = $gallery_images[0];
+                echo '<a href="' . get_permalink() . '">' . wp_get_attachment_image($first_image_id, 'o-2') . "</a>";
             } else {
                 echo '<a href="' . get_permalink() . '"><img src="' . wc_placeholder_img_src() . '" alt="Placeholder" /></a>';
             }
