@@ -92,21 +92,19 @@ if ($cat instanceof WP_Term) {
                     $collectionID = (isset($_GET['collection']) ? $_GET['collection'] : null);
                     $colorID = (isset($_GET['color']) ? $_GET['color'] : null);
                     $mainCatID = (isset($_GET['main-category']) ? $_GET['main-category'] : null);
-                    if(is_product_category()){
-                        $term_id = $term->term_id;
 
-                        $args = [
-                            'post_type' => 'product',
-                            'posts_per_page' => -1,
-                            'post_status'   => 'publish',
-                            'suppress_filters'  => true,
-                            'fields' => 'ids',
-                            'tax_query' => [
-                                'relation' => 'AND',
-                            ],
-                        ];
-
-                        if($genderID){
+                    $args = [
+                        'post_type' => 'product',
+                        'posts_per_page' => -1,
+                        'post_status'   => 'publish',
+                        'suppress_filters'  => true,
+                        'fields' => 'ids',
+                        'tax_query' => [
+                            'relation' => 'AND',
+                        ],
+                    ];
+                        
+                    if($genderID){
                             $args['tax_query'][] = [
                                 'taxonomy' => 'gender',
                                 'field' => 'id',
@@ -137,14 +135,20 @@ if ($cat instanceof WP_Term) {
                                 'terms' => $mainCatID,
                             ];
                         }
+
                         $desination_ids = get_posts($args);
+                        
+                    if(is_product_category()){
+                        $term_id = $term->term_id;
+                        
                         $term_children = wp_get_object_terms($desination_ids, 'product_cat', [
                             "parent" => $term_id,
                             "exclude" => $term_id,
                             'hide_empty'    => true,
+                            'fields'    => 'ids',
                         ]);
 
-                        $termlist = array_unique( wp_list_pluck( $term_children, 'term_id' ) ); 
+                        $termlist = array_unique( $term_children ); 
 
                         $term_parent = get_term($term->parent, "product_cat");
                         
@@ -158,13 +162,12 @@ if ($cat instanceof WP_Term) {
                                 </div>";
                         }
                         foreach ($termlist as $child_id) {
-                            $child = get_term($child_id, "product_cat");
                             echo "<div class='category-item'>
-                                    <a class='cat' rel='keep-search' href='" . get_term_link($child) . "'>
+                                    <a class='cat' rel='keep-search' href='" . get_term_link($child_id) . "'>
                                         <div class='img-wrp'>
-                                            " . wp_get_attachment_image(get_term_meta($child->term_id, "product_search_image_id", true), "o-2") . "
+                                            " . wp_get_attachment_image(get_term_meta($child_id, "product_search_image_id", true), "o-2") . "
                                         </div>
-                                        <div class='name'>" . $child->name . "</div>
+                                        <div class='name'>" . get_term($child_id, "product_cat")->name . "</div>
                                     </a>
                                 </div>";
                         }
@@ -174,58 +177,16 @@ if ($cat instanceof WP_Term) {
                         $term_parent_id = $term->parent;
                         if ($term_parent && !is_wp_error($term_parent)) {
 
-                        $args = [
-                            'post_type' => 'product',
-                            'posts_per_page' => -1,
-                            'post_status'   => 'publish',
-                            'suppress_filters'  => true,
-                            'fields' => 'ids',
-                            'tax_query' => [
-                                'relation' => 'AND',
-                            ],
-                        ];
-
-                        if($genderID){
-                            $args['tax_query'][] = [
-                                'taxonomy' => 'gender',
-                                'field' => 'id',
-                                'terms' => $genderID,
-                            ];
-                        }
-
-                        if($collectionID){
-                            $args['tax_query'][] = [
-                                'taxonomy' => 'collection',
-                                'field' => 'id',
-                                'terms' => $collectionID,
-                            ];
-                        }
-
-                        if($colorID){
-                            $args['tax_query'][] = [
-                                'taxonomy' => 'color',
-                                'field' => 'id',
-                                'terms' => $colorID,
-                            ];
-                        }
-
-                        if($mainCatID){
-                            $args['tax_query'][] = [
-                                'taxonomy' => 'main-category',
-                                'field' => 'id',
-                                'terms' => $mainCatID,
-                            ];
-                        }
-                        $desination_ids = get_posts($args);
                         $term_siblings = wp_get_object_terms($desination_ids, 'product_cat', [
                             "parent" => $term_parent_id,
                             "exclude" => $term_id,
                             'hide_empty'    => true,
+                            'fields'    => 'ids',
                         ]);
 
                         $term_parent = get_term($term->parent, "product_cat");
 
-                        $termlist = array_unique( wp_list_pluck( $term_siblings, 'term_id' ) ); 
+                        $termlist = array_unique( $term_siblings ); 
 
                         echo '<div class="cats-wrp">';
                             echo "<div class='category-item back'>
@@ -235,14 +196,13 @@ if ($cat instanceof WP_Term) {
                             </div>";
                             if (!empty($termlist)) {
                                 foreach ($termlist as $sibling) {
-                                    $sib = get_term($sibling, 'product_cat');
                                     echo "<div class='category-item'>
-                                    <a class='cat' rel='keep-search' href='" . get_term_link($sib->term_id) . "'>
+                                    <a class='cat' rel='keep-search' href='" . get_term_link($sibling) . "'>
                                     <div class='img-wrp'>
                                     " .
-                                    wp_get_attachment_image(get_term_meta($sib->term_id, "product_search_image_id", true), "o-2") . "
+                                    wp_get_attachment_image(get_term_meta($sibling, "product_search_image_id", true), "o-2") . "
                                     </div>
-                                    <div class='name'>" . $sib->name . "</div></a>
+                                    <div class='name'>" . get_term($sibling, 'product_cat')->name . "</div></a>
                                     </div>";
                                 }
                             }
@@ -251,76 +211,25 @@ if ($cat instanceof WP_Term) {
                     }
                 } else {
 
-                    $genderID = (isset($_GET['gender']) ? $_GET['gender'] : null);
-                    $collectionID = (isset($_GET['collection']) ? $_GET['collection'] : null);
-                    $colorID = (isset($_GET['color']) ? $_GET['color'] : null);
-                    $mainCatID = (isset($_GET['main-category']) ? $_GET['main-category'] : null);
-
-                        $args = [
-                            'post_type' => 'product',
-                            'posts_per_page' => -1,
-                            'fields' => 'ids',
-                            'suppress_filters'  => true,
-                            'post_status'   => 'publish',
-                            'tax_query' => [
-                                'relation' => 'AND',
-                            ],
-                        ];
-
-                        if($genderID){
-                            $args['tax_query'][] = [
-                                'taxonomy' => 'gender',
-                                'field' => 'id',
-                                'terms' => $genderID,
-                            ];
-                        }
-
-                        if($collectionID){
-                            $args['tax_query'][] = [
-                                'taxonomy' => 'collection',
-                                'field' => 'id',
-                                'terms' => $collectionID,
-                            ];
-                        }
-
-                        if($colorID){
-                            $args['tax_query'][] = [
-                                'taxonomy' => 'color',
-                                'field' => 'id',
-                                'terms' => $colorID,
-                            ];
-                        }
-
-                        if($mainCatID){
-                            $args['tax_query'][] = [
-                                'taxonomy' => 'main-category',
-                                'field' => 'id',
-                                'terms' => $mainCatID,
-                            ];
-                        }
-
-
-                        $desination_ids = get_posts($args);
                         $term_children = wp_get_object_terms($desination_ids, 'product_cat', [
                             'hide_empty'    => true,
                             'parent' => 0,
                             'suppress_filters'  => true,
+                            'fields'    => 'ids',
                         ]);
 
-
-                        $termlist = array_unique( wp_list_pluck( $term_children, 'term_id' ) ); 
+                        $termlist = array_unique( $term_children ); 
                         
                     if (count($termlist) > 0) {
                         echo '<div class="cats-wrp shop">';
                         foreach ($termlist as $child_id) {
-                            $child = get_term($child_id, "product_cat");
 
                             echo "<div class='category-item'>
-                                    <a class='cat' rel='keep-search' href='" . get_term_link($child) . "'>
+                                    <a class='cat' rel='keep-search' href='" . get_term_link($child_id) . "'>
                                         <div class='img-wrp'>
-                                            " . wp_get_attachment_image(get_term_meta($child->term_id, "thumbnail_id", true), "o-2") . "
+                                            " . wp_get_attachment_image(get_term_meta($child_id, "thumbnail_id", true), "o-2") . "
                                         </div>
-                                        <div class='name'>" . $child->name . "</div>
+                                        <div class='name'>" . get_term($child_id, "product_cat")->name . "</div>
                                     </a>
                                 </div>";
                         }
