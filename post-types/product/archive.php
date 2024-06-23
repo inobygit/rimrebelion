@@ -266,6 +266,7 @@ if ($cat instanceof WP_Term) {
                         $term_children = wp_get_object_terms($desination_ids, 'product_cat', [
                             'hide_empty'    => true,
                             'parent' => 0,
+                            'suppress_filters'  => true,
                         ]);
                         
                     if (count($term_children) > 0) {
@@ -276,7 +277,7 @@ if ($cat instanceof WP_Term) {
                             echo "<div class='category-item'>
                                     <a class='cat' rel='keep-search' href='" . get_term_link($child) . "'>
                                         <div class='img-wrp'>
-                                            " . wp_get_attachment_image(get_term_meta($child->term_id, "thumbnail_id", true), "o-2") . "
+                                            " . wp_get_attachment_image(get_term_meta($child->term_id, "product_search_image_id", true), "o-2") . "
                                         </div>
                                         <div class='name'>" . $child->name . "</div>
                                     </a>
