@@ -80,7 +80,18 @@ function rimrebellion_product_tab_size_help() {
 <?php } ?>
 <div class="table-wrap">
 
-    <div class="grid-wrap">
+    <div class="grid-wrap <?php 
+        if(!empty($tableRowsGroup)){
+            foreach($tableRowsGroup as $row){
+                foreach($row as $item){
+                    if(isset($item['row-icon'])){
+                        echo 'has-icon';
+                        break;
+                    }
+                }
+            }
+         }
+        ?>">
         <div class="grid-container columns-<?php echo $tableNumberColumns ?? '1'; ?>">
             <?php 
                     if(!empty($tableHeadingsGroup)) {
@@ -99,7 +110,7 @@ function rimrebellion_product_tab_size_help() {
                                 echo '<div class="grid-row">';
                                 for($i = 1; $i <= $tableNumberColumns; $i++){ ?>
             <div class="grid-item <?= ($i != 1) ? 'regular' : '' ?>">
-                <?php if($item['row-icon'] && $i == 1){ ?>
+                <?php if(isset($item['row-icon']) && $i == 1){ ?>
                 <img class="icon" src="<?= wp_get_attachment_image_url($item['row-icon'][0], 'full'); ?>" alt="row icon"
                     loading="lazy">
                 <?php } ?>

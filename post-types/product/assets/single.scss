@@ -349,15 +349,17 @@ body.single-product{
     }
     .grid-wrap{
     width: 100%;
-    padding-left: 260px;
     overflow: auto;
     position: relative;
-    
-    @include bp(md){
-      position: unset;
-      padding-left: 0;
-      padding-top: 300px;
+    &.has-icon{
+      padding-left: 260px;
+      @include bp(md){
+        position: unset;
+        padding-left: 0;
+        padding-top: 300px;
+      }
     }
+    
   }
   .grid-container {
   display: grid;
@@ -369,7 +371,7 @@ body.single-product{
     padding-top: 0;
   }
   .grid-row{
-    display: grid;
+    display: inline-grid;
     &:hover{
       .grid-item{
         .icon{
@@ -380,27 +382,27 @@ body.single-product{
   }
   &.columns-1{
     .grid-row{
-      grid-template-columns: repeat(1, minmax(110px, 1fr));
+      grid-template-columns: repeat(2, minmax(80px, 1fr));
     }
   }
   &.columns-2{
     .grid-row{
-      grid-template-columns: repeat(2, minmax(110px, 1fr));
+      grid-template-columns: repeat(3, minmax(80px, 1fr));
     }
   }
   &.columns-3{
     .grid-row{
-      grid-template-columns: repeat(3, minmax(110px, 1fr));
+      grid-template-columns: repeat(4, minmax(80px, 1fr));
     }
   }
   &.columns-4{
     .grid-row{
-      grid-template-columns: repeat(4, minmax(110px, 1fr));
+      grid-template-columns: repeat(5, minmax(80px, 1fr));
     }
   }
   &.columns-5{
     .grid-row{
-      grid-template-columns: repeat(5, minmax(100px, 1fr));
+      grid-template-columns: repeat(6, minmax(80px, 1fr));
       .grid-item{
         padding-inline: 10px;
       }
@@ -408,7 +410,7 @@ body.single-product{
   }
   &.columns-6{
     .grid-row{
-      grid-template-columns: repeat(6, minmax(90px, 1fr));
+      grid-template-columns: repeat(7, minmax(80px, 1fr));
       .grid-item{
         padding-inline: 10px;
       }
@@ -416,7 +418,7 @@ body.single-product{
   }
   &.columns-7{
     .grid-row{
-      grid-template-columns: repeat(7, minmax(90px, 1fr));
+      grid-template-columns: repeat(8, minmax(80px, 1fr));
       .grid-item{
         padding-inline: 5px;
       }
@@ -424,7 +426,7 @@ body.single-product{
   }
   &.columns-8{
     .grid-row{
-      grid-template-columns: repeat(8, minmax(80px, 1fr));
+      grid-template-columns: repeat(9, minmax(80px, 1fr));
       .grid-item{
         padding-inline: 5px;
       }
@@ -432,7 +434,7 @@ body.single-product{
   }
   &.columns-9{
     .grid-row{
-      grid-template-columns: repeat(9, minmax(80px, 1fr));
+      grid-template-columns: repeat(10, minmax(80px, 1fr));
       .grid-item{
         padding-inline: 5px;
       }
@@ -440,7 +442,7 @@ body.single-product{
   }
   &.columns-10{
     .grid-row{
-      grid-template-columns: repeat(10, minmax(80px, 1fr));
+      grid-template-columns: repeat(11, minmax(80px, 1fr));
       .grid-item{
         padding-inline: 5px;
       }
@@ -448,7 +450,7 @@ body.single-product{
   }
   &.columns-11{
     .grid-row{
-      grid-template-columns: repeat(11, minmax(80px, 1fr));
+      grid-template-columns: repeat(12, minmax(80px, 1fr));
       .grid-item{
         padding-inline: 5px;
       }
@@ -456,7 +458,7 @@ body.single-product{
   }
   &.columns-12{
     .grid-row{
-      grid-template-columns: repeat(12, minmax(80px, 1fr));
+      grid-template-columns: repeat(13, minmax(80px, 1fr));
       .grid-item{
         padding-inline: 5px;
       }
@@ -473,12 +475,17 @@ body.single-product{
   border-bottom: 1px solid hsla(0, 0%, 0%, 0.12);
   text-align: left;
   transition: .3s;
+  display: flex;
+  align-items: center;
   &.regular{
     text-align: center;
     &:hover{
       background-color: $black;
       color: $white;
     }
+  }
+  &:first-of-type{
+    grid-column: span 2;
   }
   strong{
     font-family: 'ItalianPlateItalic', sans-serif;
