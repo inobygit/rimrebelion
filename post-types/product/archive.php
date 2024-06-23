@@ -177,25 +177,53 @@ if ($cat instanceof WP_Term) {
                         $args = [
                             'post_type' => 'product',
                             'posts_per_page' => -1,
-                            'fields' => 'ids'
+                            'post_status'   => 'publish',
+                            'suppress_filters'  => true,
+                            'fields' => 'ids',
+                            'tax_query' => [
+                                'relation' => 'AND',
+                            ],
                         ];
 
                         if($genderID){
-                            $args['tax_query'] = array(
-                                array(
-                                    'taxonomy' => 'gender',
-                                    'field' => 'id',
-                                    'terms' => $genderID,
-                                )
-                                );
+                            $args['tax_query'][] = [
+                                'taxonomy' => 'gender',
+                                'field' => 'id',
+                                'terms' => $genderID,
+                            ];
                         }
 
+                        if($collectionID){
+                            $args['tax_query'][] = [
+                                'taxonomy' => 'collection',
+                                'field' => 'id',
+                                'terms' => $collectionID,
+                            ];
+                        }
+
+                        if($colorID){
+                            $args['tax_query'][] = [
+                                'taxonomy' => 'color',
+                                'field' => 'id',
+                                'terms' => $colorID,
+                            ];
+                        }
+
+                        if($mainCatID){
+                            $args['tax_query'][] = [
+                                'taxonomy' => 'main-category',
+                                'field' => 'id',
+                                'terms' => $mainCatID,
+                            ];
+                        }
                         $desination_ids = get_posts($args);
                         $term_siblings = wp_get_object_terms($desination_ids, 'product_cat', [
                             "parent" => $term_parent_id,
                             "exclude" => $term_id,
                             'hide_empty'    => true,
                         ]);
+
+                        $term_parent = get_term($term->parent, "product_cat");
 
                         $termlist = array_unique( wp_list_pluck( $term_siblings, 'term_id' ) ); 
 
