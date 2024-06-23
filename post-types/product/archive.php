@@ -235,13 +235,14 @@ if ($cat instanceof WP_Term) {
                             </div>";
                             if (!empty($termlist)) {
                                 foreach ($termlist as $sibling) {
+                                    $sib = get_term($sibling, 'product_cat');
                                     echo "<div class='category-item'>
-                                    <a class='cat' rel='keep-search' href='" . get_term_link($sibling) . "'>
+                                    <a class='cat' rel='keep-search' href='" . get_term_link($sib->term_id) . "'>
                                     <div class='img-wrp'>
                                     " .
-                                    wp_get_attachment_image(get_term_meta($sibling->term_id, "product_search_image_id", true), "o-2") . "
+                                    wp_get_attachment_image(get_term_meta($sib->term_id, "product_search_image_id", true), "o-2") . "
                                     </div>
-                                    <div class='name'>" . $sibling->name . "</div></a>
+                                    <div class='name'>" . $sib->name . "</div></a>
                                     </div>";
                                 }
                             }
