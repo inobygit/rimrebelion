@@ -140,6 +140,7 @@ if ($cat instanceof WP_Term) {
                             "parent" => $term_id,
                             "exclude" => $term_id,
                             'hide_empty'    => true,
+                            'fields'    => 'ids',
                         ]);
                         $term_parent = get_term($term->parent, "product_cat");
                         
@@ -190,6 +191,7 @@ if ($cat instanceof WP_Term) {
                             "parent" => $term_parent_id,
                             "exclude" => $term_id,
                             'hide_empty'    => true,
+                            'fields'    => 'ids',
                         ]);
 
                         echo '<div class="cats-wrp">';
@@ -224,6 +226,8 @@ if ($cat instanceof WP_Term) {
                             'post_type' => 'product',
                             'posts_per_page' => -1,
                             'fields' => 'ids',
+                            'suppress_filters'  => true,
+                            'post_status'   => 'published',
                             'tax_query' => [
                                 'relation' => 'AND',
                             ],
@@ -267,6 +271,7 @@ if ($cat instanceof WP_Term) {
                             'hide_empty'    => true,
                             'parent' => 0,
                             'suppress_filters'  => true,
+                            'fields'    => 'ids',
                         ]);
                         
                     if (count($term_children) > 0) {
@@ -277,7 +282,7 @@ if ($cat instanceof WP_Term) {
                             echo "<div class='category-item'>
                                     <a class='cat' rel='keep-search' href='" . get_term_link($child) . "'>
                                         <div class='img-wrp'>
-                                            " . wp_get_attachment_image(get_term_meta($child->term_id, "product_search_image_id", true), "o-2") . "
+                                            " . wp_get_attachment_image(get_term_meta($child->term_id, "thumbnail_id", true), "o-2") . "
                                         </div>
                                         <div class='name'>" . $child->name . "</div>
                                     </a>
