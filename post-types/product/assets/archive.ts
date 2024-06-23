@@ -6,6 +6,11 @@ class ProductArchiveModule extends InobyModule {
   $(document).ajaxComplete(function(event, xhr, options) {
 
     if (options.url.includes('?rc-ajax=get_products')) {
+      $('#inoby-preloader').show();
+      $('#inoby-preloader').removeClass("loaded");
+      $('#inoby-preloader').css('opacity', 0.5);
+      $('html, body').off('scroll touchmove mousewheel');
+
       $('#categories').load(' #categories > *', function() {
 
         $("a[rel~=keep-search").off('click');
@@ -23,6 +28,10 @@ class ProductArchiveModule extends InobyModule {
               }
           }
       });
+          
+          $('#inoby-preloader').addClass("loaded");
+          $('#inoby-preloader').hide();
+          $('#inoby-preloader').css('opacity', 0);
       });
 
     }
