@@ -84,18 +84,63 @@ if ($cat instanceof WP_Term) {
 <div class="container container-fluid products-wrp">
     <div class="row">
         <div class="col-12">
-            <div class="categories">
+            <div class="categories" id="categories">
 
                 <?php
                     $term = get_queried_object();
+                    $genderID = (isset($_GET['gender']) ? $_GET['gender'] : null);
+                    $collectionID = (isset($_GET['collection']) ? $_GET['collection'] : null);
+                    $colorID = (isset($_GET['color']) ? $_GET['color'] : null);
+                    $mainCatID = (isset($_GET['main-category']) ? $_GET['main-category'] : null);
                     if(is_product_category()){
                         $term_id = $term->term_id;
-                        $term_children = get_terms([
-                            "taxonomy" => "product_cat",
+
+                        $args = [
+                            'post_type' => 'product',
+                            'posts_per_page' => -1,
+                            'fields' => 'ids',
+                            'tax_query' => [
+                                'relation' => 'AND',
+                            ],
+                        ];
+
+                        if($genderID){
+                            $args['tax_query'][] = [
+                                'taxonomy' => 'gender',
+                                'field' => 'id',
+                                'terms' => $genderID,
+                            ];
+                        }
+
+                        if($collectionID){
+                            $args['tax_query'][] = [
+                                'taxonomy' => 'collection',
+                                'field' => 'id',
+                                'terms' => $collectionID,
+                            ];
+                        }
+
+                        if($colorID){
+                            $args['tax_query'][] = [
+                                'taxonomy' => 'color',
+                                'field' => 'id',
+                                'terms' => $colorID,
+                            ];
+                        }
+
+                        if($mainCatID){
+                            $args['tax_query'][] = [
+                                'taxonomy' => 'main-category',
+                                'field' => 'id',
+                                'terms' => $mainCatID,
+                            ];
+                        }
+                        $desination_ids = get_posts($args);
+                        $term_children = wp_get_object_terms($desination_ids, 'product_cat', [
                             "parent" => $term_id,
                             "exclude" => $term_id,
+                            'hide_empty'    => true,
                         ]);
-                        
                         $term_parent = get_term($term->parent, "product_cat");
                         
                     if (count($term_children) > 0) {
@@ -123,10 +168,28 @@ if ($cat instanceof WP_Term) {
                         // This category does not have subcategories, showing sibling categories
                         $term_parent_id = $term->parent;
                         if ($term_parent && !is_wp_error($term_parent)) {
-                        $term_siblings = get_terms([
-                            "taxonomy" => "product_cat",
+
+                        $args = [
+                            'post_type' => 'product',
+                            'posts_per_page' => -1,
+                            'fields' => 'ids'
+                        ];
+
+                        if($genderID){
+                            $args['tax_query'] = array(
+                                array(
+                                    'taxonomy' => 'gender',
+                                    'field' => 'id',
+                                    'terms' => $genderID,
+                                )
+                                );
+                        }
+
+                        $desination_ids = get_posts($args);
+                        $term_siblings = wp_get_object_terms($desination_ids, 'product_cat', [
                             "parent" => $term_parent_id,
                             "exclude" => $term_id,
+                            'hide_empty'    => true,
                         ]);
 
                         echo '<div class="cats-wrp">';
@@ -151,7 +214,76 @@ if ($cat instanceof WP_Term) {
                         }
                     }
                 } else {
-                    rc_shop_subcategories();
+
+                    $genderID = (isset($_GET['gender']) ? $_GET['gender'] : null);
+                    $collectionID = (isset($_GET['collection']) ? $_GET['collection'] : null);
+                    $colorID = (isset($_GET['color']) ? $_GET['color'] : null);
+                    $mainCatID = (isset($_GET['main-category']) ? $_GET['main-category'] : null);
+
+                        $args = [
+                            'post_type' => 'product',
+                            'posts_per_page' => -1,
+                            'fields' => 'ids',
+                            'tax_query' => [
+                                'relation' => 'AND',
+                            ],
+                        ];
+
+                        if($genderID){
+                            $args['tax_query'][] = [
+                                'taxonomy' => 'gender',
+                                'field' => 'id',
+                                'terms' => $genderID,
+                            ];
+                        }
+
+                        if($collectionID){
+                            $args['tax_query'][] = [
+                                'taxonomy' => 'collection',
+                                'field' => 'id',
+                                'terms' => $collectionID,
+                            ];
+                        }
+
+                        if($colorID){
+                            $args['tax_query'][] = [
+                                'taxonomy' => 'color',
+                                'field' => 'id',
+                                'terms' => $colorID,
+                            ];
+                        }
+
+                        if($mainCatID){
+                            $args['tax_query'][] = [
+                                'taxonomy' => 'main-category',
+                                'field' => 'id',
+                                'terms' => $mainCatID,
+                            ];
+                        }
+
+
+                        $desination_ids = get_posts($args);
+                        $term_children = wp_get_object_terms($desination_ids, 'product_cat', [
+                            'hide_empty'    => true,
+                            'parent' => 0,
+                        ]);
+                        
+                    if (count($term_children) > 0) {
+                        echo '<div class="cats-wrp">';
+                        foreach ($term_children as $child_id) {
+                            $child = get_term($child_id, "product_cat");
+
+                            echo "<div class='category-item'>
+                                    <a class='cat' rel='keep-search' href='" . get_term_link($child) . "'>
+                                        <div class='img-wrp'>
+                                            " . wp_get_attachment_image(get_term_meta($child->term_id, "thumbnail_id", true), "o-2") . "
+                                        </div>
+                                        <div class='name'>" . $child->name . "</div>
+                                    </a>
+                                </div>";
+                        }
+                        echo '</div>';
+                    }
                 }
             ?>
             </div>
