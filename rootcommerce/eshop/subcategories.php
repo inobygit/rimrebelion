@@ -1,5 +1,6 @@
 <?php
-$categories = $args["categories"]; ?>
+$categories = $args["categories"]; 
+?>
 
 <div class="cats-wrp">
     <?php foreach ($categories as $category) {
