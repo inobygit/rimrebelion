@@ -11,6 +11,9 @@ defined( 'ABSPATH' ) || exit;
 
 global $product;
 ?>
+<div id="price-wrp" class="price-wrp"><?php woocommerce_template_single_price(); ?></div>
+<?php get_template_part("template-parts/stock-status", null, ["product" => $product]); ?>
+
 <div class="woocommerce-variation-add-to-cart variations_button">
     <?php do_action( 'woocommerce_before_add_to_cart_button' ); ?>
 

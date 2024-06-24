@@ -13,6 +13,20 @@ class ProductSingleModule extends InobyModule {
       $('.woocommerce-Tabs-panel').hide();
     }, 10);
 
+    var priceWrp = $("#price-wrp");
+
+    $(document.body).on("found_variation", function (event, variation) {
+      if (variation.price_html) {
+        $('.stock-status').addClass('price-wrp-hide');
+        $(priceWrp).addClass("price-wrp-hide");
+      }
+    });
+    // ked nemam kompletne vybraty variant tak neviem cenu
+    $(document.body).on("hide_variation", () => {
+        $('.stock-status').removeClass('price-wrp-hide');
+      $(priceWrp).removeClass("price-wrp-hide");
+    });
+
     // create slider for each component on page
     $(".inoby-slider-gallery").each((i, gallery) => {
       const $gallery = $(gallery);

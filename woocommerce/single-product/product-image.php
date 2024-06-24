@@ -11,7 +11,7 @@ $post_thumbnail_id = $product->get_image_id();
 $attachment_ids = $product->get_gallery_image_ids();
 
 
-if ($attachment_ids[0]) {
+if (isset($attachment_ids[0])) {
   $attrs = [
     "data-gallery-index" => 0,
   ];

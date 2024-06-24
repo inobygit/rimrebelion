@@ -8,6 +8,21 @@ import KeenSliderHelper from "@assets/js/lib/keen-slider-helper";
 class LooksSingleModule extends InobyModule {
   run() {
       this.initProductGallery();
+
+        var priceWrp = $("#price-wrp");
+
+    $(document.body).on("found_variation", function (event, variation) {
+      if (variation.price_html) {
+        $('.stock-status').addClass('price-wrp-hide');
+        $(priceWrp).addClass("price-wrp-hide");
+      }
+    });
+    // ked nemam kompletne vybraty variant tak neviem cenu
+    $(document.body).on("hide_variation", () => {
+        $('.stock-status').removeClass('price-wrp-hide');
+      $(priceWrp).removeClass("price-wrp-hide");
+    });
+
   }
 
   initProductGallery(): void {
