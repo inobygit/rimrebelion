@@ -102,6 +102,16 @@ if ($cat instanceof WP_Term) {
                         'tax_query' => [
                             'relation' => 'AND',
                         ],
+                        'meta_query' => array(
+                            array(
+                                'key' => '_stock_status',
+                                'value' => 'instock'
+                            ),
+                            array(
+                                'key' => '_backorders',
+                                'value' => 'no'
+                            ),
+                        )
                     ];
                         
                     if($genderID){
