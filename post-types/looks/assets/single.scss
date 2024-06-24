@@ -144,6 +144,27 @@
       }
     }
     .summary-col{
+      .stock-status {
+          span {
+            font-size: 1.3rem;
+            &.in-stock {
+              color: #2ED477;
+            }
+            &.do-sedem-dni {
+              color: #ddcd00;
+            }
+            &.on-back-order {
+              color: #a86900;
+            }
+            &.out-of-stock {
+              color: #a80000;
+            }
+          }
+        }
+
+        .price-wrp-hide {
+        display: none;
+      }
       .tags{
         margin-bottom: 1rem;
         display: flex;
@@ -241,9 +262,11 @@
         }
         .single_variation{
           .woocommerce-variation-price{
-            margin-top: $space-xs;
-            font-size: $fs-h2;
-            font-family: $font-family-headings;
+            .amount{
+              margin-top: 0 !important;
+              font-size: $fs-h2;
+              font-family: $font-family-headings;
+            }
           }
           .woocommerce-variation-sku{
             float: left;
@@ -354,7 +377,8 @@
   .single_add_to_cart_button{
         margin-left: 2rem;
       }
-      .price{
+      .price,
+      .price-wrp .price{
         display: flex;
         flex-direction: row-reverse;
         align-items: center;
@@ -368,6 +392,11 @@
             color: $gray300;
             font-size: 2.4rem;
             font-weight: 400 !important;
+        }
+        .amount{
+          margin-top: 1.6rem;
+            font-size: $fs-h2;
+            font-family: $font-family-headings;
         }
       }
   .product-type-simple{

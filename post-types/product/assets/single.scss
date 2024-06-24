@@ -36,7 +36,8 @@ body.single-product{
       h1{
         margin-bottom: 0.8rem;
       }
-      .price{
+      .price,
+      .price-wrp .price{
         display: flex;
         flex-direction: row-reverse;
         align-items: center;
@@ -51,6 +52,14 @@ body.single-product{
             font-size: 2.4rem;
             font-weight: 400 !important;
         }
+        .amount{
+          margin-top: 1.6rem;
+            font-size: $fs-h2;
+            font-family: $font-family-headings;
+        }
+      }
+      .price-wrp-hide {
+        display: none;
       }
       .collection-terms{
         margin-bottom: 1rem;
@@ -128,11 +137,30 @@ body.single-product{
             cursor: pointer;
           }
         }
+        .stock-status {
+          span {
+            font-size: 1.3rem;
+            &.in-stock {
+              color: #2ED477;
+            }
+            &.do-sedem-dni {
+              color: #ddcd00;
+            }
+            &.on-back-order {
+              color: #a86900;
+            }
+            &.out-of-stock {
+              color: #a80000;
+            }
+          }
+        }
         .single_variation{
           .woocommerce-variation-price{
-            margin-top: $space-xs;
-            font-size: $fs-h2;
-            font-family: $font-family-headings;
+            .amount{
+              margin-top: 0 !important;
+              font-size: $fs-h2;
+              font-family: $font-family-headings;
+            }
           }
           .woocommerce-variation-sku{
             float: left;

@@ -110,4 +110,12 @@ add_filter('woocommerce_available_variation', function($available_variations, \W
 
     return $available_variations;
 }, 10, 3);
+
+add_filter( 'woocommerce_dropdown_variation_attribute_options_args', 'dropdown_variation_attribute_options', 10, 1 );
+function dropdown_variation_attribute_options( $args ){
+
+    $args['show_option_none'] = __( 'Select size', 'rimrebellion' );
+
+    return $args;
+}
 ?>

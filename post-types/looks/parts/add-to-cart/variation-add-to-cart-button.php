@@ -12,6 +12,12 @@ defined( 'ABSPATH' ) || exit;
 $product = $args['product'] ?? null;
 
 ?>
+<div id="price-wrp" class="price-wrp">
+    <p class="<?php echo esc_attr( apply_filters( 'woocommerce_product_price_class', 'price' ) ); ?>">
+        <?php echo $product->get_price_html(); ?></p>
+</div>
+<?php get_template_part("template-parts/stock-status", null, ["product" => $product]); ?>
+
 <div class="woocommerce-variation-add-to-cart variations_button">
     <?php do_action( 'woocommerce_before_add_to_cart_button' ); ?>
 
