@@ -70,9 +70,9 @@ if ($cat instanceof WP_Term) {
 
 
                 <?php if (!empty($thumbnail_id)) {
-            echo '<img class="fluid-right" src="' . esc_url($image) . '" alt="">';
+            echo '<img class="fluid-right" src="' . esc_url($image) . '" alt="hero image">';
         } else {
-            echo '<img class="fluid-right" src="' . esc_url(get_stylesheet_directory_uri() . "/assets/img/product-cat-thumb.webp") . '" alt="">';
+            echo '<img class="fluid-right" src="' . esc_url(get_stylesheet_directory_uri() . "/assets/img/product-cat-thumb.webp") . '" alt="hero image">';
         } ?>
             </div>
         </div>
