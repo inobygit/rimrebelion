@@ -718,6 +718,9 @@ span.active-orders{
   h3{
     text-transform: uppercase;
   }
+  .thankyou-row{
+    margin: 0 -1.5rem !important;
+  }
   .woocommerce-order-details-hero {
     display: flex;
     align-items: center;
@@ -915,6 +918,19 @@ span.active-orders{
     }
   }
 }
+
+.thank-you-wrapper{
+  padding-inline: 1.5rem;
+}
+
+.thank-you-order{
+  padding: 8rem 0 9.6rem !important;
+  .woocommerce-order-details{
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+}
 .order-legend-info {
   margin-bottom: 2.5rem;
   margin-top: 1.5rem;
@@ -922,6 +938,41 @@ span.active-orders{
     margin-left: 0;
   }
 
+}
+
+.summary-wrapper{
+  background-color: $white;
+  padding: 4rem 5.5rem;
+  @include bp(md){
+        padding: 2rem 1.5rem;
+      }
+  .woocommerce-order-details-products .product-wrapper{
+    *{
+      line-height: normal;
+    }
+    .item-number{
+      border-radius: 50%;
+      background-color: $black;
+      color: $white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      width: 16px;
+      height: 16px;
+      min-width: 16px;
+      min-height: 16px;
+    }
+    .item-info{
+      grid-column: span 6;
+      @include bp(md){
+        grid-column: span 3;
+      }
+    }
+    .item-price{
+      grid-column: span 2;
+    }
+  }
 }
 
 .change_password_form {

@@ -22,40 +22,42 @@ $order_id = $order->get_id();
 
 <div class="woocommerce-order">
 
-  <?php if ($order):
+    <?php if ($order):
       do_action("woocommerce_before_thankyou", $order_id); ?>
 
-  <?php if ($order->has_status("failed")): ?>
+    <?php if ($order->has_status("failed")): ?>
 
-  <section class="thank-you-section">
-    <div class="container">
-      <div class="row">
-        <div class="col-12">
+    <section class="thank-you-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
 
-          <div class="thank-you-wrapper">
-            <h1 class="<?= $order->status ?>"><?= __("Vaša objednávka nie je dokončená", "rimrebelion") ?></h1>
-            <p class="woocommerce-notice woocommerce-notice--error woocommerce-thankyou-order-failed">
-              <?php esc_html_e(
-                  "Unfortunately your order cannot be processed as the originating bank/merchant has declined your transaction. Please attempt your purchase again.",
-                  "woocommerce",
-              ); ?>
-            </p>
-            <p class="woocommerce-notice woocommerce-notice--error woocommerce-thankyou-order-failed-actions">
-              <a href="<?php echo esc_url($order->get_checkout_payment_url()); ?>"
-                class="button light pay"><?php esc_html_e("Pay", "woocommerce"); ?></a>
-              <?php if (is_user_logged_in()): ?>
-              <a href="<?php echo esc_url(wc_get_page_permalink("myaccount")); ?>"
-                class="button light pay"><?php esc_html_e("My account", "woocommerce"); ?></a>
-              <?php endif; ?>
-            </p>
-          </div>
+                    <div class="thank-you-wrapper">
+                        <h1 class="<?= $order->status ?>"><?= __("Your order cannot be processed", "rimrebelion") ?>
+                        </h1>
+                        <p class="woocommerce-notice woocommerce-notice--error woocommerce-thankyou-order-failed">
+                            <?php esc_html_e(
+                            "Unfortunately your order cannot be processed as the originating bank/merchant has declined your transaction. Please attempt your purchase again.",
+                            "woocommerce",
+                        ); ?>
+                        </p>
+                        <p
+                            class="woocommerce-notice woocommerce-notice--error woocommerce-thankyou-order-failed-actions">
+                            <a href="<?php echo esc_url($order->get_checkout_payment_url()); ?>"
+                                class="button light pay"><?php esc_html_e("Pay", "woocommerce"); ?></a>
+                            <?php if (is_user_logged_in()): ?>
+                            <a href="<?php echo esc_url(wc_get_page_permalink("myaccount")); ?>"
+                                class="button light pay"><?php esc_html_e("My account", "woocommerce"); ?></a>
+                            <?php endif; ?>
+                        </p>
+                    </div>
 
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <?php //do_action("woocommerce_thankyou_" . $order->get_payment_method(), $order_id);
+    <?php //do_action("woocommerce_thankyou_" . $order->get_payment_method(), $order_id);
       //do_action("woocommerce_thankyou_" . $order->get_payment_method(), $order_id);
       //do_action("woocommerce_thankyou_" . $order->get_payment_method(), $order_id);
       //do_action("woocommerce_thankyou_" . $order->get_payment_method(), $order_id);
@@ -63,38 +65,38 @@ $order_id = $order->get_id();
       else: ?>
 
 
-  <section class="thank-you-section">
-    <div class="container">
-      <div class="row">
-        <div class="col-12">
+    <section class="thank-you-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
 
-          <div class="thank-you-wrapper">
-            <h1><?= __("Ďakujeme za vašu objednávku", "rimrebelion") ?></h1>
-            <p class="heading-like">
-              <?php echo sprintf(__("Vašu objednávku #%s sme úspešne zaevidovali.", "rimrebelion"), $order_id); ?>
-            </p>
-            <p class="fancy">
-              <?php echo __("O jej stave Vás budeme informovať na Vašu e-mailovú adresu.", "rimrebelion"); ?>
-            </p>
-            <?php
+                    <div class="thank-you-wrapper">
+                        <h1><?= __("Thank you for your order", "rimrebelion") ?></h1>
+                        <p class="heading-like">
+                            <?php echo sprintf(__("We have successfully registered the order #%s", "rimrebelion"), $order_id); ?>
+                        </p>
+                        <p class="italic">
+                            <?php echo __("We will inform you about its condition to your email address.", "rimrebelion"); ?>
+                        </p>
+                        <?php
       //do_action("woocommerce_thankyou_" . $order->get_payment_method(), $order_id);
       ?>
-            <a class="button light triangleright triangleleft"
-              href="<?= get_home_url() ?>"><?= __("Naspäť domov", "rimrebelion") ?></a>
-          </div>
+                        <a class="button light triangleright triangleleft"
+                            href="<?= get_home_url() ?>"><?= __("Back home", "rimrebelion") ?></a>
+                    </div>
 
 
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </section>
-  <section class="thank-you-order">
-    <?php do_action("woocommerce_thankyou", $order_id); ?>
-  </section>
+    </section>
+    <section class="thank-you-order">
+        <?php do_action("woocommerce_thankyou", $order_id); ?>
+    </section>
 
-  <?php endif; ?>
+    <?php endif; ?>
 
-  <?php // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+    <?php // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
       // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
       // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
       // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
@@ -114,34 +116,34 @@ $order_id = $order->get_id();
   else:
        ?>
 
-  <section class="thank-you-section">
-    <div class="container">
-      <div class="row">
-        <div class="col-12">
+    <section class="thank-you-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
 
-          <div class="thank-you-wrapper">
-            <h1><?= __("Ďakujeme za vašu objednávku", "rimrebelion") ?></h1>
+                    <div class="thank-you-wrapper">
+                        <h1><?= __("THANK YOU FOR YOUR ORDER", "rimrebelion") ?></h1>
 
-            <p>
-              <?php echo apply_filters(
+                        <p>
+                            <?php echo apply_filters(
                   "woocommerce_thankyou_order_received_text",
                   esc_html__("Thank you. Your order has been received.", "woocommerce"),
                   null,
               );
       // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
       ?>
-            </p>
+                        </p>
 
-            <a class="button triangleright triangleleft light"
-              href="<?= get_home_url() ?>"><?= __("Naspäť domov", "rimrebelion") ?></a>
-          </div>
+                        <a class="button triangleright triangleleft light"
+                            href="<?= get_home_url() ?>"><?= __("Back home", "rimrebelion") ?></a>
+                    </div>
 
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <?php
+    <?php
   endif; ?>
 
 </div>

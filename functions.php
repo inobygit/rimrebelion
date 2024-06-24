@@ -71,6 +71,13 @@ function enqueue_my_account_style() {
     }
 }
 
+add_action("wp_enqueue_scripts", "enqueue_thank_you_style");
+function enqueue_thank_you_style() {
+    if (is_checkout() && !empty( is_wc_endpoint_url('order-received') )) {
+        wp_enqueue_style("my_account", get_theme_file_uri("/build/css/my_account.css"));
+    }
+}
+
 if (RC_ENABLED) {
     function rimrebelion_checkout_settings($settings) {
         $settings["wrp_classes"] = "rimrebelion-checkout-wrp container";

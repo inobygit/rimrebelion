@@ -41,6 +41,7 @@ if ( $show_downloads ) {
 ?>
 
 <section class="woocommerce-order-details">
+    <?php if (is_account_page()) { ?>
     <div class="row woocommerce-order-details-hero">
         <a class="button back" href="<?= esc_url( wc_get_account_endpoint_url( 'orders' ) )?>"><svg width="24"
                 height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -53,10 +54,15 @@ if ( $show_downloads ) {
     <div class="row woocommerce-order-details-hero">
         <?php do_action( 'woocommerce_order_details_before_order_table', $order ); ?>
         <?php
+        if (is_account_page()) {
 			echo '<h2>'. __('ORDER','rootscope') .' '. $order->get_order_number() .'</h2>';
+        } else {
+			echo '<h2>'. __('ORDER SUMMARY','rootscope') .'</h2>';
+        }
 		?>
     </div>
 
+    <?php if (is_account_page()) { ?>
     <div class="order-legend-info">
         <table class="account-orders-table-single">
             <tbody>
@@ -81,8 +87,9 @@ if ( $show_downloads ) {
             </tbody>
         </table>
     </div>
+    <?php } ?>
 
-    <?php if ( $notes ) : ?>
+    <?php if ( isset($notes) ) : ?>
     <h2><?php esc_html_e( 'Order updates', 'woocommerce' ); ?></h2>
     <ol class="woocommerce-OrderUpdates commentlist notes">
         <?php foreach ( $notes as $note ) : ?>
@@ -185,6 +192,116 @@ if ( $show_downloads ) {
         </a>
 
     </div>
+    <?php } else { ?>
+
+
+    <div class="row thankyou-row">
+        <div class="col-7 col-md-12">
+            <div class="woocommerce-order-details-hero">
+                <?php do_action( 'woocommerce_order_details_before_order_table', $order ); ?>
+                <?php
+                    echo '<h2>'. __('ORDER SUMMARY','rootscope') .'</h2>';
+                ?>
+            </div>
+
+            <div class="woocommerce-order-details-info">
+                <?php
+			do_action( 'woocommerce_after_order_details', $order );
+
+			if ( $show_customer_details ) {
+				wc_get_template( 'order/order-details-customer.php', array( 'order' => $order ) );
+			}
+		?>
+            </div>
+
+            <?php if ( isset($notes) ) : ?>
+            <h2><?php esc_html_e( 'Note', 'woocommerce' ); ?></h2>
+            <ol class="woocommerce-OrderUpdates commentlist notes">
+                <?php foreach ( $notes as $note ) : ?>
+                <li class="woocommerce-OrderUpdate comment note">
+                    <div class="woocommerce-OrderUpdate-inner comment_container">
+                        <div class="woocommerce-OrderUpdate-text comment-text">
+                            <p class="woocommerce-OrderUpdate-meta meta">
+                                <?php echo date_i18n( esc_html__( 'l jS \o\f F Y, h:ia', 'woocommerce' ), strtotime( $note->comment_date ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+                            </p>
+                            <div class="woocommerce-OrderUpdate-description description">
+                                <?php echo wpautop( wptexturize( $note->comment_content ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                </li>
+                <?php endforeach; ?>
+            </ol>
+            <?php endif; ?>
+
+        </div>
+
+        <div class="col-5 col-md-12">
+            <div class="summary-wrapper">
+                <h3>
+                    <?= __("Summary", 'rimrebellion') ?>
+                </h3>
+                <div class="woocommerce-order-details-products">
+                    <?php
+                do_action( 'woocommerce_order_details_before_order_table_items', $order );
+                    $i = 1;
+                foreach ( $order_items as $item_id => $item ) {
+                    $product = $item->get_product();
+                    echo '<div class="product-wrapper">';?>
+
+                    <div class="item-number">
+                        <?php
+                            echo $i;
+                        ?>
+                    </div>
+                    <div class="item-info">
+                        <a
+                            href="<?php echo esc_url( $product->get_permalink() ); ?>"><?php echo $product->get_name(); ?></a>
+                        <?php
+                    wc_display_item_meta( $item ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+                ?>
+                    </div>
+                    <div class="item-price">
+                        <p class="item-price"><?= $order->get_formatted_line_subtotal( $item ) ?></p>
+                    </div>
+                    <?php echo '</div>';
+                    $i++;
+                }
+                do_action( 'woocommerce_order_details_after_order_table_items', $order );
+            ?>
+                </div>
+
+                <div class="woocommerce-order-details-summary">
+                    <?php
+			foreach ( $order->get_order_item_totals() as $key => $total ) {
+                if($key === 'order_total'){
+				?>
+                    <div class="summary-item">
+                        <span class="summary-label"><?= esc_html( $total['label'] ) ?></span>
+                        <span
+                            class="summary-text"><?php echo ( 'payment_method' === $key ) ? esc_html( $total['value'] ) : wp_kses_post( $total['value'] ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></span>
+                    </div>
+                    <?php
+			}
+        }
+		
+		?>
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+
+        </div>
+    </div>
+    <?php } ?>
 </section>
 
 <?php
