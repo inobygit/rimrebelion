@@ -137,23 +137,7 @@ body.single-product{
             cursor: pointer;
           }
         }
-        .stock-status {
-          span {
-            font-size: 1.3rem;
-            &.in-stock {
-              color: #2ED477;
-            }
-            &.do-sedem-dni {
-              color: #ddcd00;
-            }
-            &.on-back-order {
-              color: #a86900;
-            }
-            &.out-of-stock {
-              color: #a80000;
-            }
-          }
-        }
+        
         .single_variation{
           .woocommerce-variation-price{
             .amount{

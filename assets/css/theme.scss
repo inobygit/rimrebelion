@@ -59,6 +59,24 @@ html[lang="en-US"] {
   margin-bottom: 1.6rem;
 }
 
+.stock-status {
+          span {
+            font-size: 1.3rem;
+            &.instock {
+              color: #2ED477;
+            }
+            &.dosedemdni {
+              color: #ddcd00;
+            }
+            &.onbackorder {
+              color: #a86900;
+            }
+            &.outofstock {
+              color: #a80000;
+            }
+          }
+        }
+
 .product-search-results table.search-results{
   .more-info{
     .title{

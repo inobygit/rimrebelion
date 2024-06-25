@@ -118,4 +118,15 @@ function dropdown_variation_attribute_options( $args ){
 
     return $args;
 }
+
+function custom_availability( $availability, $product ){
+    if( $availability['class'] == 'in-stock' ){ 
+        $availability['availability'] = __('In Stock', 'rimrebellion');
+    } elseif( $availability['class'] == 'outofstock' ){ 
+        $availability['availability'] = __("Out of stock", 'rimrebellion');
+    } 
+
+    return $availability;
+}
+add_filter( 'woocommerce_get_availability', 'custom_availability', 10, 2 );
 ?>
