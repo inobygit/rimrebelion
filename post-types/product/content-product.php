@@ -91,7 +91,8 @@ if (empty($product) || !$product->is_visible()) {
             <div class="content-product-price">
                 <?php woocommerce_template_single_price(); ?>
             </div>
-            <?= wc_get_stock_html($product) ?>
+            <?php get_template_part("template-parts/stock-status", null, ["product" => $product]); ?>
+
         </div>
     </div>
     <?php woocommerce_template_loop_product_link_close(); ?>

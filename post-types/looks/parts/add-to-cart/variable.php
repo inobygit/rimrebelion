@@ -59,7 +59,8 @@ do_action("woocommerce_before_add_to_cart_form");
 		echo '<div class="woocommerce-variation single_variation">'; ?>
         <script type="text/template" id="tmpl-variation-template">
             <div class="woocommerce-variation-price">{{{ data.variation.price_html }}}</div>
-	<div class="woocommerce-variation-availability">{{{ data.variation.availability_html }}}</div>
+		<div class="woocommerce-variation-availability">{{{ (data.variation.is_in_stock ? `<p class="stock instock"> <?= __('In stock', 'rimrebellion') ?> </p>` : data.vatiation.availability_html) }}}</div>
+
 </script>
         <?php echo '</div>';
     get_template_part( 'post-types/looks/parts/add-to-cart/variation-add-to-cart-button', null, ['product' => $product]);
