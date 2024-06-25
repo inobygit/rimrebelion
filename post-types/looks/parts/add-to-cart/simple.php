@@ -33,9 +33,8 @@ if ( $product->is_in_stock() ) : ?>
 
     <div class="simple-row between">
         <div class="woocommerce-variation-availability">
-            <?=
-			 wc_get_stock_html( $product );
-			?>
+            <?php get_template_part("template-parts/stock-status", null, ["product" => $product]); ?>
+
         </div>
     </div>
     <div class="simple-row">
