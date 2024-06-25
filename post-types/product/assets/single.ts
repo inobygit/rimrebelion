@@ -11,7 +11,18 @@ class ProductSingleModule extends InobyModule {
     setTimeout(() => {
       $('.wc-tabs li.active').removeClass('active');
       $('.woocommerce-Tabs-panel').hide();
-    }, 10);
+      $('.wc-tabs li').on('click', function (e) {
+        e.preventDefault();
+        if($(this).hasClass('active')) {
+          $(this).toggleClass('disabled');
+          $('.woocommerce-Tabs-panel').toggleClass('hidden');
+        } else {
+          $(this).removeClass('disabled');
+          $('.woocommerce-Tabs-panel').removeClass('hidden');
+        }
+      });
+    }, 50);
+
 
     var priceWrp = $("#price-wrp");
 

@@ -598,12 +598,23 @@ body.single-product{
             content: url(theme-url("/assets/icons/tab.svg"));
           }
         }
+        
         &.active{
           a{
             border-color: $col-prm;
             color: $black;
             &:before{
               content: url(theme-url("/assets/icons/tab-active.svg"));
+            }
+          }
+        }
+
+        &.disabled{
+          a{
+            border-color: $gray200;
+            color: $gray800;
+            &:before{
+            content: url(theme-url("/assets/icons/tab.svg"));
             }
           }
         }
@@ -616,6 +627,9 @@ body.single-product{
       line-height: 150%;
       *{
         color: $black;
+      }
+      &.hidden{
+        display: none !important;
       }
     }
   }
