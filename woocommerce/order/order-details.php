@@ -168,8 +168,46 @@ if ( $show_downloads ) {
     <div class="row woocommerce-order-details-summary">
         <?php
 			foreach ( $order->get_order_item_totals() as $key => $total ) {
-                if($key === 'order_total'){
-				?>
+            
+                if($key === 'shipping'){ ?>
+        <h3>
+            <?= __('Shipping and payment', 'rimrebellion') ?>
+        </h3>
+        <div class="summary-item half">
+            <span class="summary-text"><?= wp_kses_post( $total['value'] ) ?></span>
+            <span class="td">
+                <?php 
+                    $shipping_total = $order->get_shipping_total();
+                    if ($shipping_total > 0) {
+                        echo wp_kses_post( wc_price( $shipping_total ) );
+                    } else {
+                        esc_html_e('Free', 'rimrebellion');
+                    }
+                    ?>
+            </span>
+        </div>
+        <?php }
+
+        if($key === 'payment_method'){ ?>
+        <div class="summary-item half">
+            <span class="summary-text"><?= wp_kses_post( $total['value'] ) ?></span>
+            <span class="td" style="text-align:<?php echo esc_attr( $text_align ); ?>;">
+                <?php 
+                    $shipping_total = $order->get_shipping_total();
+                    if ($shipping_total > 0) {
+                        echo wp_kses_post( wc_price( $shipping_total ) );
+                    } else {
+                        esc_html_e('Free', 'rimrebellion');
+                    }
+                    ?>
+            </span>
+        </div>
+        <?php }
+			?>
+        <?php
+
+        if($key === 'order_total'){
+        ?>
         <div class="summary-item">
             <span class="summary-label"><?= esc_html( $total['label'] ) ?></span>
             <span
@@ -207,11 +245,40 @@ if ( $show_downloads ) {
             <div class="woocommerce-order-details-info">
                 <?php
 			do_action( 'woocommerce_after_order_details', $order );
+		// Display billing address
+		if ( $order->get_formatted_billing_address() ) : ?>
+                <div class="woocommerce-order-details-billing">
+                    <h3 class="woocommerce-order-details-billing-title">
+                        <?php esc_html_e( 'Billing Address', 'woocommerce' ); ?></h3>
+                    <address>
+                        <?php echo wp_kses_post( $order->get_formatted_billing_address( esc_html__( 'N/A', 'woocommerce' ) ) ); ?>
+                        <?php if ( $order->get_billing_phone() ) : ?>
+                        <p class="woocommerce-order-details-billing-phone">
+                            <?php echo esc_html( $order->get_billing_phone() ); ?></p>
+                        <?php endif; ?>
+                        <?php if ( $order->get_billing_email() ) : ?>
+                        <p class="woocommerce-order-details-billing-email">
+                            <?php echo esc_html( $order->get_billing_email() ); ?></p>
+                        <?php endif; ?>
+                    </address>
+                </div>
+                <?php endif; 
+		// Display shipping address
+		if ( $order->get_formatted_shipping_address() ) : ?>
+                <div class="woocommerce-order-details-shipping">
+                    <h3 class="woocommerce-order-details-shipping-title">
+                        <?php esc_html_e( 'Shipping Address', 'woocommerce' ); ?></h3>
+                    <address>
+                        <?php echo wp_kses_post( $order->get_formatted_shipping_address( esc_html__( 'N/A', 'woocommerce' ) ) ); ?>
+                        <?php if ( $order->get_shipping_phone() ) : ?>
+                        <p class="woocommerce-order-details-shipping-phone">
+                            <?php echo esc_html( $order->get_shipping_phone() ); ?></p>
+                        <?php endif; ?>
+                    </address>
+                </div>
+                <?php endif; ?>
 
-			if ( $show_customer_details ) {
-				wc_get_template( 'order/order-details-customer.php', array( 'order' => $order ) );
-			}
-		?>
+
             </div>
 
             <?php if ( isset($notes) ) : ?>
@@ -276,6 +343,42 @@ if ( $show_downloads ) {
                 <div class="woocommerce-order-details-summary">
                     <?php
 			foreach ( $order->get_order_item_totals() as $key => $total ) {
+
+                    
+                if($key === 'shipping'){ ?>
+                    <div class="summary-item shipping-payment">
+                        <span class="summary-text"><?= wp_kses_post( $total['value'] ) ?></span>
+                        <span class="td">
+                            <?php 
+                    $shipping_total = $order->get_shipping_total();
+                    if ($shipping_total > 0) {
+                        echo wp_kses_post( wc_price( $shipping_total ) );
+                    } else {
+                        esc_html_e('Free', 'rimrebellion');
+                    }
+                    ?>
+                        </span>
+                    </div>
+                    <?php }
+
+        if($key === 'payment_method'){ ?>
+                    <div class="summary-item shipping-payment">
+                        <span class="summary-text"><?= wp_kses_post( $total['value'] ) ?></span>
+                        <span class="td" style="text-align:<?php echo esc_attr( $text_align ); ?>;">
+                            <?php 
+                    $shipping_total = $order->get_shipping_total();
+                    if ($shipping_total > 0) {
+                        echo wp_kses_post( wc_price( $shipping_total ) );
+                    } else {
+                        esc_html_e('Free', 'rimrebellion');
+                    }
+                    ?>
+                        </span>
+                    </div>
+                    <?php }
+			?>
+                    <?php
+
                 if($key === 'order_total'){
 				?>
                     <div class="summary-item">
