@@ -889,6 +889,12 @@ span.active-orders{
   }
   .woocommerce-order-details-summary {
     margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.6rem;
+    h3{
+      width: 100%;
+    }
     .summary-item {
       display: flex;
       justify-content: space-between;
@@ -900,6 +906,44 @@ span.active-orders{
         max-width: 100%;
         padding: 1rem 0;
         margin: 0;
+      }
+      &.half{
+        flex: 1 0 calc(50% - .8rem);
+        max-width: calc(50% - .8rem);
+        border-bottom: 0;
+        background-color: $white;
+        border-radius: 4px;
+        padding: 1.7rem 2.4rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        @include bp("md") {
+          flex: 1 0 100%;
+          max-width: 100%;
+        }
+        .summary-text,
+        .td{
+          font-size: 1.4rem;
+          font-weight: 400;
+          text-transform: none;
+        }
+      }
+      &.shipping-payment{
+        border: none;
+        padding: 1.6rem 0 0 0;
+        border-top: 1px solid $gray500;
+        .summary-text,
+        .td{
+          font-size: 1.4rem;
+          font-weight: 400;
+          color: $gray500;
+        }
+        &:nth-of-type(2){
+          padding-top: 0;
+          border-top: 0;
+          padding-bottom: 1.6rem;
+          border-bottom: 1px solid $gray500;
+        }
       }
       .summary-label {
         display: block;
@@ -929,6 +973,22 @@ span.active-orders{
     max-width: var(--container-width);
     margin: 0 auto;
     padding: 0 1.5rem;
+  }
+  .woocommerce-order-details-info{
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 1.6rem;
+    flex-wrap: wrap;
+    > div{
+      flex: 1 0 calc(33.33% - .8rem);
+      max-width: calc(33.33% - .8rem);
+      @include bp("md") {
+        flex: 1 0 100%;
+        max-width: 100%;
+      }
+    
+    }
   }
 }
 .order-legend-info {
