@@ -249,7 +249,7 @@ class RC_Google_custom extends RC_Google{
   }
 
   public static function push_to_datalayer($params, $first = false) {
-    rc_enqueue_js(sprintf("jQuery(document.body).on('consent_initialized', function() { dataLayer.push(%s); });", json_encode($params)), $first);
+    rc_enqueue_js(sprintf("((function() { dataLayer.push(%s); })());", json_encode($params)), $first);
   }
 
   public static function add_rest_routes() {
