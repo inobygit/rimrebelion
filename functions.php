@@ -6,6 +6,7 @@ require_once RIMREBELLION_CHILD . "/inc/product-tabs.php";
 require_once RIMREBELLION_CHILD . "/inc/product-functions.php";
 require_once RIMREBELLION_CHILD . "/inc/custom-import-mapper.php";
 require_once RIMREBELLION_CHILD . "/inc/custom-mail-footer.php";
+require_once RIMREBELLION_CHILD . "/inc/class-rc-google-custom.php";
 
 // To ensure the action is removed, you can try adding the removal in a later hook
 add_action('after_setup_theme', 'remove_parent_theme_redirect');
