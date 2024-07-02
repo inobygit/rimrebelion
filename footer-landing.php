@@ -4,7 +4,8 @@
 
             <div id="copyright-left" class="widget-area">
                 <a href="<?= site_url() ?>">
-                    <img src="<?= get_stylesheet_directory_uri() . '/assets/svg/logo-landing.svg' ?>" alt="logo light">
+                    <img src="<?= get_stylesheet_directory_uri() . '/assets/svg/logo-landing-footer.svg' ?>"
+                        alt="logo light">
                 </a>
             </div>
 
