@@ -21,6 +21,11 @@
   src: local("ItalianPlate"), local("ItalianPlate"), url(theme-url("/assets/fonts/ItalianPlateNo4Expanded-Regular.otf")) format("opentype");
 }
 
+em,
+i{
+  font-family: 'ItalianPlateItalic', sans-serif;
+  font-size: larger;
+}
 
 html[lang="sk-SK"] {
   .product-search-results table.search-results{
@@ -448,7 +453,7 @@ nav.breadcrumbs {
       padding: 5px 8px !important;
       position: relative;
       font-weight: 400;
-      font-family: 'Helvetica', sans-serif;
+      font-family: 'Roboto', sans-serif;
       font-size: 1.4rem;
 
       &:hover{
@@ -461,8 +466,8 @@ nav.breadcrumbs {
         gap: .8rem;
         padding-right: 0;
         font-weight: 400;
-      font-family: 'Helvetica', sans-serif;
-      font-size: 1.4rem;
+        font-family: 'Roboto', sans-serif;
+        font-size: 1.4rem;
         &::before{
           content: '';
           position: absolute;
@@ -573,7 +578,7 @@ nav.breadcrumbs {
       }
     }
     .top-menu > div > ul.menu li.menu-item a{
-      font-family: 'Helvetica', sans-serif;
+      font-family: 'Roboto', sans-serif;
       color: $white;
       font-size: 1.4rem;
     }
