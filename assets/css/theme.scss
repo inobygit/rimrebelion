@@ -635,6 +635,10 @@ nav.breadcrumbs {
     @include bp(lg){
       justify-content: flex-start;
     }
+    a{
+      height: 80px;
+      margin: 1rem 0;
+    }
   }
   .show-more {
     a {
