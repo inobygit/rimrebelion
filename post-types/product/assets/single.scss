@@ -87,8 +87,10 @@ body.single-product{
           color: $gray600;
           font-size: $fs-h4;
           line-height: 150%; 
-          font-family: 'ItalianPlateItalic', sans-serif;
           margin-bottom: 1rem;
+        }
+        i, em{
+          font-size: inherit;
         }
       }
       .variations_form{
