@@ -57,13 +57,13 @@ if (isset($attachment_ids[0])) {
               "class" => "woocommerce-product-gallery__image more",
               "data-more-text" => "+ $remaining",
               "data-gallery-parent" => '#slider-' . $product->get_id(),
-              "data-gallery-index" => $i + 1, // +1 because there is no master image in thumbs
+              "data-gallery-index" => $i, // +1 because there is no master image in thumbs
             ]);
             break;
           }
           echo get_gallery_image_html($attachment_id, "o-4", [
             "data-gallery-parent" => '#slider-' . $product->get_id(),
-            "data-gallery-index" => $i + 1, // +1 because there is no master image in thumbs
+            "data-gallery-index" => $i, // +1 because there is no master image in thumbs
           ]);
         }
       }
