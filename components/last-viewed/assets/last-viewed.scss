@@ -142,7 +142,7 @@ $out-of-stock-color: $col-danger !default;
       align-items: flex-end;
       justify-content: space-between;
       @include bp("lg") {
-        flex-direction: column;
+        flex-direction: row !important;
         align-items: flex-start;
       }
       .content-product-price {
@@ -176,9 +176,7 @@ $out-of-stock-color: $col-danger !default;
         font-weight: $product-stock-weight;
         text-transform: uppercase;
         margin-bottom: 0;
-        @include bp("md") {
-          display: none;
-        }
+        display: block !important;
         &.instock {
           color: $in-stock-color;
         }

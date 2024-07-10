@@ -59,8 +59,15 @@
         overflow: hidden;
       }
     }
+    .content-product-footer{
+      @include bp("lg") {
+        flex-direction: row !important;
+        align-items: flex-start;
+      }
+    }
     .content-product-footer .stock{
       text-transform: none !important;
+      display: block !important;
     }
   }
   &:hover{
