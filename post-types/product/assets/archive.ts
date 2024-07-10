@@ -3,7 +3,56 @@ import * as $ from "jquery";
 
 class ProductArchiveModule extends InobyModule {
   run() { 
+  $('html').on('click', function() {
+    $('.expandable-wrp').removeClass('expanded');
+    $('.expandable-wrp').find('input[type="hidden"]').val('0');
+  });
+
+    $('.expandable-wrp').on('click', function(e) {
+      e.stopPropagation();
+      var shouldRemove = false;
+      if($(this).hasClass('expanded')){
+          shouldRemove = true;
+        } else {
+          shouldRemove = false;
+        }
+        $('.expandable-wrp').removeClass('expanded');
+        $('.expandable-wrp').find('input[type="hidden"]').val('0');
+      setTimeout(() => {
+        if(shouldRemove){
+          $(this).removeClass('expanded');
+          $(this).find('input[type="hidden"]').val('0');
+        } else {
+          $(this).addClass('expanded');
+          $(this).find('input[type="hidden"]').val('1');
+        }
+      
+      }, 100);
+      });
+
   $(document).ajaxComplete(function(event, xhr, options) {
+    $('.expandable-wrp').off('click');
+    $('.expandable-wrp').on('click', function(e) {
+      e.stopPropagation();
+      var shouldRemove = false;
+      if($(this).hasClass('expanded')){
+          shouldRemove = true;
+        } else {
+          shouldRemove = false;
+        }
+        $('.expandable-wrp').removeClass('expanded');
+        $('.expandable-wrp').find('input[type="hidden"]').val('0');
+      setTimeout(() => {
+        if(shouldRemove){
+          $(this).removeClass('expanded');
+          $(this).find('input[type="hidden"]').val('0');
+        } else {
+          $(this).addClass('expanded');
+          $(this).find('input[type="hidden"]').val('1');
+        }
+      
+      }, 100);
+      });
 
     if (options.url.includes('?rc-ajax=get_products')) {
       $('#inoby-preloader').show();
