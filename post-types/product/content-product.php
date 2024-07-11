@@ -33,7 +33,7 @@ if (empty($product) || !$product->is_visible()) {
         Inoby_Product::wishlist();
     } ?>
         <?php
-        echo $product->get_image("o-4", ["class" => "product-image", "loading" => "lazy", 'alt' => $product->get_title()]);
+        echo $product->get_image("o-6", ["class" => "product-image", "loading" => "lazy", 'alt' => $product->get_title()]);
         ?>
         <div class="tags">
             <?php
