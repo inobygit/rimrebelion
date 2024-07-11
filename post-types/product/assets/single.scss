@@ -644,9 +644,9 @@ body.single-product{
           padding: 0;
         }
         .content-product{
-          row-gap: .5rem;
+          row-gap: .5rem !important;
           h3{
-            margin-bottom: 0;
+            margin-bottom: 0 !important;
           }
         }
         #products{
