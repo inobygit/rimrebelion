@@ -34,7 +34,7 @@ $notes = WC()->session->get("order_comments");
                 </div>
                 <p class="label"><?= $shipping_method->get_label() ?></p>
                 <p class="value">
-                    <?= ($shipping_method->get_cost() === '0.00' ? 'Free' : rc_cart_shipping_method_price($shipping_method)) ?>
+                    <?= ($shipping_method->get_cost() === '0.00' ? __('Free', 'rimrebellion') : rc_cart_shipping_method_price($shipping_method)) ?>
                 </p>
                 <a class="edit tab-btn prev" data-prev-tab="step-3" data-current-tab="step-4" href="#0"><img
                         src="<?= get_theme_file_uri("/assets/icons/edit.svg") ?>"
@@ -59,7 +59,7 @@ $notes = WC()->session->get("order_comments");
                      if ($fee_total != '0'){ ?>
                 <p class="value"><?= wp_kses_post( wc_price($fee_total) ) ?></p>
                 <?php } else { 
-                    esc_html_e('Free', 'mammut');
+                    esc_html_e('Free', 'rimrebellion');
                 } ?>
                 <a class="edit tab-btn prev" data-prev-tab="step-3" data-current-tab="step-4" href="#0"><img
                         src="<?= get_theme_file_uri("/assets/icons/edit.svg") ?>"
