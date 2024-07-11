@@ -1,5 +1,5 @@
 jQuery(document).ready(function($){
-
+	console.log('login');
 	var classReferral = {
 		'xoo-el-login-tgr': 'login',
 		'xoo-el-reg-tgr': 'register',
@@ -124,6 +124,7 @@ jQuery(document).ready(function($){
 
 
 		submitForm(e){
+	console.log('submitted');
 
 			e.preventDefault();
 
