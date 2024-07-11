@@ -174,6 +174,7 @@ jQuery(document).ready(function($){
 							if(searchParams.has('lang')){
 								response.redirect = response.redirect + "&lang=" + searchParams.get('lang');
 							}
+							console.log(response.redirect);
 							// //Redirect
 							setTimeout(function(){
 								window.location = response.redirect;
