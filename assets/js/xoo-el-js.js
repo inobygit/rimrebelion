@@ -1,5 +1,4 @@
 jQuery(document).ready(function($){
-	console.log('login form init');
 	var classReferral = {
 		'xoo-el-login-tgr': 'login',
 		'xoo-el-reg-tgr': 'register',
@@ -171,11 +170,12 @@ jQuery(document).ready(function($){
 						
 						if( response.redirect ){
 							const searchParams = new URLSearchParams(window.location.search);
+							console.log(searchParams);
 							if(searchParams.has('lang')){
-								response.redirect = response.redirect + "&lang=" + searchParams.get('lang');
+								response.redirect = response.redirect + "?lang=" + searchParams.get('lang');
 							}
 							console.log(response.redirect);
-							// //Redirect
+							//Redirect
 							setTimeout(function(){
 								window.location = response.redirect;
 							}, xoo_el_localize.redirectDelay );
