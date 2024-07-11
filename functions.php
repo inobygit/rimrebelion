@@ -241,5 +241,5 @@ wp_dequeue_script('xoo-el-js');
 wp_deregister_script('xoo-el-js');
 
 // Register and enqueue a new script from 'assets/js'
-wp_register_script('xoo-el-js', get_stylesheet_directory_uri() . '/assets/js/xoo-el-js.js', array(), '1.0.0', true);
+wp_register_script('xoo-el-js', get_stylesheet_directory_uri() . '/assets/js/xoo-el-js.js', array(), '1.0.1', true);
 wp_enqueue_script('xoo-el-js');
