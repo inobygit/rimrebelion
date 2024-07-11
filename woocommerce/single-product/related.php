@@ -16,36 +16,36 @@
  */
 
 if (!defined("ABSPATH")) {
-    exit();
+  exit();
 }
 
-$id = uniqid("related-slider");
+$id = uniqid("child-related-slider");
 
 if ($related_products): ?>
-<section id="<?= $id ?>" class="related products">
-  <div class="container">
+<section id="<?= $id ?>" class="container related-row related products" data-arrows="true">
     <div class="row">
-      <div class="col-12 wrap">
-        <?php
-        $heading = __("Súvisiace produkty", "rimrebellion");
-        if ($heading) {
-            echo "<h3>" . esc_html($heading) . "</h3>";
-        }
-        woocommerce_product_loop_start();
+        <div class="col-12 wrap">
+            <div class="heading-wrap">
+                <?php
+    $heading = __("Súvisiace produkty", "rimrebellion");
+    if ($heading) {
+      echo "<h2>" . esc_html($heading) . "</h2>";
+    }
+?>
+            </div>
+            <?php  woocommerce_product_loop_start();
 
-        foreach ($related_products as $related_product) {
-            $post_object = get_post($related_product->get_id());
+    foreach ($related_products as $related_product) {
+      $post_object = get_post($related_product->get_id());
 
-            setup_postdata($GLOBALS["post"] = &$post_object); // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited, Squiz.PHP.DisallowMultipleAssignments.Found
+      setup_postdata($GLOBALS["post"] = &$post_object); // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited, Squiz.PHP.DisallowMultipleAssignments.Found
 
-            wc_get_template_part("content", "product");
-        }
-        woocommerce_product_loop_end();
-        get_template_part("template-parts/keen-arrows", "keen-arrows", ["slider-id" => $id]);
-        ?>
-      </div>
+      wc_get_template_part("content", "product");
+    }
+    woocommerce_product_loop_end();
+    ?>
+        </div>
     </div>
-  </div>
 </section>
 <?php endif;
 

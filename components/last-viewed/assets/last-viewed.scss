@@ -119,7 +119,7 @@ $out-of-stock-color: $col-danger !default;
   .content-product {
     display: flex;
     flex-direction: column;
-    row-gap: $content-wrap-row-gap;
+    row-gap: .5rem;
     padding: $content-wrap-padding;
     .content-product-title {
       h2 {
@@ -132,6 +132,9 @@ $out-of-stock-color: $col-danger !default;
         -webkit-line-clamp: 3;
         -webkit-box-orient: vertical;
         overflow: hidden;
+      }
+      h3{
+        margin-bottom: 0;
       }
     }
     .content-product-footer {

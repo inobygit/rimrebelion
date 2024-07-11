@@ -3,6 +3,7 @@ import * as $ from "jquery";
 import KeenSlider, { KeenSliderPlugin } from "keen-slider";
 import { SliderGallerySettings } from "./slider-gallery.d";
 import { arrows, dots } from "@lib/keen-slider-plugins";
+import KeenSliderHelper from "@assets/js/lib/keen-slider-helper";
 
 class ProductSingleModule extends InobyModule {
 
@@ -99,5 +100,57 @@ class ProductSingleModule extends InobyModule {
   }
 
 }
+
+
+class RelatedProductsSlieder extends InobyModule {
+  run() {
+    const $sliderContainer = $("[id^=child-related-slider]");
+    $sliderContainer.removeClass('row').addClass("keen-slider");
+
+    KeenSliderHelper.registerSlider(
+      $sliderContainer,
+      {
+        selector: ".content-product-wrap",
+        loop: true,
+        slides: {
+          perView: 4,
+          spacing: 30,
+        },
+        breakpoints: {
+          "(min-width: 0px)": {
+            slides: {
+              perView: 1.5,
+              spacing: 15,
+              mode: "free",
+            },
+          },
+          "(min-width: 576px)": {
+            slides: {
+              perView: 1.5,
+              spacing: 30,
+              mode: "free",
+            },
+          },
+          "(min-width: 768px)": {
+            slides: {
+              perView: 2.5,
+              spacing: 30,
+            },
+          },
+          "(min-width: 1200px)": {
+            slides: {
+              perView: 4,
+              spacing: 30,
+            },
+          },
+        },
+      },
+      true
+    );
+  }
+}
+
+
+new RelatedProductsSlieder().runOnReady();
 
 new ProductSingleModule().runOnReady();
