@@ -389,14 +389,47 @@ body.woocommerce-checkout {
         padding: 0px;
         list-style: none;
         margin-bottom: $space-md;
-        .method, .wc_payment_method{
+        .wc_payment_method,
+        .method {
           position: relative;
           background-color: $white;
           padding: 2.4rem 2.4rem 1.8rem;
           border-bottom: 0.5px solid $gray200;
+          display: flex;
+          align-items: flex-start;
+          justify-content: flex-start;
+          flex-wrap: wrap;
+          gap: 1.6rem;
+          border-radius: 4px;
+          &:has(input[type="radio"]:checked){
+            border: 1px solid $black;
+          }
           input[type=radio]{
             cursor: pointer;
             margin-right: 1rem;
+          }
+          .icon-wrp{
+            display: none;
+          }
+          .icon-wrp:has(img){
+            display: block;
+            img{
+              max-width: 50px;
+              height: auto;
+            }
+          }
+          .info{
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-start;
+            flex-basis: 60%;
+            @include bp(md){
+              flex-basis: 100%;
+            }
+          }
+          .payment_method_fees{
+            margin-left: auto;
           }
           label{
             cursor: pointer;
@@ -410,12 +443,33 @@ body.woocommerce-checkout {
             display: inline-flex;
             justify-content: space-between;
           }
+          .value{
+            margin-left: auto;
+          }
           .payment_box{
             p{
               color: $gray500;
               font-size: 1.1rem;
               font-weight: 400;
               line-height: 150%; /* 16.5px */
+            }
+          }
+        }
+        .method{
+          label{
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-start;
+            gap: .6rem;
+            flex-basis: 60%;
+            @include bp(md){
+              flex-basis: 100%;
+            }
+            .description{
+              color: $gray500;
+              font-size: 1.1rem;
+              font-weight: 400;
             }
           }
         }
