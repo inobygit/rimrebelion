@@ -643,6 +643,12 @@ body.single-product{
         .product-card.content-product-wrap.product{
           padding: 0;
         }
+        .content-product{
+          row-gap: .5rem;
+          h3{
+            margin-bottom: 0;
+          }
+        }
         #products{
           cursor: grab;
         }
