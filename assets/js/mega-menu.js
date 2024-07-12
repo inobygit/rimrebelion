@@ -46,4 +46,35 @@ $(function () {
             }
         }
     });
+
+    $('.triangleright').each(function() {
+        if(this.innerText.length > 18){
+            $(this).addClass('big');
+        }
+        if(this.innerText.length > 24){
+            $(this).removeClass('big')
+            $(this).addClass('huge');
+        }
+        if(this.innerText.length < 13){
+            $(this).addClass('small');
+        }
+    });
+
+    $('.triangleBoth').each(function() {
+        if(this.innerText.length > 15){
+            $(this).addClass('big');
+        }
+        if(this.innerText.length < 10){
+            $(this).addClass('small');
+        }
+    });
+
+    $('#breadcrumbs > span span').each(function() {
+        if(this.innerText.length > 14){
+            $(this).addClass('big');
+        }
+        if(this.innerText.length < 5){
+            $(this).addClass('small');
+        }
+    });
 });

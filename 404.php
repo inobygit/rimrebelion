@@ -22,7 +22,7 @@ get_header();
                         <h1><?= $title ?></h1>
                         <h2><?= $headline ?></h2>
                         <p class="large"><?= $text ?></p>
-                        <a href="/" class="button light triangleleft triangleright"><?= $btn_home_text ?></a>
+                        <a href="/" class="button white triangleBoth"><?= $btn_home_text ?></a>
                     </div>
                 </div>
             </div>

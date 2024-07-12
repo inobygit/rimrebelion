@@ -296,6 +296,9 @@ body.woocommerce-checkout {
       }
       a, button{
         margin: 0;
+        @include bp(md){
+          margin: 0 auto;
+        }
       }
     }
     .customer-info-step{
@@ -592,7 +595,6 @@ body.woocommerce-checkout {
       display: inline-block;
     }
     .customer-info-btn, .shipping-payment-btn, .checkout-summary-btn, #place_order{
-      margin-right: 14px !important;
       @include bp('md'){
         width: 100%;
       

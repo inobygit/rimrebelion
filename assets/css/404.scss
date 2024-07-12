@@ -7,6 +7,9 @@ html #main main, body #main main{
 section.page-404 {
     position: relative;
     height: 500px;
+    .button{
+      margin: auto;
+    }
     .bg-image{
         position: absolute;
         top: 0;

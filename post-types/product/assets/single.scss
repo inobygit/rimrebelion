@@ -176,6 +176,9 @@ body.single-product{
         }
         .woocommerce-variation-add-to-cart{
           margin-top: $space-sm;
+          display: flex;
+          flex-wrap: wrap;
+          gap: 1.6rem;
           &.woocommerce-variation-add-to-cart-disabled{
             opacity: .5;
             pointer-events: none;

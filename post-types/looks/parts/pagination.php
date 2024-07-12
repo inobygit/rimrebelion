@@ -17,7 +17,7 @@ if (Inoby_Config::latest_posts() > 0) {
   if ($wp_query->max_num_pages > 1.1): ?>
 <div class="row">
     <div class="col-12 loadmore-actions">
-        <a href="#0" class="button triangleleft triangleright posts_loadmore_child"
+        <a href="#0" class="button triangleBoth black posts_loadmore_child"
             <?= $button_args ?>><?= __("Show more", 'rimrebellion') ?></a>
     </div>
 </div>
@@ -26,7 +26,7 @@ if (Inoby_Config::latest_posts() > 0) {
   if ($wp_query->max_num_pages > 1): ?>
 <div class="row">
     <div class="col-12 loadmore-actions">
-        <a href="#0" class="button triangleleft triangleright posts_loadmore_child"
+        <a href="#0" class="button triangleBoth black posts_loadmore_child"
             <?= $button_args ?>><?= __("Show more", 'rimrebellion') ?></a>
     </div>
 </div>

@@ -26,7 +26,7 @@ $form_id = uniqid("newsletter_form");
         <label for="gdpr"><span><?= $gdpr_label ?></span></label>
     </div>
     <div class="button-wrap">
-        <button type="submit" class="button submit triangleright" name="subscribe_newsletter"
+        <button type="submit" class="button submit triangleright black" name="subscribe_newsletter"
             value="<?= $subscribe_label ?>"><?= $subscribe_label ?></button>
     </div>
     <p class="message error-message">

@@ -46,7 +46,7 @@ $src = mb_get_block_field("video-background-src");
                 <?php } if(!empty($text)) { ?>
                 <p><?= $text ?></p>
                 <?php } if(!empty($button)) { ?>
-                <a class="button light btn-background" href="<?= $button[1] ?>" target="<?= $button[2] ?>">
+                <a class="button light triangleBoth" href="<?= $button[1] ?>" target="<?= $button[2] ?>">
                     <?= $button[0] ?></a>
                 <?php }
                 ?>

@@ -44,7 +44,7 @@ $form_id = uniqid("newsletter_form");
             <div class="col-6 col-md-12">
                 <?php if ($popup_check == 1) { ?>
                 <div class="button-wrap">
-                    <?php echo isset($btn_text) ? '<a href="#0" class="button triangleleft triangleright form-button">' . $btn_text . "</a>" : ""; ?>
+                    <?php echo isset($btn_text) ? '<a href="#0" class="button triangleBoth form-button">' . $btn_text . "</a>" : ""; ?>
                 </div>
                 <div class="newsletter-popup">
                     <div class="newsletter-wrap">
