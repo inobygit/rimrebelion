@@ -70,7 +70,7 @@ $(function () {
     });
 
     $('#breadcrumbs > span span').each(function() {
-        if(this.innerText.length > 14){
+        if(this.innerText.length > 13){
             $(this).addClass('big');
         }
         if(this.innerText.length > 25){
