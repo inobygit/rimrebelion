@@ -59,54 +59,75 @@ $trianglew: 14px;
         .button{
            &.btn-enable{
             position: relative;
-            margin-right: $trianglew;
-            background: $btn-l-bg;
-            color: $btn-l-col;
-            border-color: $btn-l-border-col;
-            &:hover,
-            &:focus {
-                background: $btn-l-hover-bg;
-                color: $btn-l-hover-col;
-                border-color: $btn-l-hover-border-col;
-            }
-            &:after {
+            height: 47px;
+            min-height: 47px;
+            min-width: 184px;
+            width: 184px;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            text-align: center !important;
+            background-color: transparent !important;
+            color: $black !important;
+            border: none !important;
+            z-index: 1;
+            &::before{
                 content: '';
-                transition: $trans;
-                display: inline-block;
+                background-image: url(theme-url("/assets/icons/buttons/arrow-both/arrow-both-filled-white-m.svg"));
+                background-size: contain;
+                background-repeat: no-repeat;
+                background-position: center;
+                top: 0;
+                left: 0px;
+                height: 47px;
+                min-height: 47px;
+                min-width: 184px;
+                width: 184px;
                 position: absolute;
-                right: calc(-#{$trianglew}); //-15px
-                top: calc(-#{$btn-bw});
-                width: $trianglew;
-                height: calc(100% + 2*#{$btn-bw});
-                background-color: $btn-l-bg;
-                clip-path: polygon(0 0, 0% 100%, 100% 50%);
-                border-radius: $btn-br;
+                z-index: -1;
             }
-            &:hover{
-                &::after{
-                    background-color: $btn-hover-bg;
-                    transition: $trans-h;
+            &:hover, &:focus, &:active{
+                color: $black !important;
+                &::before{
+                    opacity: .8;
                 }
             }
-            &:before {
-                content: '';
-                transition: $trans;
-                display: inline-block;
-                position: absolute;
-                left: calc(-#{$trianglew}); //-15px
-                top: calc(-#{$btn-bw});
-                width: $trianglew;
-                height: calc(100% + 2*#{$btn-bw});
-                background-color: $btn-l-bg;
-                clip-path: polygon(100% 0, 0 50%, 100% 100%);
-                border-radius: $btn-br;
+            &.small{
+                height: 47px;
+                min-height: 47px;
+                min-width: 140px;
+                width: 140px;
+                &::before{
+                    height: 47px;
+                    min-height: 47px;
+                    min-width: 140px;
+                    width: 140px;
+                    background-image: url(theme-url("/assets/icons/buttons/arrow-both/arrow-both-filled-white-s.svg"));
                 }
-                &:hover{
+                &:hover, &:focus, &:active{
                     &::before{
-                        background-color: $btn-hover-bg;
-                        transition: $trans-h;
+                        background-image: url(theme-url("/assets/icons/buttons/arrow-both/arrow-both-filled-white-s.svg"));
                     }
                 }
+            }
+            &.big{
+            height: 47px;
+            min-height: 47px;
+            min-width: 217px;
+            width: 217px !important;
+            &::before{
+                height: 47px;
+                min-height: 47px;
+                min-width: 217px;
+                width: 217px;
+                background-image: url(theme-url("/assets/icons/buttons/arrow-both/arrow-both-filled-white-l.svg"));
+            }
+            &:hover, &:focus, &:active{
+                &::before{
+                    background-image: url(theme-url("/assets/icons/buttons/arrow-both/arrow-both-filled-white-l.svg"));
+                    }
+                }
+            }
            }
            &.btn-settings,
            &.btn-save{
