@@ -632,6 +632,27 @@ nav.breadcrumbs {
               z-index: -1;
             }
           }
+          &.huge{
+            height: 25px;
+            min-height: 25px;
+            min-width: 204px !important;
+            width: 204px !important;
+            &::before{
+              content: '';
+              background-image: url(theme-url("/assets/icons/buttons/arrow-right/breadcrumb-right-xl.svg"));
+              background-size: contain;
+              background-repeat: no-repeat;
+              background-position: center;
+              top: 0;
+              left: 0px;
+              height: 25px;
+              min-height: 25px;
+              min-width: 204px;
+              width: 204px;
+              position: absolute;
+              z-index: -1;
+            }
+          }
           &:first-of-type{
             padding-left: 0;
             height: 25px;

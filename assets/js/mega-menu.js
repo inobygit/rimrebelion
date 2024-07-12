@@ -73,6 +73,10 @@ $(function () {
         if(this.innerText.length > 14){
             $(this).addClass('big');
         }
+        if(this.innerText.length > 25){
+            $(this).removeClass('big');
+            $(this).addClass('huge');
+        }
         if(this.innerText.length < 5){
             $(this).addClass('small');
         }
