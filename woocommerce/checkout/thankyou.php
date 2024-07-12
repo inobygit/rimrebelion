@@ -81,7 +81,7 @@ $order_id = $order->get_id();
                         <?php
       //do_action("woocommerce_thankyou_" . $order->get_payment_method(), $order_id);
       ?>
-                        <a class="button light triangleright triangleleft"
+                        <a class="button white triangleBoth m-auto"
                             href="<?= get_home_url() ?>"><?= __("Back home", "rimrebelion") ?></a>
                     </div>
 
@@ -134,7 +134,7 @@ $order_id = $order->get_id();
       ?>
                         </p>
 
-                        <a class="button triangleright triangleleft light"
+                        <a class="button triangleBoth white m-auto"
                             href="<?= get_home_url() ?>"><?= __("Back home", "rimrebelion") ?></a>
                     </div>
 

@@ -85,7 +85,7 @@ $settings = apply_filters("rimrebelion_checkout_settings", [
                         <?= rc_button([
                 "text" => __("Prejsť na dodacie údaje", "rimrebelion"),
                 "tag" => "button",
-                "class" => "customer-info-btn tab-btn btn-next triangleright",
+                "class" => "customer-info-btn tab-btn btn-next triangleright black",
                 "data" => [
                     "data-security" => wp_create_nonce("rootcommerce-validate-cart-items"),
                     "data-current-tab" => "step-1",
@@ -133,7 +133,7 @@ $settings = apply_filters("rimrebelion_checkout_settings", [
                             <?= rc_button([
                   "text" => __("Prejsť na dopravu a platbu", "rimrebelion"),
                   "tag" => "button",
-                  "class" => "tab-btn shipping-payment-btn btn-next triangleright",
+                  "class" => "tab-btn shipping-payment-btn btn-next triangleright black",
                   "data" => [
                       "data-security" => wp_create_nonce("rootcommerce-valid-customer-request"),
                       "data-current-tab" => "step-2",
@@ -163,7 +163,7 @@ $settings = apply_filters("rimrebelion_checkout_settings", [
               ]) ?>
                             <?= rc_button([
                   "text" => __("Prejsť na zhrnutie", "rimrebelion"),
-                  "class" => "checkout-summary-btn tab-btn btn-next triangleright",
+                  "class" => "checkout-summary-btn tab-btn btn-next triangleright black",
                   "tag" => "button",
                   "data" => [
                       "data-security" => wp_create_nonce("rootcommerce-update-checkout-customer-request"),
@@ -205,7 +205,7 @@ $settings = apply_filters("rimrebelion_checkout_settings", [
                       "name" => "woocommerce_checkout_place_order",
                       "id" => "place_order",
                       "tag" => "submit",
-                      "class" => "btn-sm triangleright",
+                      "class" => "btn-sm triangleright black",
                       "value" => esc_attr($order_button_text),
                       "data" => ["data-value" => esc_attr($order_button_text)],
                   ]),

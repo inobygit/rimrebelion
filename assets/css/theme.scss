@@ -27,6 +27,10 @@ i{
   font-size: larger;
 }
 
+.m-auto{
+  margin: auto;
+}
+
 html[lang="sk-SK"] {
   .product-search-results table.search-results{
     .entry{
@@ -106,88 +110,341 @@ body{
 
 $trianglew: 14px;
 a.button, button {
-  height: 45px !important;
-  min-height: 45px !important;
-  max-height: 45px !important;
   border-top: 1px solid $black;
   border-bottom: 1px solid $black;
   text-wrap: nowrap;
   border-width: 1px !important;
   &.triangleright {
     position: relative;
-    &::after{
+    height: 47px;
+    min-height: 47px;
+    min-width: 184px;
+    width: 184px;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    text-align: left !important;
+    background-color: transparent !important;
+    color: $black !important;
+    border: none !important;
+    z-index: 1;
+    &::before{
       content: '';
-      background-image: url(theme-url("/assets/icons/button-arrow-black-filled.svg"));
+      background-image: url(theme-url("/assets/icons/buttons/arrow-right/arrow-right-outline-black-m.svg"));
       background-size: contain;
       background-repeat: no-repeat;
       background-position: center;
-      height: 46px;
-      width: 28px;
-      top: -1.5px;
-      bottom: 0px;
-      left: calc(100% - 5px);
+      top: 0;
+      left: 0px;
+      height: 47px;
+      min-height: 47px;
+      min-width: 184px;
+      width: 184px;
       position: absolute;
-      display: block;
+      z-index: -1;
     }
     &:hover, &:focus, &:active{
-      background-color: $black !important;
-      border-color: $black !important;
-      background: $black !important;
-      opacity: .6 !important;
+      color: $white !important;
+      &::before{
+        background-image: url(theme-url("/assets/icons/buttons/arrow-right/arrow-right-filled-black-m.svg"));
+      }
     }
-    &.light{
-      &::after{
-        background-image: url(theme-url("/assets/icons/button-right-arrow-white-filled.svg"));
+    &.small{
+      height: 47px;
+      min-height: 47px;
+      min-width: 140px;
+      width: 140px;
+      &::before{
+        height: 47px;
+        min-height: 47px;
+        min-width: 140px;
+        width: 140px;
+        background-image: url(theme-url("/assets/icons/buttons/arrow-right/arrow-right-outline-black-s.svg"));
       }
       &:hover, &:focus, &:active{
-        opacity: .6 !important;
-        background-color: $white !important;
-        border-color: $white !important;
+        &::before{
+          background-image: url(theme-url("/assets/icons/buttons/arrow-right/arrow-right-filled-black-s.svg"));
+        }
+      }
+    }
+    &.big{
+      height: 47px;
+      min-height: 47px;
+      min-width: 217px;
+      width: 217px !important;
+      &::before{
+        height: 47px;
+        min-height: 47px;
+        min-width: 217px;
+        width: 217px;
+        background-image: url(theme-url("/assets/icons/buttons/arrow-right/arrow-right-outline-black-l.svg"));
+      }
+      &:hover, &:focus, &:active{
+        &::before{
+          background-image: url(theme-url("/assets/icons/buttons/arrow-right/arrow-right-filled-black-l.svg"));
+        }
+      }
+    }
+    &.light{
+      background-color: transparent !important;
+      color: $white !important;
+      border: none !important;
+      &::before{
+        background-image: url(theme-url("/assets/icons/buttons/arrow-right/arrow-right-outline-white-m.svg"));
+      }
+      &:hover, &:focus, &:active{
         color: $black !important;
+          &::before{
+          background-image: url(theme-url("/assets/icons/buttons/arrow-right/arrow-right-filled-white-m.svg"));
+        }
+      }
+      &.small{
+        &::before{
+          background-image: url(theme-url("/assets/icons/buttons/arrow-right/arrow-right-outline-white-s.svg"));
+        }
+        &:hover, &:focus, &:active{
+          &::before{
+            background-image: url(theme-url("/assets/icons/buttons/arrow-right/arrow-right-filled-white-s.svg"));
+          }
+        }
+      }
+      &.big{
+        &::before{
+          background-image: url(theme-url("/assets/icons/buttons/arrow-right/arrow-right-outline-white-l.svg"));
+        }
+        &:hover, &:focus, &:active{
+          &::before{
+            background-image: url(theme-url("/assets/icons/buttons/arrow-right/arrow-right-filled-white-l.svg"));
+          }
+        }
+      }
+    }
+    &.white{
+      background-color: transparent !important;
+      color: $black !important;
+      border: none !important;
+      &::before{
+        background-image: url(theme-url("/assets/icons/buttons/arrow-right/arrow-right-filled-white-m.svg"));
+      }
+      &:hover, &:focus, &:active{
+        color: $black !important;
+          &::before{
+          opacity: .8;
+        }
+      }
+      &.small{
+        &::before{
+          background-image: url(theme-url("/assets/icons/buttons/arrow-right/arrow-right-filled-white-s.svg"));
+        }
+      }
+      &.big{
+        &::before{
+          background-image: url(theme-url("/assets/icons/buttons/arrow-right/arrow-right-filled-white-l.svg"));
+        }
+      }
+    }
+    &.black{
+      background-color: transparent !important;
+      color: $white !important;
+      border: none !important;
+      &::before{
+        background-image: url(theme-url("/assets/icons/buttons/arrow-right/arrow-right-filled-black-m.svg"));
+      }
+      &:hover, &:focus, &:active{
+        color: $white !important;
+          &::before{
+          opacity: .8;
+        }
+      }
+      &.small{
+        &::before{
+          background-image: url(theme-url("/assets/icons/buttons/arrow-right/arrow-right-filled-black-s.svg"));
+        }
+      }
+      &.big{
+        &::before{
+          background-image: url(theme-url("/assets/icons/buttons/arrow-right/arrow-right-filled-black-l.svg"));
+        }
+      }
+    }
+    &.huge{
+      height: 45px;
+      min-height: 45px;
+      min-width: 288px;
+      width: 288px !important;
+      &::before{
+        height: 45px;
+        min-height: 45px;
+        min-width: 288px;
+        width: 288px;
+        background-image: url(theme-url("/assets/icons/buttons/arrow-right/arrow-right-filled-black-custom.svg"));
+      }
+      &:hover, &:focus, &:active{
+        &::before{
+        background-image: url(theme-url("/assets/icons/buttons/arrow-right/arrow-right-filled-black-custom.svg"));
+          opacity: .8;
+        }
       }
     }
   }
-  &.triangleleft {
+  &.triangleBoth {
     position: relative;
+    height: 47px;
+    min-height: 47px;
+    min-width: 184px;
+    width: 184px;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    background-color: transparent !important;
+    color: $black !important;
+    border: none !important;
+    z-index: 1;
     &::before{
       content: '';
-      background-image: url(theme-url("/assets/icons/button-arrow-black-filled.svg"));
+      background-image: url(theme-url("/assets/icons/buttons/arrow-both/arrow-both-outline-black-m.svg"));
       background-size: contain;
       background-repeat: no-repeat;
       background-position: center;
-      transform: rotate(180deg);
-      height: 46px;
-      width: 28px;
-      top: -1.5px;
-      bottom: 0px;
-      right: calc(100% - 5px);
+      top: 0;
+      left: 0px;
+      height: 47px;
+      min-height: 47px;
+      min-width: 184px;
+      width: 184px;
       position: absolute;
-      display: block;
+      z-index: -1;
     }
     &:hover, &:focus, &:active{
-      background-color: $black !important;
-      border-color: $black !important;
-      opacity: .6 !important;
-      background: $black !important;
-
-    }
-    &.light{
+      color: $white !important;
       &::before{
-        background-image: url(theme-url("/assets/icons/button-right-arrow-white-filled.svg"));
+        background-image: url(theme-url("/assets/icons/buttons/arrow-both/arrow-both-filled-black-m.svg"));
+      }
+    }
+    &.small{
+      height: 47px;
+      min-height: 47px;
+      min-width: 140px;
+      width: 140px;
+      &::before{
+        height: 47px;
+        min-height: 47px;
+        min-width: 140px;
+        width: 140px;
+        background-image: url(theme-url("/assets/icons/buttons/arrow-both/arrow-both-outline-black-s.svg"));
       }
       &:hover, &:focus, &:active{
-        opacity: .6 !important;
-        background-color: $white !important;
-        border-color: $white !important;
+        &::before{
+          background-image: url(theme-url("/assets/icons/buttons/arrow-both/arrow-both-filled-black-s.svg"));
+        }
+      }
+    }
+    &.big{
+      height: 47px;
+      min-height: 47px;
+      min-width: 217px;
+      width: 217px !important;
+      &::before{
+        height: 47px;
+        min-height: 47px;
+        min-width: 217px;
+        width: 217px;
+        background-image: url(theme-url("/assets/icons/buttons/arrow-both/arrow-both-outline-black-l.svg"));
+      }
+      &:hover, &:focus, &:active{
+        &::before{
+          background-image: url(theme-url("/assets/icons/buttons/arrow-both/arrow-both-filled-black-l.svg"));
+        }
+      }
+    }
+    &.light{
+      background-color: transparent !important;
+      color: $white !important;
+      border: none !important;
+      &::before{
+        background-image: url(theme-url("/assets/icons/buttons/arrow-both/arrow-both-outline-white-m.svg"));
+      }
+      &:hover, &:focus, &:active{
         color: $black !important;
-
+          &::before{
+          background-image: url(theme-url("/assets/icons/buttons/arrow-both/arrow-both-filled-white-m.svg"));
+        }
+      }
+      &.small{
+        &::before{
+          background-image: url(theme-url("/assets/icons/buttons/arrow-both/arrow-both-outline-white-s.svg"));
+        }
+        &:hover, &:focus, &:active{
+          &::before{
+            background-image: url(theme-url("/assets/icons/buttons/arrow-both/arrow-both-filled-white-s.svg"));
+          }
+        }
+      }
+      &.big{
+        &::before{
+          background-image: url(theme-url("/assets/icons/buttons/arrow-both/arrow-both-outline-white-l.svg"));
+        }
+        &:hover, &:focus, &:active{
+          &::before{
+            background-image: url(theme-url("/assets/icons/buttons/arrow-both/arrow-both-filled-white-l.svg"));
+          }
+        }
+      }
+    }
+    &.white{
+      background-color: transparent !important;
+      color: $black !important;
+      border: none !important;
+      &::before{
+        background-image: url(theme-url("/assets/icons/buttons/arrow-both/arrow-both-filled-white-m.svg"));
+      }
+      &:hover, &:focus, &:active{
+        color: $black !important;
+          &::before{
+          opacity: .8;
+        }
+      }
+      &.small{
+        &::before{
+          background-image: url(theme-url("/assets/icons/buttons/arrow-both/arrow-both-filled-white-s.svg"));
+        }
+      }
+      &.big{
+        &::before{
+          background-image: url(theme-url("/assets/icons/buttons/arrow-both/arrow-both-filled-white-l.svg"));
+        }
+      }
+    }
+    &.black{
+      background-color: transparent !important;
+      color: $white !important;
+      border: none !important;
+      &::before{
+        background-image: url(theme-url("/assets/icons/buttons/arrow-both/arrow-both-filled-black-m.svg"));
+      }
+      &:hover, &:focus, &:active{
+        color: $white !important;
+          &::before{
+          opacity: .8;
+        }
+      }
+      &.small{
+        &::before{
+          background-image: url(theme-url("/assets/icons/buttons/arrow-both/arrow-both-filled-black-s.svg"));
+        }
+      }
+      &.big{
+        &::before{
+          background-image: url(theme-url("/assets/icons/buttons/arrow-both/arrow-both-filled-black-l.svg"));
+        }
       }
     }
   }
 }
 #search .search-results tr.s_product_cat{
   display: block !important;
-  padding: 0 1.6rem;
+  padding: 0;
   &.first{
     border: none;
     margin-top: 1.6rem;
@@ -203,50 +460,42 @@ a.button, button {
   }
 }
 #search .search-results .s_product_cat a{
-  height: 45px !important;
-  min-height: 45px !important;
-  max-height: 45px !important;
-  border-top: 1px solid $black;
-  border-bottom: 1px solid $black;
-  text-wrap: nowrap;
-  border-width: 1px !important;
   position: relative;
-    &::after{
-      content: '';
-      background-image: url(theme-url("/assets/icons/button-arrow-black-filled.svg"));
-      background-size: contain;
-      background-repeat: no-repeat;
-      background-position: center;
-      height: 46px;
-      width: 28px;
-      top: -1.5px;
-      bottom: 0px;
-      left: calc(100% - 5px);
-      position: absolute;
-      display: block;
-    }
+    height: 47px;
+    min-height: 47px;
+    min-width: 300px;
+    width: 300px;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    background-color: transparent !important;
+    color: $white !important;
+    border: none !important;
+    z-index: 1;
+    margin: auto;
     &::before{
       content: '';
-      background-image: url(theme-url("/assets/icons/button-arrow-black-filled.svg"));
+      background-image: url(theme-url("/assets/icons/buttons/arrow-both/arrow-both-filled-black-custom.svg"));
       background-size: contain;
       background-repeat: no-repeat;
       background-position: center;
-      transform: rotate(180deg);
-      height: 46px;
-      width: 28px;
-      top: -1.5px;
-      bottom: 0px;
-      right: calc(100% - 5px);
+      top: 0;
+      left: 0px;
+      height: 47px;
+      min-height: 47px;
+      min-width: 300px;
+      width: 300px;
       position: absolute;
-      display: block;
+      z-index: -1;
     }
     &:hover, &:focus, &:active{
-      background-color: $black !important;
-      border-color: $black !important;
-      opacity: .6 !important;
-      background: $black !important;
       color: $white !important;
+      &::before{
+        opacity: .8;
+      }
     }
+    
 }
 
 .socials.icons .social-icon.social-icon-facebook {
@@ -303,60 +552,142 @@ nav.breadcrumbs {
       max-width: $container-md !important;
     }
     p#breadcrumbs{
-      margin-left: 1.8rem;
       >span{
         display: flex;
         align-items: center;
         justify-content: flex-start;
         flex-wrap: wrap;
-        column-gap: 2.6rem;
+        column-gap: .6rem;
         row-gap: 1.6rem;
         span{
           position: relative;
-          display: inline-block;
-          line-height: inherit;
           height: 25px;
+          min-height: 25px;
+          min-width: 104px !important;
+          width: 104px !important;
+          display: flex !important;
+          align-items: center !important;
+          justify-content: center !important;
+          text-align: center !important;
+          background-color: transparent !important;
+          border: none !important;
+          z-index: 1;
           font-size: 1.2rem;
-          padding: 0;
-          padding-left: 1rem;
           text-wrap: nowrap;
-          margin: 0;
-          border-top: 1px solid black;
-          border-bottom: 1px solid black;
+          color: black;
           &::before{
             content: '';
-            background-image: url(theme-url("/assets/icons/button-left-arrow.svg"));
-            background-size: auto;
+            background-image: url(theme-url("/assets/icons/buttons/arrow-right/breadcrumb-right-m.svg"));
+            background-size: contain;
             background-repeat: no-repeat;
             background-position: center;
-            height: calc(100% + 2px);
-            width: 15px;
-            top: -1px;
-            bottom: 0px;
-            right: calc(100% - 5px);
+            top: 0;
+            left: 0px;
+            height: 25px;
+            min-height: 25px;
+            min-width: 104px;
+            width: 104px;
             position: absolute;
-            display: block;
+            z-index: -1;
           }
-          &::after{
-            content: '';
-            background-image: url(theme-url("/assets/icons/button-right-arrow.svg"));
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-position: center;
-            height: calc(100% + 2px);
-            width: 15px;
-            top: -1px;
-            bottom: 0px;
-            left: 100%;
-            position: absolute;
-            display: block;
+          &.small{
+            height: 25px;
+            min-height: 25px;
+            min-width: 50px !important;
+            width: 50px !important;
+            &::before{
+              content: '';
+              background-image: url(theme-url("/assets/icons/buttons/arrow-right/breadcrumb-right-s.svg"));
+              background-size: contain;
+              background-repeat: no-repeat;
+              background-position: center;
+              top: 0;
+              left: 0px;
+              height: 25px;
+              min-height: 25px;
+              min-width: 50px;
+              width: 50px;
+              position: absolute;
+              z-index: -1;
+            }
+          }
+          &.big{
+            height: 25px;
+            min-height: 25px;
+            min-width: 169px !important;
+            width: 169px !important;
+            &::before{
+              content: '';
+              background-image: url(theme-url("/assets/icons/buttons/arrow-right/breadcrumb-right-l.svg"));
+              background-size: contain;
+              background-repeat: no-repeat;
+              background-position: center;
+              top: 0;
+              left: 0px;
+              height: 25px;
+              min-height: 25px;
+              min-width: 169px;
+              width: 169px;
+              position: absolute;
+              z-index: -1;
+            }
           }
           &:first-of-type{
             padding-left: 0;
+            height: 25px;
+            min-height: 25px;
+            min-width: 105px !important;
+            width: 105px !important;
             &:before{
+              height: 25px;
+              min-height: 25px;
+              min-width: 105px;
+              width: 105px;
               transform: rotate(180deg);
-              background-image: url(theme-url("/assets/icons/button-right-arrow.svg"));
+              background-image: url(theme-url("/assets/icons/buttons/arrow-both/breadcrumb-both-m.svg"));
               right: 100%;
+            }
+            &.small{
+              height: 25px;
+              min-height: 25px;
+              min-width: 80px !important;
+              width: 80px !important;
+              &::before{
+                content: '';
+                background-image: url(theme-url("/assets/icons/buttons/arrow-both/breadcrumb-both-s.svg"));
+                background-size: contain;
+                background-repeat: no-repeat;
+                background-position: center;
+                top: 0;
+                left: 0px;
+                height: 25px;
+                min-height: 25px;
+                min-width: 80px;
+                width: 80px;
+                position: absolute;
+                z-index: -1;
+              }
+            }
+            &.big{
+              height: 25px;
+              min-height: 25px;
+              min-width: 132px !important;
+              width: 132px !important;
+              &::before{
+                content: '';
+                background-image: url(theme-url("/assets/icons/buttons/arrow-both/breadcrumb-both-l.svg"));
+                background-size: contain;
+                background-repeat: no-repeat;
+                background-position: center;
+                top: 0;
+                left: 0px;
+                height: 25px;
+                min-height: 25px;
+                min-width: 132px;
+                width: 132px;
+                position: absolute;
+                z-index: -1;
+              }
             }
           }
           &:has(a){

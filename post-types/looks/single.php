@@ -49,10 +49,9 @@ $used_products = rwmb_meta('look-used-products');
                         </div>
                         <?php endif; ?>
                         <?php if(!empty($heroBtnText) && !empty($heroBtnLink)) : ?>
-                        <a href="<?= $heroBtnLink ?>" class="button triangleright triangleleft"><?= $heroBtnText ?></a>
+                        <a href="<?= $heroBtnLink ?>" class="button triangleBoth black"><?= $heroBtnText ?></a>
                         <?php ;else : ?>
-                        <a href="#products"
-                            class="button triangleright triangleleft"><?= __("Show all", 'rimrebellion') ?></a>
+                        <a href="#products" class="button triangleBoth black"><?= __("Show all", 'rimrebellion') ?></a>
                         <?php endif; ?>
                     </div>
                 </div>

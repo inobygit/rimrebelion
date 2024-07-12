@@ -24,10 +24,10 @@ $icon = rwmb_meta('termsIcon');
     <section class="main">
         <div class="container">
             <div class="row">
-                <div class="col-4 col-lg-12 left-content">
+                <div class="col-4 col-xl-12 left-content">
                     <?php dynamic_sidebar('terms'); ?>
                 </div>
-                <div class="col-8 col-lg-12">
+                <div class="col-8 col-xl-12">
                     <?= the_content(); ?>
                 </div>
             </div>

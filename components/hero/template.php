@@ -24,7 +24,7 @@ if ($hero_headline) { ?>
         }
         do_action("component_hero_after_headline");
         if ($hero_url) {
-          echo '<a class="button light btn-background" href="' . $hero_url . '">'  . $hero_btn ."</a>";
+          echo '<a class="button light triangleBoth" href="' . $hero_url . '">'  . $hero_btn ."</a>";
         } ?>
             </div>
         </div>

@@ -52,6 +52,7 @@ $trianglew: 14px;
       padding: 3em 40px 20px 40px;
       height: fit-content;
       background-color: $white;
+      overflow: hidden;
       @include bp("lg") {
         position: relative;
         top: unset;
@@ -85,22 +86,54 @@ $trianglew: 14px;
       ul{
         padding: 0;
         li{
-          list-style-type: none;
-          display: flex;
-          align-items: center;
-          justify-content: flex-start;
-          gap: 10px;
           position: relative;
+                height: 45px;
+                min-height: 45px;
+                min-width: 345px;
+                width: 345px;
+                display: flex !important;
+                align-items: center !important;
+                justify-content: flex-start !important;
+                text-align: left !important;
+                background-color: transparent !important;
+                color: $black !important;
           border-bottom: 1px solid $gray200;
+          z-index: 1;
+          @include bp(xl){
+                    min-width: 288px;
+                    width: 288px;
+                  }
+          &::after{
+                  content: '';
+                  background-size: contain;
+                  background-repeat: no-repeat;
+                  background-position: center;
+                  top: 0;
+                  left: 0px;
+                  height: 45px;
+                  min-height: 45px;
+                  min-width: 345px;
+                  width: 345px;
+                  position: absolute;
+                  z-index: -1;
+                  @include bp(xl){
+                    min-width: 288px;
+                    width: 288px;
+                  }
+                }
           &:last-child{
             border-bottom: none;
           }
           &:has(a:hover){
+            &::after{
+                    background-image: url(theme-url("/assets/icons/buttons/arrow-right/arrow-right-filled-black-xl.svg"));
+                    @include bp(xl){
+                    background-image: url(theme-url("/assets/icons/buttons/arrow-right/arrow-right-filled-black-custom.svg"));
+                  }
+                  }
             a{
-              background-color: $col-prm;
               opacity: 1;
               color: $white;
-              border-color: $col-prm;
               &::after{
                 opacity: 1;
               }
@@ -110,6 +143,12 @@ $trianglew: 14px;
             }
           }
           &:has(a.active){
+            &::after{
+                    background-image: url(theme-url("/assets/icons/buttons/arrow-right/arrow-right-filled-black-xl.svg"));
+                    @include bp(xl){
+                    background-image: url(theme-url("/assets/icons/buttons/arrow-right/arrow-right-filled-black-custom.svg"));
+                  }
+                  }
             img{
               filter: invert(1);
             }
@@ -134,34 +173,15 @@ $trianglew: 14px;
             width: 100%;
             font-weight: $fw-semi;
             font-size: $fs-p-s;
-            margin-right: $trianglew;
             position: relative;
                 border: 1px solid transparent;
                 border-right: none;
                 border-radius: 0 1px 1px 0;
-                height: 45px !important;
-                min-height: 45px !important;
-                max-height: 45px !important;
-                &::after{
-                  content: '';
-                  background-image: url(theme-url("/assets/icons/button-arrow-black-filled.svg"));
-                  background-size: contain;
-                  background-repeat: no-repeat;
-                  background-position: center;
-                  height: 46px;
-                  width: 28px;
-                  top: -1.5px;
-                  bottom: 0px;
-                  left: 100%;
-                  position: absolute;
-                  display: block;
-                  opacity: 0;
-                  transition: .3s;
-                }
+                height: 47px !important;
+                min-height: 47px !important;
+                max-height: 47px !important;  
             &.active{
-              background-color: $col-prm;
               color: $white;
-              border-color: $col-prm;
               &::after{
                 opacity: 1;
               }

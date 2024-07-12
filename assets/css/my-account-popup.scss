@@ -1,47 +1,48 @@
 
 .xoo-el-form-container button.btn.button.xoo-el-action-btn{
-  border-radius: 2px 0 0 2px;
   position: relative;
-  margin-right: $trianglew;
-  border: 1px solid $col-prm;
-  &:after {
-    content: '';
-    transition: $trans;
-    display: inline-block;
-    position: absolute;
-    right: calc(-#{$trianglew}); //-15px
-    top: calc(-#{$btn-bw});
-    width: $trianglew;
-    height: calc(100% + 2*#{$btn-bw});
-    background-color: $btn-bg;
-    clip-path: polygon(0 0, 0% 100%, 100% 50%);
-    border-radius: $btn-br;
-  }
-  margin-left: $trianglew;
-    &:before {
-      content: '';
-      transition: $trans;
-      display: inline-block;
-      position: absolute;
-      left: calc(-#{$trianglew}); //-15px
-      top: calc(-#{$btn-bw});
-      width: $trianglew;
-      height: calc(100% + 2*#{$btn-bw});
-      background-color: $btn-bg;
-      clip-path: polygon(100% 0, 0 50%, 100% 100%);
-      border-radius: $btn-br;
-    }
-  &:hover{
-    border-color: $btn-hover-bg;
-    &::after{
-      background-color: $btn-hover-bg;
-      transition: $trans-h;
-    }
+    height: 47px;
+    min-height: 47px;
+    min-width: 300px !important;
+    width: 300px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    background-color: transparent !important;
+    color: $white !important;
+    border: none !important;
+    z-index: 1;
+    margin: auto !important;
     &::before{
-        background-color: $btn-hover-bg;
-        transition: $trans-h;
+      content: '';
+      background-image: url(theme-url("/assets/icons/buttons/arrow-both/arrow-both-filled-black-custom.svg"));
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      top: 0;
+      left: 0px;
+      height: 47px;
+      min-height: 47px;
+      min-width: 300px;
+      width: 300px;
+      position: absolute;
+      z-index: -1;
+    }
+    &:hover, &:focus, &:active{
+      color: $white !important;
+      &::before{
+        opacity: .8;
       }
-  }
+    }
+}
+
+.xoo-el-form-container .xoo-el-section{
+  padding-left: 0;
+}
+
+.xoo-el-form-container .xoo-aff-group{
+  width: 100% !important;
 }
 
 .woocommerce-account .xoo-el-form-container{

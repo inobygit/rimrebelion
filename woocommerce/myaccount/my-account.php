@@ -39,7 +39,7 @@ defined( 'ABSPATH' ) || exit;
 <?php
 echo "<div class='container'>";
 echo "<div class='row'>";
-echo "<div class='col-3 col-lg-12'>";
+echo "<div class='col-3 col-xl-12'>";
 echo '<div class="my-account-nav-wrap">';
 /**
  * My Account navigation.
@@ -51,7 +51,7 @@ do_action( 'woocommerce_account_navigation' ); ?>
 </div>
 
 
-<div class="col-9 col-lg-12">
+<div class="col-9 col-xl-12">
     <div class="woocommerce-MyAccount-content">
 
         <?php

@@ -197,6 +197,7 @@ $trianglew: 14px;
         flex: 1 0 100%;
         max-width: 100%;
         margin: 0 0 4rem;
+        overflow: hidden;
         position: relative;
         @include bp("md") {
           margin-bottom: 0rem;
@@ -214,11 +215,11 @@ $trianglew: 14px;
             > li {
               &.is-active {
                 a {
-                  color: $white;
+                  color: $white !important;
                   background-color: $col-prm;
                   border-color: $col-prm;
                   &::after{
-                    opacity: 1;
+                    background-image: url(theme-url("/assets/icons/buttons/arrow-right/arrow-right-filled-black-l.svg"));
                   }
                   &::before{
                     filter: invert(1);
@@ -226,14 +227,34 @@ $trianglew: 14px;
                 }
               }
               a {
-                text-decoration: none;
-                display: block;
-                color: $col-prm;
-                text-transform: uppercase;
                 position: relative;
-                font-weight: $fw-p;
-                border: none;
-                transition: .3s !important;
+                height: 47px;
+                min-height: 47px;
+                min-width: 217px;
+                width: 217px;
+                display: flex !important;
+                align-items: center !important;
+                justify-content: flex-start !important;
+                text-align: left !important;
+                background-color: transparent !important;
+                color: $black !important;
+                border: none !important;
+                z-index: 1;
+                &::after{
+                  content: '';
+                  background-image: url(theme-url("/assets/icons/buttons/arrow-right/arrow-right-filled-white-l.svg"));
+                  background-size: contain;
+                  background-repeat: no-repeat;
+                  background-position: center;
+                  top: 0;
+                  left: 0px;
+                  height: 47px;
+                  min-height: 47px;
+                  min-width: 217px;
+                  width: 217px;
+                  position: absolute;
+                  z-index: -1;
+                }
                 &::before{
                   content: '';
                   background-image: url(theme-url('/assets/svg/my-orders.svg'));
@@ -249,31 +270,7 @@ $trianglew: 14px;
                   top: auto;
                   left: 16px;
                   transition: .3s !important;
-                }
-                height: 45px !important;
-                min-height: 45px !important;
-                max-height: 45px !important;
-                position: relative;
-                margin-right: $trianglew;
-                border: 1px solid transparent;
-                border-radius: 0 1px 1px 0;
-                border-right: none;
-                &::after{
-                  content: '';
-                  background-image: url(theme-url("/assets/icons/button-arrow-black-filled.svg"));
-                  background-size: contain;
-                  background-repeat: no-repeat;
-                  background-position: center;
-                  height: 46px;
-                  width: 28px;
-                  top: -1.5px;
-                  bottom: 0px;
-                  left: calc(100% - 2px);
-                  position: absolute;
-                  display: block;
-                  opacity: 0;
-                  transition: .3s;
-                }
+              }
               }
               &:last-child {
                 a {
@@ -282,9 +279,9 @@ $trianglew: 14px;
               }
               &:hover {
                 a {
-                  color: $white;
+                  color: $white !important;
                   &::after{
-                    opacity: 1;
+                    background-image: url(theme-url("/assets/icons/buttons/arrow-right/arrow-right-filled-black-l.svg"));
                   }
                   &::before{
                     filter: invert(1);
@@ -590,12 +587,7 @@ span.active-orders{
     transform: none !important;
   }
   .button {
-    min-width: 250px;
-    width: auto;
     margin-top: 24px;
-    @include bp("md") {
-      width: 100%;
-    }
   }
   .form-submit{
     flex: 1 0 100%;

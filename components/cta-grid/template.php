@@ -63,7 +63,7 @@ $cta_grid = mb_get_block_field("cta-grid");
         <div class="row items-center">
             <div class="col-9 col-md-12">
                 <?php if(!empty($blockBtnText) && !empty($blockBtnUrl)){ ?>
-                <a href="<?= $blockBtnUrl ?>" class="button triangleleft triangleright">
+                <a href="<?= $blockBtnUrl ?>" class="button triangleBoth black">
                     <?= $blockBtnText ?>
                 </a>
                 <?php } ?>
