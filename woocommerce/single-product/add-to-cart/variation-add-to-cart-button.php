@@ -30,12 +30,20 @@ global $product;
 
 	do_action( 'woocommerce_after_add_to_cart_quantity' );
 	?>
-    <button type="submit"
-        class="single_add_to_cart_button button triangleBoth black alt<?php echo esc_attr( wc_wp_theme_get_element_class_name( 'button' ) ? ' ' . wc_wp_theme_get_element_class_name( 'button' ) : '' ); ?>"><?php echo esc_html( $product->single_add_to_cart_text() ); ?></button>
+    <?php rebellion_add_to_cart_btn(
+		array(
+			'text' => esc_html( $product->single_add_to_cart_text() ),
+			'class' => 'button triangleBoth black',
+			'tag' => 'submit'
+			)
+		);
+	?>
 
     <?php do_action( 'woocommerce_after_add_to_cart_button' ); ?>
 
-    <input type="hidden" name="add-to-cart" value="<?php echo absint( $product->get_id() ); ?>" />
-    <input type="hidden" name="product_id" value="<?php echo absint( $product->get_id() ); ?>" />
+    <input type="hidden" name="rc-add-to-cart" value="<?= $product->get_id(); ?>">
+    <input type="hidden" name="product_id" value="<?= $product->get_id(); ?>" />
     <input type="hidden" name="variation_id" class="variation_id" value="0" />
+    <input type="hidden" name="open_minicart" value="1">
+
 </div>
