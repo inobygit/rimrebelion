@@ -243,3 +243,42 @@ wp_deregister_script('xoo-el-js');
 // Register and enqueue a new script from 'assets/js'
 wp_register_script('xoo-el-js', get_stylesheet_directory_uri() . '/assets/js/xoo-el-js.js', array(), '1.0.2', true);
 wp_enqueue_script('xoo-el-js');
+
+function rebellion_add_to_cart_btn($atts = [], $prod = null) {
+  global $product;
+
+  if (!$product) {
+    if($prod){
+        $product = $prod;
+    } else {
+        return;
+    }
+  }
+
+  $data = [
+      "data-quantity" => 1,
+      "data-product_id" => $product->get_id(),
+    ];
+  if (isset($atts["data"])) {
+    $data = array_merge($data, $atts["data"]);
+    unset($atts["data"]);
+  }
+
+  $class = "add-to-cart-single-btn";
+  if (isset($atts["class"])) {
+    $class .= " " . $atts["class"];
+    unset($atts["class"]);
+  }
+
+  $args = array_merge(
+    [
+      "text" => __("Add to card", "rootcommerce"),
+      "type" => "primary",
+      "class" => $class,
+      "data" => $data,
+    ],
+    $atts
+  );
+
+  rc_get_template("eshop/add-to-cart.php", $args);
+}
