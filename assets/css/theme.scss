@@ -1170,6 +1170,38 @@ nav.breadcrumbs {
         }
       }
     }
+    &.menu-item-megamenu-column-2{
+      > .sub-menu{
+        gap: 2rem;
+        > li{
+          padding-left: 1rem !important;
+          padding-block: 2.4rem;
+          max-width: calc(50% - 2rem);
+          &:first-of-type{
+            border-right: 1px solid $gray300;
+          }
+          > a{
+            font-weight: 700;
+            font-size: 2.4rem;
+            font-family: 'GreedNarrow', sans-serif;
+          }
+          .sub-menu{
+            display: flex;
+            flex-wrap: wrap;
+            align-items: flex-start;
+            justify-content: flex-start;
+            li{
+              flex: 1 0 50%;
+              max-width: 50%;
+              a{
+                font-size: 1.6rem;
+                font-weight: 400;
+              }
+            }
+          }
+        }
+      }
+    }
     &.active {
       > a {
         color: $btn-hover-bg;

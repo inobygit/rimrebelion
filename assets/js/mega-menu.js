@@ -12,19 +12,19 @@ $(function () {
 
     $('#header .header .top-menu > div > ul.menu .sub-menu .menu-item-has-children').each(function() {
         const $subMenuList = $(this).find('.menu-item');
-        if ($subMenuList.length > 4) {
-            $subMenuList.slice(4).hide();
+        if ($subMenuList.length > 12) {
+            $subMenuList.slice(12).hide();
             const $toggleButton = $(`<li class="show-more"><a href="#">${showMoreText}</a></li>`);
             $(this).find('.sub-menu').append($toggleButton);
 
             $toggleButton.on('click', 'a', function(e) {
                 e.preventDefault();
-                const isVisible = $subMenuList.slice(4).is(':visible');
+                const isVisible = $subMenuList.slice(12).is(':visible');
                 if (isVisible) {
-                    $subMenuList.slice(4).slideUp();
+                    $subMenuList.slice(12).slideUp();
                     $(this).text(showMoreText);
                 } else {
-                    $subMenuList.slice(4).slideDown();
+                    $subMenuList.slice(12).slideDown();
                     $(this).text(showLessText);
                 }
             });
