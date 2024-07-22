@@ -26,6 +26,9 @@
   }
   .content{
     padding: 4rem 8rem;
+    @include bp(md){
+      padding: 1.6rem;
+    }
     >h3{
       text-transform: uppercase;
       font-size: $fs-h2;
@@ -114,6 +117,9 @@
       }
       .button{
         font-size: $btn-fs;
+        @include bp(md){
+          margin: auto;
+        }
       }
       .close-btn{
         &:hover{

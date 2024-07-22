@@ -102,7 +102,7 @@ $settings = apply_filters("rimrebelion_checkout_settings", [
                     <h2><?= __("Fakturačné údaje", "rimrebelion") ?></h2>
                     <?php if (!(is_user_logged_in() || "no" === get_option("woocommerce_enable_checkout_login_reminder"))): ?>
                     <div class="not-logged-info">
-                        <span><?= __("Už máš účet? Pre špeciálne výhody sa prihláste alebo zaregistrujte.", "rimrebelion") ?></span><br>
+                        <span><?= __("Zaregistrujte sa u nás, nakúpte nad 200 € a máte dopravu zadarmo.", "rimrebelion") ?></span><br>
                         <a href="#" class="xoo-el-login-tgr"
                             data-popup="popup-login"><?= __("Prihlásiť sa", "rimrebelion") ?></a>
                         <a href="#" class="xoo-el-reg-tgr"
