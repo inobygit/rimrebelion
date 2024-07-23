@@ -1054,7 +1054,7 @@ nav.breadcrumbs {
   >li.menu-item{
     padding-right: 0;
     >a{
-      padding: 3.2rem 8px !important;
+      padding: 4.2rem 8px !important;
       font-size: 1.4rem !important;
       font-weight: 400 !important;
       &:hover{
@@ -1149,7 +1149,7 @@ nav.breadcrumbs {
       max-width: $container-xxl !important;
       padding: 4rem 3%;
       row-gap: 2rem;
-      transform: translate(-50%, calc(50% + 3.9rem));
+      transform: translate(-50%, calc(50% + 4.9rem));
       cursor: auto;
       @include bp("xxl") {
         padding: 2.4rem 7.5%;
@@ -1252,7 +1252,7 @@ nav.breadcrumbs {
       }
     }
     >a{
-      padding: 3.2rem 8px !important;
+      padding: 4.2rem 8px !important;
       font-size: 1.4rem !important;
       font-weight: 400 !important;
     }
