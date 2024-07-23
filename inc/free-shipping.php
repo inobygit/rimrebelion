@@ -104,10 +104,12 @@ add_action('woocommerce_before_cart_contents', 'inoby_calculator_to_free_shippin
 function inoby_hide_shipping_when_free_is_available( $rates ) {
 	$free = array();
   
-  if (is_user_logged_in() && WC()->cart->subtotal > 200) {
+  if (is_user_logged_in() && WC()->cart->subtotal > get_free_shipping_minimum()) {
     foreach ( $rates as $rate_id => $rate ) {
-      $rate->cost = 0; // Set shipping cost to 0
-      $free[ $rate_id ] = $rate; // Add modified rate to free array
+      if ( 'free_shipping' === $rate->method_id ) {
+        $free[ $rate_id ] = $rate;
+        break;
+      }
     }
   }
 	return ! empty( $free ) ? $free : $rates;

@@ -56,8 +56,9 @@ $notes = WC()->session->get("order_comments");
                 <?php 
 		            $order = WC()->cart;
                     $fee_total = $order->get_fee_total();
+                    $fee_tax = $order->get_fee_tax() ?? 0;
                      if ($fee_total != '0'){ ?>
-                <p class="value"><?= wp_kses_post( wc_price($fee_total) ) ?></p>
+                <p class="value"><?= wp_kses_post( wc_price($fee_total + $fee_tax) ) ?></p>
                 <?php } else { 
                     esc_html_e('Free', 'rimrebellion');
                 } ?>

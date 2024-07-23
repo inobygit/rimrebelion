@@ -21,6 +21,10 @@
   src: local("ItalianPlate"), local("ItalianPlate"), url(theme-url("/assets/fonts/ItalianPlateNo4Expanded-Regular.otf")) format("opentype");
 }
 
+.includes_tax{
+  display: none;
+}
+
 em,
 i{
   font-family: 'ItalianPlateItalic', sans-serif;
