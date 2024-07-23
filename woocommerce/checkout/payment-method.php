@@ -39,7 +39,8 @@ if (!defined("ABSPATH")) {
         <?php endif; ?>
     </div>
     <div class="payment_method_fees">
-        <?php if($gateway->id === 'cod'){ ?>
+        <?php 
+        if($gateway->id === 'cod'){ ?>
         <span><?= __("1,50 €", 'rimrebellion') ?></span>
         <?php } else { ?>
         <span><?= __("Free", 'rimrebellion') ?></span>

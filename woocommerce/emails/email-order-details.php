@@ -98,8 +98,10 @@ do_action( 'woocommerce_email_before_order_table', $order, $sent_to_admin, $plai
                 <td class="td" style="text-align:<?php echo esc_attr( $text_align ); ?>;">
                     <?php 
                     $shipping_total = $order->get_shipping_total();
+                $shipping_tax = $order->get_shipping_tax();
+
                     if ($shipping_total > 0) {
-                        echo wp_kses_post( wc_price( $shipping_total ) );
+                        echo wp_kses_post( wc_price( $shipping_total + $shipping_tax) );
                     } else {
                         esc_html_e('Free', 'rimrebellion');
                     }
@@ -112,9 +114,13 @@ do_action( 'woocommerce_email_before_order_table', $order, $sent_to_admin, $plai
                 </th>
                 <td class="td" style="text-align:<?php echo esc_attr( $text_align ); ?>;">
                     <?php 
-                $fee_total = $order->get_total_tax(); 
+                $fee_total = $order->get_total_fees(); 
+                $payment_tax = 0;
+                    foreach($order->get_items('fee') as $item_id => $item_fee){
+                        $payment_tax = $item_fee->get_total_tax();
+                    }
                 if ($fee_total > 0) {
-                    echo wp_kses_post( wc_price($fee_total) );
+                    echo wp_kses_post( wc_price($fee_total + $payment_tax) );
                 } else {
                     esc_html_e('Free', 'rimrebellion');
                 }

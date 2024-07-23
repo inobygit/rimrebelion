@@ -49,6 +49,10 @@ padding: 0;
 text-align: center;
 }
 
+.includes_tax{
+display: none;
+}
+
 #outer_wrapper {
 background-color: <?php echo esc_attr( $bg ); ?>;
 }
