@@ -111,6 +111,13 @@ function inoby_hide_shipping_when_free_is_available( $rates ) {
         break;
       }
     }
+  } else {
+    // Hide free shipping if user is not logged in or order total is under the minimum
+    foreach ( $rates as $rate_id => $rate ) {
+      if ( 'free_shipping' === $rate->method_id ) {
+        unset($rates[$rate_id]);
+      }
+    }
   }
 	return ! empty( $free ) ? $free : $rates;
 }
