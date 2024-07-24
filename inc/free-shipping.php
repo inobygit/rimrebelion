@@ -86,7 +86,7 @@ function inoby_calculator_to_free_shipping() {
     if (is_user_logged_in()) {
       if($free_shipping_price > $total_price){
         echo '<div class="free-shipping-notice">';
-        echo __('<p>Purchase for '. $remaining_price .' more, and get free delivery.</p>','inoby');
+        echo sprintf(__('<p>Purchase for %s more, and get free delivery.</p>','rimrebellion'), $remaining_price);
         echo '<div class="line"><span class="line-color" style="width: '. $percentage .'%;"></span></div>';
         echo '</div>';
       }
