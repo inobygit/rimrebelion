@@ -29,9 +29,6 @@ $notes = WC()->session->get("order_comments");
         <h3><?= __("Doprava", "rimrebelion") ?></h3>
         <div class="wrp">
             <div class="wrp-head">
-                <div class="icon">
-                    <!-- $shipping_method->get_icon() -->
-                </div>
                 <p class="label"><?= $shipping_method->get_label() ?></p>
                 <p class="value">
                     <?= ($shipping_method->get_cost() === '0.00' ? __('Free', 'rimrebellion') : rc_cart_shipping_method_price($shipping_method)) ?>
@@ -49,9 +46,11 @@ $notes = WC()->session->get("order_comments");
         <h3><?= __("Platba", "rimrebelion") ?></h3>
         <div class="wrp">
             <div class="wrp-head">
+                <?php if($payment_method->get_icon()): ?>
                 <div class="icon">
-                    <!-- $payment_method->get_icon() -->
+                    <?= $payment_method->get_icon() ?>
                 </div>
+                <?php endif; ?>
                 <p class="label"><?= $payment_method->get_title() ?></p>
                 <?php 
 		            $order = WC()->cart;
