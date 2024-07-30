@@ -73,9 +73,14 @@ $(function () {
         if(this.innerText.length > 13){
             $(this).addClass('big');
         }
-        if(this.innerText.length > 25){
+        if(this.innerText.length > 22){
             $(this).removeClass('big');
             $(this).addClass('huge');
+        }
+        if(this.innerText.length > 28){
+            $(this).removeClass('big');
+            $(this).removeClass('huge');
+            $(this).addClass('custom-big');
         }
         if(this.innerText.length < 5){
             $(this).addClass('small');
