@@ -233,7 +233,7 @@ if ( $show_downloads ) {
                 <path d="M11.6 2.55L10.55 1.5L4 8L10.45 14.5L11.55 13.45L6.1 8L11.6 2.55Z" fill="black" />
             </svg>
 
-            <?= __("Back to my orders") ?>
+            <?= __("Back to my orders", 'rimrebellion') ?>
         </a>
 
     </div>
