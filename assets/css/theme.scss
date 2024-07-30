@@ -544,6 +544,7 @@ label.inplace-label{
 
 nav.breadcrumbs {
   padding: $space-sm 0;
+  overflow: hidden;
   .container{
     max-width: $container-xxl !important;
     @include bp('xxl'){
@@ -653,6 +654,27 @@ nav.breadcrumbs {
               min-height: 25px;
               min-width: 204px;
               width: 204px;
+              position: absolute;
+              z-index: -1;
+            }
+          }
+          &.custom-big{
+            height: 25px;
+            min-height: 25px;
+            min-width: 340px !important;
+            width: 340px !important;
+            &::before{
+              content: '';
+              background-image: url(theme-url("/assets/icons/buttons/arrow-right/breadcrumb-right-xxl.svg"));
+              background-size: contain;
+              background-repeat: no-repeat;
+              background-position: center;
+              top: 0;
+              left: 0px;
+              height: 25px;
+              min-height: 25px;
+              min-width: 340px;
+              width: 340px;
               position: absolute;
               z-index: -1;
             }
