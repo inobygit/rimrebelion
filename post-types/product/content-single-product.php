@@ -85,7 +85,18 @@ RC()->last_seen_products()->enqueue_scripts($product->get_id());
                 </div>
                 <?php
 
-                echo '<img src="'. get_stylesheet_directory_uri() . '/assets/svg/cdc.svg' . '" alt="CDC" class="cdc-logo">';
+                $terms = wp_get_post_terms( get_the_id(), 'product_tag' );
+
+                if(empty($terms)){
+                    echo '<img src="'. get_stylesheet_directory_uri() . '/assets/svg/cdc.svg' . '" alt="CDC" class="cdc-logo">';
+                } else {
+                    echo '<div class="brand">';
+                    if(get_term_meta($terms[0]->term_id)['icon'][0]){
+                        echo '<img src="'. wp_get_attachment_image_url(get_term_meta($terms[0]->term_id)['icon'][0], 'o-6') . '" alt="'. $terms[0]->name . '" class="cdc-logo">';
+                    }
+                    echo '<p class="brand-name">' . $terms[0]->name . '</p>';
+                    echo '</div>';
+                }
         woocommerce_template_single_title(); // Inoby_Product::get_manufacturer_name();
         $gender_terms = wp_get_post_terms($product->get_id(), 'gender');
         if (!empty($gender_terms) && !is_wp_error($gender_terms)) {

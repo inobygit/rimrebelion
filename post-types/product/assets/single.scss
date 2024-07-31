@@ -26,6 +26,26 @@ body.single-product{
       }
     }
     .summary-col{
+      .brand{
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 1.6rem;
+        margin-bottom: 1.6rem;
+        *{
+          margin: 0;
+        }
+        .cdc-logo{
+          max-height: 3.2rem;
+        }
+        .brand-name{
+          font-size: 3rem;
+          text-transform: uppercase;
+          font-weight: 400;
+          color: $gray400;
+          font-family: 'GreedNarrow', sans-serifx;
+        }
+      }
       .tags{
         margin-bottom: 1rem;
         display: flex;
