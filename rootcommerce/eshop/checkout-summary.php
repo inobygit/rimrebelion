@@ -29,6 +29,17 @@ $notes = WC()->session->get("order_comments");
         <h3><?= __("Doprava", "rimrebelion") ?></h3>
         <div class="wrp">
             <div class="wrp-head">
+                <?php 
+                if( $shipping_method->id === "local_pickup:2" ) {
+                    echo '<img class="icon" src="'. get_stylesheet_directory_uri() .'/assets/icons/local.svg" />';
+                }
+                if($shipping_method->id === 'packetery_shipping_method:packetery_carrier_131'){
+                    echo '<img class="icon" src="'. get_stylesheet_directory_uri() .'/assets/icons/zasielkovna.svg" />';
+                }
+                if($shipping_method->id === 'packetery_shipping_method:packetery_carrier_zpointsk'){
+                    echo '<img class="icon" src="'. get_stylesheet_directory_uri() .'/assets/icons/zasielkovna.svg" />';
+                }
+                ?>
                 <p class="label"><?= $shipping_method->get_label() ?></p>
                 <p class="value">
                     <?= ($shipping_method->get_cost() === '0.00' ? __('Free', 'rimrebellion') : rc_cart_shipping_method_price($shipping_method)) ?>
