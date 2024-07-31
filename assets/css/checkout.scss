@@ -90,6 +90,9 @@ body.woocommerce-checkout {
       z-index: -1;
       transform: translate(-100%, 0);
     }
+    .shipping-icon{
+            transform: translate(0, -5px);
+    }
     .left-wrap{
       max-width: 63rem;
       margin: 0 auto;
@@ -413,6 +416,7 @@ body.woocommerce-checkout {
           }
           .icon-wrp{
             display: none;
+            transform: translate(0, -5px);
           }
           .icon-wrp:has(img){
             display: block;
@@ -427,6 +431,7 @@ body.woocommerce-checkout {
             align-items: flex-start;
             justify-content: flex-start;
             flex-basis: 60%;
+            transform: translate(0, -5px);
             @include bp(md){
               flex-basis: 100%;
             }
@@ -440,7 +445,6 @@ body.woocommerce-checkout {
             font-size: 1.3rem;
             font-weight: 400;
             line-height: 140%;
-            transform: translate(0, -5px);
             margin: 0;
             width: calc(100% - 3.5rem);
             display: inline-flex;
@@ -475,6 +479,11 @@ body.woocommerce-checkout {
               font-weight: 400;
             }
           }
+        }
+      }
+      .woocommerce-shipping-methods{
+        label{
+            transform: translate(0, -5px);
         }
       }
     }

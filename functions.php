@@ -283,3 +283,16 @@ function rebellion_add_to_cart_btn($atts = [], $prod = null) {
 
   rc_get_template("eshop/add-to-cart.php", $args);
 }
+
+/**
+*  Add Custom Icon 
+*/ 
+
+function custom_gateway_icon( $icon, $id ) {
+    if ( $id === 'cod' ) {
+        return '<img src="' . get_stylesheet_directory_uri() . '/assets/icons/cod.svg" > '; 
+    } else {
+        return $icon;
+    }
+}
+add_filter( 'woocommerce_gateway_icon', 'custom_gateway_icon', 10, 2 );
