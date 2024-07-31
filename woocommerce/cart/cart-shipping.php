@@ -41,6 +41,18 @@ $formatted_destination = isset($formatted_destination) ? $formatted_destination 
         esc_attr($method->id)
       );
     } ?>
+        <?php
+        if( $method->id === "local_pickup:2" ) {
+              echo '<img class="shipping-icon" src="'. get_stylesheet_directory_uri() .'/assets/icons/local.svg" />';
+          }
+          if($method->id === 'packetery_shipping_method:packetery_carrier_131'){
+            echo '<img class="shipping-icon" src="'. get_stylesheet_directory_uri() .'/assets/icons/zasielkovna.svg" />';
+          }
+          if($method->id === 'packetery_shipping_method:packetery_carrier_zpointsk'){
+            echo '<img class="shipping-icon" src="'. get_stylesheet_directory_uri() .'/assets/icons/zasielkovna.svg" />';
+          }
+        ?>
+
         <label for="shipping_method_<?= $index ?>_<?= esc_attr(sanitize_title($method->id)) ?>">
             <span class="label"><?= $method->get_label() ?></span>
             <?php do_action("woocommerce_after_shipping_rate", $method, $index); ?>
