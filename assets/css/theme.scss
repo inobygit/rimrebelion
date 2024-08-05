@@ -557,6 +557,7 @@ nav.breadcrumbs {
       max-width: $container-md !important;
     }
     p#breadcrumbs{
+      margin-left: 0;
       >span{
         display: flex;
         align-items: center;
