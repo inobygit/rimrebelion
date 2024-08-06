@@ -70,7 +70,7 @@ defined("ABSPATH") || exit(); ?>
                 <?= __("Prostredníctvom platobnej brány GP webpay. Popredného svetového poskytovateľa platobných technológií so zabezpečením:", 'rimrebellion') ?>
             </p>
             <p class="label secure">
-                <span><b><?= __("3D secure - ", "rimrebelion") ?></b><?= __("najvyšie možné zabezpečenie pre transakcie", 'rimrebellion') ?></span>
+                <span><b><?= __("3D secure - ", "rimrebelion") ?></b><?= __("najvyššie možné zabezpečenie pre transakcie", 'rimrebellion') ?></span>
             </p>
             <p class="label fraud">
                 <span><b><?= __("Fraud detection - ", "rimrebelion") ?></b><?= __("funkcie pre aktívne obmedzenie podvodov", 'rimrebellion') ?></span>
