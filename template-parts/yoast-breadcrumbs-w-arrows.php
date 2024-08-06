@@ -1,12 +1,12 @@
 <nav class="breadcrumbs">
     <div class="container">
         <div class="row">
-            <div class="col-6">
+            <div class="col-6 col-md-12">
                 <?php if (function_exists("yoast_breadcrumb")) {
         yoast_breadcrumb('<p id="breadcrumbs">', "</p>");
       } ?>
             </div>
-            <div class="col-6 end">
+            <div class="col-6 col-md-12 end">
                 <div class="prev-next">
                     <?php $prev_post = get_previous_post(true, '', 'look-gender');
                     $next_post = get_next_post(true, '', 'look-gender');
