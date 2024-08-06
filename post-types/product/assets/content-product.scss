@@ -58,6 +58,9 @@
         -webkit-box-orient: vertical;
         overflow: hidden;
         font-family: 'ItalianPlate';
+        em{
+          font-size: inherit;
+        }
       }
     }
     .content-product-footer{
