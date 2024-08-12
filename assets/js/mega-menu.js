@@ -91,9 +91,15 @@ $(function () {
         e.preventDefault();
         const link = e.currentTarget;
         const searchParams = new URLSearchParams(window.location.search);
-            if(searchParams.has('lang') && !link.href.includes('lang=')){
-                const newUrl = `${link.href}?${searchParams.toString()}`;
-                window.location.href = newUrl;
+            if(searchParams.has('lang')){
+                if(!link.href.includes('lang=')){
+                    const newUrl = `${link.href}?${searchParams.toString()}`;
+                    window.location.href = newUrl;
+                } else {
+                    searchParams.delete('lang');
+                    const newUrl = `${link.href}&${searchParams.toString()}`;
+                    window.location.href = newUrl;
+                }
             } else {
                 window.location.href = `${link.href}${window.location.search}`;
             }
