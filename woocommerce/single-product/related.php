@@ -21,6 +21,18 @@ if (!defined("ABSPATH")) {
 
 $id = uniqid("child-related-slider");
 
+$terms = get_the_terms( get_the_ID(), 'gender' );
+
+// Empty array
+$ids = array();
+
+if($terms){
+  foreach ( $terms as $term ) {
+      array_push($ids, $term->term_id);
+  }
+}
+
+
 if ($related_products): ?>
 <section id="<?= $id ?>" class="container related-row related products" data-arrows="true">
     <div class="row">
@@ -38,9 +50,19 @@ if ($related_products): ?>
     foreach ($related_products as $related_product) {
       $post_object = get_post($related_product->get_id());
 
-      setup_postdata($GLOBALS["post"] = &$post_object); // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited, Squiz.PHP.DisallowMultipleAssignments.Found
+      $post_terms = get_the_terms($post_object, 'gender');
+      $termIds = [];
+      if($post_terms){
+        foreach ( $post_terms as $post_term ) {
+            array_push($termIds, $post_term->term_id);
+        }
+      }
 
-      wc_get_template_part("content", "product");
+
+        if (array_intersect($termIds, $ids)) {
+          setup_postdata($GLOBALS["post"] = &$post_object); // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited, Squiz.PHP.DisallowMultipleAssignments.Found
+          wc_get_template_part("content", "product");
+        }
     }
     woocommerce_product_loop_end();
     ?>
