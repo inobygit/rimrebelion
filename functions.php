@@ -105,6 +105,15 @@ function rimrebellion_change_sorting_options_order($options) {
     return $options;
 }
 
+
+add_filter( 'woocommerce_output_related_products_args', 'prfx_change_related_products_count' );
+function prfx_change_related_products_count( $args ) {
+
+ $args['posts_per_page'] = -1;
+
+ return $args;
+}
+
 /**
  * @snippet WooCommerce Disable Default CSS
  */
