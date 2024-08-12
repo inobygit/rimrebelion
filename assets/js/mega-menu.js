@@ -97,10 +97,7 @@ $(function () {
                     window.location.href = newUrl;
                 } else {
                     searchParams.delete('lang');
-                    console.log(searchParams.toString());
-                    console.log(link.href);
                     const newUrl = `${link.href}&${searchParams.toString()}`;
-                    console.log(newUrl);
                     window.location.href = newUrl;
                 }
             } else {
