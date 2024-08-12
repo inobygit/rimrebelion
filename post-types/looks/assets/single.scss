@@ -292,6 +292,16 @@
         }
         .single_variation{
           .woocommerce-variation-price{
+            del{
+              text-decoration: none;
+              bdi{
+                font-size: 2.4rem;
+                font-weight: 400 !important;
+                color: $gray300;
+                text-decoration: line-through;
+                font-family: 'Roboto', sans-serif;
+              }
+            }
             .amount{
               margin-top: 0 !important;
               font-size: $fs-h2;
@@ -415,6 +425,7 @@
         flex-wrap: wrap;
         justify-content: flex-end;
         gap: 2rem;
+          margin-top: 1.6rem;
         ins{
           text-decoration: none;
         }
@@ -422,9 +433,16 @@
             color: $gray300;
             font-size: 2.4rem;
             font-weight: 400 !important;
+            text-decoration: none;
+            bdi{
+              font-size: 2.4rem;
+              font-weight: 400 !important;
+              color: $gray300;
+              text-decoration: line-through;
+              font-family: 'Roboto', sans-serif;
+            }
         }
         .amount{
-          margin-top: 1.6rem;
             font-size: $fs-h2;
             font-family: $font-family-headings;
         }
