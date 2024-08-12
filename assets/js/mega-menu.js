@@ -95,7 +95,7 @@ $(function () {
                 const newUrl = `${link.href}?${searchParams.toString()}`;
                 window.location.href = newUrl;
             } else {
-                window.location.href = `${link.href}`;
+                window.location.href = `${link.href}${window.location.search}`;
             }
     });
 });
