@@ -70,6 +70,7 @@ class RC_Google_custom extends RC_Google{
       "fb_event" => "AddToCart",
       "ga_event" => "addToCart",
       "currencyCode" => get_woocommerce_currency(),
+      "ITEM_GROUP_ID" => $product->id,
       "items" => [$product_data],
       "value" => wc_get_price_to_display($product) * $quantity,
       "ecommerce" => [
@@ -165,6 +166,7 @@ class RC_Google_custom extends RC_Google{
       "event" => "view_item",
       "fb_event" => "ViewContent",
       "ga_event" => "viewItem",
+      "ITEM_GROUP_ID" => $product->id,
       "value" => wc_get_price_to_display($product),
       "currencyCode" => get_woocommerce_currency(),
       "items" => [$product_data],
