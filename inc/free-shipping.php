@@ -105,7 +105,7 @@ function inoby_hide_shipping_when_free_is_available( $rates ) {
 	$free = array();
 
   
-  if ((is_user_logged_in() && WC()->cart->subtotal > get_free_shipping_minimum()) || is_valid_free_shipping_coupon('rimfree')) {
+  if ((is_user_logged_in() && WC()->cart->subtotal > floatval(get_free_shipping_minimum())) || (WC()->cart->has_discount('rimfree') && is_valid_free_shipping_coupon('rimfree'))) {
     foreach ( $rates as $rate_id => $rate ) {
       if ( 'free_shipping' === $rate->method_id ) {
         $free[ $rate_id ] = $rate;
