@@ -77,14 +77,14 @@ function inoby_calculator_to_free_shipping() {
   
   $free_shipping_price = get_free_shipping_minimum();
   $total_price = WC()->cart->subtotal;
-  $remaining = $free_shipping_price - $total_price;
+  $remaining = floatval($free_shipping_price) - $total_price;
   $remaining_price = wc_price($remaining);
 
-    $percentage = ($total_price / $free_shipping_price) * 100;
+    $percentage = ($total_price / floatval($free_shipping_price)) * 100;
   
 
     if (is_user_logged_in()) {
-      if($free_shipping_price > $total_price){
+      if(floatval($free_shipping_price) > $total_price){
         echo '<div class="free-shipping-notice">';
         echo sprintf(__('<p>Purchase for %s more, and get free delivery.</p>','rimrebellion'), $remaining_price);
         echo '<div class="line"><span class="line-color" style="width: '. $percentage .'%;"></span></div>';
@@ -103,8 +103,9 @@ add_action('woocommerce_before_cart_contents', 'inoby_calculator_to_free_shippin
 
 function inoby_hide_shipping_when_free_is_available( $rates ) {
 	$free = array();
+
   
-  if (is_user_logged_in() && WC()->cart->subtotal > get_free_shipping_minimum()) {
+  if ((is_user_logged_in() && WC()->cart->subtotal > get_free_shipping_minimum()) || is_valid_free_shipping_coupon('rimfree')) {
     foreach ( $rates as $rate_id => $rate ) {
       if ( 'free_shipping' === $rate->method_id ) {
         $free[ $rate_id ] = $rate;
@@ -121,4 +122,10 @@ function inoby_hide_shipping_when_free_is_available( $rates ) {
   }
 	return ! empty( $free ) ? $free : $rates;
 }
+// Function to check if the free shipping coupon is valid
+function is_valid_free_shipping_coupon($coupon_code) {
+    $coupon = new WC_Coupon($coupon_code);
+    return $coupon->is_valid();
+}
+
 add_filter( 'woocommerce_package_rates', 'inoby_hide_shipping_when_free_is_available', 100 );
