@@ -9,9 +9,9 @@ class LooksSingleModule extends InobyModule {
   run() {
       this.initProductGallery();
 
+      var priceWrp = $(".price-wrp");
       
       $(document.body).on("found_variation", function (event, variation) {
-      var priceWrp = $("#price-wrp");
       if (variation.price_html) {
         $('.stock-status').addClass('price-wrp-hide');
         $(priceWrp).addClass("price-wrp-hide");
@@ -19,7 +19,6 @@ class LooksSingleModule extends InobyModule {
     });
     // ked nemam kompletne vybraty variant tak neviem cenu
     $(document.body).on("hide_variation", () => {
-      var priceWrp = $("#price-wrp");
         $('.stock-status').removeClass('price-wrp-hide');
       $(priceWrp).removeClass("price-wrp-hide");
     });
