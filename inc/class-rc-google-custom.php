@@ -34,7 +34,7 @@ class RC_Google_custom extends RC_Google{
 
   private static function get_product_id($product) {
     if ($product instanceof \WC_Product) {
-      return !empty($product->get_sku()) ? $product->get_sku() : $product->get_id();
+      return $product->get_id();
     }
     return !empty($product["sku"]) ? $product["sku"] : $product["ID"];
   }
@@ -45,6 +45,7 @@ class RC_Google_custom extends RC_Google{
       "name" => $product->get_name(),
       "price" => wc_get_price_to_display($product),
       "google_business_vertical" => "retail",
+      "ITEM_GROUP_ID" => ($product->get_parent_id()) ? $product->get_parent_id() : self::get_product_id($product),
     ];
 
     if ($quantity > 0) {
@@ -55,12 +56,16 @@ class RC_Google_custom extends RC_Google{
   }
 
   private static function get_event_order_item_data($item) {
+    $product_id = self::get_product_id($item->get_product());
+    $variation = wc_get_product($product_id);
+
     return [
       "id" => self::get_product_id($item->get_product()),
       "name" => $item->get_name(),
       "price" => round(($item->get_total() + $item->get_total_tax()) / $item->get_quantity(), 2),
       "quantity" => $item->get_quantity(),
       "google_business_vertical" => "retail",
+      'ITEM_GROUP_ID' => $variation->get_parent_id() ? $variation->get_parent_id() : null,
     ];
   }
 
