@@ -5,6 +5,12 @@ body.single-product{
   div#main{
     background-color: $gray100;
   }
+  nav.breadcrumbs{
+    .container{
+      padding: 0;
+    }
+  }
+  
   .product-header{
     margin-bottom: 4rem;
     .gallery-col{
