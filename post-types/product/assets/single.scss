@@ -14,6 +14,23 @@ body.single-product{
   .product-header{
     margin-bottom: 4rem;
     .gallery-col{
+      position: relative;
+      .tags{
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 1rem;
+        position: absolute;
+        top: 1.7rem;
+        left: 3rem;
+        z-index: 1;
+        @include bp(md){
+          flex-direction: column;
+          align-items: flex-start;
+          gap: .2rem;
+        }
+      }
       .woocommerce-product-gallery__image[data-gallery-index="0"]{
         a > img{
           aspect-ratio: 1/1;
@@ -52,13 +69,6 @@ body.single-product{
           font-family: 'GreedNarrow', sans-serifx;
         }
       }
-      .tags{
-        margin-bottom: 1rem;
-        display: flex;
-        align-items: center;
-        justify-content: flex-start;
-        gap: 1.6rem;
-      }
       h1{
         margin-bottom: 0.8rem;
       }
@@ -82,7 +92,7 @@ body.single-product{
             text-decoration: none;
             bdi{
               font-size: 2.4rem;
-              font-weight: 400 !important;
+              font-weight: 700 !important;
               color: $gray300;
               text-decoration: line-through;
               font-family: 'Roboto', sans-serif;
@@ -91,6 +101,7 @@ body.single-product{
         .amount{
             font-size: $fs-h2;
             font-family: $font-family-headings;
+            color: #FF746C;
         }
       }
       .price-wrp-hide {
@@ -182,7 +193,7 @@ body.single-product{
               text-decoration: none;
               bdi{
                 font-size: 2.4rem;
-                font-weight: 400 !important;
+                font-weight: 700 !important;
                 color: $gray300;
                 text-decoration: line-through;
                 font-family: 'Roboto', sans-serif;

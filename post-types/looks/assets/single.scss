@@ -132,6 +132,22 @@
     .gallery-col{
       overflow: hidden;
       position: relative;
+      .tags{
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 1rem;
+        position: absolute;
+        top: 1.7rem;
+        left: 3rem;
+        z-index: 1;
+        @include bp(md){
+          flex-direction: column;
+          align-items: flex-start;
+          gap: .2rem;
+        }
+      }
       .woocommerce-product-gallery__image[data-gallery-index="0"]{
         a > img{
           aspect-ratio: 1/1;
@@ -190,16 +206,6 @@
 
         .price-wrp-hide {
         display: none;
-      }
-      .tags{
-        margin-bottom: 1rem;
-        display: flex;
-        align-items: center;
-        justify-content: flex-start;
-        gap: 1.6rem;
-        .tag{
-          background-color: $gray100;
-        }
       }
       h1{
         margin-bottom: 0.8rem;
@@ -296,7 +302,7 @@
               text-decoration: none;
               bdi{
                 font-size: 2.4rem;
-                font-weight: 400 !important;
+                font-weight: 700 !important;
                 color: $gray300;
                 text-decoration: line-through;
                 font-family: 'Roboto', sans-serif;
@@ -436,7 +442,7 @@
             text-decoration: none;
             bdi{
               font-size: 2.4rem;
-              font-weight: 400 !important;
+              font-weight: 700 !important;
               color: $gray300;
               text-decoration: line-through;
               font-family: 'Roboto', sans-serif;
@@ -445,6 +451,7 @@
         .amount{
             font-size: $fs-h2;
             font-family: $font-family-headings;
+            color: #FF746C;
         }
       }
   .product-type-simple{

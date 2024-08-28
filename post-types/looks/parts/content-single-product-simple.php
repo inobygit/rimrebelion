@@ -48,12 +48,8 @@ $collections = wp_get_post_terms($product_id, "collection");
 
     <div class="row product-header">
         <div class="gallery-col column <?= $gallery_class ?>">
-            <?php get_template_part("post-types/looks/parts/product-image-simple", null, ['product' => $product]); ?>
-        </div>
-        <div class="summary-col column <?= $summary_class ?>">
-            <div class="summary entry-summary">
-                <div class="tags">
-                    <?php
+            <div class="tags">
+                <?php
                     $taxonomy = "product_specials";
                     $terms = get_the_terms($product->get_id(), $taxonomy);
 
@@ -95,7 +91,12 @@ $collections = wp_get_post_terms($product_id, "collection");
                     }
 
           ?>
-                </div>
+            </div>
+            <?php get_template_part("post-types/looks/parts/product-image-simple", null, ['product' => $product]); ?>
+        </div>
+        <div class="summary-col column <?= $summary_class ?>">
+            <div class="summary entry-summary">
+
                 <?php
                 $terms = wp_get_post_terms( $product->id, 'product_tag' );
 
@@ -110,22 +111,7 @@ $collections = wp_get_post_terms($product_id, "collection");
                     echo '</div>';
                 }
                 get_template_part("post-types/looks/parts/title-simple", null, ['product' => $product]); // Inoby_Product::get_manufacturer_name();
-        $gender_terms = wp_get_post_terms($product->get_id(), 'gender');
-        if (!empty($gender_terms) && !is_wp_error($gender_terms)) {
-            echo '<div class="product-genders">';
-            $unisex_only = array_filter($gender_terms, function($term) {
-                return strtolower($term->name) === 'unisex';
-            });
-
-            if (!empty($unisex_only)) {
-                echo '<span class="gender-term-box">' . esc_html('Unisex', 'rimrebellion') . '</span>';
-            } else {
-                foreach ($gender_terms as $term) {
-                    echo '<span class="gender-term-box">' . esc_html($term->name, 'rimrebellion') . '</span>';
-                }
-            }
-            echo '</div>';
-        }
+        
         get_template_part("post-types/looks/parts/short-description-simple", null, ['product' => $product]);
         
         $colorMeta = rwmb_meta('color', null, $product->get_id());
