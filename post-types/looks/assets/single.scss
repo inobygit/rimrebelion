@@ -281,6 +281,9 @@
       }
       h1{
         margin-bottom: 0.8rem;
+        @include bp(md){
+          font-size: 3.2rem;
+        }
       }
       .collection-terms{
         margin-bottom: 1rem;
@@ -310,12 +313,18 @@
           line-height: 150%; 
           margin-bottom: 1rem;
           font-family: 'ItalianPlate', sans-serif;
+          @include bp(md){
+            font-size: 1.6rem;
+          }
         p{
           color: $gray600;
           font-size: $fs-h4;
           line-height: 150%; 
           margin-bottom: 1rem;
           font-family: 'ItalianPlate', sans-serif;
+          @include bp(md){
+            font-size: 1.6rem;
+          }
         }
 
         i, em{

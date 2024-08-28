@@ -108,6 +108,9 @@ body.single-product{
       }
       h1{
         margin-bottom: 0.8rem;
+        @include bp(md){
+          font-size: 3.2rem;
+        }
       }
       .price,
       .price-wrp .price{
@@ -172,6 +175,9 @@ body.single-product{
           line-height: 150%; 
           margin-bottom: 1rem;
           font-family: 'ItalianPlate', sans-serif;
+          @include bp(md){
+            font-size: 1.6rem;
+          }
         }
         i, em{
           font-size: inherit;
