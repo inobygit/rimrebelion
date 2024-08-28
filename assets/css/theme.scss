@@ -1008,6 +1008,9 @@ nav.breadcrumbs {
     .logo{
       > a {
         content: url(theme-url("/assets/svg/logo-landing.svg"));
+        @include bp(lg){
+          content: url(theme-url("/assets/svg/logo-simple-white.svg"));
+        }
       }
     }
     .top-menu > div > ul.menu li.menu-item a{
@@ -1076,6 +1079,10 @@ nav.breadcrumbs {
     a{
       height: 80px;
       margin: 1rem 0;
+      @include bp(lg){
+        height: 50px;
+          content: url(theme-url("/assets/svg/logo-simple.svg"));
+        }
     }
   }
   .show-more {
