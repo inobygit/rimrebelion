@@ -40,6 +40,18 @@ i{
   margin: auto;
 }
 
+.tags{
+  .tag.special,
+  .tag.on-sale{
+    background-color: #FF746C !important;
+    color: $white !important;
+    text-transform: uppercase;
+    font-size: 1.2rem;
+    font-weight: 400;
+    font-family: 'GreedNarrow';
+  }
+}
+
 html[lang="sk-SK"] {
   .product-search-results table.search-results{
     .entry{

@@ -58,6 +58,13 @@ RC()->last_seen_products()->enqueue_scripts($product->get_id());
 
     <div class="row product-header">
         <div class="gallery-col column <?= $gallery_class ?>">
+            <div class="tags">
+                <?php
+          Inoby_Product::product_special_badge();
+          Inoby_Product::new_product_badge();
+          Inoby_Product::sale_badge_percentage();
+          ?>
+            </div>
             <?php do_action("woocommerce_before_single_product_summary"); ?>
         </div>
         <div class="summary-col column <?= $summary_class ?>">
@@ -76,13 +83,7 @@ RC()->last_seen_products()->enqueue_scripts($product->get_id());
 			 * @hooked WC_Structured_Data::generate_product_data() - 60
 			 */
 ?>
-                <div class="tags">
-                    <?php
-          Inoby_Product::product_special_badge();
-          Inoby_Product::new_product_badge();
-          Inoby_Product::sale_badge_percentage();
-          ?>
-                </div>
+
                 <?php
 
                 $terms = wp_get_post_terms( get_the_id(), 'product_tag' );
@@ -98,22 +99,7 @@ RC()->last_seen_products()->enqueue_scripts($product->get_id());
                     echo '</div>';
                 }
         woocommerce_template_single_title(); // Inoby_Product::get_manufacturer_name();
-        $gender_terms = wp_get_post_terms($product->get_id(), 'gender');
-        if (!empty($gender_terms) && !is_wp_error($gender_terms)) {
-            echo '<div class="product-genders">';
-            $unisex_only = array_filter($gender_terms, function($term) {
-                return strtolower($term->name) === 'unisex';
-            });
-
-            if (!empty($unisex_only)) {
-                echo '<span class="gender-term-box">' . esc_html('Unisex', 'rimrebellion') . '</span>';
-            } else {
-                foreach ($gender_terms as $term) {
-                    echo '<span class="gender-term-box">' . esc_html($term->name, 'rimrebellion') . '</span>';
-                }
-            }
-            echo '</div>';
-        }
+        
         woocommerce_template_single_excerpt();
         
         $colorMeta = rwmb_meta('color', null, $product->get_id());
