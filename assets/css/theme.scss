@@ -40,6 +40,9 @@ i{
   margin: auto;
 }
 
+.backorder_notification{
+  color: $on-back-order-color;
+}
 .tags{
   .tag.special,
   .tag.on-sale,

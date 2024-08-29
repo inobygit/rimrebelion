@@ -30,11 +30,24 @@ if ( $product->is_in_stock() ) : ?>
 
 <form class="cart" method="post" enctype='multipart/form-data'>
     <?php do_action( 'woocommerce_before_add_to_cart_button' ); ?>
+    <div class="stock-wrp">
+        <?php get_template_part("template-parts/stock-status", null, ["product" => $product]); ?>
+        <div class="availability-date">
+            <?php
+                            $availability_date_tomorrow = get_post_meta($product->get_id(), '_availability_date_tomorrow', true);
+                            $availability_date_onbackorder = get_post_meta($product->get_id(), '_availability_date_onbackorder', true);
+                            $availability_date_default = get_post_meta($product->get_id(), '_availability_date_default', true);
 
-    <div class="simple-row between">
-        <div class="woocommerce-variation-availability">
-            <?php get_template_part("template-parts/stock-status", null, ["product" => $product]); ?>
+                            $availability_date_onbackorder = date('j.n.', strtotime('+10 days'));
+                            $availability_date_tomorrow = date('j.n.', strtotime('tomorrow'));
+                            $availability_date_default = date('j.n.', strtotime('+2 days'));
 
+                            echo '<p class="availability-date-default">' . esc_html(__('(Delivery: ', 'rimrebellion')) . ' ' . $availability_date_default . ')</p>';
+
+                            echo '<p class="availability-date-tomorrow">' . esc_html(__('(Delivery: ', 'rimrebellion')) . ' ' . $availability_date_tomorrow . ')</p>';
+
+                            echo '<p class="availability-date-onbackorder">' . esc_html(__('(Delivery: ', 'rimrebellion')) . ' ' . $availability_date_onbackorder . ')</p>';
+                            ?>
         </div>
     </div>
     <div class="simple-row">

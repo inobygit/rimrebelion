@@ -30,6 +30,25 @@ do_action("woocommerce_before_add_to_cart_form");
   ); ?></p>
     <?php else: ?>
     <div class="single_variation_wrap">
+        <?php
+		echo '<div class="woocommerce-variation single_variation">'; ?>
+        <script type="text/template" id="tmpl-variation-template">
+            <div class="woocommerce-variation-price">{{{ data.variation.price_html }}}</div>
+	<div class="woocommerce-variation-availability">{{{ (data.variation.availability_html.includes('instock') ? `<p class="stock instock"> <?= __('In stock', 'rimrebellion') ?> </p>` : (data.variation.availability_html.includes('onbackorder') ? `<p class="stock onbackorder"> <?= __('On backorder', 'rimrebellion') ?> </p>` : (data.variation.availability_html.includes('outofstock') ? `<p class="stock outofstock"> <?= __('Out of stock', 'rimrebellion') ?> </p>` : data.variation.availability_html))) }}}</div>
+</script>
+        <?php echo '</div>';?>
+        <div id="price-wrp" class="price-wrp">
+            <p class="<?php echo esc_attr( apply_filters( 'woocommerce_product_price_class', 'price' ) ); ?>">
+                <?php echo $product->get_price_html(); ?></p>
+        </div>
+        <?php $colorMeta = rwmb_meta('color', null, $product->get_id());
+
+        $colorMeta = rwmb_meta('color', null, $product->get_id());
+        if(!empty($colorMeta)){
+                echo '<p class="color-term heading">' . __('Color: ', 'rimrebellion') .'<span class="color-term">'  . $colorMeta . '</span>'.'</p>';
+            }
+        display_related_product_thumbnails($product->get_id());
+?>
 
         <table class="variations" cellspacing="0" role="presentation">
             <tbody>
@@ -37,9 +56,29 @@ do_action("woocommerce_before_add_to_cart_form");
                     ?>
                 <tr>
                     <td class="value">
-                        <label class="inplace-label" for="<?php echo esc_attr(sanitize_title($attribute_name)); ?>"><?php echo wc_attribute_label(
-    $attribute_name,
-); ?></label>
+                        <div class="stock-wrp">
+                            <p class="size-label"><?php echo wc_attribute_label(
+                                $attribute_name,
+                            ); ?>: </p>
+                            <?php get_template_part("template-parts/stock-status", null, ["product" => $product]); ?>
+                            <div class="availability-date">
+                                <?php
+                            $availability_date_tomorrow = get_post_meta($product->get_id(), '_availability_date_tomorrow', true);
+                            $availability_date_onbackorder = get_post_meta($product->get_id(), '_availability_date_onbackorder', true);
+                            $availability_date_default = get_post_meta($product->get_id(), '_availability_date_default', true);
+
+                            $availability_date_onbackorder = date('j.n.', strtotime('+10 days'));
+                            $availability_date_tomorrow = date('j.n.', strtotime('tomorrow'));
+                            $availability_date_default = date('j.n.', strtotime('+2 days'));
+
+                            echo '<p class="availability-date-default">' . esc_html(__('(Delivery: ', 'rimrebellion')) . ' ' . $availability_date_default . ')</p>';
+
+                            echo '<p class="availability-date-tomorrow">' . esc_html(__('(Delivery: ', 'rimrebellion')) . ' ' . $availability_date_tomorrow . ')</p>';
+
+                            echo '<p class="availability-date-onbackorder">' . esc_html(__('(Delivery: ', 'rimrebellion')) . ' ' . $availability_date_onbackorder . ')</p>';
+                            ?>
+                            </div>
+                        </div>
                         <?php wc_dropdown_variation_attribute_options([
                 "options" => $options,
                 "attribute" => $attribute_name,
@@ -56,17 +95,40 @@ do_action("woocommerce_before_add_to_cart_form");
 
         <?php do_action("woocommerce_before_single_variation"); ?>
         <?php
-		echo '<div class="woocommerce-variation single_variation">'; ?>
-        <script type="text/template" id="tmpl-variation-template">
-            <div class="woocommerce-variation-price">{{{ data.variation.price_html }}}</div>
-		<div class="woocommerce-variation-availability">{{{ (data.variation.is_in_stock ? `<p class="stock instock"> <?= __('In stock', 'rimrebellion') ?> </p>` : data.vatiation.availability_html) }}}</div>
-
-</script>
-        <?php echo '</div>';
     get_template_part( 'post-types/looks/parts/add-to-cart/variation-add-to-cart-button', null, ['product' => $product]);
     do_action("woocommerce_after_single_variation");
     ?>
     </div>
+    <?php do_action( 'woocommerce_before_add_to_cart_button' ); ?>
+
+    <?php
+        echo '<div class="order-wrp">';
+
+	do_action( 'woocommerce_before_add_to_cart_quantity' );
+
+	rc_quantity_input(
+		array(
+			'min_value'   => apply_filters( 'woocommerce_quantity_input_min', $product->get_min_purchase_quantity(), $product ),
+			'max_value'   => apply_filters( 'woocommerce_quantity_input_max', $product->get_max_purchase_quantity(), $product ),
+			'input_value' => isset( $_POST['quantity'] ) ? wc_stock_amount( wp_unslash( $_POST['quantity'] ) ) : $product->get_min_purchase_quantity(), // WPCS: CSRF ok, input var ok.
+		),
+		$product
+	);
+
+	do_action( 'woocommerce_after_add_to_cart_quantity' );
+	?>
+    <?php 
+	rebellion_add_to_cart_btn(
+		array(
+			'text' => esc_html( $product->single_add_to_cart_text() ),
+			'class' => 'button triangleBoth black',
+			'tag' => 'submit'
+		), $product
+		);
+        echo '</div>';
+	?>
+
+    <?php do_action( 'woocommerce_after_add_to_cart_button' ); ?>
     <?php do_action("woocommerce_after_variations_table"); ?>
 
     <?php endif; ?>

@@ -13,5 +13,5 @@
 defined("ABSPATH") || exit(); ?>
 <script type="text/template" id="tmpl-variation-template">
     <div class="woocommerce-variation-price">{{{ data.variation.price_html }}}</div>
-	<div class="woocommerce-variation-availability">{{{ (data.variation.is_in_stock ? `<p class="stock instock"> <?= __('In stock', 'rimrebellion') ?> </p>` : data.vatiation.availability_html) }}}</div>
+	<div class="woocommerce-variation-availability">{{{ (data.variation.availability_html.includes('instock') ? `<p class="stock instock"> <?= __('In stock', 'rimrebellion') ?> </p>` : (data.variation.availability_html.includes('onbackorder') ? `<p class="stock onbackorder"> <?= __('On backorder', 'rimrebellion') ?> </p>` : (data.variation.availability_html.includes('outofstock') ? `<p class="stock outofstock"> <?= __('Out of stock', 'rimrebellion') ?> </p>` : data.variation.availability_html))) }}}</div>
 </script>

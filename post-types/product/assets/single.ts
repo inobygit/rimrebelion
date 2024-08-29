@@ -8,6 +8,92 @@ import KeenSliderHelper from "@assets/js/lib/keen-slider-helper";
 class ProductSingleModule extends InobyModule {
 
   run() { 
+    const customOrder = ['xxs', 'xs', 's', 'm', 'l', 'xl', 'xxl', '3xl'];
+    const radioButtons = $('.rudr-variation-radios input');
+
+    // Sort radio buttons based on custom order
+    const sortedRadioButtons = Array.from(radioButtons).sort((a, b) => {
+        const valueA = customOrder.indexOf((a as HTMLInputElement).value); // Cast to HTMLInputElement
+        const valueB = customOrder.indexOf((b as HTMLInputElement).value); // Cast to HTMLInputElement
+        return valueA - valueB;
+    });
+
+    // Clear existing radio buttons and append sorted ones
+    $('.rudr-variation-radios').empty().append(sortedRadioButtons.map(rb => $(rb).parent()));
+    
+    $('#size-help').on('click', function(e){
+      e.preventDefault();
+      $('html, body').animate({
+        scrollTop: $(".product-tabs").offset().top - 120
+      }, 1000);
+      // Toggle the size-help_tab
+      $('.wc-tabs li').removeClass('active'); // Remove active class from all tabs
+      $('#tab-title-size-help').removeClass('disabled').addClass('active'); // Add active class to size-help tab
+      $('.woocommerce-Tabs-panel').hide(); // Hide all tab panels
+      $('#tab-size-help').removeClass('hidden'); // Show size-help tab panel
+      $('#tab-size-help').show(); // Show size-help tab panel
+    });
+
+    if($('.stock-wrp .stock-status .stock').hasClass('onbackorder')) {
+      $('.availability-date *').hide();
+      $('.availability-date-onbackorder').show();
+    }
+
+    if($('.stock-wrp .stock-status .stock').hasClass('instock')) {
+      $('.availability-date *').hide();
+      var currentTime = new Date();
+      var hours = currentTime.getHours();
+      if (hours < 16 ) {
+        $('.availability-date-tomorrow').show();
+      } else {
+        $('.availability-date-default').show();
+      }
+    }
+
+    if($('.stock-wrp .stock-status .stock').hasClass('outofstock')) {
+      $('.availability-date *').hide();
+    }
+    // on radio button change(click)
+	$( document ).on( 'change', '.rudr-variation-radios input', function() {
+		// for each checked radio button we reflect the same changes to select dropdowns
+    $('.rudr-variation-radios label').each(function(index, element) {
+      $(element).removeClass('selected');
+    });
+		$( '.rudr-variation-radios input:checked' ).each( function( index, element ) {
+			const radio = $(element)
+      const label = $(element).parent();
+      label.addClass('selected');
+			const radioName = radio.attr( 'name' )
+			const radioValue  = radio.attr( 'value' )
+			$( 'select[name="' + radioName + '"]' ).val( radioValue ).trigger( 'change' );
+		})
+
+    var stockStatus = $('.single_variation_wrap .woocommerce-variation-availability');
+    $('.stock-wrp .stock-status').html(stockStatus.html());
+    var stock = stockStatus.find('.stock');
+
+    if(stock.hasClass('onbackorder')) {
+      $('.availability-date *').hide();
+      $('.availability-date-onbackorder').show();
+    }
+
+    if(stock.hasClass('instock')) {
+      $('.availability-date *').hide();
+      var currentTime = new Date();
+      var hours = currentTime.getHours();
+      if (hours < 16 ) {
+        $('.availability-date-tomorrow').show();
+      } else {
+        $('.availability-date-default').show();
+      }
+    }
+
+    if(stock.hasClass('outofstock')) {
+      $('.availability-date *').hide();
+    }
+
+    stockStatus.hide();
+	})
 
     setTimeout(() => {
       $('.wc-tabs li.active').removeClass('active');
@@ -29,13 +115,11 @@ class ProductSingleModule extends InobyModule {
 
     $(document.body).on("found_variation", function (event, variation) {
       if (variation.price_html) {
-        $('.stock-status').addClass('price-wrp-hide');
         $(priceWrp).addClass("price-wrp-hide");
       }
     });
     // ked nemam kompletne vybraty variant tak neviem cenu
     $(document.body).on("hide_variation", () => {
-        $('.stock-status').removeClass('price-wrp-hide');
       $(priceWrp).removeClass("price-wrp-hide");
     });
 
@@ -49,32 +133,7 @@ class ProductSingleModule extends InobyModule {
       this.createSlider($gallery, settings);
     });
 
-    const selectElement = $('.single_variation_wrap').find('select').get(0) as HTMLSelectElement;
-    const customOrder = ['xxs', 'xs', 's', 'm', 'l', 'xl', 'xxl', '3xl'];
-    if(selectElement){
-      const options = Array.from(selectElement.options);
-
-      options.sort((a, b) => {
-        const baseSizeA = a.value.split('-')[0];
-        const baseSizeB = b.value.split('-')[0];
-
-        const valueA = (baseSizeA === '3xl') ? 10 : (isNaN(parseFloat(baseSizeA)) ? customOrder.indexOf(baseSizeA) : parseFloat(baseSizeA));
-        const valueB = (baseSizeB === '3xl') ? 10 : (isNaN(parseFloat(baseSizeB)) ? customOrder.indexOf(baseSizeB) : parseFloat(baseSizeB));
-
-        if (valueA < valueB) {
-            return -1;
-        } else if (valueA > valueB) {
-            return 1;
-        } else {
-            // Compare language strings if they exist
-            const langA = a.value.split('-')[1] || '';
-            const langB = b.value.split('-')[1] || '';
-            return langA.localeCompare(langB);
-        }
-    });
-      
-      options.forEach(option => selectElement.add(option));
-    }
+    
   }
 
   private createSlider(
