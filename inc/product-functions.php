@@ -172,14 +172,14 @@ function rudr_radio_variations( $html, $args ) {
                 }
             }
             if( in_array( $term->slug, $options, true ) ) {
-				$radios .= "<label class=\"{$class}\" for=\"{$name}-{$term->slug}\"><input type=\"radio\" id=\"{$name}-{$term->slug}\" name=\"{$name}\" value=\"{$term->slug}\"" . checked( $args[ 'selected' ], $term->slug, false ) . ">{$term->name}</label>";
+				$radios .= "<label class=\"{$class}\" for=\"{$name}-{$term->slug}-{$uid}\"><input type=\"radio\" id=\"{$name}-{$term->slug}-{$uid}\" name=\"{$name}\" value=\"{$term->slug}\"" . checked( $args[ 'selected' ], $term->slug, false ) . ">{$term->name}</label>";
 			}
 		}
 	// individual product attributes
 	} else {
 		foreach( $options as $option ) {
 			$checked = sanitize_title( $args[ 'selected' ] ) === $args[ 'selected' ] ? checked( $args[ 'selected' ], sanitize_title( $option ), false ) : checked( $args[ 'selected' ], $option, false );
-			$radios .= "<label for=\"{$name}-{$option}\"><input type=\"radio\" id=\"{$name}-{$option}\" name=\"{$name}\" value=\"{$option}\" id=\"{$option}\" {$checked}>{$option}</label>";
+			$radios .= "<label for=\"{$name}-{$option}-{$uid}\"><input type=\"radio\" id=\"{$name}-{$option}-{$uid}\" name=\"{$name}\" value=\"{$option}\" id=\"{$option}\" {$checked}>{$option}</label>";
 		}
 	}
   
