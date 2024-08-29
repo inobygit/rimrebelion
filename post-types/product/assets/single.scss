@@ -10,7 +10,79 @@ body.single-product{
       padding: 0;
     }
   }
-  
+    .stock-wrp{
+          display: flex;
+          align-items: center;
+          justify-content: flex-start;
+          gap: .6rem;
+          margin: 1.5rem 0 1rem 0;
+          text-transform: uppercase;
+          .size-label{
+            font-weight: 400;
+            font-family: 'Roboto';
+            font-size: 1.3rem;
+            color: $black;
+            text-transform: uppercase;
+            margin: 0;
+          }
+          .stock-status{
+            display: flex;
+            align-items: flex-start;
+            justify-content: flex-start;
+            
+          }
+        }
+  .stock{
+    font-size: 1.3rem;
+    margin: 0;
+    text-transform: uppercase;
+    &.onbackorder{
+      color: $on-back-order-color;
+    }
+    &.instock{
+      color: $in-stock-color;
+    }
+    &.outofstock{
+      color: $out-of-stock-color;
+    }
+  }
+
+  .help-wrp{
+          margin-top: .6rem;
+          #size-help{
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 1rem;
+            color: $gray400;
+            font-size: 1.1rem;
+            cursor: pointer;
+          }
+        }
+        .availability-date{
+          &-default,
+          &-tomorrow,
+          &-onbackorder{
+            font-size: 1.3rem;
+            color: $gray400;
+            font-weight: 400;
+            font-family: 'Roboto';
+            text-transform: none;
+            display: none;
+            margin: 0;
+          }
+        }
+  .order-wrp{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 1.6rem;
+    margin-top: 1.6rem;
+    flex-wrap: wrap;
+  }
+  #pa_size{
+    display: none;
+  }
   .product-header{
     margin-bottom: 4rem;
     .gallery-col{
@@ -120,8 +192,8 @@ body.single-product{
         flex-wrap: wrap;
         justify-content: flex-end;
         gap: 2rem;
-          margin-top: 1.6rem;
-
+          margin-top: 2rem;
+        margin-bottom: 1.5rem;
         ins{
           text-decoration: none;
         }
@@ -145,7 +217,7 @@ body.single-product{
         }
       }
       .price-wrp-hide {
-        display: none;
+        display: none !important;
       }
       .collection-terms{
         margin-bottom: 1rem;
@@ -158,17 +230,19 @@ body.single-product{
         }
       }
       .color-term{
-        color: $gray400;
+          color: $gray400;
           font-size: 1.3rem;
-          font-weight: 400;
           line-height: 150%;
-          margin-top: 1rem;
+          margin-top: 0;
+          text-transform: uppercase;
+          font-weight: 400;
+          margin-bottom: .8rem;
           &.heading{
-            font-weight: 700;
-            text-transform: uppercase;
+            color: $black;
           }
       }
       .woocommerce-product-details__short-description{
+        margin-bottom: 0;
         p{
           color: $gray600;
           font-size: $fs-h4;
@@ -182,9 +256,6 @@ body.single-product{
         i, em{
           font-size: inherit;
         }
-      }
-      .variations_form{
-        margin-top: 1.6rem;
       }
       .related-products-thumbnails{
               display: flex;
@@ -224,14 +295,75 @@ body.single-product{
       .single_variation_wrap{
         table.variations{
           width: 100%;
+          .rudr-variation-radios{
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            flex-wrap: wrap;
+            input[type="radio"]{
+              appearance: none;
+              -webkit-appearance: none;
+              display: none;
+            }
+            label{
+              all: unset;
+              opacity: 1 !important;
+              position: relative !important;
+              color: $black;
+              font-size: 1.6rem;
+              font-weight: 400;
+              font-family: 'ItalianPlate';
+              width: 56px;
+              min-width: 56px;
+              min-height: 45px;
+              height: 45px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              z-index: 1;
+              cursor: pointer;
+              transition: .3s;
+              padding: 0 !important;
+              &.onbackorder{
+                color: $gray400;
+              }
+              &.outofstock{
+                display: none;
+              }
+              &::after{
+                content: '';
+                background-image: url("data:image/svg+xml,%3Csvg width='57' height='46' viewBox='0 0 57 46' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M12.4221 42.5567L1.39986 27.0567C-0.327218 24.6279 -0.327218 21.372 1.39987 18.9433L12.4221 3.44333C13.7352 1.59676 15.8609 0.5 18.1268 0.5H25.5152H31.0151H38.9032C41.1692 0.5 43.2952 1.59676 44.6082 3.44333L55.6302 18.9433C57.3572 21.372 57.3572 24.628 55.6302 27.0567L44.6082 42.5567C43.2952 44.4032 41.1692 45.5 38.9032 45.5H31.0151H25.5152H18.1268C15.8609 45.5 13.7352 44.4032 12.4221 42.5567Z' fill='white'/%3E%3C/svg%3E%0A");
+                background-size: contain;
+                background-position: center;
+                background-repeat: no-repeat;
+                position: absolute;
+                inset: 0;
+                display: block;
+                z-index: -1;
+                transition: .3s;
+              }
+              &:hover,
+              &.selected{
+                color: $white;
+                &::after{
+                  background-image: url("data:image/svg+xml,%3Csvg width='57' height='46' viewBox='0 0 57 46' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M12.4221 42.5567L1.39986 27.0567C-0.327218 24.6279 -0.327218 21.372 1.39987 18.9433L12.4221 3.44333C13.7352 1.59676 15.8609 0.5 18.1268 0.5H25.5152H31.0151H38.9032C41.1692 0.5 43.2952 1.59676 44.6082 3.44333L55.6302 18.9433C57.3572 21.372 57.3572 24.628 55.6302 27.0567L44.6082 42.5567C43.2952 44.4032 41.1692 45.5 38.9032 45.5H31.0151H25.5152H18.1268C15.8609 45.5 13.7352 44.4032 12.4221 42.5567Z' fill='black'/%3E%3C/svg%3E%0A");
+                }
+              }
+            }
+          }
           select{
             width: 100%;
             cursor: pointer;
           }
         }
         
+      
         .single_variation{
+          margin-bottom: 0;
           .woocommerce-variation-price{
+            .price{
+              margin-top: 0;
+            }
             del{
               text-decoration: none;
               bdi{
@@ -256,7 +388,7 @@ body.single-product{
             line-height: 150%; /* 19.5px */
           }
           .woocommerce-variation-availability{
-            float: left;
+            display: none !important;
             p.stock{
               font-size: 1.3rem;
               font-weight: 400;
@@ -273,22 +405,11 @@ body.single-product{
             }
           }
         }
-        .woocommerce-variation-add-to-cart{
-          margin-top: $space-sm;
-          display: flex;
-          flex-wrap: wrap;
-          gap: 1.6rem;
-          &.woocommerce-variation-add-to-cart-disabled{
-            opacity: .5;
-            pointer-events: none;
-            cursor: not-allowed !important;
-          }
-          .quantity {
+        .quantity {
             display: inline-block;
             border: 1px solid $gray200;
             border-radius: 0px;
             background-color: #F8F8F8;
-            margin-right: $space-sm;
             input {
               color: $gray900;
               padding: 13px;
@@ -320,6 +441,17 @@ body.single-product{
               }
             }
           }
+        .woocommerce-variation-add-to-cart{
+          margin-top: 0;
+          display: flex;
+          flex-wrap: wrap;
+          gap: 1.6rem;
+          &.woocommerce-variation-add-to-cart-disabled{
+            opacity: .5;
+            pointer-events: none;
+            cursor: not-allowed !important;
+          }
+          
         }
       }
     }
@@ -826,6 +958,7 @@ body.single-product{
       font-size: 4rem;
       font-family: $font-family-headings;
       margin-bottom: 1rem !important;
+      margin-top: 1rem !important;
     }
     .simple-row{
       display: flex;
@@ -833,6 +966,7 @@ body.single-product{
       justify-content: flex-start;
       flex-wrap: wrap;
       gap: 2rem;
+      margin-top: 1.6rem;
       &.between{
         justify-content: space-between;
         margin-bottom: 1rem;

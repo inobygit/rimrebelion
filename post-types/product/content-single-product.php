@@ -102,16 +102,6 @@ RC()->last_seen_products()->enqueue_scripts($product->get_id());
         
         woocommerce_template_single_excerpt();
         
-        $colorMeta = rwmb_meta('color', null, $product->get_id());
-        if(!empty($colorMeta)){
-                echo '<p class="color-term heading">' . __('Color', 'rimrebellion') .'</p>';
-            }
-        display_related_product_thumbnails();
-        // TODO color switching
-
-            if(!empty($colorMeta)){
-                echo '<p class="color-term">'  . $colorMeta . '</p>';
-            }
         if ($product->is_type("simple")) {
             woocommerce_template_single_price();
         }

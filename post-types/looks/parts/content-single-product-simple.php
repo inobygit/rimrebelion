@@ -71,22 +71,24 @@ $collections = wp_get_post_terms($product_id, "collection");
                     if ($product->is_on_sale()) {
                         $max_percentage = 0;
                         if ($product->is_type("simple")) {
-                        $max_percentage = (($product->get_regular_price() - $product->get_sale_price()) / $product->get_regular_price()) * 100;
+                            $max_percentage = (($product->get_regular_price() - $product->get_sale_price()) / $product->get_regular_price()) * 100;
                         } elseif ($product->is_type("variable")) {
-                        foreach ($product->get_children() as $child_id) {
-                            $variation = wc_get_product($child_id);
-                            $price = $variation->get_regular_price();
-                            $sale = $variation->get_sale_price();
-                            if ($price != 0 && !empty($sale)) {
-                            $percentage = (($price - $sale) / $price) * 100;
+                            foreach ($product->get_children() as $child_id) {
+                                $variation = wc_get_product($child_id);
+                                $price = $variation->get_regular_price();
+                                $sale = $variation->get_sale_price();
+                                if ($price != 0 && !empty($sale)) {
+                                    $percentage = (($price - $sale) / $price) * 100;
+                                }
+                                if(isset($percentage)){
+                                    if ($percentage > $max_percentage) {
+                                        $max_percentage = $percentage;
+                                    }
+                                }
                             }
-                            if ($percentage > $max_percentage) {
-                            $max_percentage = $percentage;
-                            }
-                        }
                         }
                         if ($max_percentage > 0) {
-                        echo "<span class='tag on-sale'>-" . round($max_percentage) . "%</span>";
+                            echo "<span class='tag on-sale'>-" . round($max_percentage) . "%</span>";
                         } 
                     }
 
@@ -114,16 +116,7 @@ $collections = wp_get_post_terms($product_id, "collection");
         
         get_template_part("post-types/looks/parts/short-description-simple", null, ['product' => $product]);
         
-        $colorMeta = rwmb_meta('color', null, $product->get_id());
-
-        if(!empty($colorMeta)){
-            echo '<p class="color-term heading">' . __('Color', 'rimrebellion') . '</p>';
-        }
-        display_related_product_thumbnails($product->get_id());
-
-        if(!empty($colorMeta)){
-            echo '<p class="color-term">' . $colorMeta . '</p>';
-        }
+        
         if ($product->is_type("simple")) {
             get_template_part("post-types/looks/parts/price-simple", null, ['product' => $product]);
         }
