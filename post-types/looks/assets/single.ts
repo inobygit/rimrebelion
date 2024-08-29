@@ -7,7 +7,7 @@ import KeenSliderHelper from "@assets/js/lib/keen-slider-helper";
 
 class LooksSingleModule extends InobyModule {
   run() {
-    const customOrder = ['xxs', 'xs', 's', 'm', 'l', 'xl', 'xxl', '3xl'];
+    const customOrder = ['xxs', 'xs', 's', 'm', 'l', 'xl', 'xxl', '3xl', 'xxs-sk', 'xs-sk', 's-sk', 'm-sk', 'l-sk', 'xl-sk', 'xxl-sk', '3xl-sk'];
     $('.rudr-variation-radios').each(function(index, element) {
       const radioButtons = $('#'+ $(element).attr('id') +' input');
       // Sort radio buttons based on custom order
