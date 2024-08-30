@@ -478,6 +478,9 @@ body.single-product{
             }
   }
   .inoby-slider-gallery {
+    @include bp(md){
+      order: 2;
+    }
     .gallery {
       align-items: center;
       padding: 0;
@@ -580,6 +583,9 @@ body.single-product{
   section.product-description{
     padding: $space-regular 0;
     background-color: $white;
+    @include bp(md){
+      order: 3;
+    }
     .content-wrap{
       display: flex;
       flex-wrap: wrap;
@@ -599,6 +605,23 @@ body.single-product{
   section.product-tabs{
     padding: $space-lg 0 $space-lg;
     margin-top: $space-md;
+    @include bp(md){
+      order: 1;
+      padding: 1.4rem 0 3rem 0;
+      margin-top: 0;
+    }
+    .desktop{
+      display: block;
+      @include bp(md){
+        display: none;
+      }
+    }
+    .mobile{
+      display: none;
+      @include bp(md){
+        display: block;
+      }
+    }
     .row{
       justify-content: center;
     }
@@ -809,13 +832,19 @@ body.single-product{
       margin: 0 0 $space-sm;
       @include bp(md){
         flex-direction: column;
+        z-index: 1;
+        position: relative
       }
       li[role="tab"]{
         min-width: 33.33%;
+        border-bottom: 4px solid $gray200;
+        @include bp(md){
+          border-bottom: 2px solid $black;
+          transition: all .4s ease-in-out;
+        }
         a{
           padding-bottom: 1.6rem;
           padding-right: 1.6rem;
-          border-bottom: 4px solid $gray200;
           color: $gray800;
           font-size: 1.4rem;
           font-weight: 600;
@@ -827,22 +856,36 @@ body.single-product{
           gap: 8px;
           @include bp(md){
             border-bottom: 0;
-            border-left: 4px solid $gray200;
             padding-top: 1.6rem;
-            padding-left: 1.6rem;
+            padding-left: 0;
+            color: $black;
+            flex-direction: row-reverse;
+            justify-content: space-between;
           } 
           &:before{
             content: url(theme-url("/assets/icons/tab.svg"));
+            transition: .4s ease-in-out;
+              transform: rotate(0);
           }
         }
         
         &.active{
+          @include bp(md){
+            height: auto;
+          }
           a{
             border-color: $col-prm;
             color: $black;
             &:before{
               content: url(theme-url("/assets/icons/tab-active.svg"));
+              transform: rotate(180deg);
             }
+          }
+          .wc-tab{
+              @include bp(md){
+                opacity: 1;
+                height: calc(var(--height) + 1.6rem) !important;
+              }
           }
         }
 
@@ -850,10 +893,23 @@ body.single-product{
           a{
             border-color: $gray200;
             color: $gray800;
+            @include bp(md){
+              border-color: $black;
+              color: $black;
+            } 
             &:before{
             content: url(theme-url("/assets/icons/tab.svg"));
+              transform: rotate(0);
+
             }
           }
+            .wc-tab{
+              @include bp(md){
+                display: block !important;
+                opacity: 0;
+                height: 0px !important;
+              }
+            }
         }
       }
     }
@@ -862,11 +918,26 @@ body.single-product{
       font-size: 1.6rem;
       font-weight: 400;
       line-height: 150%;
+      @include bp(md){
+        display: block !important;
+        opacity: 0;
+        transition: all .4s ease-in-out;
+        transform-origin: top;
+        z-index: -1;
+        position: relative;
+      }
+      &.woocommerce-Tabs-panel--size-help{
+        z-index: 0;
+      }
       *{
         color: $black;
       }
       &.hidden{
         display: none !important;
+        @include bp(md){
+          display: block !important;
+          opacity: 0;
+        }
       }
     }
   }
@@ -874,6 +945,9 @@ body.single-product{
         margin-top: $space-md;
         margin-bottom: $space-lg;
         margin-inline: auto;
+        @include bp(md){
+          order: 4;
+        }
         .product-card.content-product-wrap.product{
           padding: 0;
         }
@@ -1076,6 +1150,21 @@ body.single-product{
       }
     }
 
+  }
+  .component-newsletter{
+    @include bp(md){
+      order: 5;
+    }
+  }
+  #footer{
+    @include bp(md){
+      order: 6;
+    }
+  }
+  #copyright{
+    @include bp(md){
+      order: 7;
+    }
   }
 }
 .button.disabled, button:not(.gbtn):not([class*=plyr]).disabled{

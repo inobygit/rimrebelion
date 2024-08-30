@@ -23,15 +23,24 @@ class ProductSingleModule extends InobyModule {
 
     $('#size-help').on('click', function(e){
       e.preventDefault();
-      $('html, body').animate({
-        scrollTop: $(".product-tabs").offset().top - 120
-      }, 1000);
-      // Toggle the size-help_tab
-      $('.wc-tabs li').removeClass('active'); // Remove active class from all tabs
-      $('#tab-title-size-help').removeClass('disabled').addClass('active'); // Add active class to size-help tab
-      $('.woocommerce-Tabs-panel').hide(); // Hide all tab panels
-      $('#tab-size-help').removeClass('hidden'); // Show size-help tab panel
-      $('#tab-size-help').show(); // Show size-help tab panel
+      if($(window).width() > 767){
+        $('html, body').animate({
+          scrollTop: $(".woocommerce-tabs.desktop .size-help_tab").offset().top - 150
+        }, 1000);
+        // Toggle the size-help_tab
+        $('.wc-tabs li').removeClass('active'); // Remove active class from all tabs
+        $('#tab-title-size-help').removeClass('disabled').addClass('active'); // Add active class to size-help tab
+        $('.woocommerce-Tabs-panel').hide(); // Hide all tab panels
+        $('#tab-size-help').removeClass('hidden'); // Show size-help tab panel
+        $('#tab-size-help').show(); // Show size-help tab panel
+      } else {
+        $('html, body').animate({
+          scrollTop: $(".woocommerce-tabs.mobile .size-help_tab").offset().top - 150
+        }, 1000);
+        $('.wc-tabs li').removeClass('active'); // Remove active class from all tabs
+        $('#tab-title-size-help-mobile').removeClass('disabled').addClass('active'); // Add active class to size-help tab
+        $('#tab-size-help-mobile').removeClass('hidden'); // Show size-help tab panel
+      }
     });
 
     if($('.stock-wrp .stock-status .stock').hasClass('onbackorder')) {
@@ -110,6 +119,18 @@ class ProductSingleModule extends InobyModule {
       });
     }, 50);
 
+
+     $('.woocommerce-tabs.mobile li').each(function(index, element) {
+        let panel = $(element).find('.wc-tab').get(0);
+        if(panel){
+          panel.style.setProperty('--height', panel.clientHeight + 'px');
+          panel.style.height = '0px';
+        }
+     });
+
+     $('.table-wrap').on('click', function(e) {
+      e.stopPropagation();
+     });
 
     var priceWrp = $("#price-wrp");
 
