@@ -31,12 +31,15 @@ class ProductSingleModule extends InobyModule {
         $('.wc-tabs li').removeClass('active'); // Remove active class from all tabs
         $('#tab-title-size-help').removeClass('disabled').addClass('active'); // Add active class to size-help tab
         $('.woocommerce-Tabs-panel').hide(); // Hide all tab panels
+        $('.woocommerce-Tabs-panel').removeClass('active'); // Hide all tab panels
         $('#tab-size-help').removeClass('hidden'); // Show size-help tab panel
+        $('#tab-size-help').addClass('active'); // Show size-help tab panel
         $('#tab-size-help').show(); // Show size-help tab panel
       } else {
         $('html, body').animate({
           scrollTop: $(".woocommerce-tabs.mobile .size-help_tab").offset().top - 150
         }, 1000);
+        $('.woocommerce-Tabs-panel').removeClass('active'); // Hide all tab panels
         $('.wc-tabs li').removeClass('active'); // Remove active class from all tabs
         $('#tab-title-size-help-mobile').removeClass('disabled').addClass('active'); // Add active class to size-help tab
         $('#tab-size-help-mobile').removeClass('hidden'); // Show size-help tab panel
@@ -112,9 +115,11 @@ class ProductSingleModule extends InobyModule {
         if($(this).hasClass('active')) {
           $(this).toggleClass('disabled');
           $('.woocommerce-Tabs-panel').toggleClass('hidden');
+          $('#' + $(this).attr('aria-controls')).toggleClass('active');
         } else {
           $(this).removeClass('disabled');
-          $('.woocommerce-Tabs-panel').removeClass('hidden');
+          $('.woocommerce-Tabs-panel').removeClass('hidden').removeClass('active');
+          $('#' + $(this).attr('aria-controls')).addClass('active');
         }
       });
     }, 50);
@@ -122,6 +127,14 @@ class ProductSingleModule extends InobyModule {
 
      $('.woocommerce-tabs.mobile li').each(function(index, element) {
         let panel = $(element).find('.wc-tab').get(0);
+        if(panel){
+          panel.style.setProperty('--height', panel.clientHeight + 'px');
+          panel.style.height = '0px';
+        }
+     });
+
+     $('.woocommerce-tabs.desktop .wc-tab').each(function(index, element) {
+        let panel = $(element).get(0);
         if(panel){
           panel.style.setProperty('--height', panel.clientHeight + 'px');
           panel.style.height = '0px';
