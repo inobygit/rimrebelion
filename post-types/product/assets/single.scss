@@ -853,14 +853,17 @@ body.single-product{
           display: flex;
           align-items: center;
           line-height: 1;
-          gap: 8px;
+          gap: 2rem;
+            flex-direction: row-reverse;
+            justify-content: flex-end;
           @include bp(md){
             border-bottom: 0;
             padding-top: 1.6rem;
             padding-left: 0;
             color: $black;
-            flex-direction: row-reverse;
+            gap: 8px;
             justify-content: space-between;
+          
           } 
           &:before{
             content: url(theme-url("/assets/icons/tab.svg"));
@@ -882,10 +885,8 @@ body.single-product{
             }
           }
           .wc-tab{
-              @include bp(md){
                 opacity: 1;
                 height: calc(var(--height) + 1.6rem) !important;
-              }
           }
         }
 
@@ -904,11 +905,9 @@ body.single-product{
             }
           }
             .wc-tab{
-              @include bp(md){
                 display: block !important;
                 opacity: 0;
                 height: 0px !important;
-              }
             }
         }
       }
@@ -918,26 +917,27 @@ body.single-product{
       font-size: 1.6rem;
       font-weight: 400;
       line-height: 150%;
-      @include bp(md){
         display: block !important;
         opacity: 0;
         transition: all .4s ease-in-out;
         transform-origin: top;
-        z-index: -1;
-        position: relative;
-      }
+        @include bp(md){
+          z-index: -1;
+          position: relative;
+        }
       &.woocommerce-Tabs-panel--size-help{
         z-index: 0;
       }
       *{
         color: $black;
       }
+      &.active{
+        opacity: 1;
+        height: calc(var(--height) + 1.6rem) !important;
+      }
       &.hidden{
-        display: none !important;
-        @include bp(md){
           display: block !important;
           opacity: 0;
-        }
       }
     }
   }
