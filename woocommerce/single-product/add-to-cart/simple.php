@@ -42,8 +42,23 @@ if ( $product->is_in_stock() ) : ?>
                             $availability_date_default = get_post_meta($product->get_id(), '_availability_date_default', true);
 
                             $availability_date_onbackorder = date('j.n.', strtotime('+10 days'));
+                            $backorderDate = date('D', strtotime('+10 days'));
+                            $backorderDateFormated = date('Y-m-d', strtotime('+10 days'));
+                            if ($backorderDate == 'Sat' || $backorderDate == 'Sun') {
+                                $availability_date_onbackorder = date('j.n.', strtotime($backorderDateFormated . ' next monday'));
+                            }
+
                             $availability_date_tomorrow = date('j.n.', strtotime('tomorrow'));
+                            $tomorrow = date('D', strtotime('tomorrow'));
+                            if ($tomorrow == 'Sat' || $tomorrow == 'Sun') {
+                                $availability_date_tomorrow = date('j.n.', strtotime('next monday'));
+                            }
+
                             $availability_date_default = date('j.n.', strtotime('+2 days'));
+                            $default = date('D', strtotime('+2 days'));
+                            if ($default == 'Sat' || $default == 'Sun') {
+                                $availability_date_default = date('j.n.', strtotime('next monday'));
+                            }
 
                             echo '<p class="availability-date-default">' . esc_html(__('(Delivery: ', 'rimrebellion')) . ' ' . $availability_date_default . ')</p>';
 
