@@ -68,6 +68,27 @@ if ( $product->is_in_stock() ) : ?>
                             ?>
         </div>
     </div>
+    <?php
+    $size_help = get_the_terms($product->get_id(), "size-chart"); 
+
+    if(!empty($size_help)){ ?>
+    <div class="help-wrp">
+        <a href="#0" id="size-help"><svg width="11" height="12" viewBox="0 0 11 12" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <g clip-path="url(#clip0_948_435)">
+                    <path
+                        d="M10.9883 1.83925C10.9581 1.48519 10.6721 1.1875 10.3125 1.1875H0.6875C0.327937 1.1875 0.0419375 1.48519 0.0116875 1.83925H0V10.8125C0 10.9948 0.0724328 11.1697 0.201364 11.2986C0.330295 11.4276 0.505164 11.5 0.6875 11.5H10.3125C10.4948 11.5 10.6697 11.4276 10.7986 11.2986C10.9276 11.1697 11 10.9948 11 10.8125V1.83925H10.9883ZM4.125 5.3125V3.25H6.875V5.3125H4.125ZM6.875 6V8.11956H4.125V6H6.875ZM3.4375 3.25V5.3125H0.6875V3.25H3.4375ZM0.6875 6H3.4375V8.11956H0.6875V6ZM0.6875 10.8125V8.75H3.4375V10.8125H0.6875ZM4.125 10.8125V8.75H6.875V10.8125H4.125ZM10.3125 10.8125H7.5625V8.75H10.3125V10.8125ZM10.3125 8.11956H7.5625V6H10.3125V8.11956ZM10.3125 5.3125H7.5625V3.25H10.3125V5.3125Z"
+                        fill="#A7A7A7" />
+                </g>
+                <defs>
+                    <clipPath id="clip0_948_435">
+                        <rect width="11" height="11" fill="white" transform="translate(0 0.5)" />
+                    </clipPath>
+                </defs>
+            </svg>
+            <?= __('Size help', 'inoby') ?></a>
+    </div>
+    <?php } ?>
     <div class="simple-row">
         <?php
 			do_action( 'woocommerce_before_add_to_cart_quantity' );

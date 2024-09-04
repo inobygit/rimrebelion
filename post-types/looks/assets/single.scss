@@ -516,6 +516,7 @@
           .woocommerce-variation-price{
             .price{
               margin-top: 0;
+              line-height: normal;
             }
             del{
               text-decoration: none;
@@ -663,7 +664,8 @@
         flex-wrap: wrap;
         justify-content: flex-end;
         gap: 2rem;
-        margin-top: 2rem;
+        margin-top: 0;
+        line-height: normal;
         margin-bottom: 1.5rem;
         ins{
           text-decoration: none;

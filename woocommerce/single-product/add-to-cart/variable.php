@@ -92,6 +92,10 @@ do_action("woocommerce_before_add_to_cart_form");
                 "attribute" => $attribute_name,
                 "product" => $product,
             ]); ?>
+                        <?php
+    $size_help = get_the_terms($product->get_id(), "size-chart"); 
+
+    if(!empty($size_help)){ ?>
                         <div class="help-wrp">
                             <a href="#0" id="size-help"><svg width="11" height="12" viewBox="0 0 11 12" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
@@ -108,6 +112,7 @@ do_action("woocommerce_before_add_to_cart_form");
                                 </svg>
                                 <?= __('Size help', 'inoby') ?></a>
                         </div>
+                        <?php } ?>
                     </td>
                 </tr>
                 <?php if ($attribute_name == "pa_size") {
