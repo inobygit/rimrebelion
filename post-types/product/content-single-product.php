@@ -89,7 +89,7 @@ RC()->last_seen_products()->enqueue_scripts($product->get_id());
                 $terms = wp_get_post_terms( get_the_id(), 'product_tag' );
 
                 if(empty($terms)){
-                    echo '<img src="'. get_stylesheet_directory_uri() . '/assets/svg/cdc.svg' . '" alt="CDC" class="cdc-logo">';
+                    echo '<img src="'. get_stylesheet_directory_uri() . '/assets/svg/cdc.svg' . '" alt="Cafe du Cycliste" class="cdc-logo">';
                 } else {
                     echo '<div class="brand">';
                     if(isset(get_term_meta($terms[0]->term_id)['icon'])){
