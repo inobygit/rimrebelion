@@ -686,7 +686,12 @@
         .amount{
             font-size: $fs-h2;
             font-family: $font-family-headings;
+            color: #212529;
+        }
+        ins{
+          .amount{
             color: #FF746C;
+          }
         }
       }
   .product-type-simple{
