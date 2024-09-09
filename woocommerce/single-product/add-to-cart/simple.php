@@ -27,7 +27,13 @@ if ( ! $product->is_purchasable() ) {
 if ( $product->is_in_stock() ) : ?>
 
 <?php do_action( 'woocommerce_before_add_to_cart_form' ); ?>
+<?php 
 
+        $colorMeta = rwmb_meta('color', null, $product->get_id());
+        if(!empty($colorMeta)){
+                echo '<p class="color-term heading">' . __('Color: ', 'rimrebellion') .'<span class="color-term">'  . $colorMeta . '</span>'.'</p>';
+            }
+        display_related_product_thumbnails();?>
 <form class="cart"
     action="<?php echo esc_url( apply_filters( 'woocommerce_add_to_cart_form_action', $product->get_permalink() ) ); ?>"
     method="post" enctype='multipart/form-data'>
