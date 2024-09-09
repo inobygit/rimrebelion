@@ -313,6 +313,7 @@ body.single-product{
             }
             label{
               all: unset;
+              display: none;
               opacity: 1 !important;
               position: relative !important;
               color: $black;
@@ -323,13 +324,15 @@ body.single-product{
               min-width: 56px;
               min-height: 45px;
               height: 45px;
-              display: flex;
               align-items: center;
               justify-content: center;
               z-index: 1;
               cursor: pointer;
               transition: .3s;
               padding: 0 !important;
+              &.enabled{
+                display: flex;
+              }
               &.onbackorder{
                 color: $gray400;
               }
