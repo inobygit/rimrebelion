@@ -1,6 +1,6 @@
 <?php
 namespace Inoby\WooCommerce\Import;
-
+use Inoby\WooCommerce\Import\DefaultImportMapper;
 class CustomImportMapper extends DefaultImportMapper {
     public function map_metaboxes(InobyProduct $product, $mb, $value) {
         if ($mb === 'slider-images') {
