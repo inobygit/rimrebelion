@@ -83,7 +83,7 @@ do_action("woocommerce_before_add_to_cart_form");
                             $availability_date_default = date('j.n.', strtotime('+2 days'));
                             $default = date('D', strtotime('+2 days'));
                             if ($default == 'Sat' || $default == 'Sun') {
-                                $availability_date_default = date('j.n.', strtotime('next monday'));
+                                $availability_date_default = date('j.n.', strtotime('next monday + 1 days'));
                             }
 
                             echo '<p class="availability-date-default">' . esc_html(__('(Delivery: ', 'rimrebellion')) . ' ' . $availability_date_default . ')</p>';
