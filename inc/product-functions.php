@@ -158,7 +158,7 @@ function rudr_radio_variations( $html, $args ) {
 			$attribute,
 			array(
 				'fields' => 'all',
-			)
+			)            
 		);
         
 		foreach( $terms as $term ) {
@@ -170,9 +170,12 @@ function rudr_radio_variations( $html, $args ) {
                 if (str_contains($variation['availability_html'], 'outofstock') && in_array($term->slug, $variation['attributes'], true)) {
                     $class = 'outofstock'; // Add class if on backorder
                 }
+                if(in_array($term->slug, $variation['attributes'], true)){
+                    $class .= ' enabled ';
+                }
             }
             if( in_array( $term->slug, $options, true ) ) {
-				$radios .= "<label class=\"{$class}\" for=\"{$name}-{$term->slug}-{$uid}\"><input type=\"radio\" id=\"{$name}-{$term->slug}-{$uid}\" name=\"{$name}\" value=\"{$term->slug}\"" . checked( $args[ 'selected' ], $term->slug, false ) . ">{$term->name}</label>";
+                $radios .= "<label class=\"{$class}\" for=\"{$name}-{$term->slug}-{$uid}\"><input type=\"radio\" id=\"{$name}-{$term->slug}-{$uid}\" name=\"{$name}\" value=\"{$term->slug}\"" . checked( $args[ 'selected' ], $term->slug, false ) . ">{$term->name}</label>";
 			}
 		}
 	// individual product attributes
