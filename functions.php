@@ -19,10 +19,7 @@ function remove_parent_theme_redirect() {
 }   
 
 function misha_redirect_to_orders_from_dashboard_child(){
-  if(isset($_GET['key'])){
-    return;
-  }
-    if( is_account_page() && empty( WC()->query->get_current_endpoint() ) && (empty($_GET) || isset($_GET['login']) || isset($_GET['lang']) ) ){
+    if( is_account_page() && empty( WC()->query->get_current_endpoint() ) && (empty($_GET) || isset($_GET['login']) || isset($_GET['lang']) ) && !isset($_GET['key']) ){
       wp_safe_redirect( wc_get_account_endpoint_url( 'orders' ) );
       exit;
     }
