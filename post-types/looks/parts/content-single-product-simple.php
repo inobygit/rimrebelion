@@ -51,11 +51,13 @@ $collections = wp_get_post_terms($product_id, "collection");
             <div class="tags">
                 <?php
                     $taxonomy = "product_specials";
+                    if($product){
                     $terms = get_the_terms($product->get_id(), $taxonomy);
 
-                    if ($terms) {
-                        foreach ($terms as $term) {
-                            echo '<span class="tag special ' . $term->slug . '">' . esc_html__($term->name, "inoby") . "</span>";
+                        if ($terms) {
+                            foreach ($terms as $term) {
+                                echo '<span class="tag special ' . $term->slug . '">' . esc_html__($term->name, "inoby") . "</span>";
+                            }
                         }
                     }
 

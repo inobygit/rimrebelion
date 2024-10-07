@@ -10,6 +10,11 @@ require_once RIMREBELLION_CHILD . "/inc/class-rc-google-custom.php";
 require_once RIMREBELLION_CHILD . "/inc/class-rc-ajax-custom.php";
 require_once RIMREBELLION_CHILD . "/inc/free-shipping.php";
 
+RC()
+    ->last_seen_products()
+    ->init_ajax();
+
+    
 // To ensure the action is removed, you can try adding the removal in a later hook
 add_action('after_setup_theme', 'remove_parent_theme_redirect');
 
@@ -28,9 +33,6 @@ function misha_redirect_to_orders_from_dashboard_child(){
 
 add_action('template_redirect', 'misha_redirect_to_orders_from_dashboard_child');
 
-RC()
-    ->last_seen_products()
-    ->init_ajax();
 
 function modify_rc_vars($rc_vars) {
     $my_default_lang = apply_filters('wpml_default_language', NULL );

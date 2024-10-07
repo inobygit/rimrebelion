@@ -55,7 +55,7 @@ $src = mb_get_block_field("video-background-src");
     </div>
 </div>
 
-<script>
+<script async defer>
 // 1. This code loads the IFrame Player API code asynchronously.
 var tag = document.createElement('script');
 
