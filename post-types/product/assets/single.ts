@@ -112,11 +112,14 @@ class ProductSingleModule extends InobyModule {
       $('.woocommerce-Tabs-panel').hide();
       $('.wc-tabs li').on('click', function (e) {
         e.preventDefault();
+
         if($(this).hasClass('active')) {
           $(this).toggleClass('disabled');
           $('.woocommerce-Tabs-panel').toggleClass('hidden');
           $('#' + $(this).attr('aria-controls')).toggleClass('active');
         } else {
+      $('.wc-tabs li.active').removeClass('active');
+          $(this).addClass('active');
           $(this).removeClass('disabled');
           $('.woocommerce-Tabs-panel').removeClass('hidden').removeClass('active');
           $('#' + $(this).attr('aria-controls')).addClass('active');

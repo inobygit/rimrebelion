@@ -295,7 +295,6 @@
       }
       .woocommerce-product-gallery__image[data-gallery-index="0"]{
         a > img{
-          aspect-ratio: 1/1;
           object-fit: contain;
           background-color: $white;
         }
@@ -304,7 +303,6 @@
         grid-template-columns: repeat(auto-fill, minmax(8.5rem, 1fr));
         gap: 8px;
         a > img{
-          aspect-ratio: 1/1;
           object-fit: contain;
           background-color: $white;
         }
@@ -317,11 +315,20 @@
         justify-content: flex-start;
         gap: 1.6rem;
         margin-bottom: 1.6rem;
+        @include bp(md){
+          margin-bottom: 0;
+        }
         *{
           margin: 0;
         }
         .cdc-logo{
           max-height: 3.2rem;
+          @include bp(md){
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 90px;
+          }
         }
         .brand-name{
           font-size: 3rem;
@@ -354,8 +361,11 @@
       }
       h1{
         margin-bottom: 0.8rem;
+        position: relative;
         @include bp(md){
           font-size: 3.2rem;
+          padding-right: 100px;
+
         }
       }
       .collection-terms{

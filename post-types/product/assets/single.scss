@@ -142,7 +142,6 @@ body.single-product{
       }
       .woocommerce-product-gallery__image[data-gallery-index="0"]{
         a > img{
-          aspect-ratio: 1/1;
           object-fit: contain;
           background-color: $white;
         }
@@ -151,7 +150,6 @@ body.single-product{
         grid-template-columns: repeat(auto-fill, minmax(8.5rem, 1fr));
         gap: 8px;
         a > img{
-          aspect-ratio: 1/1;
           object-fit: contain;
           background-color: $white;
         }
@@ -164,24 +162,36 @@ body.single-product{
         justify-content: flex-start;
         gap: 1.6rem;
         margin-bottom: 1.6rem;
+        @include bp(md){
+          margin-bottom: 0;
+        }
         *{
           margin: 0;
         }
         .cdc-logo{
           max-height: 3.2rem;
+          @include bp(md){
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 90px;
+          }
         }
         .brand-name{
-          font-size: 3rem;
+          font-size: 3.2rem;
           text-transform: uppercase;
           font-weight: 400;
           color: #212529;
           font-family: 'GreedNarrow', sans-serifx;
+          margin-bottom: 0;
         }
       }
       h1{
         margin-bottom: 0.8rem;
+        position: relative;
         @include bp(md){
           font-size: 3.2rem;
+          padding-right: 100px;
         }
       }
       .price,
@@ -849,12 +859,13 @@ body.single-product{
         min-width: 33.33%;
         border-bottom: 4px solid $gray200;
         @include bp(md){
-          border-bottom: 2px solid $black;
+          border-bottom: 2px solid $black !important;
           transition: all .4s ease-in-out;
         }
-        a{
+        h2{
           padding-bottom: 1.6rem;
           padding-right: 1.6rem;
+          margin-bottom: 0;
           color: $gray800;
           font-size: 1.4rem;
           font-weight: 600;
@@ -863,9 +874,11 @@ body.single-product{
           display: flex;
           align-items: center;
           line-height: 1;
+          font-family: 'Roboto', sans-serif;
           gap: 2rem;
             flex-direction: row-reverse;
             justify-content: flex-end;
+            cursor: pointer;
           @include bp(md){
             border-bottom: 0;
             padding-top: 1.6rem;
@@ -883,10 +896,11 @@ body.single-product{
         }
         
         &.active{
+          border-color: $black;
           @include bp(md){
             height: auto;
           }
-          a{
+          h2{
             border-color: $col-prm;
             color: $black;
             &:before{
@@ -901,7 +915,8 @@ body.single-product{
         }
 
         &.disabled{
-          a{
+          border-color: $gray200;
+          h2{
             border-color: $gray200;
             color: $gray800;
             @include bp(md){

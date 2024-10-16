@@ -86,21 +86,7 @@ RC()->last_seen_products()->enqueue_scripts($product->get_id());
 
                 <?php
 
-                $terms = wp_get_post_terms( get_the_id(), 'product_tag' );
-
-                if(empty($terms)){
-                    echo '<img src="'. get_stylesheet_directory_uri() . '/assets/svg/cdc.svg' . '" alt="Cafe du Cycliste" class="cdc-logo">';
-                } else {
-                    echo '<div class="brand">';
-                    if(isset(get_term_meta($terms[0]->term_id)['icon'])){
-                        echo '<img src="'. wp_get_attachment_image_url(get_term_meta($terms[0]->term_id)['icon'][0], 'o-6') . '" alt="'. $terms[0]->name . '" class="cdc-logo">';
-                    }
-                    echo '<p class="brand-name">' . $terms[0]->name . '</p>';
-                    echo '</div>';
-                }
         woocommerce_template_single_title(); // Inoby_Product::get_manufacturer_name();
-        
-        woocommerce_template_single_excerpt();
         
         if ($product->is_type("simple")) {
             woocommerce_template_single_price();
