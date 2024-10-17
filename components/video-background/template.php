@@ -28,9 +28,11 @@ $src = mb_get_block_field("video-background-src");
         <div class="row">
             <div class="col-12 end">
                 <div class="sound-control">
-                    <img src="<?= get_stylesheet_directory_uri() . '/assets/icons/sound-off.svg' ?>"
-                        alt="sound off icon" class="sound-off">
-                    <img src="<?= get_stylesheet_directory_uri() . '/assets/icons/sound-on.svg' ?>" alt="sound on icon"
+                    <img loading="lazy" width="32px" height="32px"
+                        src="<?= get_stylesheet_directory_uri() . '/assets/icons/sound-off.svg' ?>" alt="sound off icon"
+                        class="sound-off">
+                    <img loading="lazy" width="32px" height="32px"
+                        src="<?= get_stylesheet_directory_uri() . '/assets/icons/sound-on.svg' ?>" alt="sound on icon"
                         class="sound-on">
 
                 </div>

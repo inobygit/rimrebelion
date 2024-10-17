@@ -1,6 +1,6 @@
 <?php
 
-function get_gallery_image_html($post_thumbnail_id, $image_size, $attrs) {
+function get_gallery_image_html($post_thumbnail_id, $image_size, $attrs, $loading = 'lazy') {
 $thumbnail_size = apply_filters("inoby_gallery_thumbnail_size", "thumbnail");
     $full_size = apply_filters("inoby_gallery_full_size", "o-12");
     $thumbnail_src = wp_get_attachment_image_src($post_thumbnail_id, $thumbnail_size);
@@ -19,6 +19,7 @@ $thumbnail_size = apply_filters("inoby_gallery_thumbnail_size", "thumbnail");
           "data-large_image" => esc_url($full_src[0]),
           "data-large_image_width" => esc_attr($full_src[1]),
           "data-large_image_height" => esc_attr($full_src[2]),
+          'loading' => $loading,
         ],
         $post_thumbnail_id,
         $image_size,
