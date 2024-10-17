@@ -2,6 +2,20 @@
 @import "mixins";
 
 
+.page-template-landing {
+  min-height: 100dvh;
+  .right-navigation{
+    height: 24px;
+  }
+  .container{
+    &.content{
+      @include bp(md){
+        min-height: 400px;
+      }
+    }
+  }
+}
+
 #search {
   opacity: 0;
   position: fixed;

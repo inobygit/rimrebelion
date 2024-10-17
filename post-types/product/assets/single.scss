@@ -171,6 +171,7 @@ body.single-product{
         }
         .cdc-logo{
           max-height: 3.2rem;
+          width: auto;
           @include bp(md){
             position: absolute;
             top: 0;
@@ -1136,6 +1137,13 @@ body.single-product{
     }
   }
   .woocommerce-product-gallery{
+    &.images{
+      @include bp(md){
+        width: 100% !important;
+        height: 100%;
+        min-height: 400px;
+      }
+    }
     .keen-slider{
       margin-bottom: 1.6rem;
       .dots{

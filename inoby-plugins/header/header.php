@@ -31,7 +31,8 @@
                 </div>
                 <div id="search-trigger" class="menu-search">
                     <a href="#0">
-                        <img src="<?= get_theme_file_uri("/assets/icons/search.svg") ?>" alt="Hladať">
+                        <img width="15px" height="15px" src="<?= get_theme_file_uri("/assets/icons/search.svg") ?>"
+                            alt="Hladať">
                     </a>
                 </div>
                 <?php } ?>
@@ -43,13 +44,14 @@
                     <a href="#0" class="xoo-el-login-tgr" title="<?= __(
             "Login / Register",
             "inoby",
-          ) ?>"><img src="<?= get_theme_file_uri("/assets/icons/person.svg") ?>"
+          ) ?>"><img width="15px" height="12px" src="<?= get_theme_file_uri("/assets/icons/person.svg") ?>"
                             alt="<?= __("Login / Register", "inoby") ?>"></a>
                     <?php else: ?>
                     <a href="<?= get_permalink(
             get_option("woocommerce_myaccount_page_id"),
           ) ?>" class="logged-in" title="<?= __("My Account", "inoby") ?>">
-                        <img src="<?= get_theme_file_uri("/assets/icons/person-logged.svg") ?>"
+                        <img width="15px" height="12px"
+                            src="<?= get_theme_file_uri("/assets/icons/person-logged.svg") ?>"
                             alt="<?= __("My Account", "inoby") ?>"></a>
                     <?php endif; ?>
                 </div>
@@ -57,7 +59,7 @@
                 <div class="menu-cart">
                     <a class="popup-trigger-btn" data-popup="cart-wrapper" href="#0">
                         <?php rc_cart_count(); ?>
-                        <img src="<?= get_theme_file_uri(
+                        <img width="15px" height="14px" src="<?= get_theme_file_uri(
               "/assets/icons/cart.svg",
             ) ?>" alt="<?= __("Cart", "inoby") ?>">
                     </a>

@@ -30,11 +30,11 @@ $short_description = apply_filters( 'woocommerce_short_description', $post->post
     $terms = wp_get_post_terms( get_the_id(), 'product_tag' );
 
                 if(empty($terms)){
-                    echo '<img src="'. get_stylesheet_directory_uri() . '/assets/svg/cdc.svg' . '" alt="Cafe du Cycliste" class="cdc-logo">';
+                    echo '<img loading="lazy" width="90px" height="100%" src="'. get_stylesheet_directory_uri() . '/assets/svg/cdc.svg' . '" alt="Cafe du Cycliste" class="cdc-logo">';
                 } else {
                     echo '<span class="brand">';
                     if(isset(get_term_meta($terms[0]->term_id)['icon'])){
-                        echo '<img src="'. wp_get_attachment_image_url(get_term_meta($terms[0]->term_id)['icon'][0], 'o-6') . '" alt="'. $terms[0]->name . '" class="cdc-logo">';
+                        echo '<img loading="lazy" width="90px" height="100%" src="'. wp_get_attachment_image_url(get_term_meta($terms[0]->term_id)['icon'][0], 'o-2') . '" alt="'. $terms[0]->name . '" class="cdc-logo">';
                     }
                     echo '<span class="brand-name">' . $terms[0]->name . '</span>';
                     echo '</span>';

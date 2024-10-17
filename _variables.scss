@@ -1,14 +1,119 @@
 $theme-version: 2.1;
-
-@import "../inoby-theme/variables";
-
 $theme-name: "rimrebelion";
+$zoom_factor: 1 !default;
+$white: #fff !default;
+$black: #000 !default;
 
-$theme-version: 2.1;
+$col-bg: var(--color-col-bg, #ffffff) !default;
+$col-text: var(--color-col-text, #171717) !default;
 
-/*
-Typography
-*/
+$topbar-bg: $col-bg !default;
+$topbar-color: $col-text !default;
+
+$header-bg: var(--color-header-bg, #ffffff) !default;
+$header-color: var(--color-header-color, #171717) !default;
+
+$col-sec: var(--color-secondary, #00bcd4) !default;
+
+$col-danger: var(--color-danger, #f44336) !default;
+$col-success: var(--color-success, #4caf50) !default;
+$col-warn: var(--color-warn, #ff9800) !default;
+
+$col-sec-l: var(--color-secondary-l, #b2ebf2) !default;
+
+$col-sec-d: var(--color-secondary-d, #0097a7) !default;
+
+$col-prm-c: $white !default;
+$col-sec-c: $white !default;
+
+$col-prm-l-c: $black !default;
+$col-sec-l-c: $black !default;
+
+$col-prm-d-c: $white !default;
+$col-sec-d-c: $white !default;
+
+$popup-overlay: rgba(0, 0, 0, 0.5) !default;
+
+$grid: (
+  1: 8.333333%,
+  2: 16.66%,
+  3: 25%,
+  4: 33.33%,
+  5: 41.66%,
+  6: 50%,
+  7: 58.33%,
+  8: 66.66%,
+  9: 75%,
+  10: 83.33%,
+  11: 91.666666%,
+  12: 100%,
+) !default;
+
+$columns-grid: (
+  1: 1,
+  2: 2,
+  3: 3,
+  4: 4,
+  5: 5,
+  6: 6,
+  7: 7,
+  8: 8,
+  9: 9,
+  10: 10,
+  11: 11,
+  12: 12,
+) !default;
+
+$grid-gap: 3rem !default;
+$grid-card-min-width: 24rem !default;
+
+$bp-sm: 576px !default; 
+$bp-md: 768px !default;
+$bp-lg: 992px !default; 
+$bp-xl: 1200px !default; 
+$bp-xxl: 1400px !default; 
+
+$container-sm: 100% !default;
+$container-md: 100% !default;
+$container-lg: 960px !default;
+$container-xl: 1140px !default;
+$container-xxl: 1320px !default;
+
+$space-xs: (1rem * 1.6) !default;
+$space-sm: (2rem * 1.6) !default;
+$space-md: (4rem * 1.6) !default;
+$space-lg: (8rem * 1.6) !default;
+
+$space-h1: 4.3rem !default;
+$space-h2: 3.4rem !default;
+
+$hr-border-w: 1px;
+
+$fs-mini: calc(1rem * var(--font-size-ratio, 1)) !default;
+$fs-small: calc(1.2rem * var(--font-size-ratio, 1)) !default;
+$fs-huge: calc(7.4rem * var(--font-size-ratio, 1)) !default;
+
+$lh-1: 1.3 !default;
+$lh-2: 1.5 !default;
+
+$fw-light: 300 !default;
+$fw-regular: 400 !default;
+$fw-semi: 600 !default;
+$fw-bold: 700 !default;
+
+$btn-pd: 2.1rem 7.4rem !default;
+$btn-pd-mobile: 2.1rem 2.1rem !default;
+$btn-bw: 2px !default;
+$btn-br: 3px !default;
+$btn-fs: calc(1.4rem * var(--font-size-ratio, 1)) !default;
+
+$trans: 0.3s !default;
+$trans-h: 0.4s !default;
+
+$grid-columns: 12 !default;
+$grid-gutter-width: 1.5rem !default;
+$grid-row-columns: 6 !default;
+
 $font-family: var(--font-family, "Roboto");
 $font-family-headings: var(--font-family-headings, "GreedNarrow");
 $fs-p: calc(1.6rem * var(--font-size-ratio, 1));
@@ -19,10 +124,11 @@ $fs-h2: calc(4rem * var(--font-size-ratio, 1));
 $fs-h3: calc(2.4rem * var(--font-size-ratio, 1));
 $fs-h4: calc(2.4rem * var(--font-size-ratio, 1));
 $fs-h5: calc(1.4rem * var(--font-size-ratio, 1));
-$fs-h6: calc(1.4rem * var(--font-size-ratio, 1)); //not used in design guide but fallback as h5
-// $fs-1: calc(1.6rem * var(--font-size-ratio, 1));
+$fs-h6: calc(1.4rem * var(--font-size-ratio, 1)); 
+$fs-1: calc(1.4rem * var(--font-size-ratio, 1)) !default;
 
-// Font-family
+$fs-sticky-menu: $fs-h4 !default;
+
 $ff-h1: $font-family-headings;
 $ff-h2: $font-family-headings;
 $ff-h3: $font-family-headings;
@@ -30,21 +136,12 @@ $ff-h4: $font-family-headings;
 $ff-h5: $font-family-headings;
 $ff-h6: $font-family;
 
-// Font-weight
-// $fw-h1: 500;
-// $fw-h2: 500;
-// $fw-h3: 400;
-// $fw-h4: 400;
-// $fw-h5: 400;
-// $fw-h6: 400;
 $fw-p: 400;
 $fw-p-s: 400;
 $fw-p-l: 400;
 $fw-semibold: 500;
 $fw-bold: 700;
-// $fw-light: 300;
 
-// Line-height
 $lh-h1: 110%;
 $lh-h2: 100%;
 $lh-h3: 120%;
@@ -55,28 +152,9 @@ $lh-p: 150%;
 $lh-p-s: 150%;
 $lh-p-l: 150%;
 
-// Text-transform
-// $tt-h1: uppercase;
-// $tt-h2: uppercase;
-// $tt-h3: none;
-// $tt-h4: none;
-// $tt-h5: none;
-// $tt-h6: none;
-
-/*
-Colors
-*/
-$col-prm: var(--color-primary, #000000); // tlacidla, vsetky hlavne ovladacie prvky, ...
-// $col-sec: var(--color-secondary, #000000); // hlavne containery, doplnkove prvky, ...
+$col-prm: var(--color-primary, #000000); 
 $col-prm-l: var(--color-primary, #545454);
 $col-prm-d: var(--color-primary, #000000);
-// $col-sec-l: var(--color-secondary, #515151);
-// $col-sec-d: var(--color-secondary, #000000);
-
-// $col-danger: var(--color-danger, #FF8B8B); // error hlasky, chybne vyplnene polia, vsetky veci co zobrazuju chyby, ...
-// $col-success: var(--color-success, #C1F2DE); // potvrdzovacie tlacidla, tlacidla v kosiku, ...
-// $col-warn: var(--color-warn, #FFCA8B); // upozornenia
-
 $gray100: var(--color-gray100, #F5F5F5);
 $gray200: var(--color-gray200, #E3E3E3);
 $gray300: var(--color-gray300, #CCC9C9);
@@ -87,11 +165,8 @@ $gray700: var(--color-gray700, #5F5E5E);
 $gray800: var(--color-gray800, #515151);
 $gray900: var(--color-gray900, #272727);
 
-/*
-Header
-*/
-// $header-bg: var(--color-header-bg, $gray100);
-// $header-color: var(--color-header-color, $black);
+$col-text-hover: $gray600 !default; 
+
 $fs-header-li: 1.4rem;
 $fw-header: 500;
 $header-item-active-fw: 500;
@@ -104,15 +179,9 @@ $header-item-bb: none;
 $header-item-active-bb: none;
 $header-item-active-col: $col-prm;
 
-/*
-Footer
-*/
 $footer-bg: #000000;
 $footer-color: #ffffff;
 
-/*
-Buttons
-*/
 $btn-fs: calc(1.4rem * var(--font-size-ratio, 1));
 $btn-fw: 500;
 $btn-br: 5px;
@@ -122,7 +191,6 @@ $btn-pd-mobile: 1.2rem 1.6rem;
 $btn-tt: uppercase;
 $btn-lh: 140%;
 
-//button
 $btn-bg: #000000;
 $btn-col: #ffffff;
 $btn-border-col: #000000;
@@ -130,15 +198,9 @@ $btn-hover-col: #ffffff;
 $btn-hover-bg: #545454;
 $btn-hover-border-col: #545454;
 
-// button-outline
-// $btn-o-bg: transparent;
-// $btn-o-col: #000000;
-// $btn-o-border-col: #000000;
-// $btn-o-hover-col: #ffffff;
 $btn-o-hover-bg: #545454;
 $btn-o-hover-border-col: #545454;
 
-// light
 $btn-l-col: #000000;
 $btn-l-bg: #ffffff;
 $btn-l-border-col: #ffffff;
@@ -148,14 +210,8 @@ $btn-l-hover-border-col: #545454;
 $btn-l-o-hover-bg: #545454;
 $btn-l-o-hover-border-col: #545454;
 
-/*
-Border radiuses
-*/
 $br-sm: 4px;
 
-/*
-Inputs
-*/
 $input-b-w: 1px;
 $input-bg: transparent;
 $input-b-col: $gray400;
@@ -177,9 +233,6 @@ $inplace-label-transform-end: -50%;
 $input-label-padding: 0.8rem;
 $checkbox-border-width: 1px;
 
-/*
-Spaces
-*/
 $space-tiny: 0.8rem;
 $space-xs: 1.6rem;
 $space-sm: 2.4rem;
@@ -188,29 +241,13 @@ $space-regular: 5.6rem;
 $space-lg: 8rem;
 $space-xl: 9.6rem;
 
-/*
-Checkbox
-*/
 $checkbox-size: 1.6rem;
-// $checkbox-bg: $col-prm !default;
-// $checkbox-selected-bg: $col-prm !default; // farba pozadia zakliknuteho checkboxu
-$checkbox-border-color: $gray400; // farba borderu checkboxu
+$checkbox-border-color: $gray400; 
 $checbox-border-radius: 0px;
 $checkbox-border-width: 1px;
 
-// $checkbox-disabled-bg: $gray200 !default; // farba pozadia vypnuteho checkboxu
-// $tick-disabled-color: $gray300 !default; // farba fajky vypnuteho checkboxu
-
-// $tick: polygon(38% 67%, 20% 50%, 14% 56%, 38% 79%, 88% 29%, 82% 23%) !default; // tvar fajky v checkboxe
-// $tick-color: $white !default; // farba fajky v checkboxe
-
-
-/*
-Product card
-*/
 $product-card-padding: 0;
 $product-border-radius: 4px;
-// $product-card-box-shadow-on-hover: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px !default;
 $product-trnasition-in: all 0.5s ease-in-out;
 $product-trnasition-out: all 0.2s ease-in-out;
 $product-img-min-height: auto;
@@ -234,9 +271,6 @@ $in-stock-color: #2ED477;
 $on-back-order-color: $col-warn;
 $out-of-stock-color: #F46363;
 
-/*
-Badges
-*/
 $tags-padding: 4px 16px;
 $tags-border-radius: 3px;
 $tags-font-family: $font-family;
@@ -249,9 +283,6 @@ $tags-special-bg-col: $white;
 $tags-new-product-bg-col: $white;
 $tags-onsale-bg-col: $white;
 
-/*
-Pagination
-*/
 $pagination-ff: $font-family;
 $pagination-fw: 400;
 $pagination-fs: 1.6rem;
