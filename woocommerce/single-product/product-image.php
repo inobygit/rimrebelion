@@ -23,6 +23,9 @@ if (isset($attachment_ids[0])) {
 }
 ?>
 <div class="woocommerce-product-gallery images">
+    <div class="master-image" style="display: none;">
+        <?= $master_img_html ?>
+    </div>
 
     <div class="slider keen-slider">
         <?php
