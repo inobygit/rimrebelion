@@ -226,6 +226,7 @@ if ($cat instanceof WP_Term) {
                             'parent' => 0,
                             'suppress_filters'  => true,
                             'fields'    => 'ids',
+                            'exclude'   => 316,
                         ]);
 
                         $termlist = array_unique( $term_children ); 
