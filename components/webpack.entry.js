@@ -13,6 +13,8 @@ const components = [
   ...theme.component("last-viewed"),
   ...theme.component("video-background"),
   ...theme.component("build-your-look"),
+  ...theme.component("img-with-text"),
+  ...theme.component("video"),
 ];
 
 module.exports = components;

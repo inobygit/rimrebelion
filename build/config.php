@@ -1206,5 +1206,7 @@
         "meta-box/inoby-last-viewed",
         "meta-box/inoby-video-background",
         "meta-box/inoby-build-your-look",
+        "meta-box/img-with-text-child",
+        "meta-box/video-child",
     ],
 ]);
