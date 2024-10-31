@@ -58,9 +58,9 @@ get_header();
             </div>
         </div>
         <?php if (!empty($archive_looks_heroimg)) {
-                echo '<img class="fluid" src="' . wp_get_attachment_image_url($archive_looks_hero['ID'], 'o-12') . '" alt="hero image">';
+                echo '<img loading="lazy" class="fluid" src="' . wp_get_attachment_image_url($archive_looks_hero['ID'], 'o-12') . '" alt="hero image">';
             } else {
-                echo '<img class="fluid" src="' . esc_url(get_stylesheet_directory_uri() . "/assets/img/bg-looks-archive.webp") . '" alt="hero image">';
+                echo '<img loading="lazy" class="fluid" src="' . esc_url(get_stylesheet_directory_uri() . "/assets/img/bg-looks-archive.webp") . '" alt="hero image">';
             } ?>
 
     </div>

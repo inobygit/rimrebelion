@@ -43,13 +43,13 @@ $formatted_destination = isset($formatted_destination) ? $formatted_destination 
     } ?>
         <?php
         if( $method->id === "local_pickup:2" ) {
-              echo '<img class="shipping-icon" src="'. get_stylesheet_directory_uri() .'/assets/icons/local.svg" />';
+              echo '<img loading="lazy" class="shipping-icon" src="'. get_stylesheet_directory_uri() .'/assets/icons/local.svg" />';
           }
           if($method->id === 'packetery_shipping_method:packetery_carrier_131'){
-            echo '<img class="shipping-icon" src="'. get_stylesheet_directory_uri() .'/assets/icons/zasielkovna.svg" />';
+            echo '<img loading="lazy" class="shipping-icon" src="'. get_stylesheet_directory_uri() .'/assets/icons/zasielkovna.svg" />';
           }
           if($method->id === 'packetery_shipping_method:packetery_carrier_zpointsk'){
-            echo '<img class="shipping-icon" src="'. get_stylesheet_directory_uri() .'/assets/icons/zasielkovna.svg" />';
+            echo '<img loading="lazy" class="shipping-icon" src="'. get_stylesheet_directory_uri() .'/assets/icons/zasielkovna.svg" />';
           }
         ?>
 

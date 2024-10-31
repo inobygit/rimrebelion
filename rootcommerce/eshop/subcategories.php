@@ -10,7 +10,7 @@ $categories = $args["categories"];
             <?php
       $thumbnail_id = get_term_meta($category->term_id, "thumbnail_id", true);
       if ($thumbnail_id) {
-        echo sprintf('<div class="img-wrp">%s</div>', wp_get_attachment_image($thumbnail_id, "s-2"));
+        echo sprintf('<div class="img-wrp">%s</div>', wp_get_attachment_image($thumbnail_id, "s-2", false, ['loading' => 'lazy']));
       }
       ?>
             <div class="name"><?= $category->name ?></div>

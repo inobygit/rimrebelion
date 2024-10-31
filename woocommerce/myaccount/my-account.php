@@ -20,7 +20,7 @@ defined( 'ABSPATH' ) || exit;
 ?>
 
 <section class="header">
-    <img src="<?= get_theme_file_uri("/assets/img/bg-header.webp") ?>" alt="404" />
+    <img loading="lazy" src="<?= get_theme_file_uri("/assets/img/bg-header.webp") ?>" alt="404" />
     <div class="container">
         <div class="row">
             <div class="col-6 col-md-12">

@@ -16,7 +16,7 @@ $src = mb_get_block_field("video-background-src");
               ?>
         <img loading="eager" src="<?= wp_get_attachment_image_url(reset($thumbnail)['ID'], "o-12") ?>" alt="Video">
         <?php } else {
-              echo "<img src='$default_thumb' alt='Video...' />";
+              echo "<img loading='lazy' src='$default_thumb' alt='Video...' />";
             }
           }
         ?>

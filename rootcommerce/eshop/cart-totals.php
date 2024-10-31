@@ -64,7 +64,7 @@ defined("ABSPATH") || exit(); ?>
         <div class="payment-proof">
             <h4>
                 <?= __("Bezpečné online platby", 'rimrebellion') ?>
-                <img src="<?= get_theme_file_uri("/assets/svg/gp-logo.svg") ?>" alt="gp-payment">
+                <img loading="lazy" src="<?= get_theme_file_uri("/assets/svg/gp-logo.svg") ?>" alt="gp-payment">
             </h4>
             <p>
                 <?= __("Prostredníctvom platobnej brány GP webpay. Popredného svetového poskytovateľa platobných technológií so zabezpečením:", 'rimrebellion') ?>
@@ -75,8 +75,8 @@ defined("ABSPATH") || exit(); ?>
             <p class="label fraud">
                 <span><b><?= __("Fraud detection - ", "rimrebelion") ?></b><?= __("funkcie pre aktívne obmedzenie podvodov", 'rimrebellion') ?></span>
             </p>
-            <img class="payment" style="margin-top: 1rem;" src="<?= get_theme_file_uri("/assets/svg/payment.svg") ?>"
-                alt="payment">
+            <img loading="lazy" class="payment" style="margin-top: 1rem;"
+                src="<?= get_theme_file_uri("/assets/svg/payment.svg") ?>" alt="payment">
         </div>
     </div>
 </div>
