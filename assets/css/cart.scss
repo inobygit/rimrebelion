@@ -142,9 +142,13 @@
       }
       .button{
         font-size: $btn-fs;
-        &.small{
+        &.small,
+        &.black{
           width: 184px;
           max-width: 50%;
+        }
+        &.big{
+          width: 217px !important;
         }
         @include bp(md){
           margin: auto;
