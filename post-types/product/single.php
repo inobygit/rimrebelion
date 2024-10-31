@@ -52,7 +52,7 @@ if(!empty($sliderImagesGallery)){
         foreach ($sliderImagesGallery as $image):
            ?>
         <div class="image-wrapper gallery-slide">
-            <img src="<?= wp_get_attachment_image_url($image['ID'], 'o-12') ?>"
+            <img loading="lazy" src="<?= wp_get_attachment_image_url($image['ID'], 'o-12') ?>"
                 srcset="<?= wp_get_attachment_image_srcset($image['ID'], 'o-6') ?>" alt="gb-image" loading="lazy">
         </div>
         <?php 

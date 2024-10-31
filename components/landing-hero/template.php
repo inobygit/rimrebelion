@@ -20,7 +20,7 @@ if ($cta_grid) { ?>
             }
             if (isset($cta["bg"])) {
               echo '<div class="img-wrap">';
-              echo '<img src="' . wp_get_attachment_image_src(reset($cta["bg"]), "s-6")[0] . '" alt="' . $cta_headline . '">';
+              echo '<img loading="lazy" src="' . wp_get_attachment_image_src(reset($cta["bg"]), "s-6")[0] . '" alt="' . $cta_headline . '">';
               echo "</div>";
             }
             echo '<div class="content-wrap">';

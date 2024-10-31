@@ -409,6 +409,19 @@ add_filter("rwmb_meta_boxes", function ($meta_boxes) {
             ],
         ],
     ];
+
+    $meta_boxes[] = [
+        "taxonomies" => "product_tag",
+        "title" => __("Nastavenia", "rimrebellion"),
+        "fields" => [
+            [
+                'id'  => 'thumbnail_id',
+                'name'  => __('Thumbnail', 'inoby'),
+                'type'  => 'image_advanced',
+                'max_file_uploads'  => 1,
+            ],
+        ],
+    ];
     return $meta_boxes;
 });
 
@@ -440,4 +453,34 @@ function modify_taxonomy_product_specials() {
 }
 
 add_action("init", "modify_taxonomy_product_specials");
+
+
+// Taxonómia product_tag
+function modify_taxonomy_product_tag() {
+    $args = [
+        "hierarchical" => false, // Ak chcete hierarchickú taxonómiu ako kategórie, nastavte na true
+        "labels" => [
+            "name" => _x("Tags", "taxonomy general name", "mammut"),
+            "singular_name" => _x("Tag", "taxonomy singular name", "mammut"),
+            "search_items" => __("Search Tags", "mammut"),
+            "all_items" => __("All Tags", "mammut"),
+            "edit_item" => __("Edit Tag", "mammut"),
+            "update_item" => __("Update Tag", "mammut"),
+            "add_new_item" => __("Add New Tag", "mammut"),
+            "new_item_name" => __("New Tag", "mammut"),
+            "menu_name" => __("Tags", "mammut"),
+        ],
+        "show_ui" => true,
+        "public" => true,
+        "show_admin_column" => true,
+        "query_var" => 'product_tag_custom', // Custom query var to avoid conflicts
+        "show_in_nav_menus" => true, 
+        'has_archive'   => true,
+        "rewrite" => ["slug" => "znacka-produktu"],
+    ];
+
+    register_taxonomy("product_tag", ["product"], $args);
+}
+
+add_action("init", "modify_taxonomy_product_tag");
 ?>

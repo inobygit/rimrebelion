@@ -15,7 +15,7 @@ if (isset($attachment_ids[0])) {
     $master_img_html = get_gallery_image_html($attachment_ids[0], 'o-6', $attrs, 'eager');
 } else {
   $master_img_html = '<div class="woocommerce-product-gallery__image--placeholder">';
-  $master_img_html .= sprintf('<img src="%s" alt="%s" class="wp-post-image" />', esc_url(wc_placeholder_img_src("o-6")), esc_html__("Awaiting product image", "woocommerce"));
+  $master_img_html .= sprintf('<img loading="lazy" src="%s" alt="%s" class="wp-post-image" />', esc_url(wc_placeholder_img_src("o-6")), esc_html__("Awaiting product image", "woocommerce"));
   $master_img_html .= "</div>";
 }
 ?>

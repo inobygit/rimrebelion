@@ -20,12 +20,12 @@
                 </div>
                 <div id="search-trigger" class="menu-search">
                     <a href="#0">
-                        <img width="15px" height="15px" src="<?= get_theme_file_uri("/assets/svg/search-white.svg") ?>"
-                            alt="Hladať">
+                        <img loading="lazy" width="15px" height="15px"
+                            src="<?= get_theme_file_uri("/assets/svg/search-white.svg") ?>" alt="Hladať">
                     </a>
                 </div>
                 <?php } ?>
-                <?php if (ESHOP_ENABLED && is_user_logged_in() && Inoby_Config::wishlist()) { echo '<a href="/wishlist/"><img style="max-width:48px;" src="'. get_theme_file_uri("/assets/svg/heart.svg") .'"
+                <?php if (ESHOP_ENABLED && is_user_logged_in() && Inoby_Config::wishlist()) { echo '<a href="/wishlist/"><img loading="lazy" style="max-width:48px;" src="'. get_theme_file_uri("/assets/svg/heart.svg") .'"
         alt="'.__("Wishlist", "inoby") .'"></a>'; } ?>
                 <?php if (class_exists("WooCommerce")): ?>
                 <div class="menu-account">
@@ -33,13 +33,14 @@
                     <a href="#0" class="xoo-el-login-tgr" title="<?= __(
             "Login / Register",
             "inoby",
-          ) ?>"><img width="15px" height="12px" src="<?= get_theme_file_uri("/assets/svg/user-white.svg") ?>"
+          ) ?>"><img loading="lazy" width="15px" height="12px"
+                            src="<?= get_theme_file_uri("/assets/svg/user-white.svg") ?>"
                             alt="<?= __("Login / Register", "inoby") ?>"></a>
                     <?php else: ?>
                     <a href="<?= get_permalink(
             get_option("woocommerce_myaccount_page_id"),
           ) ?>" title="<?= __("My Account", "inoby") ?>" class="logged-in">
-                        <img width="15px" height="12px"
+                        <img loading="lazy" width="15px" height="12px"
                             src="<?= get_theme_file_uri("/assets/icons/person-logged.svg") ?>"
                             alt="<?= __("My Account", "inoby") ?>"></a>
                     <?php endif; ?>
@@ -48,7 +49,7 @@
                 <div class="menu-cart">
                     <a class="popup-trigger-btn" data-popup="cart-wrapper" href="#0">
                         <?php rc_cart_count(); ?>
-                        <img width="15px" height="14px" src="<?= get_theme_file_uri(
+                        <img loading="lazy" width="15px" height="14px" src="<?= get_theme_file_uri(
               "/assets/svg/cart-white.svg",
             ) ?>" alt="<?= __("Cart", "inoby") ?>">
                     </a>

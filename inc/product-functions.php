@@ -77,9 +77,9 @@ function display_related_product_thumbnails($product_id = null) {
             if ($gallery_images) {
                 $gallery_images = explode(',', $gallery_images);
                 $first_image_id = $gallery_images[0];
-                echo '<a href="' . get_permalink() . '">' . wp_get_attachment_image($first_image_id, 'o-2') . "</a>";
+                echo '<a href="' . get_permalink() . '">' . wp_get_attachment_image($first_image_id, 'o-2', false, ['loading'   => 'lazy']) . "</a>";
             } else {
-                echo '<a href="' . get_permalink() . '"><img src="' . wc_placeholder_img_src() . '" alt="Placeholder" /></a>';
+                echo '<a href="' . get_permalink() . '"><img loading="lazy" src="' . wc_placeholder_img_src() . '" alt="Placeholder" /></a>';
             }
             echo "</div>";
         }

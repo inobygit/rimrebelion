@@ -301,7 +301,7 @@ function rebellion_add_to_cart_btn($atts = [], $prod = null) {
 
 function custom_gateway_icon( $icon, $id ) {
     if ( $id === 'cod' ) {
-        return '<img src="' . get_stylesheet_directory_uri() . '/assets/icons/cod.svg" > '; 
+        return '<img loading="lazy" src="' . get_stylesheet_directory_uri() . '/assets/icons/cod.svg" > '; 
     } else {
         return $icon;
     }

@@ -31,13 +31,13 @@ $notes = WC()->session->get("order_comments");
             <div class="wrp-head">
                 <?php 
                 if( $shipping_method->id === "local_pickup:2" ) {
-                    echo '<img class="icon" src="'. get_stylesheet_directory_uri() .'/assets/icons/local.svg" />';
+                    echo '<img loading="lazy" class="icon" src="'. get_stylesheet_directory_uri() .'/assets/icons/local.svg" />';
                 }
                 if($shipping_method->id === 'packetery_shipping_method:packetery_carrier_131'){
-                    echo '<img class="icon" src="'. get_stylesheet_directory_uri() .'/assets/icons/zasielkovna.svg" />';
+                    echo '<img loading="lazy" class="icon" src="'. get_stylesheet_directory_uri() .'/assets/icons/zasielkovna.svg" />';
                 }
                 if($shipping_method->id === 'packetery_shipping_method:packetery_carrier_zpointsk'){
-                    echo '<img class="icon" src="'. get_stylesheet_directory_uri() .'/assets/icons/zasielkovna.svg" />';
+                    echo '<img loading="lazy" class="icon" src="'. get_stylesheet_directory_uri() .'/assets/icons/zasielkovna.svg" />';
                 }
                 ?>
                 <p class="label"><?= $shipping_method->get_label() ?></p>
@@ -45,7 +45,7 @@ $notes = WC()->session->get("order_comments");
                     <?= ($shipping_method->get_cost() === '0.00' ? __('Free', 'rimrebellion') : rc_cart_shipping_method_price($shipping_method)) ?>
                 </p>
                 <a class="edit tab-btn prev" data-prev-tab="step-3" data-current-tab="step-4" href="#0"><img
-                        src="<?= get_theme_file_uri("/assets/icons/edit.svg") ?>"
+                        loading="lazy" src="<?= get_theme_file_uri("/assets/icons/edit.svg") ?>"
                         alt="<?= __("Upraviť", "rimrebelion") ?>"></a>
             </div>
         </div>
@@ -73,7 +73,7 @@ $notes = WC()->session->get("order_comments");
                     esc_html_e('Free', 'rimrebellion');
                 } ?>
                 <a class="edit tab-btn prev" data-prev-tab="step-3" data-current-tab="step-4" href="#0"><img
-                        src="<?= get_theme_file_uri("/assets/icons/edit.svg") ?>"
+                        loading="lazy" src="<?= get_theme_file_uri("/assets/icons/edit.svg") ?>"
                         alt="<?= __("Upraviť", "rimrebelion") ?>"></a>
             </div>
             <?php if ($payment_method->get_description()): ?>

@@ -4,7 +4,8 @@
 
             <div id="copyright-left" class="widget-area">
                 <a href="<?= site_url() ?>">
-                    <img src="<?= get_stylesheet_directory_uri() . '/assets/svg/logo-landing-footer.svg' ?>"
+                    <img loading="lazy"
+                        src="<?= get_stylesheet_directory_uri() . '/assets/svg/logo-landing-footer.svg' ?>"
                         alt="logo light">
                 </a>
             </div>
@@ -27,7 +28,8 @@
                 </div>
                 <div id="search-trigger" class="menu-search">
                     <a href="#0">
-                        <img src="<?= get_theme_file_uri("/assets/icons/search-light.svg") ?>" alt="Hladať">
+                        <img loading="lazy" src="<?= get_theme_file_uri("/assets/icons/search-light.svg") ?>"
+                            alt="Hladať">
                     </a>
                 </div>
                 <?php } ?>
@@ -37,13 +39,13 @@
                     <a href="#0" class="xoo-el-login-tgr" title="<?= __(
             "Login / Register",
             "inoby",
-          ) ?>"><img src="<?= get_theme_file_uri("/assets/icons/account-light.svg") ?>"
+          ) ?>"><img loading="lazy" src="<?= get_theme_file_uri("/assets/icons/account-light.svg") ?>"
                             alt="<?= __("Login / Register", "inoby") ?>"></a>
                     <?php else: ?>
                     <a href="<?= get_permalink(
             get_option("woocommerce_myaccount_page_id"),
           ) ?>" title="<?= __("My Account", "inoby") ?>">
-                        <img src="<?= get_theme_file_uri("/assets/icons/account-light.svg") ?>"
+                        <img loading="lazy" src="<?= get_theme_file_uri("/assets/icons/account-light.svg") ?>"
                             alt="<?= __("My Account", "inoby") ?>"></a>
                     <?php endif; ?>
                 </div>
@@ -51,7 +53,7 @@
                 <div class="menu-cart">
                     <a class="popup-trigger-btn" data-popup="cart-wrapper" href="#0">
                         <?php rc_cart_count(); ?>
-                        <img src="<?= get_theme_file_uri(
+                        <img loading="lazy" src="<?= get_theme_file_uri(
               "/assets/icons/cart-light.svg",
             ) ?>" alt="<?= __("Cart", "inoby") ?>">
                     </a>

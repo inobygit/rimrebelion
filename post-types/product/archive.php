@@ -70,9 +70,9 @@ if ($cat instanceof WP_Term) {
 
 
                 <?php if (!empty($thumbnail_id)) {
-            echo '<img class="fluid-right" src="' . esc_url($image) . '" alt="hero image">';
+            echo '<img loading="lazy" class="fluid-right" src="' . esc_url($image) . '" alt="hero image">';
         } else {
-            echo '<img class="fluid-right" src="' . esc_url(get_stylesheet_directory_uri() . "/assets/img/product-cat-thumb.webp") . '" alt="hero image">';
+            echo '<img loading="lazy" class="fluid-right" src="' . esc_url(get_stylesheet_directory_uri() . "/assets/img/product-cat-thumb.webp") . '" alt="hero image">';
         } ?>
             </div>
         </div>
@@ -93,6 +93,7 @@ if ($cat instanceof WP_Term) {
                     $colorID = (isset($_GET['color']) ? $_GET['color'] : null);
                     $mainCatID = (isset($_GET['main-category']) ? $_GET['main-category'] : null);
                     $specials = (isset($_GET['product_specials']) ? $_GET['product_specials'] : null);
+                    $tags = (isset($_GET['product_tag']) ? $_GET['product_tag'] : null);
 
                     $args = [
                         'post_type' => 'product',
@@ -155,9 +156,25 @@ if ($cat instanceof WP_Term) {
                             ];
                         }
 
+                        if($tags){
+                            $args['tax_query'][] = [
+                                'taxonomy' => 'product_tag',
+                                'field' => 'id',
+                                'terms' => $tags,
+                            ];
+                        }
+
                         if(is_tax('product_specials')){
                             $args['tax_query'][] = [
                                 'taxonomy' => 'product_specials',
+                                'field' => 'id',
+                                'terms' => get_queried_object()->term_id,
+                            ];
+                        }
+
+                        if(is_tax('product_tag')){
+                            $args['tax_query'][] = [
+                                'taxonomy' => 'product_tag',
                                 'field' => 'id',
                                 'terms' => get_queried_object()->term_id,
                             ];
@@ -192,7 +209,7 @@ if ($cat instanceof WP_Term) {
                             echo "<div class='category-item'>
                                     <a class='cat' rel='keep-search' href='" . get_term_link($child_id) . "'>
                                         <div class='img-wrp'>
-                                            " . wp_get_attachment_image(get_term_meta($child_id, "product_search_image_id", true), "o-2") . "
+                                            " . wp_get_attachment_image(get_term_meta($child_id, "product_search_image_id", true), "o-2", false, ['loading' => 'lazy']) . "
                                         </div>
                                         <div class='name'>" . get_term($child_id, "product_cat")->name . "</div>
                                     </a>
@@ -227,7 +244,7 @@ if ($cat instanceof WP_Term) {
                                     <a class='cat' rel='keep-search' href='" . get_term_link($sibling) . "'>
                                     <div class='img-wrp'>
                                     " .
-                                    wp_get_attachment_image(get_term_meta($sibling, "product_search_image_id", true), "o-2") . "
+                                    wp_get_attachment_image(get_term_meta($sibling, "product_search_image_id", true), "o-2", false, ['loading' => 'lazy']) . "
                                     </div>
                                     <div class='name'>" . get_term($sibling, 'product_cat')->name . "</div></a>
                                     </div>";
@@ -258,7 +275,7 @@ if ($cat instanceof WP_Term) {
                                     echo "<div class='category-item'>
                                             <a class='cat' rel='keep-search' href='" . add_query_arg('product_specials', $term_id, get_term_link($child_id)) . "'>
                                                 <div class='img-wrp'>
-                                                    " . wp_get_attachment_image(get_term_meta($child_id, "thumbnail_id", true), "o-2") . "
+                                                    " . wp_get_attachment_image(get_term_meta($child_id, "thumbnail_id", true), "o-2", false, ['loading' => 'lazy']) . "
                                                 </div>
                                                 <div class='name'>" . get_term($child_id, "product_cat")->name . "</div>
                                             </a>
@@ -267,7 +284,38 @@ if ($cat instanceof WP_Term) {
                                 }
                                 echo '</div>';
                             }
-                        } else {
+                        } 
+                        else if (is_tax('product_tag')) {
+                            $term_id = get_queried_object()->term_id; // Get the current term ID
+                            $term_children = wp_get_object_terms($desination_ids, 'product_cat', [
+                                'hide_empty'    => true,
+                                'parent' => 0,
+                                'suppress_filters'  => true,
+                                'fields'    => 'ids',
+                                'exclude'   => 316,
+                            ]);
+
+                            $termlist = array_unique($term_children); 
+
+                            if (count($termlist) > 0) {
+                                echo '<div class="cats-wrp shop">';
+                                foreach ($termlist as $child_id) {
+                                    if($child_id != 317){
+                                    // Add the query parameter to the term link
+                                    echo "<div class='category-item'>
+                                            <a class='cat' rel='keep-search' href='" . add_query_arg('product_tag', $term_id, get_term_link($child_id)) . "'>
+                                                <div class='img-wrp'>
+                                                    " . wp_get_attachment_image(get_term_meta($child_id, "thumbnail_id", true), "o-2", false, ['loading' => 'lazy']) . "
+                                                </div>
+                                                <div class='name'>" . get_term($child_id, "product_cat")->name . "</div>
+                                            </a>
+                                        </div>";
+                                    }
+                                }
+                                echo '</div>';
+                            }
+                        }
+                        else {
                             // Existing code for when not on 'product_specials' taxonomy archive
                             $term_children = wp_get_object_terms($desination_ids, 'product_cat', [
                                 'hide_empty'    => true,
@@ -286,7 +334,7 @@ if ($cat instanceof WP_Term) {
                                     echo "<div class='category-item'>
                                             <a class='cat' rel='keep-search' href='" . get_term_link($child_id) . "'>
                                                 <div class='img-wrp'>
-                                                    " . wp_get_attachment_image(get_term_meta($child_id, "thumbnail_id", true), "o-2") . "
+                                                    " . wp_get_attachment_image(get_term_meta($child_id, "thumbnail_id", true), "o-2", false, ['loading' => 'lazy']) . "
                                                 </div>
                                                 <div class='name'>" . get_term($child_id, "product_cat")->name . "</div>
                                             </a>

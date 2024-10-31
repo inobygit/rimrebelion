@@ -110,8 +110,8 @@ function rimrebellion_product_tab_size_help() {
                                 for($i = 1; $i <= $tableNumberColumns; $i++){ ?>
             <div class="grid-item <?= ($i != 1) ? 'regular' : '' ?>">
                 <?php if(isset($item['row-icon']) && $i == 1){ ?>
-                <img class="icon" src="<?= wp_get_attachment_image_url($item['row-icon'][0], 'full'); ?>" alt="row icon"
-                    loading="lazy">
+                <img loading="lazy" class="icon" src="<?= wp_get_attachment_image_url($item['row-icon'][0], 'full'); ?>"
+                    alt="row icon" loading="lazy">
                 <?php } ?>
                 <?php if($i === 1){
                         echo '<strong>'. ($item['row-'. $i .''] ?? '') .'</strong>';
