@@ -396,8 +396,48 @@ add_filter("rwmb_meta_boxes", function ($meta_boxes) {
             ],
         ],
     ];
+
+    $meta_boxes[] = [
+        "taxonomies" => "product_specials",
+        "title" => __("Nastavenia", "rimrebellion"),
+        "fields" => [
+            [
+                'id'  => 'thumbnail_id',
+                'name'  => __('Thumbnail', 'inoby'),
+                'type'  => 'image_advanced',
+                'max_file_uploads'  => 1,
+            ],
+        ],
+    ];
     return $meta_boxes;
 });
 
+// Taxonómia product_specials
+function modify_taxonomy_product_specials() {
+    $args = [
+        "hierarchical" => false, // Ak chcete hierarchickú taxonómiu ako kategórie, nastavte na true
+        "labels" => [
+            "name" => _x("Product Specials", "taxonomy general name", "mammut"),
+            "singular_name" => _x("Product Special", "taxonomy singular name", "mammut"),
+            "search_items" => __("Search Product Specials", "mammut"),
+            "all_items" => __("All Product Specials", "mammut"),
+            "edit_item" => __("Edit Product Special", "mammut"),
+            "update_item" => __("Update Product Special", "mammut"),
+            "add_new_item" => __("Add New Product Special", "mammut"),
+            "new_item_name" => __("New Product Special", "mammut"),
+            "menu_name" => __("Product Specials", "mammut"),
+        ],
+        "show_ui" => true,
+        "public" => true,
+        "show_admin_column" => true,
+        "query_var" => 'product_specials_custom', // Custom query var to avoid conflicts
+        "show_in_nav_menus" => true, 
+        'has_archive'   => true,
+        "rewrite" => ["slug" => "specials-slug"],
+    ];
 
+    register_taxonomy("product_specials", ["product"], $args);
+}
+
+add_action("init", "modify_taxonomy_product_specials");
 ?>
