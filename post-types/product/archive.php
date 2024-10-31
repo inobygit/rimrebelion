@@ -173,7 +173,6 @@ if ($cat instanceof WP_Term) {
                             "exclude" => $term_id,
                             'hide_empty'    => true,
                             'fields'    => 'ids',
-                            'exclude'   => '316', '317',
                         ]);
 
                         $termlist = array_unique( $term_children ); 
@@ -246,7 +245,7 @@ if ($cat instanceof WP_Term) {
                                 'parent' => 0,
                                 'suppress_filters'  => true,
                                 'fields'    => 'ids',
-                                'exclude'   => '316', '317',
+                                'exclude'   => 316,
                             ]);
 
                             $termlist = array_unique($term_children); 
@@ -254,6 +253,7 @@ if ($cat instanceof WP_Term) {
                             if (count($termlist) > 0) {
                                 echo '<div class="cats-wrp shop">';
                                 foreach ($termlist as $child_id) {
+                                    if($child_id != 317){
                                     // Add the query parameter to the term link
                                     echo "<div class='category-item'>
                                             <a class='cat' rel='keep-search' href='" . add_query_arg('product_specials', $term_id, get_term_link($child_id)) . "'>
@@ -263,6 +263,7 @@ if ($cat instanceof WP_Term) {
                                                 <div class='name'>" . get_term($child_id, "product_cat")->name . "</div>
                                             </a>
                                         </div>";
+                                    }
                                 }
                                 echo '</div>';
                             }
@@ -273,7 +274,7 @@ if ($cat instanceof WP_Term) {
                                 'parent' => 0,
                                 'suppress_filters'  => true,
                                 'fields'    => 'ids',
-                                'exclude'   => '316', '317',
+                                'exclude'   => 316,
                             ]);
 
                             $termlist = array_unique($term_children); 
@@ -281,6 +282,7 @@ if ($cat instanceof WP_Term) {
                             if (count($termlist) > 0) {
                                 echo '<div class="cats-wrp shop">';
                                 foreach ($termlist as $child_id) {
+                                    if($child_id != 317){
                                     echo "<div class='category-item'>
                                             <a class='cat' rel='keep-search' href='" . get_term_link($child_id) . "'>
                                                 <div class='img-wrp'>
@@ -289,6 +291,7 @@ if ($cat instanceof WP_Term) {
                                                 <div class='name'>" . get_term($child_id, "product_cat")->name . "</div>
                                             </a>
                                         </div>";
+                                    }
                                 }
                                 echo '</div>';
                             }
