@@ -36,13 +36,34 @@
     }
     .woocommerce-cart-form table tbody{
       row-gap: 3.2rem;
+      @include bp('lg'){
+        row-gap: 1.6rem;
+       }
       > .cart_item {
        grid-template-columns: 10rem auto 12rem 15rem 30px;
        gap: 1.6rem;
        @include bp('lg'){
-        grid-template-columns: 1fr 1fr;
+        display: flex;
+        flex-wrap: wrap;
+        background-color: $gray100;
+        padding: 1rem;
+       }
+       .product-thumbnail{
+        display: block !important;
+        @include bp(lg){
+          flex-basis: 30%;
+        }
+        img{
+          aspect-ratio: 1/1;
+          object-fit: cover;
+        }
        }
        .product-name{
+        @include bp(lg){
+          grid-column: auto;
+          flex-basis: 60%;
+          padding-right: .8rem;
+        }
         a{
           color: $black;
           font-size: 1.6rem;
@@ -56,8 +77,8 @@
        }
        .product-quantity {
         max-width: none;
-        @include bp("sm") {
-          grid-column: 1 / span 2;
+        @include bp(lg){
+          grid-column: auto;
         }
         .quantity {
           padding: 5px;
@@ -97,6 +118,10 @@
         }
       }
       .product-remove {
+        @include bp(lg){
+          top: 1rem;
+          right: 1rem;
+        }
         a{
           font-size: 1.6rem;
           font-weight: 500;
@@ -117,6 +142,10 @@
       }
       .button{
         font-size: $btn-fs;
+        &.small{
+          width: 184px;
+          max-width: 50%;
+        }
         @include bp(md){
           margin: auto;
         }
