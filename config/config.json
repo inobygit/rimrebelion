@@ -23,7 +23,8 @@
     "meta-box/inoby-video-background",
     "meta-box/inoby-build-your-look",
     "meta-box/img-with-text-child",
-    "meta-box/video-child"
+    "meta-box/video-child",
+    "meta-box/inoby-icon-boxes-child"
   ],
   "page404": {
     "title": "<?php __(\"PAGE NOT FOUND\", \"inoby\")",

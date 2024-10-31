@@ -1,0 +1,165 @@
+@import "variables";
+@import "mixins";
+
+$comp-icon-box-h: 7rem !default;
+$comp-icon-box-mb: $space-xs !default;
+$comp-icon-boxes-mb: $space-xs !default;
+
+section.icon-boxes {
+  .info-row{
+    margin: $space-md -1.5rem 2.4rem -1.5rem;
+    h3{
+      text-transform: uppercase;
+    }
+    p{
+      font-family: "ItalianPlateItalic", sans-serif;
+      font-size: 2rem;
+      margin-bottom: 0;
+    }
+    .end{
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      justify-content: flex-start;
+      @include bp("md") {
+        align-items: flex-start;
+        }
+    }
+  }
+  
+    .icon-box {
+      background-color: $col-bg;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-evenly;
+      text-align: center;
+      padding: 2.4rem 3.2rem;
+      height: 100%;
+      .icon-wrp{
+        background-image: url("data:image/svg+xml,%3Csvg width='166' height='151' viewBox='0 0 166 151' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M163.93 69.3756L151.69 47.7355C149.596 44.0604 145.771 41.7814 141.604 41.7814H120.022V26.7935C120.022 22.5435 117.788 18.622 114.184 16.5072L88.8181 1.60145C85.2145 -0.533816 80.7855 -0.533816 77.1417 1.60145L51.836 16.5072C48.2324 18.6425 45.9978 22.5435 45.9978 26.7935V41.8019H24.4367C20.2694 41.8019 16.4444 44.0604 14.3507 47.7355L2.07028 69.3756C-0.0234261 73.0507 -0.0234261 77.6086 2.07028 81.2838L14.3507 102.965C16.4444 106.64 20.2694 108.919 24.4367 108.919H45.9978V123.907C45.9978 128.157 48.2123 132.078 51.8159 134.193L77.1215 149.119C80.7251 151.255 85.1944 151.255 88.798 149.119L114.144 134.193C117.747 132.058 119.982 128.157 119.982 123.907V108.919H141.543C145.71 108.919 149.556 106.64 151.629 102.965L163.93 81.2632C166.023 77.5881 166.023 73.0712 163.93 69.355H163.95L163.93 69.3756Z' fill='black'/%3E%3C/svg%3E%0A");
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center;
+        width: 165px;
+        height: 151px;
+        min-width: 165px;
+        min-height: 151px;
+        display: grid;
+        place-items: center;
+      }
+      h3{
+        text-transform: uppercase;
+        font-weight: 500;
+        line-height: 120%;
+        margin: 1.6rem auto;
+      }
+      p{
+        margin: 0;
+        font-size: 2.2rem;
+        font-family: "ItalianPlateItalic", sans-serif;
+        color: $gray700;
+      }
+      img {
+        margin: 0;
+        width: 50px;
+        min-width: 50px;
+        height: 50px;
+        min-height: 50px;
+        aspect-ratio: 1/1;
+        object-fit: contain;
+      }
+    }
+
+  .row{
+    row-gap: 3rem;
+    .col-3{
+      .icon-box{
+      padding: 2.4rem 2.8rem;
+      text-wrap: balance;
+        .icon-wrp{
+          width: 140px;
+          height: 128px;
+          min-width: 140px;
+          min-height: 128px;
+          img{
+            width: 40px;
+            min-width: 40px;
+            height: 40px;
+            min-height: 40px;
+          }
+        }
+        h3{
+          font-size: 2rem;
+        }
+        p{
+          font-size: 1.8rem;
+        }
+      }
+    }
+
+    .col-2-5{
+      @include bp(lg-up){
+        width: 25%;
+      }
+      @include bp(xl-up){
+        width: 20%;
+      }
+      .icon-box{
+      padding: 2.4rem 2.6rem;
+      text-wrap: balance;
+        .icon-wrp{
+          width: 130px;
+          height: 118px;
+          min-width: 130px;
+          min-height: 118px;
+          img{
+            width: 30px;
+            min-width: 30px;
+            height: 30px;
+            min-height: 30px;
+          }
+        }
+        h3{
+          font-size: 1.8rem;
+        }
+        p{
+          font-size: 1.6rem;
+        }
+      }
+    }
+
+    .col-2{
+      @include bp(lg-up){
+        width: 25%;
+      }
+      @include bp(xl-up){
+        width: 16.66%;
+      }
+      .icon-box{
+      padding: 2.4rem 1.8rem;
+      text-wrap: balance;
+        .icon-wrp{
+          width: 100px;
+          height: 88px;
+          min-width: 100px;
+          min-height: 88px;
+          img{
+            width: 25px;
+            min-width: 25px;
+            height: 25px;
+            min-height: 25px;
+          }
+        }
+        h3{
+          font-size: 1.6rem;
+        }
+        p{
+          font-size: 1.4rem;
+        }
+      }
+    }
+  }
+
+  
+}

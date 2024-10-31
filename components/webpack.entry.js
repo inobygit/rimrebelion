@@ -15,6 +15,7 @@ const components = [
   ...theme.component("build-your-look"),
   ...theme.component("img-with-text"),
   ...theme.component("video"),
+  ...theme.component("icon-boxes"),
 ];
 
 module.exports = components;
