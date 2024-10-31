@@ -38,8 +38,28 @@ do_action("woocommerce_before_add_to_cart_form");
 </script>
         <?php echo '</div>';?>
         <div id="price-wrp" class="price-wrp">
+            <?php
+                $lowest_price = null;
+                    if ($product->is_type('variable')) {
+
+
+                    $available_variations = $product->get_available_variations();
+                    foreach ($available_variations as $variation) {
+                        $price = $variation['display_price'];
+                        if ($lowest_price === null || $price < $lowest_price) {
+                            $lowest_price = $price;
+                        }
+                    }
+                    $lowest_price = number_format($lowest_price, 2);
+
+                    $priceHtml = '<span class="woocommerce-Price-amount amount"><bdi>'. __("from ", 'inoby') .''. $lowest_price .'&nbsp;<span class="woocommerce-Price-currencySymbol">€</span></bdi></span>';
+                    }
+
+
+                    ?>
             <p class="<?php echo esc_attr( apply_filters( 'woocommerce_product_price_class', 'price' ) ); ?>">
-                <?php echo $product->get_price_html(); ?></p>
+                <?= ($lowest_price && $lowest_price != 0 ? $priceHtml : $product->get_price_html()) ?>
+            </p>
         </div>
         <?php $colorMeta = rwmb_meta('color', null, $product->get_id());
 

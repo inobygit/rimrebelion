@@ -151,7 +151,7 @@ body.single-product{
         gap: 8px;
         a > img{
           aspect-ratio: 1/1;
-          object-fit: contain;
+          object-fit: cover;
           background-color: $white;
         }
       }
