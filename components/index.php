@@ -10,3 +10,4 @@ require_once __DIR__ . "/video-background/class-mb-video-background.php";
 require_once __DIR__ . "/build-your-look/class-mb-build-your-look.php";
 require_once __DIR__ . "/img-with-text/class-mb-img-with-text.php";
 require_once __DIR__ . "/video/class-mb-video.php";
+require_once __DIR__ . "/icon-boxes/class-mb-icon-boxes.php";

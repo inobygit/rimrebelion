@@ -1208,5 +1208,6 @@
         "meta-box/inoby-build-your-look",
         "meta-box/img-with-text-child",
         "meta-box/video-child",
+        "meta-box/inoby-icon-boxes-child",
     ],
 ]);
