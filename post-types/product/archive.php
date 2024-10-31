@@ -173,6 +173,7 @@ if ($cat instanceof WP_Term) {
                             "exclude" => $term_id,
                             'hide_empty'    => true,
                             'fields'    => 'ids',
+                            'exclude'   => '316', '317',
                         ]);
 
                         $termlist = array_unique( $term_children ); 
@@ -245,7 +246,7 @@ if ($cat instanceof WP_Term) {
                                 'parent' => 0,
                                 'suppress_filters'  => true,
                                 'fields'    => 'ids',
-                                'exclude'   => [316, 317],
+                                'exclude'   => '316', '317',
                             ]);
 
                             $termlist = array_unique($term_children); 
@@ -272,7 +273,7 @@ if ($cat instanceof WP_Term) {
                                 'parent' => 0,
                                 'suppress_filters'  => true,
                                 'fields'    => 'ids',
-                                'exclude'   => [316, 317],
+                                'exclude'   => '316', '317',
                             ]);
 
                             $termlist = array_unique($term_children); 
