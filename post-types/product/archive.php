@@ -92,6 +92,7 @@ if ($cat instanceof WP_Term) {
                     $collectionID = (isset($_GET['collection']) ? $_GET['collection'] : null);
                     $colorID = (isset($_GET['color']) ? $_GET['color'] : null);
                     $mainCatID = (isset($_GET['main-category']) ? $_GET['main-category'] : null);
+                    $specials = (isset($_GET['product_specials']) ? $_GET['product_specials'] : null);
 
                     $args = [
                         'post_type' => 'product',
@@ -143,6 +144,22 @@ if ($cat instanceof WP_Term) {
                                 'taxonomy' => 'main-category',
                                 'field' => 'id',
                                 'terms' => $mainCatID,
+                            ];
+                        }
+
+                        if($specials){
+                            $args['tax_query'][] = [
+                                'taxonomy' => 'product_specials',
+                                'field' => 'id',
+                                'terms' => $specials,
+                            ];
+                        }
+
+                        if(is_tax('product_specials')){
+                            $args['tax_query'][] = [
+                                'taxonomy' => 'product_specials',
+                                'field' => 'id',
+                                'terms' => get_queried_object()->term_id,
                             ];
                         }
 
@@ -220,32 +237,61 @@ if ($cat instanceof WP_Term) {
                         }
                     }
                 } else {
+                        // Check if we are on the 'product_specials' taxonomy archive
+                        if (is_tax('product_specials')) {
+                            $term_id = get_queried_object()->term_id; // Get the current term ID
+                            $term_children = wp_get_object_terms($desination_ids, 'product_cat', [
+                                'hide_empty'    => true,
+                                'parent' => 0,
+                                'suppress_filters'  => true,
+                                'fields'    => 'ids',
+                                'exclude'   => [316, 317],
+                            ]);
 
-                        $term_children = wp_get_object_terms($desination_ids, 'product_cat', [
-                            'hide_empty'    => true,
-                            'parent' => 0,
-                            'suppress_filters'  => true,
-                            'fields'    => 'ids',
-                            'exclude'   => 316,
-                        ]);
+                            $termlist = array_unique($term_children); 
 
-                        $termlist = array_unique( $term_children ); 
-                        
-                    if (count($termlist) > 0) {
-                        echo '<div class="cats-wrp shop">';
-                        foreach ($termlist as $child_id) {
+                            if (count($termlist) > 0) {
+                                echo '<div class="cats-wrp shop">';
+                                foreach ($termlist as $child_id) {
+                                    // Add the query parameter to the term link
+                                    echo "<div class='category-item'>
+                                            <a class='cat' rel='keep-search' href='" . add_query_arg('product_specials', $term_id, get_term_link($child_id)) . "'>
+                                                <div class='img-wrp'>
+                                                    " . wp_get_attachment_image(get_term_meta($child_id, "thumbnail_id", true), "o-2") . "
+                                                </div>
+                                                <div class='name'>" . get_term($child_id, "product_cat")->name . "</div>
+                                            </a>
+                                        </div>";
+                                }
+                                echo '</div>';
+                            }
+                        } else {
+                            // Existing code for when not on 'product_specials' taxonomy archive
+                            $term_children = wp_get_object_terms($desination_ids, 'product_cat', [
+                                'hide_empty'    => true,
+                                'parent' => 0,
+                                'suppress_filters'  => true,
+                                'fields'    => 'ids',
+                                'exclude'   => [316, 317],
+                            ]);
 
-                            echo "<div class='category-item'>
-                                    <a class='cat' rel='keep-search' href='" . get_term_link($child_id) . "'>
-                                        <div class='img-wrp'>
-                                            " . wp_get_attachment_image(get_term_meta($child_id, "thumbnail_id", true), "o-2") . "
-                                        </div>
-                                        <div class='name'>" . get_term($child_id, "product_cat")->name . "</div>
-                                    </a>
-                                </div>";
+                            $termlist = array_unique($term_children); 
+                            
+                            if (count($termlist) > 0) {
+                                echo '<div class="cats-wrp shop">';
+                                foreach ($termlist as $child_id) {
+                                    echo "<div class='category-item'>
+                                            <a class='cat' rel='keep-search' href='" . get_term_link($child_id) . "'>
+                                                <div class='img-wrp'>
+                                                    " . wp_get_attachment_image(get_term_meta($child_id, "thumbnail_id", true), "o-2") . "
+                                                </div>
+                                                <div class='name'>" . get_term($child_id, "product_cat")->name . "</div>
+                                            </a>
+                                        </div>";
+                                }
+                                echo '</div>';
+                            }
                         }
-                        echo '</div>';
-                    }
                 }
             ?>
             </div>
