@@ -61,7 +61,8 @@ if(!empty($columns)){
                 <div class="icon-box">
                     <?php
                         if(isset($icon['icon'])){ ?>
-                    <div class="icon-wrp">
+                    <div
+                        class="icon-wrp <?= isset($icon['without-graphics']) && $icon['without-graphics'] ? 'without-graphics' : '' ?>">
                         <?php echo mb_inoby_picture($icon["icon"], "o-4") ?>
                     </div>
                     <?php }

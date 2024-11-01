@@ -66,6 +66,11 @@ class MBIconBoxesChild extends MBComponentBase {
         'add_button'    => __('Pridať ďalší box', 'inoby'),
         'fields' => array(
           [
+            'id'  => 'without-graphics',
+            'name'  => __("Bez brand grafiky", 'inoby'),
+            'type'  => 'checkbox',
+          ],
+          [
             'id'               => "icon",
             'name'             => __('Ikona', 'inoby'),
             'type'             => 'image_advanced',
