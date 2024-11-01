@@ -47,6 +47,19 @@ section.icon-boxes {
         min-height: 151px;
         display: grid;
         place-items: center;
+        &.without-graphics{
+          background: none;
+          width: unset;
+          height: unset;
+          min-width: unset;
+          min-height: unset;
+          img{
+            width: 150px;
+            min-width: 150px;
+            height: 150px;
+            min-height: 150px;
+          }
+        }
       }
       h3{
         text-transform: uppercase;
@@ -82,6 +95,18 @@ section.icon-boxes {
           height: 128px;
           min-width: 140px;
           min-height: 128px;
+          &.without-graphics{
+            width: unset;
+            height: unset;
+            min-width: unset;
+            min-height: unset;
+            img{
+            width: 128px;
+            min-width: 128px;
+            height: 128px;
+            min-height: 128px;
+          }
+          }
           img{
             width: 40px;
             min-width: 40px;
@@ -113,6 +138,18 @@ section.icon-boxes {
           height: 118px;
           min-width: 130px;
           min-height: 118px;
+          &.without-graphics{
+            width: unset;
+            height: unset;
+            min-width: unset;
+            min-height: unset;
+            img{
+            width: 118px;
+            min-width: 118px;
+            height: 118px;
+            min-height: 118px;
+          }
+          }
           img{
             width: 30px;
             min-width: 30px;
@@ -144,6 +181,18 @@ section.icon-boxes {
           height: 88px;
           min-width: 100px;
           min-height: 88px;
+          &.without-graphics{
+            width: unset;
+            height: unset;
+            min-width: unset;
+            min-height: unset;
+            img{
+            width: 80px;
+            min-width: 80px;
+            height: 80px;
+            min-height: 80px;
+          }
+          }
           img{
             width: 25px;
             min-width: 25px;
