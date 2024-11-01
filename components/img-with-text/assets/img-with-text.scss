@@ -6,6 +6,12 @@
   @include bp("sm") {
     padding: $space-sm 0;
   }
+  strong,
+  b{
+    font-family: 'ItalianPlate', sans-serif;
+    font-weight: $fw-regular;
+    font-size: larger;
+  }
   .row{
     row-gap: 1.6rem;
     &.right{
