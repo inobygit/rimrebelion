@@ -39,14 +39,13 @@ $(function () {
             const searchParams = new URLSearchParams(window.location.search);
             if(searchParams.has('lang')){
                 searchParams.delete('lang');
-                console.log(searchParams);
-                console.log(searchParams.toString());
-                if(searchParams){
+                if(searchParams.size != 0){
                     var newUrl = `${link.href}&${searchParams.toString()}`;
+                    console.log(newUrl);
                 } else {
                     var newUrl = `${link.href}`;
+                    console.log(newUrl);
                 }
-                console.log(newUrl);
                 window.location.href = newUrl;
             } else {
                 window.location.href = `${link.href}${window.location.search}`;
