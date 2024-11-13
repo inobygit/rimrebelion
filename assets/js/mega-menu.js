@@ -31,21 +31,26 @@ $(function () {
         }
     });
 
-    // $("a[rel~=keep-search").off('click');
-    // $("a[rel~=keep-search]").on("click", (e) => {
-    //   const link = e.currentTarget;
-    //     if (link?.href) {
-    //         e.preventDefault();
-    //         const searchParams = new URLSearchParams(window.location.search);
-    //         if(searchParams.has('lang')){
-    //             searchParams.delete('lang');
-    //             const newUrl = `${link.href}&${searchParams.toString()}`;
-    //             window.location.href = newUrl;
-    //         } else {
-    //             window.location.href = `${link.href}${window.location.search}`;
-    //         }
-    //     }
-    // });
+    $("a[rel~=keep-search").off('click');
+    $("a[rel~=keep-search]").on("click", (e) => {
+      const link = e.currentTarget;
+      console.log('Targeted button' + link);
+        if (link?.href) {
+            e.preventDefault();
+      console.log('Href of the button' + link.href);
+            const searchParams = new URLSearchParams(window.location.search);
+      console.log('Search params of the window' + searchParams);
+            if(searchParams.has('lang')){
+                searchParams.delete('lang');
+                const newUrl = `${link.href}&${searchParams.toString()}`;
+      console.log('New url when searchparams contain lang' + newUrl);
+                window.location.href = newUrl;
+            } else {
+      console.log('Url when searchparams doesnt contain lang' + `${link.href}${window.location.search}`);
+                window.location.href = `${link.href}${window.location.search}`;
+            }
+        }
+    });
 
     $('.triangleright').each(function() {
         if(this.innerText.length > 18){
