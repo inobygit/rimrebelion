@@ -37,13 +37,15 @@ $(function () {
         if (link?.href) {
             e.preventDefault();
             const searchParams = new URLSearchParams(window.location.search);
-      console.log('Search params of the window ' + searchParams.toString());
             if(searchParams.has('lang')){
                 searchParams.delete('lang');
                 console.log('Link href ' + link.href);
-      console.log('Search params of the window after delete ' + searchParams.toString());
-                const newUrl = `${link.href}&${searchParams.toString()}`;
-      console.log('New url when searchparams contain lang' + newUrl);
+                if(searchParams){
+                    var newUrl = `${link.href}&${searchParams.toString()}`;
+                } else {
+                    var newUrl = `${link.href}`;
+                }
+                console.log(newUrl);
                 window.location.href = newUrl;
             } else {
                 window.location.href = `${link.href}${window.location.search}`;
