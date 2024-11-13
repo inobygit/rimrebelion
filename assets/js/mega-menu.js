@@ -31,21 +31,21 @@ $(function () {
         }
     });
 
-    $("a[rel~=keep-search").off('click');
-    $("a[rel~=keep-search]").on("click", (e) => {
-      const link = e.currentTarget;
-        if (link?.href) {
-            e.preventDefault();
-            const searchParams = new URLSearchParams(window.location.search);
-            if(searchParams.has('lang')){
-                searchParams.delete('lang');
-                const newUrl = `${link.href}&${searchParams.toString()}`;
-                window.location.href = newUrl;
-            } else {
-                window.location.href = `${link.href}${window.location.search}`;
-            }
-        }
-    });
+    // $("a[rel~=keep-search").off('click');
+    // $("a[rel~=keep-search]").on("click", (e) => {
+    //   const link = e.currentTarget;
+    //     if (link?.href) {
+    //         e.preventDefault();
+    //         const searchParams = new URLSearchParams(window.location.search);
+    //         if(searchParams.has('lang')){
+    //             searchParams.delete('lang');
+    //             const newUrl = `${link.href}&${searchParams.toString()}`;
+    //             window.location.href = newUrl;
+    //         } else {
+    //             window.location.href = `${link.href}${window.location.search}`;
+    //         }
+    //     }
+    // });
 
     $('.triangleright').each(function() {
         if(this.innerText.length > 18){
