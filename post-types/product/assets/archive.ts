@@ -64,13 +64,17 @@ class ProductArchiveModule extends InobyModule {
 
         $("a[rel~=keep-search").off('click');
         $("a[rel~=keep-search]").on("click", (e) => {
-        const link: any = e.currentTarget;
+          const link: any = e.currentTarget;
           if (link?.href) {
               e.preventDefault();
-              const searchParams = new URLSearchParams(window.location.search);
+              const searchParams: any = new URLSearchParams(window.location.search);
               if(searchParams.has('lang')){
                   searchParams.delete('lang');
-                  const newUrl = `${link.href}&${searchParams.toString()}`;
+                  if(searchParams.size != 0){
+                      var newUrl = `${link.href}&${searchParams.toString()}`;
+                  } else {
+                      var newUrl = `${link.href}`;
+                  }
                   window.location.href = newUrl;
               } else {
                   window.location.href = `${link.href}${window.location.search}`;

@@ -41,10 +41,8 @@ $(function () {
                 searchParams.delete('lang');
                 if(searchParams.size != 0){
                     var newUrl = `${link.href}&${searchParams.toString()}`;
-                    console.log(newUrl);
                 } else {
                     var newUrl = `${link.href}`;
-                    console.log(newUrl);
                 }
                 window.location.href = newUrl;
             } else {
