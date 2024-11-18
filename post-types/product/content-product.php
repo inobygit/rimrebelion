@@ -75,6 +75,11 @@ if (empty($product) || !$product->is_visible()) {
     <div class="content-product">
         <div class="content-product-title">
             <h3 class="woocommerce-loop-product__title notranslate"><?php 
+    $terms = wp_get_post_terms( get_the_id(), 'product_tag' );
+
+            if(!empty($terms)){
+                    echo strtoupper($terms[0]->name) . ' - ';
+                }
                 if(function_exists('icl_object_id')){
                     $original_ID = icl_object_id( get_the_ID(), 'product', false, 'en' );
 
