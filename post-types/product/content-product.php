@@ -78,7 +78,7 @@ if (empty($product) || !$product->is_visible()) {
     $terms = wp_get_post_terms( get_the_id(), 'product_tag' );
 
             if(!empty($terms)){
-                    echo strtoupper($terms[0]->name) . ' - ';
+                    echo mb_strtoupper($terms[0]->name, 'UTF-8') . ' - ';
                 }
                 if(function_exists('icl_object_id')){
                     $original_ID = icl_object_id( get_the_ID(), 'product', false, 'en' );

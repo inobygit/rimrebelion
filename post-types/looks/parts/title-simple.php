@@ -38,7 +38,8 @@ if ( ! defined( 'ABSPATH' ) ) {
         <?php 
 
             if(!empty($terms)){
-                    echo strtoupper($terms[0]->name) . ' - ';
+                    echo mb_strtoupper($terms[0]->name, 'UTF-8') . ' - ';
+                
                 }
             if(function_exists('icl_object_id')){
                 $original_ID = icl_object_id( $product->get_id(), 'product', false, 'en' );
