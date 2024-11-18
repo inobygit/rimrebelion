@@ -58,24 +58,39 @@ do_action("woocommerce_before_add_to_cart_form");
                             $availability_date_tomorrow = get_post_meta($product->get_id(), '_availability_date_tomorrow', true);
                             $availability_date_onbackorder = get_post_meta($product->get_id(), '_availability_date_onbackorder', true);
                             $availability_date_default = get_post_meta($product->get_id(), '_availability_date_default', true);
+$today = date('D');
 
                             $availability_date_onbackorder = date('j.n.', strtotime('+10 days'));
                             $backorderDate = date('D', strtotime('+10 days'));
                             $backorderDateFormated = date('Y-m-d', strtotime('+10 days'));
-                            if ($backorderDate == 'Sat' || $backorderDate == 'Sun') {
-                                $availability_date_onbackorder = date('j.n.', strtotime($backorderDateFormated . ' next monday'));
+                            if($today == 'Sat' || $today == 'Sun'){
+                                $availability_date_onbackorder = date('j.n.', strtotime($backorderDateFormated . ' next tuesday'));
+                            } else {
+                                if ($backorderDate == 'Sat' || $backorderDate == 'Sun') {
+                                    $availability_date_onbackorder = date('j.n.', strtotime($backorderDateFormated . ' next tuesday'));
+                                }
                             }
 
-                            $availability_date_tomorrow = date('j.n.', strtotime('tomorrow'));
-                            $tomorrow = date('D', strtotime('tomorrow'));
-                            if ($tomorrow == 'Sat' || $tomorrow == 'Sun') {
-                                $availability_date_tomorrow = date('j.n.', strtotime('next monday'));
+                            $availability_date_tomorrow = date('j.n.', strtotime('tomorrow + 1 day'));
+                            $tomorrow = date('D', strtotime('tomorrow + 1 day'));
+                            if($today == 'Sat' || $today == 'Sun'){
+                                $availability_date_tomorrow = date('j.n.', strtotime('next wednesday'));
+                            } else {
+                                if ($tomorrow == 'Sat') {
+                                    $availability_date_tomorrow = date('j.n.', strtotime('next tuesday'));
+                                } else if($tomorrow == 'Sun'){
+                                    $availability_date_tomorrow = date('j.n.', strtotime('next wednesday'));
+                                }
                             }
 
                             $availability_date_default = date('j.n.', strtotime('+2 days'));
                             $default = date('D', strtotime('+2 days'));
-                            if ($default == 'Sat' || $default == 'Sun') {
-                                $availability_date_default = date('j.n.', strtotime('next monday + 1 days'));
+                            if($today == 'Sat' || $today == 'Sun'){
+                                    $availability_date_default = date('j.n.', strtotime('next tuesday + 1 days'));
+                            } else {
+                                if ($default == 'Sat' || $default == 'Sun') {
+                                    $availability_date_default = date('j.n.', strtotime('next tuesday + 1 days'));
+                                }
                             }
 
                             echo '<p class="availability-date-default">' . esc_html(__('(Delivery: ', 'rimrebellion')) . ' ' . $availability_date_default . ')</p>';
