@@ -71,6 +71,16 @@ do_action("woocommerce_before_cart");
 
                 <td class="product-name" data-title="<?php esc_attr_e("Product", "woocommerce"); ?>">
                     <?php
+                    if ($_product instanceof WC_Product_Variation) {
+                        $parent_id = $_product->get_parent_id();
+                        $terms = wp_get_post_terms($parent_id, 'product_tag');
+                    } else {
+                        $terms = wp_get_post_terms($_product->get_id(), 'product_tag');
+                    }
+
+                    if(!empty($terms)){
+                        echo mb_strtoupper($terms[0]->name, 'UTF-8') . ' - ';
+                    }
           if (!$product_permalink) {
               echo wp_kses_post(apply_filters("woocommerce_cart_item_name", $_product->get_name(), $cart_item, $cart_item_key) . "&nbsp;");
           } else {
