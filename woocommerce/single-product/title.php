@@ -41,8 +41,8 @@ $short_description = apply_filters( 'woocommerce_short_description', $post->post
                 } ?>
     <span>
         <?php 
-        if(!empty($terms)){
-                    echo strtoupper($terms[0]->name) . ' - ';
+        if(!empty($terms)){                   
+             echo mb_strtoupper($terms[0]->name, 'UTF-8') . ' - ';
                 }
 
             if(function_exists('icl_object_id')){
