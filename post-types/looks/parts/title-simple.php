@@ -36,6 +36,10 @@ if ( ! defined( 'ABSPATH' ) ) {
                 } ?>
     <span>
         <?php 
+
+            if(!empty($terms)){
+                    echo strtoupper($terms[0]->name) . ' - ';
+                }
             if(function_exists('icl_object_id')){
                 $original_ID = icl_object_id( $product->get_id(), 'product', false, 'en' );
 
