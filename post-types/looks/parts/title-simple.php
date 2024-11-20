@@ -31,7 +31,6 @@ if ( ! defined( 'ABSPATH' ) ) {
                     if(isset(get_term_meta($terms[0]->term_id)['icon'])){
                         echo '<img loading="lazy" src="'. wp_get_attachment_image_url(get_term_meta($terms[0]->term_id)['icon'][0], 'o-6') . '" alt="'. $terms[0]->name . '" class="cdc-logo">';
                     }
-                    echo '<span class="brand-name">' . $terms[0]->name . '</span>';
                     echo '</span>';
                 } ?>
     <span>
