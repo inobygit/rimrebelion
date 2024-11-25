@@ -105,6 +105,7 @@ if ($cat instanceof WP_Term) {
                             'relation' => 'AND',
                         ],
                         'meta_query' => array(
+							'relation'	=> 'OR',
                             array(
                                 'key' => '_stock_status',
                                 'value' => 'instock'
@@ -112,6 +113,11 @@ if ($cat instanceof WP_Term) {
                             array(
                                 'key' => '_backorders',
                                 'value' => 'no'
+                            ),
+                            array(
+                                'key' => '_product_type',
+                                'value' => ['virtual', 'simple', 'variable'], // Include virtual and other types
+                                'compare' => 'IN'
                             ),
                         )
                     ];
