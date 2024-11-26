@@ -285,4 +285,18 @@ function reload_products_callback() {
         wp_send_json_success(array('continue' => false));
     }
 }
+
+add_filter('woocommerce_available_payment_gateways', 'conditional_cheque_payment_gateway');
+
+function conditional_cheque_payment_gateway($available_gateways) {
+    if (is_checkout() && !is_wc_endpoint_url()) {
+        $chosen_shipping_methods = WC()->session->get('chosen_shipping_methods');
+        if (isset($chosen_shipping_methods[0]) && $chosen_shipping_methods[0] !== 'local_pickup:2') {
+            unset($available_gateways['cheque']);
+        }
+    }
+    return $available_gateways;
+}
+
+
 ?>
