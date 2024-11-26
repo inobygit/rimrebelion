@@ -16,6 +16,7 @@ const components = [
   ...theme.component("img-with-text"),
   ...theme.component("video"),
   ...theme.component("icon-boxes"),
+  ...theme.component("quotes"),
 ];
 
 module.exports = components;
