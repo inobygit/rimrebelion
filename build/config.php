@@ -1209,5 +1209,6 @@
         "meta-box/img-with-text-child",
         "meta-box/video-child",
         "meta-box/inoby-icon-boxes-child",
+        "meta-box/inoby-quotes",
     ],
 ]);

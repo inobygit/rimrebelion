@@ -1,0 +1,105 @@
+@import "variables";
+@import "mixins";
+
+section.component-quote {
+  overflow-y: visible;
+  overflow-x: clip;
+  .quote-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+    max-width: 80%;
+    margin: 0 auto;
+    blockquote {
+      font-family: $font-family;
+      font-size: 2rem;
+      font-weight: $fw-regular;
+      line-height: 190%;
+      position: relative;
+      font-family: 'ItalianPlateItalic', sans-serif;
+      margin-bottom: 0;
+      @include bp(md){
+        text-align: center;
+      }
+      &::before {
+        content: '';
+        background-image: url(theme-url("/assets/icons/quote-mark.svg"));
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 40px;
+        height: 40px;
+        min-width: 40px;
+        min-height: 40px;
+        transform: translate(-130%, -50%);
+        @include bp("md") {
+          content: '';
+        }
+      }
+      &::after {
+        content: '';
+        background-image: url(theme-url("/assets/icons/quote-mark.svg"));
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        position: absolute;
+        right: 0;
+        width: 40px;
+        height: 40px;
+        min-width: 40px;
+        min-height: 40px;
+        bottom: 0;
+        transform: translate(130%, 50%) rotate(180deg);
+        @include bp("md") {
+          content: '';
+        }
+      }
+    }
+    .autor-wrap {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+      @include bp(md){
+        flex-direction: column;
+        justify-content: center;
+        gap: .8rem;
+      }
+      .autor-avatar {
+        img {
+          max-width: 54px;
+          height: auto;
+          border-radius: 100% !important;
+        }
+        .thumbnail-avatar {
+          max-width: 54px;
+          min-width: 54px;
+          height: 54px;
+          background-color: $gray200;
+          border-radius: 100%;
+        }
+      }
+      .autor-info {
+        .autor-name{
+          font-size: $fs-h3;
+          font-family: 'GreedNarrow', sans-serif;
+        }
+        p {
+          margin-bottom: 0;
+          font-weight: $fw-regular;
+          letter-spacing: unset;
+          line-height: unset;
+          @include bp(md){
+        text-align: center;
+      }
+          &.autor-desc {
+            font-size: $fs-p;
+            opacity: 0.8;
+          }
+        }
+      }
+    }
+  }
+}
