@@ -848,8 +848,10 @@ body.woocommerce-checkout {
       @include button;
       cursor: pointer;
       @include bp('sm'){
-        width: 100%;
         text-align: center;
+      }
+      &.m-auto{
+        margin: auto !important;
       }
       &:hover {
         transition: $trans-h;
