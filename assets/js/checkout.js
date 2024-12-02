@@ -10,7 +10,19 @@ jQuery(function ($) {
 
   //   $("button[name='woocommerce_checkout_place_order']").trigger('click');
   // });
+  $('.shipping-payment-btn').on('click', function(e){
+      if($('.wc_payment_method.payment_method_cheque.is-checked').length){
+        $('.wc_payment_method.payment_method_cheque.is-checked').removeClass('is-checked');
+                $('.wc_payment_method.payment_method_cheque').find('input[type="radio"]').prop('checked', false);
+                $('.wc_payment_method.payment_method_cheque').find('input[type="radio"]').attr('checked', false);
+                $('.wc_payment_method.payment_method_cheque').find('input[type="radio"]').checked = false;
 
+                $('.wc_payment_method.payment_method_gpwebpaygpebinder').addClass('is-checked');
+                $('.wc_payment_method.payment_method_gpwebpaygpebinder').find('input[type="radio"]').prop('checked',true);
+                $('.wc_payment_method.payment_method_gpwebpaygpebinder').find('input[type="radio"]').attr('checked',true);
+                $('.wc_payment_method.payment_method_gpwebpaygpebinder').find('input[type="radio"]').checked = true;
+            }
+  });
   jQuery(document).ready(function($) {
     // Funkcia na zmenu tabu
     var changeTab = function (tabNameToShow, currentTab) {
@@ -29,9 +41,11 @@ jQuery(function ($) {
                 scrollTop: 0
             }, 500);
         }
+        
         // Pridanie triedy na body podľa aktívneho tabu
         $('body').removeClass(currentTab).addClass(tabNameToShow);
     };
+
 
     // Pri každom kliknutí na .tab-btn
     // $('.tab-btn').on('click', function(e) {
