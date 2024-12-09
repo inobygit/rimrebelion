@@ -199,6 +199,8 @@ function add_custom_button_to_product_admin($views) {
     ?>
 <button type="button" class="button" id="assign_products_btn_reload"
     style="margin-left: 1rem; background-color: #667fee; color: white;"><?php esc_html_e('Activate backorder on products', 'inoby'); ?></button>
+<button type="button" class="button" id="products_btn_reload"
+    style="margin-left: 1rem; background-color: #667fee; color: white;"><?php esc_html_e('Reload products', 'inoby'); ?></button>
 <script type="text/javascript">
 jQuery(document).ready(function($) {
     function processBatchReload(offset) {
@@ -224,6 +226,36 @@ jQuery(document).ready(function($) {
     }
 
     $('#assign_products_btn_reload').on('click', function() {
+        processBatchReload(0);
+    });
+});
+
+jQuery(document).ready(function($) {
+    function processBatchReload(offset) {
+        $('#products_btn_reload').text('Processing...');
+        var data = {
+            'action': 'reload',
+            'nonce': '<?php echo wp_create_nonce('reload_nonce'); ?>',
+            'offset': offset
+        };
+        $.post(ajaxurl, data, function(response) {
+            if (response.data.continue) {
+                processBatchReload(response.data.offset);
+                $('#products_btn_reload')
+                    .text(response.data.offset + ' / ' + response.data.total);
+            } else {
+                $('#products_btn_reload').text('Done ;)');
+                alert('All products have been processed.');
+            }
+        }).fail(function(jqXHR, textStatus, errorThrown) {
+            console.log(textStatus, errorThrown);
+            alert('Failed to process: ' + textStatus + ' - ' + errorThrown);
+        });
+    }
+
+
+
+    $('#products_btn_reload').on('click', function() {
         processBatchReload(0);
     });
 });
@@ -299,4 +331,58 @@ function conditional_cheque_payment_gateway($available_gateways) {
 }
 
 
+
+//Reload products
+
+add_action('wp_ajax_reload', 'reload_callback');
+function reload_callback() {
+    // Security checks
+    if (!isset($_POST['nonce']) || !wp_verify_nonce($_POST['nonce'], 'reload_nonce')) {
+        wp_send_json_error('Nonce verification failed!');
+        return;
+    }
+    if (!current_user_can('manage_options')) {
+        wp_send_json_error('You do not have sufficient permissions to access this feature.');
+        return;
+    }
+
+    $batch_size = 100; // Number of products to process per batch
+    $offset = isset($_POST['offset']) ? intval($_POST['offset']) : 0;
+
+    $args = array(
+        'post_type' => array('product'),
+        'posts_per_page' => $batch_size,
+        'post_status' => 'publish',
+        'fields' => 'ids',
+        'offset' => $offset,
+        'meta_query' => array(
+            array(
+                'key' => '_price',
+                'value' => 0,
+                'compare' => '>',
+                'type' => 'NUMERIC'
+            ),
+        )
+    );
+    $products = get_posts($args);
+    $processed_count = 0;
+    $total_products = wp_count_posts('product')->publish;
+    
+    foreach ($products as $product_id) {
+        $product = wc_get_product($product_id);
+        
+        $product->save();
+
+        $processed_count++;
+    }
+
+    if ($processed_count === $batch_size) {
+        wp_send_json_success(array('continue' => true, 
+        'offset' => $offset + $batch_size, 
+        'total' => $total_products,
+    ));
+    } else {
+        wp_send_json_success(array('continue' => false));
+    }
+}
 ?>
