@@ -355,14 +355,6 @@ function reload_callback() {
         'post_status' => 'publish',
         'fields' => 'ids',
         'offset' => $offset,
-        'meta_query' => array(
-            array(
-                'key' => '_price',
-                'value' => 0,
-                'compare' => '>',
-                'type' => 'NUMERIC'
-            ),
-        )
     );
     $products = get_posts($args);
     $processed_count = 0;
