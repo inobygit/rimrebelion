@@ -354,17 +354,13 @@ function reload_callback() {
         'post_type' => array('product'),
         'posts_per_page' => $batch_size,
         'post_status' => 'publish',
-        'fields' => 'ids',
         'offset' => $offset,
-        'suppress_filters'  => false,
     );
     $products = get_posts($args);
     $processed_count = 0;
     
-    foreach ($products as $product_id) {
-        $product = wc_get_product($product_id);
-        
-        $product->save();
+    foreach ($products as $product_obj) {
+        wp_update_post( $product_obj );
 
         $processed_count++;
     }
