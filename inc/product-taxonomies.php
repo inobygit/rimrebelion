@@ -444,6 +444,7 @@ function modify_taxonomy_product_specials() {
         "public" => true,
         "show_admin_column" => true,
         "query_var" => 'product_specials_custom', // Custom query var to avoid conflicts
+        "hierarchical" => true,
         "show_in_nav_menus" => true, 
         'has_archive'   => true,
         "rewrite" => ["slug" => "specials-slug"],

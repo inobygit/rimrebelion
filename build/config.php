@@ -42,7 +42,7 @@
     "disable_default_shipping_method" => false,
     "latest_posts" => 0,
     "use_react" => false,
-    "admin_styles" => false,
+    "admin_styles" => true,
     "custom_theme_options" => false,
     "rc_filter_engine" => "indexed",
     "block_dark_mode" => false,
