@@ -347,7 +347,7 @@ function reload_callback() {
         return;
     }
 
-    $batch_size = 10; // Number of products to process per batch
+    $batch_size = 50; // Number of products to process per batch
     $offset = isset($_POST['offset']) ? intval($_POST['offset']) : 0;
 
     $args = array(
@@ -360,9 +360,14 @@ function reload_callback() {
     $processed_count = 0;
     
     foreach ($products as $product_obj) {
-        wp_update_post( $product_obj );
+        if(!is_wp_error($product_obj) || !$product_obj) {
+            wp_update_post( $product_obj );
+            $processed_count++;
+        } else {
+            $processed_count--;
+            continue;
+        }
 
-        $processed_count++;
     }
 
     if ($processed_count === $batch_size) {
