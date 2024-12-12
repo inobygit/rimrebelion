@@ -17,6 +17,7 @@ const components = [
   ...theme.component("video"),
   ...theme.component("icon-boxes"),
   ...theme.component("quotes"),
+  ...theme.component("references-slider"),
 ];
 
 module.exports = components;

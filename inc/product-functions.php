@@ -241,9 +241,8 @@ jQuery(document).ready(function($) {
         $.post(ajaxurl, data, function(response) {
             if (response.data.continue) {
                 processBatchReload(response.data.offset);
-                console.log(response.data);
                 $('#products_btn_reload')
-                    .text('Processed: ' + response.data.offset);
+                    .text(response.data.offset + ' / ' + response.data.total);
             } else {
                 $('#products_btn_reload').text('Done ;)');
                 alert('All products have been processed.');
@@ -347,53 +346,32 @@ function reload_callback() {
         return;
     }
 
-    $batch_size = 1; // Number of products to process per batch
+    $batch_size = 100; // Number of products to process per batch
     $offset = isset($_POST['offset']) ? intval($_POST['offset']) : 0;
 
     $args = array(
         'post_type' => array('product'),
         'posts_per_page' => $batch_size,
         'post_status' => 'publish',
+        'fields' => 'ids',
         'offset' => $offset,
     );
     $products = get_posts($args);
-
-    $nextArgs = array(
-        'post_type' => array('product'),
-        'posts_per_page' => $batch_size,
-        'post_status' => 'publish',
-        'offset' => $offset + 1,
-    );
-    $nextProd = get_posts($nextArgs);
     $processed_count = 0;
-    $prod_id = null; // Initialize to store the last processed product ID
-    $errors = []; // Array to collect errors
-    $prod = null;
+    $total_products = wp_count_posts('product')->publish;
     
-    foreach ($products as $product_obj) {
-        if($product_obj){
-            $prod = $product_obj;
-            $result = wp_update_post($product_obj);
-           if (is_wp_error($result) || $result === 0) {
-               $error_message = is_wp_error($result) ? $result->get_error_message() : 'Unknown error';
-               error_log('Failed to update post ID ' . $product_obj->ID . ': ' . $error_message);
-               $errors[] = array('post_id' => $product_obj->ID, 'error' => $error_message);
-               continue; 
-           } 
-           $prod_id = $product_obj->ID;
-        }
+    foreach ($products as $product_id) {
+        $product = wc_get_product($product_id);
+        
+        $product->save();
+
         $processed_count++;
     }
 
     if ($processed_count === $batch_size) {
         wp_send_json_success(array('continue' => true, 
-        'continue' => true, 
-        'processed' => $processed_count,
         'offset' => $offset + $batch_size, 
-        'id_processed' => $prod_id,
-        'errors' => $errors,
-        'product'   => $prod,
-        'next_prod' => $nextProd[0]
+        'total' => $total_products,
     ));
     } else {
         wp_send_json_success(array('continue' => false));
