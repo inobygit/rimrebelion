@@ -360,7 +360,7 @@ function reload_callback() {
     $processed_count = 0;
     
     foreach ($products as $product_obj) {
-        if(!is_wp_error($product_obj) || !$product_obj) {
+        if(!is_wp_error($product_obj) && $product_obj) {
             wp_update_post( $product_obj );
             $processed_count++;
         } else {
