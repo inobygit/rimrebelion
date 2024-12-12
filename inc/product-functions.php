@@ -241,6 +241,7 @@ jQuery(document).ready(function($) {
         $.post(ajaxurl, data, function(response) {
             if (response.data.continue) {
                 processBatchReload(response.data.offset);
+                console.log(response.data);
                 $('#products_btn_reload')
                     .text(response.data.offset + ' / ' + response.data.total);
             } else {
@@ -346,7 +347,7 @@ function reload_callback() {
         return;
     }
 
-    $batch_size = 100; // Number of products to process per batch
+    $batch_size = 1; // Number of products to process per batch
     $offset = isset($_POST['offset']) ? intval($_POST['offset']) : 0;
 
     $args = array(
@@ -370,6 +371,7 @@ function reload_callback() {
 
     if ($processed_count === $batch_size) {
         wp_send_json_success(array('continue' => true, 
+        'processed' => $processed_count,
         'offset' => $offset + $batch_size, 
         'total' => $total_products,
     ));
