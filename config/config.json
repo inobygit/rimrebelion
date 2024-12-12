@@ -26,7 +26,8 @@
     "meta-box/img-with-text-child",
     "meta-box/video-child",
     "meta-box/inoby-icon-boxes-child",
-    "meta-box/inoby-quotes"
+    "meta-box/inoby-quotes",
+    "meta-box/inoby-references-slider"
   ],
   "page404": {
     "title": "<?php __(\"PAGE NOT FOUND\", \"inoby\")",
