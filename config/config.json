@@ -6,6 +6,7 @@
     "page-templates/landing.php"
   ],
   "mega_menu": true,
+  "admin_styles": true,
   "allowed_blocks": [
     "meta-box/inoby-text",
     "meta-box/inoby-spacer",
