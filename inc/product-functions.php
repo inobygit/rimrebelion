@@ -347,7 +347,7 @@ function reload_callback() {
         return;
     }
 
-    $batch_size = 100; // Number of products to process per batch
+    $batch_size = 10; // Number of products to process per batch
     $offset = isset($_POST['offset']) ? intval($_POST['offset']) : 0;
 
     $args = array(
