@@ -347,7 +347,7 @@ function reload_callback() {
         return;
     }
 
-    $batch_size = 50; // Number of products to process per batch
+    $batch_size = 1; // Number of products to process per batch
     $offset = isset($_POST['offset']) ? intval($_POST['offset']) : 0;
 
     $args = array(
@@ -364,16 +364,16 @@ function reload_callback() {
         if (is_wp_error($result) || $result === 0) {
             error_log('Failed to update post ID ' . $product_obj->ID . ': ' . $result->get_error_message());
             continue; 
-        } else {
-            $processed_count++;
-        }
-
+        } 
+        $processed_count++;
+        $prod_id = $product_obj->ID;
     }
 
     if ($processed_count === $batch_size) {
         wp_send_json_success(array('continue' => true, 
         'processed' => $processed_count,
         'offset' => $offset + $batch_size, 
+        'id_processed'  => $prod_id
     ));
     } else {
         wp_send_json_success(array('continue' => false));
