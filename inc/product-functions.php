@@ -357,6 +357,14 @@ function reload_callback() {
         'offset' => $offset,
     );
     $products = get_posts($args);
+
+    $nextArgs = array(
+        'post_type' => array('product'),
+        'posts_per_page' => $batch_size,
+        'post_status' => 'publish',
+        'offset' => $offset + 1,
+    );
+    $nextProd = get_posts($nextArgs);
     $processed_count = 0;
     $prod_id = null; // Initialize to store the last processed product ID
     $errors = []; // Array to collect errors
@@ -384,7 +392,8 @@ function reload_callback() {
         'offset' => $offset + $batch_size, 
         'id_processed' => $prod_id,
         'errors' => $errors,
-        'product'   => $prod
+        'product'   => $prod,
+        'next_prod' => $nextProd[0]
     ));
     } else {
         wp_send_json_success(array('continue' => false));
