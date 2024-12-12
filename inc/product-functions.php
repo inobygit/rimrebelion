@@ -361,7 +361,12 @@ function reload_callback() {
     
     foreach ($products as $product_obj) {
         if(!is_wp_error($product_obj) && $product_obj) {
-            wp_update_post( $product_obj );
+            $result = wp_update_post($product_obj);
+            if (is_wp_error($result)) {
+                // Handle the error (e.g., log it or take other actions)
+                error_log('Failed to update post ID ' . $product_obj->ID . ': ' . $result->get_error_message());
+                continue; // Skip to the next product
+            }
             $processed_count++;
         } else {
             $processed_count--;
