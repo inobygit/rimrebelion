@@ -358,11 +358,15 @@ function reload_callback() {
     );
     $products = get_posts($args);
     $processed_count = 0;
+    $prod_id = null; // Initialize to store the last processed product ID
+    $errors = []; // Array to collect errors
     
     foreach ($products as $product_obj) {
-        $result = wp_update_post($product_obj);
+         $result = wp_update_post($product_obj);
         if (is_wp_error($result) || $result === 0) {
-            error_log('Failed to update post ID ' . $product_obj->ID . ': ' . $result->get_error_message());
+            $error_message = is_wp_error($result) ? $result->get_error_message() : 'Unknown error';
+            error_log('Failed to update post ID ' . $product_obj->ID . ': ' . $error_message);
+            $errors[] = array('post_id' => $product_obj->ID, 'error' => $error_message);
             continue; 
         } 
         $processed_count++;
@@ -371,9 +375,11 @@ function reload_callback() {
 
     if ($processed_count === $batch_size) {
         wp_send_json_success(array('continue' => true, 
+        'continue' => true, 
         'processed' => $processed_count,
         'offset' => $offset + $batch_size, 
-        'id_processed'  => $prod_id
+        'id_processed' => $prod_id,
+        'errors' => $errors
     ));
     } else {
         wp_send_json_success(array('continue' => false));
