@@ -240,9 +240,10 @@ jQuery(document).ready(function($) {
         };
         $.post(ajaxurl, data, function(response) {
             if (response.data.continue) {
+                console.log(response.data);
                 processBatchReload(response.data.offset);
                 $('#products_btn_reload')
-                    .text(response.data.offset + ' / ' + response.data.total);
+                    .text(response.data.offset + ' processed');
             } else {
                 $('#products_btn_reload').text('Done ;)');
                 alert('All products have been processed.');
@@ -350,20 +351,31 @@ function reload_callback() {
     $offset = isset($_POST['offset']) ? intval($_POST['offset']) : 0;
 
     $args = array(
-        'post_type' => array('product'),
+        'post_type' => array('product', 'product_variation'),
         'posts_per_page' => $batch_size,
         'post_status' => 'publish',
         'fields' => 'ids',
         'offset' => $offset,
+        'suppress_filters' => false,
     );
     $products = get_posts($args);
     $processed_count = 0;
     $total_products = wp_count_posts('product')->publish;
-    
+
     foreach ($products as $product_id) {
         $product = wc_get_product($product_id);
+        $regular_price = $product->get_regular_price();
+        $sale_price = $product->get_sale_price();
         
-        $product->save();
+        $product_translation = apply_filters('wpml_object_id', $product->get_id(), 'product', FALSE, 'sk');
+        if($product_translation){
+            $translated_product = wc_get_product($product_translation);
+    
+            $translated_product->set_regular_price($regular_price);
+            $translated_product->set_sale_price($sale_price);
+    
+            $translated_product->save();
+        }
 
         $processed_count++;
     }
