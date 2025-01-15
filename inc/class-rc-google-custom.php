@@ -36,7 +36,7 @@ class RC_Google_custom extends RC_Google{
     if ($product instanceof \WC_Product) {
       return $product->get_id();
     }
-    return !empty($product["sku"]) ? $product["sku"] : $product["ID"];
+    return $product["ID"];
   }
 
   private static function get_event_product_data($product, $quantity) {
@@ -45,8 +45,14 @@ class RC_Google_custom extends RC_Google{
       "name" => $product->get_name(),
       "price" => wc_get_price_to_display($product),
       "google_business_vertical" => "retail",
-      "ITEM_GROUP_ID" => ($product->get_parent_id()) ? $product->get_parent_id() : self::get_product_id($product),
     ];
+
+    if($product->get_parent_id()){
+      $data["ITEM_GROUP_ID"] = $product->get_parent_id();
+    } else {
+      $data["ITEM_GROUP_ID"] = self::get_product_id($product);
+    }
+    //TODO: spravne nastavene, len JS z rootcommerce sa dopytuje na rc-ajax, co nie je toto
 
     if ($quantity > 0) {
       $data["quantity"] = $quantity;

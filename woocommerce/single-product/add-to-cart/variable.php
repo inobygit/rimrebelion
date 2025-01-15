@@ -93,11 +93,11 @@ $today = date('D');
                                 }
                             }
 
-                            echo '<p class="availability-date-default">' . esc_html(__('(Delivery: ', 'rimrebellion')) . ' ' . $availability_date_default . ')</p>';
+                            echo '<p class="availability-date-default">' . esc_html(__('(Shipping on: ', 'rimrebellion')) . ' ' . $availability_date_default . ')</p>';
 
-                            echo '<p class="availability-date-tomorrow">' . esc_html(__('(Delivery: ', 'rimrebellion')) . ' ' . $availability_date_tomorrow . ')</p>';
+                            echo '<p class="availability-date-tomorrow">' . esc_html(__('(Shipping on: ', 'rimrebellion')) . ' ' . $availability_date_tomorrow . ')</p>';
 
-                            echo '<p class="availability-date-onbackorder">' . esc_html(__('(Delivery: ', 'rimrebellion')) . ' ' . $availability_date_onbackorder . ')</p>';
+                            echo '<p class="availability-date-onbackorder">' . esc_html(__('(Shipping on: ', 'rimrebellion')) . ' ' . $availability_date_onbackorder . ')</p>';
                             ?>
                             </div>
                         </div>
