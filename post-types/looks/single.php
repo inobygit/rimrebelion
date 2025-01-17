@@ -18,7 +18,9 @@ $heroDesc = rwmb_meta('look-desc-text');
 $heroBtnText = rwmb_meta('look-btn-text');
 $heroBtnLink = rwmb_meta('look-btn-link');
 
+$use_skus = rwmb_meta('look-use-skus');
 $used_products = rwmb_meta('look-used-products');
+$used_products_new = rwmb_meta('look-used-products-new');
 
 ?>
 
@@ -64,7 +66,34 @@ $used_products = rwmb_meta('look-used-products');
         </div>
     </div>
 
-    <?php if(!empty($used_products)){ 
+    <?php 
+    if(!empty($use_skus) && $use_skus){
+        if(!empty($used_products_new)){ 
+                
+        /**
+         * Hook: woocommerce_before_single_product.
+         *
+         * @hooked woocommerce_output_all_notices - 10
+         */
+        do_action("woocommerce_before_single_product");
+                ?>
+
+    <div class="products" id="products">
+        <?php foreach($used_products_new as $used_product) { 
+                $args = [
+                    'product_id' => $used_product,
+                ];
+                ?>
+        <div class="product-wrp">
+            <div class="container">
+                <?php get_template_part("post-types/looks/parts/content-single-product-simple", null, $args);?>
+            </div>
+        </div>
+        <?php } ?>
+    </div>
+    <?php } 
+    } else {
+    if(!empty($used_products)){ 
         
 /**
  * Hook: woocommerce_before_single_product.
@@ -87,7 +116,8 @@ do_action("woocommerce_before_single_product");
         </div>
         <?php } ?>
     </div>
-    <?php } ?>
+    <?php } 
+    } ?>
 </div>
 
 <?php
