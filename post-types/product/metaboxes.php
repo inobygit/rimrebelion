@@ -27,6 +27,24 @@ add_filter("rwmb_meta_boxes", function ($meta_boxes) {
                 ],
             ],
             [
+                'id'    => 'show-delivery-info',
+                'name'  => esc_html__( 'Show custom delivery info', 'rimrebellion' ),
+                'type'  => 'checkbox',
+                'std'   => 0,
+            ],
+            [
+                "id" => "delivery-info",
+                "name" => esc_html__("Delivery info", "rimrebellion"),
+                "type" => "wysiwyg",
+                "raw" => true,
+                'sanitize_callback' => 'none',
+                "options" => [
+                    "textarea_rows" => 4,
+                    "teeny" => true,
+                ],
+                'visible'   => ['show-delivery-info', '=', 1],
+            ],
+            [
                 "id" => "range-temperature",
                 "name" => __("Range temperature", "rimrebellion"),
                 "type" => "text",

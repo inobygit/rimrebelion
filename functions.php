@@ -307,3 +307,40 @@ function custom_gateway_icon( $icon, $id ) {
     }
 }
 add_filter( 'woocommerce_gateway_icon', 'custom_gateway_icon', 10, 2 );
+
+
+
+
+add_filter("inoby_theme_settings_tabs", function ($tabs) {
+
+    $tabs["delivery-info"] = [
+        "label" => "Woocommerce - Delivery info",
+        "icon" => "dashicons-category",
+        "sort" => 20,
+    ];
+
+    return $tabs;
+
+
+});
+
+add_filter("rwmb_meta_boxes", function ($meta_boxes) {
+    $meta_boxes[] = [
+        "id" => "mb-my-delivery-info",
+        "title" => __("Nastavenie delivery info", "inoby"),
+        "settings_pages" => "options",
+        "context" => "normal",
+        "tab" => "delivery-info",
+        "fields" => [
+            [
+              'id' => "delivery_info_text",
+              'name'  => __("Text", 'inoby'),
+              'type'  => 'wysiwyg',
+              'raw' => true,
+              'sanitize_callback' => 'none',
+            ],
+        ],
+    ];
+
+    return $meta_boxes;
+});

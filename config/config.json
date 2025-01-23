@@ -34,5 +34,25 @@
     "headline": "<?php __(\"THIS PAGE DOESN'T EXIST.\", \"inoby\")",
     "text": "<?php __(\"Try checking the link again or use the search to find what you're looking for.\", \"inoby\")",
     "btn_home_text": "<?php __(\"Back home\", \"inoby\")"
+  },
+  "assets": {
+    "js": {
+      "core": "preload|defer",
+      "post_types-product": "defer",
+      "contact-form-7": "defer",
+      "swv": "defer",
+      "hoverintent-js": "defer",
+      "admin-bar": "defer",
+      "xoo-el-js": "defer",
+      "typewatch": "defer",
+      "product-search": "defer",
+      "rc-core": "defer",
+      "last-searched-products-js": "defer",
+      "posts_loadmore": "defer",
+      "jquery-ui": "defer",
+      "jquery-blockui": "defer",
+      "sourcebuster-js": "defer",
+      "wc-order-attribution": "defer"
+    }
   }
 }
