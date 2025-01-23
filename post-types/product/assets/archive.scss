@@ -272,6 +272,179 @@ body.archive {
         @include bp("sm") {
           grid-template-columns: repeat(1, 1fr);
         }
+        .banner {
+    grid-column: span 2;
+    min-height: 400px;
+    @include bp("md") {
+          height: 350px;
+          min-height: 350px;
+        }
+    @include bp("sm") {
+              grid-column: 1;
+              height: 300px;
+          min-height: 300px;
+        }
+    .illustration{
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      @include bp(md){
+        transform-origin: center;
+              transform: translate(-50%, -50%) scale(.8);
+            }
+    }
+    a {
+      position: relative;
+      padding: 40px;
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-end;
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      overflow: hidden;
+      height: 100%;
+      @include bp("md") {
+            padding: 15px;
+          }
+          
+      &.style-2{
+        padding: 0;
+        svg{
+          path{
+            transition: .3s;
+          }
+        }
+        &:hover{
+          svg{
+            path{
+              fill-opacity: .8;
+            }
+          }
+        }
+        .illustration.style-2{
+          width: 640px;
+          bottom: 0;
+          left: 50%;
+          top: unset;
+          transform: translate(-50%, 0);
+          path{
+            width: 640px;
+          }
+        }
+        .info{
+          margin: auto;
+          left: 0;
+          top: unset;
+          bottom: 0;
+          right: 0;
+          transform: none;
+          max-width: 90%;
+          max-height: 580px;
+          padding: 1.6rem;
+          .heading{
+            max-width: 350px;
+            p{
+              font-size: $fs-h2;
+              font-weight: $fw-bold;
+              @include bp(md){
+              font-size: $fs-h4;
+            }
+            }
+          }
+          .link{
+            font-size: $fs-h3;
+            font-style: italic;
+              font-family: "ItalianPlateItalic", sans-serif;
+
+            font-weight: 400;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 2; /* number of lines to show */
+           line-clamp: 2; 
+            -webkit-box-orient: vertical;
+            @include bp(md){
+              font-size: $fs-p-l;
+            }
+            svg{
+              display: none;
+            }
+          }
+        }
+      }
+      &:hover{
+        .link{
+          svg{
+            transform: translateX(5px);
+          }
+        }
+      }
+      h2,
+      p {
+        position: relative;
+        z-index: 1;
+        color: $white;
+        margin: 0;
+      }
+      h2{
+        width: min-content;
+        margin-bottom: .3em;
+      }
+      .info{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        max-width: 250px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 0.8rem;
+        @include bp(md){
+          max-width: 200px;
+        }
+        .link{
+          text-align: center;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 4px;
+          text-decoration: none;
+          svg{
+            transition: .3s;
+          }
+        }
+        .heading{
+          p{
+            text-align: center;
+            font-size: $fs-h3;
+            font-weight: $fw-bold;
+            text-transform: uppercase;
+            line-height: normal;
+            @include bp(md){
+              font-size: $fs-p-l;
+            }
+            em{
+              text-transform: none;
+              font-weight: 400;
+              font-size: inherit;
+              font-family: "ItalianPlateItalic", sans-serif;
+            }
+          }
+        }
+      }
+      &[href=""] {
+        pointer-events: none;
+      }
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
       }
     }
     a.page-numbers {

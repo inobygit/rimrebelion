@@ -422,6 +422,67 @@ add_filter("rwmb_meta_boxes", function ($meta_boxes) {
             ],
         ],
     ];
+
+    $meta_boxes[] = [
+        "taxonomies" => ["product_cat", "product_specials", "product_tag"],
+        'title' => __("Bannery", 'rimrebellion'),
+        "fields" => [
+      [
+        'group_title'   => __('CTA sekcia - {headline}', 'inoby'),
+        'id'            => 'archive-banner-boxes',
+        'type'          => 'group',
+        'clone'         => true,
+        'collapsible'   => true,
+        'sort_clone'    => true,
+        'max_clone'     => 2,
+        'add_button'    => __('Pridať ďalšiu sekciu', 'inoby'),
+        'fields' => array(
+          [
+            'id'  => 'style-2',
+            'name'  => __("Štýl 2", 'inoby'),
+            'type'  => 'checkbox',
+            'std' => 0,
+          ],
+          [
+            'id'  => 'illustration-color',
+            'name'  => __('Farba ilustrácie', 'inoby'),
+            'type'  => 'color',
+          ],
+          [
+            'id'               => "bg",
+            'name'             => __('Pozadie', 'inoby'),
+            'type'             => 'image_advanced',
+            'force_delete'     => false,
+            'max_file_uploads' => 1,
+            'max_status'       => false,
+            'image_size'       => 'thumbnail',
+          ],
+          [
+            'id'       => 'headline',
+            'title'    => __('Nadpis', 'inoby'),
+            'placeholder'   => __('Vložte nadpis', 'inoby'),
+            'type'     => 'wysiwyg',
+            'sanitize_callback' => 'none',
+            'raw' => true,
+            "translate" => true,
+          ],
+          [
+            'id'       => 'text',
+            'title'    => __('Text', 'inoby'),
+            'placeholder'   => __('Vložte text', 'inoby'),
+            'type'     => 'text',
+            'sanitize_callback' => 'none',
+          ],
+          [
+            'id'       => 'url',
+            'title'    => __('Odkaz', 'inoby'),
+            'placeholder'   => __('Vložte odkaz', 'inoby'),
+            'type'     => 'text',
+          ],
+        )
+      ],
+        ],
+    ];
     return $meta_boxes;
 });
 
