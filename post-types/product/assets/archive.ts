@@ -57,11 +57,10 @@ class ProductArchiveModule extends InobyModule {
     if (options.url.includes('?rc-ajax=get_products')) {
       $('#inoby-preloader').show();
       $('#inoby-preloader').removeClass("loaded");
-      $('#inoby-preloader').css('opacity', 0.5);
+      $('#inoby-preloader').css('opacity', 0.9);
       $('html, body').off('scroll touchmove mousewheel');
 
       $('#categories').load(' #categories > *', function() {
-
         $("a[rel~=keep-search").off('click');
         $("a[rel~=keep-search]").on("click", (e) => {
           const link: any = e.currentTarget;
@@ -81,10 +80,14 @@ class ProductArchiveModule extends InobyModule {
               }
           }
       });
-          
+
+        $('#products-main').load(' #products-main > *', function() {
+
           $('#inoby-preloader').addClass("loaded");
           $('#inoby-preloader').hide();
           $('#inoby-preloader').css('opacity', 0);
+        });
+          
       });
 
     }
