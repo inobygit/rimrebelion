@@ -378,8 +378,6 @@ if ($cat instanceof WP_Term) {
       if (wc_get_loop_prop("total")) {
         if(isset($cat->term_id)){
             $article_grid = get_term_meta($cat->term_id, "archive-banner-boxes", true);
-        } else if(rwmb_meta('archive-banner-boxes', ["object_type" => "setting"], 'options')) {
-            $article_grid = rwmb_meta('archive-banner-boxes', ["object_type" => "setting"], 'options');
         } else {
             $article_grid = null;
         }

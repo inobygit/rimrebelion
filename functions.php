@@ -342,73 +342,80 @@ add_filter("rwmb_meta_boxes", function ($meta_boxes) {
         ],
     ];
 
-    $meta_boxes[] = [
-        "id" => "mb-shop-banners",
-        "title" => __("Nastavenie bannerov na stránke obchodu", "inoby"),
-        "settings_pages" => "options",
-        "context" => "normal",
-        "tab" => "delivery-info",
-        "fields" => [
-          [
-            'type'  => 'heading',
-            'name'  => __("Nastavenie bannerov na stránke obchodu", "inoby"),
-          ],
-      [
-        'group_title'   => __('CTA sekcia - {headline}', 'inoby'),
-        'id'            => 'archive-banner-boxes',
-        'type'          => 'group',
-        'clone'         => true,
-        'collapsible'   => true,
-        'sort_clone'    => true,
-        'max_clone'     => 2,
-        'add_button'    => __('Pridať ďalšiu sekciu', 'inoby'),
-        'fields' => array(
-          [
-            'id'  => 'style-2',
-            'name'  => __("Štýl 2", 'inoby'),
-            'type'  => 'checkbox',
-            'std' => 0,
-          ],
-          [
-            'id'  => 'illustration-color',
-            'name'  => __('Farba ilustrácie', 'inoby'),
-            'type'  => 'color',
-          ],
-          [
-            'id'               => "bg",
-            'name'             => __('Pozadie', 'inoby'),
-            'type'             => 'image_advanced',
-            'force_delete'     => false,
-            'max_file_uploads' => 1,
-            'max_status'       => false,
-            'image_size'       => 'thumbnail',
-          ],
-          [
-            'id'       => 'headline',
-            'title'    => __('Nadpis', 'inoby'),
-            'placeholder'   => __('Vložte nadpis', 'inoby'),
-            'type'     => 'wysiwyg',
-            'sanitize_callback' => 'none',
-            'raw' => true,
-            "translate" => true,
-          ],
-          [
-            'id'       => 'text',
-            'title'    => __('Text', 'inoby'),
-            'placeholder'   => __('Vložte text', 'inoby'),
-            'type'     => 'text',
-            'sanitize_callback' => 'none',
-          ],
-          [
-            'id'       => 'url',
-            'title'    => __('Odkaz', 'inoby'),
-            'placeholder'   => __('Vložte odkaz', 'inoby'),
-            'type'     => 'text',
-          ],
-        )
-      ],
-        ],
-    ];
+    // $meta_boxes[] = [
+    //     "id" => "mb-shop-banners",
+    //     "title" => __("Nastavenie bannerov na stránke obchodu", "inoby"),
+    //     "settings_pages" => "options",
+    //     "context" => "normal",
+    //     "tab" => "delivery-info",
+    //     "fields" => [
+    //       [
+    //         'type'  => 'heading',
+    //         'name'  => __("Nastavenie bannerov na stránke obchodu", "inoby"),
+    //       ],
+    //   [
+    //     'group_title'   => __('CTA sekcia - {headline}', 'inoby'),
+    //     'id'            => 'archive-banner-boxes',
+    //     'type'          => 'group',
+    //     'clone'         => true,
+    //     'collapsible'   => true,
+    //     'sort_clone'    => true,
+    //     'max_clone'     => 2,
+    //     'translate' => true,
+    //     'add_button'    => __('Pridať ďalšiu sekciu', 'inoby'),
+    //     'fields' => array(
+    //       [
+    //         'id'  => 'style-2',
+    //         'name'  => __("Štýl 2", 'inoby'),
+    //         'type'  => 'checkbox',
+    //         'std' => 0,
+    //         'translate' => true,
+    //       ],
+    //       [
+    //         'id'  => 'illustration-color',
+    //         'name'  => __('Farba ilustrácie', 'inoby'),
+    //         'type'  => 'color',
+    //     'translate' => true,
+    //       ],
+    //       [
+    //     'translate' => true,
+    //         'id'               => "bg",
+    //         'name'             => __('Pozadie', 'inoby'),
+    //         'type'             => 'image_advanced',
+    //         'force_delete'     => false,
+    //         'max_file_uploads' => 1,
+    //         'max_status'       => false,
+    //         'image_size'       => 'thumbnail',
+    //       ],
+    //       [
+    //     'translate' => true,
+    //         'id'       => 'headline',
+    //         'title'    => __('Nadpis', 'inoby'),
+    //         'placeholder'   => __('Vložte nadpis', 'inoby'),
+    //         'type'     => 'wysiwyg',
+    //         'sanitize_callback' => 'none',
+    //         'raw' => true,
+    //         "translate" => true,
+    //       ],
+    //       [
+    //     'translate' => true,
+    //         'id'       => 'text',
+    //         'title'    => __('Text', 'inoby'),
+    //         'placeholder'   => __('Vložte text', 'inoby'),
+    //         'type'     => 'text',
+    //         'sanitize_callback' => 'none',
+    //       ],
+    //       [
+    //     'translate' => true,
+    //         'id'       => 'url',
+    //         'title'    => __('Odkaz', 'inoby'),
+    //         'placeholder'   => __('Vložte odkaz', 'inoby'),
+    //         'type'     => 'text',
+    //       ],
+    //     )
+    //   ],
+    //     ],
+    // ];
 
     return $meta_boxes;
 });
