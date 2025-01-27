@@ -91,7 +91,7 @@ if (!is_user_logged_in() && !empty($club_popup_show) && $club_popup_show) {
                     <?php if(!empty($club_popup_coupon)) { ?>
                     <div class="coupon">
                         <div class="message">
-                            <?= __("Coupon was successfully coppied to your clipboard", 'inoby') ?>
+                            <?= __("Coupon was successfully copied to your clipboard", 'inoby') ?>
                         </div>
                         <p class="coupon-code">
                             <?= $club_popup_coupon ?>
