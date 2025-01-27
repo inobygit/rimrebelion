@@ -1,20 +1,7 @@
 import $ from "jquery";
 
-function wpSendForm(action, form) {
-    const data = Object.fromEntries(new FormData(form).entries());
+function wpSendForm(action, form, modifiedData) {
     form.classList.add("loading");
-
-    const modifiedData = {};
-
-    for (const key in data) {
-        if (data.hasOwnProperty(key)) {
-            if (key === 'xoo_el_reg_pass' || key === 'xoo_el_reg_pass_again' || key === 'xoo_el_reg_terms' || key === '_xoo_el_form' || key === 'xoo_el_redirect') {
-                continue;
-            }
-            const newKey = key.replace('xoo_el_reg_', '');
-            modifiedData[newKey] = data[key];
-        }
-    }
 
     return wpSendData(action, modifiedData).always(() =>
       form.classList.remove("loading")
@@ -47,11 +34,18 @@ $(function () {
     });
 
     var form = null;
+    var modifiedData = {};
 
     $(document).ajaxSend(function(e, xhr, options) {
         if(popupShown){
             if (options.data && options.data.includes('xoo_el_form_action')) {
                 form = $('.club-popup-wrapper .xoo-el-form-register');
+                if (options.data.includes('xoo_el_reg_email') && options.data.includes('xoo_el_reg_fname')) {
+                    const email = decodeURIComponent(options.data.split('xoo_el_reg_email=')[1].split('&')[0]);
+                    const fname = options.data.split('xoo_el_reg_fname=')[1].split('&')[0];
+                    modifiedData.email = email;
+                    modifiedData.fname = fname;
+                }
             }
         }
     });
@@ -60,7 +54,7 @@ $(function () {
         if(popupShown){
         if (options.data && options.data.includes('xoo_el_form_action')) {
             if(xhr.responseJSON.error != 1){
-                wpSendForm("inoby_newsletter_subscribe", form.get(0))
+                wpSendForm("inoby_newsletter_subscribe", form.get(0), modifiedData)
                 .done(() => {
                     setCookie('popupShown', 'true', 7); 
                     $(form).removeClass("fail").addClass("success");
