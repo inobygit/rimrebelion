@@ -339,6 +339,52 @@ add_filter("rwmb_meta_boxes", function ($meta_boxes) {
               'raw' => true,
               'sanitize_callback' => 'none',
             ],
+              [
+              'name'  => __("Rimrebellion social club", 'inoby'),
+              'type'  => 'heading',
+            ],
+            [
+              'id'  => 'club_popup_show',
+              'name'  => __("Show popup", 'inoby'),
+              'type' => 'checkbox',
+              'std' => 0,
+            ],
+            [
+              'id' => "club_popup_image",
+              'name'  => __("Club popup image - left", 'inoby'),
+              'type'  => 'image_advanced',
+              'max_file_uploads' => 1,
+            ],
+            [
+              'id' => "club_popup_logo",
+              'name'  => __("Club popup logo", 'inoby'),
+              'type'  => 'image_advanced',
+              'max_file_uploads' => 1,
+            ],
+            [
+              'id' => "club_popup_benefits",
+              'name'  => __("Club popup benefits", 'inoby'),
+              'type'  => 'text',
+              'clone' => true,
+            ],
+            [
+              'type'  => 'divider',
+            ],
+            [
+              'id' => "club_popup_heading_last",
+              'name'  => __("Club popup - Nadpis nad kupónom", 'inoby'),
+              'type'  => 'text',
+            ],
+            [
+              'id' => "club_popup_desc_last",
+              'name'  => __("Club popup - Popis nad kupónom", 'inoby'),
+              'type'  => 'textarea',
+            ],
+            [
+              'id' => "club_popup_coupon",
+              'name'  => __("Club popup - Kód kupónu", 'inoby'),
+              'type'  => 'text',
+            ],
         ],
     ];
 
@@ -419,3 +465,11 @@ add_filter("rwmb_meta_boxes", function ($meta_boxes) {
 
     return $meta_boxes;
 });
+
+add_filter('xoo_el_registration_redirect', function($redirect, $user) {
+    // Check if the request is from the popup
+    if (isset($_POST['source']) && $_POST['source'] === 'popup') {
+        return false; // Prevent redirect for popup registration
+    }
+    return $redirect; // Allow normal redirect for other cases
+}, 99, 2);

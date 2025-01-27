@@ -25,6 +25,247 @@
   display: none;
 }
 
+.club-popup {
+  display: none;
+  .club-popup-wrapper{
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex; /* Initially hidden */
+      background: rgba(0, 0, 0, 0.8);
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+}
+
+.popup-content {
+    display: flex;
+    align-items: stretch;
+    max-height: 500px;
+    max-width: 870px;
+    @include bp(md){
+        max-width: 100%;
+        max-height: 100dvh;
+        width: 100%;
+        height: auto;
+        flex-direction: column;
+      }
+      .xoo-el-form-container .xoo-aff-group{
+        @include bp(md){
+          margin-bottom: 8px;
+        }
+      }
+      .xoo-el-modal .xoo-el-main .xoo-aff-label, .xoo-el-modal .xoo-el-fields .xoo-aff-label, .xoo-el-form-container .xoo-el-main .xoo-aff-label, .xoo-el-form-container .xoo-el-fields .xoo-aff-label{
+        @include bp(md){
+          padding-bottom: 4px !important;
+        }
+      }
+      .xoo-aff-group.xoo-aff-cont-checkbox_single{
+        @include bp(md){
+          margin-top: 10px;
+        }
+      }
+    > picture {
+        max-width: 40%; /* Adjust as needed */
+        flex-basis: 40%;
+        position: relative;
+        @include bp(md){
+          max-width: 100%;
+          flex-basis: 100%;
+          width: 100%;
+        }
+        img{
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          @include bp(md){
+            max-height: 300px;
+          }
+          @include bp(md){
+            max-height: 200px;
+          }
+        }
+    }
+    .next-step{
+      margin-top: 3.6rem;
+    }
+    .popup-text {
+      max-width: 60%; 
+      flex-basis: 60%;
+      padding: 6rem 8rem 4rem 8rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+      @include bp(md){
+        padding: 3.4rem 4rem;
+        max-width: 100%;
+        flex-basis: 100%;
+        width: 100%;
+        max-height: 60vh;
+        overflow: auto;
+      }
+      @include bp(sm){
+        padding: 3.4rem 1.5rem;
+      }
+      &::-webkit-scrollbar{
+        width: 1px;
+      }
+      .xoo-el-notice-error, .xoo-el-notice-success, .xoo-el-notice-warning {
+        display: none;
+      }
+      form.xoo-el-form-register.loading{
+        display: block !important;
+        opacity: .6;
+        position: relative;
+        cursor: wait;
+        *{
+          cursor: wait;
+        }
+        &::after {
+          content: '';
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          margin-top: -30px;  
+          margin-left: -30px;
+          width: 50px;
+          height: 50px;
+          border-radius: 50px;
+          border: 5px solid grey;
+          border-top-color: black;
+          animation: loading 2s linear infinite;
+          z-index: 999;
+        }
+      }
+        h2{
+          font-size: 3.3rem;
+          margin-bottom: 4rem;
+          text-transform: uppercase;
+        }
+        p{
+          font-family: 'ItalianPlate', sans-serif;
+          font-size: 2rem;
+          color: $black;
+          margin: 0;
+        }
+        .coupon{
+          margin-top: 4rem;
+          padding: 1.8rem 4rem;
+          border: 1px dashed $black;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 1.8rem;
+          .message{
+            display: none;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 1.6rem;
+            border-radius: 2px;
+            background-color: $col-success;
+            color: $white;
+            font-size: 1.4rem;
+          }
+          .coupon-code{
+            font-size: 2.4rem;
+            font-family: 'Roboto', sans-serif;
+            color: $black;
+            text-transform: uppercase;
+          }
+          .copy{
+            width: 2.4rem;
+            min-width: 2.4rem;
+            cursor: pointer;
+            transition: .3s;
+            &:hover{
+              opacity: .6;
+            }
+          }
+        }
+        .xoo-el-form-container{
+          margin: 0;
+          padding: 0 !important;
+        }
+        .close-popup{
+          position: absolute;
+          top: 1.6rem;
+          right: 1.6rem;
+          width: 26px;
+          min-width: 26px;
+          min-height: 26px;
+          height: 26px;
+          display: block;
+          cursor: pointer;
+          transition: .3s;
+          &:hover{
+            opacity: .6;
+          }
+        }
+        > picture {
+          max-width: 130px;
+          height: auto; 
+          position: relative;
+          display: block;
+          margin-bottom: 3.6rem;
+          img{
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+          }
+      }
+      .benefit{
+        margin-right: auto;
+        position: relative;
+        display: flex;
+        text-wrap: balance;
+        align-items: flex-start;
+        justify-content: flex-start;
+        gap: 1.8rem;
+        font-family: 'ItalianPlate', sans-serif;
+        color: $black;
+        font-size: 1.8rem;
+        &::before{
+          content: '';
+          background-image: url("data:image/svg+xml,%3Csvg width='21' height='18' viewBox='0 0 21 18' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20.237 8.27993L18.7588 5.72545C18.506 5.29163 18.044 5.02261 17.5408 5.02261H14.9344V3.25338C14.9344 2.75169 14.6646 2.28878 14.2294 2.03915L11.166 0.279617C10.7308 0.0275625 10.1959 0.0275625 9.75583 0.279617L6.69973 2.03915C6.26453 2.29121 5.99466 2.75169 5.99466 3.25338V5.02503H3.39078C2.8875 5.02503 2.42556 5.29163 2.17271 5.72545L0.689639 8.27993C0.436787 8.71375 0.436787 9.25179 0.689639 9.68562L2.17271 12.2449C2.42556 12.6788 2.8875 12.9478 3.39078 12.9478H5.99466V14.717C5.99466 15.2187 6.2621 15.6816 6.6973 15.9312L9.7534 17.6932C10.1886 17.9453 10.7283 17.9453 11.1635 17.6932L14.2245 15.9312C14.6597 15.6792 14.9296 15.2187 14.9296 14.717V12.9478H17.5335C18.0367 12.9478 18.5011 12.6788 18.7515 12.2449L20.237 9.6832C20.4899 9.24937 20.4899 8.71618 20.237 8.27751H20.2395L20.237 8.27993Z' fill='black' fill-opacity='0.9'/%3E%3C/svg%3E%0A");
+          background-repeat: no-repeat;
+          background-size: contain;
+          background-position: center;
+          margin-top: 4px;
+          width: 18px;
+          min-width: 18px;
+          height: 18px;
+          min-height: 18px;
+          display: block;
+        }
+      }
+    }
+}
+
+
+
+.popup-step {
+    display: none; /* Hide all steps by default */
+    background: white;
+    align-items: center;
+    @include bp(md){
+      width: 90%;
+    }
+    &.step-3{
+      .popup-text{
+        justify-content: center;
+      }
+    }
+}
+
+.popup-step.active {
+    display: flex; /* Show the active step */
+}
 select{
   -webkit-appearance: none !important;
   appearance: none !important;
@@ -1357,5 +1598,14 @@ nav.breadcrumbs {
   }
   .bar:nth-of-type(3) {
     transform: translate(0px, -1px);
+  }
+}
+
+@keyframes loading {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
   }
 }
