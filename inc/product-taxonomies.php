@@ -438,15 +438,23 @@ add_filter("rwmb_meta_boxes", function ($meta_boxes) {
         'add_button'    => __('Pridať ďalšiu sekciu', 'inoby'),
         'fields' => array(
           [
-            'id'  => 'style-2',
-            'name'  => __("Štýl 2", 'inoby'),
-            'type'  => 'checkbox',
-            'std' => 0,
+            'id'  => 'style',
+            'name'  => __("Štýl", 'inoby'),
+            'type'  => 'select_advanced',
+            'options'    => [
+                'style-1' => 'Štýl 1',
+                'style-2' => 'Štýl 2',
+                'style-3' => 'Štýl 3',
+                'video' => 'Video',
+                'mood' => 'Mood banner',
+            ],
+            'std'   => 'style-1',
           ],
           [
             'id'  => 'illustration-color',
             'name'  => __('Farba ilustrácie', 'inoby'),
             'type'  => 'color',
+            'hidden'    => ['style', 'in', ['style-3', 'mood', 'video']],
           ],
           [
             'id'               => "bg",
@@ -465,6 +473,7 @@ add_filter("rwmb_meta_boxes", function ($meta_boxes) {
             'sanitize_callback' => 'none',
             'raw' => true,
             "translate" => true,
+            'hidden'    => ['style', 'in', ['mood', 'video']],
           ],
           [
             'id'       => 'text',
@@ -472,6 +481,14 @@ add_filter("rwmb_meta_boxes", function ($meta_boxes) {
             'placeholder'   => __('Vložte text', 'inoby'),
             'type'     => 'text',
             'sanitize_callback' => 'none',
+            'hidden'    => ['style', 'in', ['mood', 'video']],
+          ],
+          [
+            'id'       => 'video-id',
+            'title'    => __('Video ID', 'inoby'),
+            'placeholder'   => __('Vložte video ID', 'inoby'),
+            'type'     => 'text',
+            'visible'   => ['style', '=', 'video'],
           ],
           [
             'id'       => 'url',
