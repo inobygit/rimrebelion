@@ -388,13 +388,53 @@ if ($cat instanceof WP_Term) {
                 <?php 
 
                   $article_url = $article_grid[0]["url"] ?? "";
-                  if (isset($article_grid[0]["bg"])) {
-                    echo '<a href="' . $article_url . '" class="article-section '. (isset($article_grid[0]['style-2']) && $article_grid[0]["style-2"] == 1 ? 'style-2' : '') .'" style="background-image: url(' . wp_get_attachment_image_src(reset($article_grid[0]["bg"]), "o-6")[0] . ');">';
+                    $id = uniqid('archive_video');
+
+                  if(isset($article_grid[0]['style'])){
+                    if($article_grid[0]['style'] == 'style-1'){
+                        $class ='style-1';
+                    } elseif($article_grid[0]['style'] == 'style-2') {
+                        $class = 'style-2';
+                    } elseif($article_grid[0]['style'] == 'style-3'){
+                        $class ='style-3';
+                    } elseif($article_grid[0]['style'] == 'video'){
+                        $class ='video';
+                    } elseif($article_grid[0]['style'] == 'mood'){
+                        $class ='mood';
+                    } else {
+                        $class = "";
+                    }
                   } else {
-                    echo '<a href="' . $article_url . '" class="article-section article-section-placeholder '. (isset($article_grid[0]['style-2']) && $article_grid[0]["style-2"] == 1 ? 'style-2' : '') .'">';
+                    $class = '';
                   }
+
+                  if (isset($article_grid[0]["bg"])) {
+                    if(isset($article_grid[0]["style"]) && $article_grid[0]["style"] == 'video'){
+                        echo '<a href="' . $article_url . '" class="article-section '. $class .' video-col" id="'. $id .'" data-src="'. $article_grid[0]['video-id'] .'">';
+                    } else {
+                        echo '<a href="' . $article_url . '" class="article-section '. $class .'" style="background-image: url(' . wp_get_attachment_image_src(reset($article_grid[0]["bg"]), "o-6")[0] . ');">';
+                    }
+                  } else {
+                    echo '<a href="' . $article_url . '" class="article-section article-section-placeholder '. $class .'">';
+                  }
+                  if(isset($article_grid[0]["style"]) && $article_grid[0]["style"] == 'video' && isset($article_grid[0]['video-id'])){ 
+                    ?>
+
+                <?php 
+                        if (isset($article_grid[0]['bg'])) { 
+                        ?>
+                <img loading="lazy" src="<?= wp_get_attachment_image_src(reset($article_grid[0]["bg"]), "o-6")[0] ?>"
+                    alt="Video">
+                <?php } else {
+                        echo "<img loading='lazy' src='$default_thumb' alt='Video...' />";
+                        }
+                    ?>
+                <?php if(!empty($article_grid[0]['video-id'])): ?>
+                <div id="player<?= $id ?>" data-src="<?= $article_grid[0]['video-id'] ?>"></div>
+                <?php endif; ?>
+                <?php } else {
                   ?>
-                <?php if(isset($article_grid[0]["style-2"]) && $article_grid[0]["style-2"] == 1) { ?>
+                <?php if(isset($article_grid[0]["style"]) && $article_grid[0]["style"] == 'style-2') { ?>
                 <svg class="illustration style-2" width="640" height="271" viewBox="0 0 640 271" fill="none"
                     xmlns="http://www.w3.org/2000/svg">
                     <path
@@ -402,7 +442,7 @@ if ($cat instanceof WP_Term) {
                         fill="<?= (isset($article_grid[0]['illustration-color']) ? $article_grid[0]['illustration-color'] : '#ffffff') ?>"
                         fill-opacity="0.7" />
                 </svg>
-                <?php } else { ?>
+                <?php } elseif(isset($article_grid[0]['style']) && $article_grid[0]['style'] == 'style-3' || $article_grid[0]['style'] == 'mood') { } else { ?>
                 <svg class="illustration" width="316" height="289" viewBox="0 0 316 289" fill="none"
                     xmlns="http://www.w3.org/2000/svg">
                     <path
@@ -421,7 +461,7 @@ if ($cat instanceof WP_Term) {
                     ?>
                 <p class='link'>
                     <?= $article_grid[0]['text'] ?>
-                    <?php if(isset($article_grid[0]["style-2"]) && $article_grid[0]["style-2"] == 1) { ?>
+                    <?php if(isset($article_grid[0]["style"]) && $article_grid[0]["style"] == 'style-2') { ?>
                     <?php } else { ?>
                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" clip-rule="evenodd" d="M0.5 7.25H14.5V8.75H0.5V7.25Z" fill="white" />
@@ -435,7 +475,7 @@ if ($cat instanceof WP_Term) {
 
                 <?php 
             echo '</div>';    
-            }
+            } }
                   echo "</a>";
             ?>
             </div>
@@ -453,19 +493,76 @@ if ($cat instanceof WP_Term) {
               wc_get_template_part("content", "product");
           } 
           if(!empty($article_grid ) && isset($article_grid[1])){
+            if(isset($article_grid[1]['style'])){
+                    if($article_grid[1]['style'] == 'style-1'){
+                        $classBottom ='style-1';
+                    } elseif($article_grid[1]['style'] == 'style-2') {
+                        $classBottom = 'style-2';
+                    } elseif($article_grid[1]['style'] == 'style-3'){
+                        $classBottom ='style-3';
+                    } elseif($article_grid[1]['style'] == 'video'){
+                        $classBottom ='video';
+                    } elseif($article_grid[1]['style'] == 'mood'){
+                        $classBottom ='mood';
+                    } else {
+                        $classBottom = "";
+                    }
+                  } else {
+                    $classBottom = '';
+                  }
         ?>
 
             <div class="banner banner-bottom">
                 <?php 
 
                   $article_url = $article_grid[1]["url"] ?? "";
-                  if (isset($article_grid[1]["bg"])) {
-                    echo '<a href="' . $article_url . '" class="article-section '. (isset($article_grid[1]['style-2']) && $article_grid[1]["style-2"] == 1 ? 'style-2' : '') .'" style="background-image: url(' . wp_get_attachment_image_src(reset($article_grid[1]["bg"]), "o-6")[0] . ');">';
+                    $id = uniqid('archive_video');
+
+                  if(isset($article_grid[1]['style'])){
+                    if($article_grid[1]['style'] == 'style-1'){
+                        $class ='style-1';
+                    } elseif($article_grid[1]['style'] == 'style-2') {
+                        $class = 'style-2';
+                    } elseif($article_grid[1]['style'] == 'style-3'){
+                        $class ='style-3';
+                    } elseif($article_grid[1]['style'] == 'video'){
+                        $class ='video';
+                    } elseif($article_grid[1]['style'] == 'mood'){
+                        $class ='mood';
+                    } else {
+                        $class = "";
+                    }
                   } else {
-                    echo '<a href="' . $article_url . '" class="article-section article-section-placeholder '. (isset($article_grid[1]['style-2']) && $article_grid[1]["style-2"] == 1 ? 'style-2' : '') .'">';
+                    $class = '';
                   }
+
+                  if (isset($article_grid[1]["bg"])) {
+                    if(isset($article_grid[1]["style"]) && $article_grid[1]["style"] == 'video'){
+                        echo '<a href="' . $article_url . '" class="article-section '. $class .' video-col" id="'. $id .'" data-src="'. $article_grid[1]['video-id'] .'">';
+                    } else {
+                        echo '<a href="' . $article_url . '" class="article-section '. $class .'" style="background-image: url(' . wp_get_attachment_image_src(reset($article_grid[1]["bg"]), "o-6")[0] . ');">';
+                    }
+                  } else {
+                    echo '<a href="' . $article_url . '" class="article-section article-section-placeholder '. $class .'">';
+                  }
+                  if(isset($article_grid[1]["style"]) && $article_grid[1]["style"] == 'video' && isset($article_grid[1]['video-id'])){ 
+                    ?>
+
+                <?php 
+                        if (isset($article_grid[1]['bg'])) { 
+                        ?>
+                <img loading="lazy" src="<?= wp_get_attachment_image_src(reset($article_grid[1]["bg"]), "o-6")[0] ?>"
+                    alt="Video">
+                <?php } else {
+                        echo "<img loading='lazy' src='$default_thumb' alt='Video...' />";
+                        }
+                    ?>
+                <?php if(!empty($article_grid[1]['video-id'])): ?>
+                <div id="player<?= $id ?>" data-src="<?= $article_grid[1]['video-id'] ?>"></div>
+                <?php endif; ?>
+                <?php } else {
                   ?>
-                <?php if(isset($article_grid[1]["style-2"]) && $article_grid[1]["style-2"] == 1) { ?>
+                <?php if(isset($article_grid[1]["style"]) && $article_grid[1]["style"] == 'style-2') { ?>
                 <svg class="illustration style-2" width="640" height="271" viewBox="0 0 640 271" fill="none"
                     xmlns="http://www.w3.org/2000/svg">
                     <path
@@ -473,7 +570,7 @@ if ($cat instanceof WP_Term) {
                         fill="<?= (isset($article_grid[1]['illustration-color']) ? $article_grid[1]['illustration-color'] : '#ffffff') ?>"
                         fill-opacity="0.7" />
                 </svg>
-                <?php } else { ?>
+                <?php } elseif(isset($article_grid[1]['style']) && $article_grid[1]['style'] == 'style-3' || $article_grid[1]['style'] == 'mood') { } else { ?>
                 <svg class="illustration" width="316" height="289" viewBox="0 0 316 289" fill="none"
                     xmlns="http://www.w3.org/2000/svg">
                     <path
@@ -492,7 +589,7 @@ if ($cat instanceof WP_Term) {
                     ?>
                 <p class='link'>
                     <?= $article_grid[1]['text'] ?>
-                    <?php if(isset($article_grid[1]["style-2"]) && $article_grid[1]["style-2"] == 1) { ?>
+                    <?php if(isset($article_grid[1]["style"]) && $article_grid[1]["style"] == 'style-2') { ?>
                     <?php } else { ?>
                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" clip-rule="evenodd" d="M0.5 7.25H14.5V8.75H0.5V7.25Z" fill="white" />
@@ -506,7 +603,7 @@ if ($cat instanceof WP_Term) {
 
                 <?php 
             echo '</div>';    
-            }
+            } }
                   echo "</a>";
             ?>
             </div>
@@ -521,7 +618,10 @@ if ($cat instanceof WP_Term) {
            * @hooked wc_no_products_found - 10
            */
           do_action("woocommerce_no_products_found");
-      }
+      } ?>
+
+
+            <?php
       woocommerce_product_loop_end();
       ?>
 
@@ -539,6 +639,119 @@ if ($cat instanceof WP_Term) {
         </div>
     </div>
 </div>
+
+<?php if((isset($article_grid[0]["style"]) && $article_grid[0]["style"] == 'video') || (isset($article_grid[1]["style"]) && $article_grid[1]["style"] == 'video')){ ?>
+<script async defer>
+// Load the IFrame Player API code asynchronously
+var tag = document.createElement('script');
+if (!document.querySelector('script[src="https://www.youtube.com/iframe_api"]')) {
+
+    tag.src = "https://www.youtube.com/iframe_api";
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+}
+
+var playerInstances = {}; // Store player instances by ID
+var videoBlocks = $('.video-col'); // Select all video blocks
+
+function onYouTubeIframeAPIReady() {
+    videoBlocks.each(function() {
+        var id = $(this).attr('id'); // Get the unique ID for this block
+        var src = $(this).data('src');
+        playerInstances[id] = new YT.Player('player' + id, {
+            height: '100%',
+            width: '100%',
+            playerVars: {
+                loop: 1,
+                controls: 0,
+                showinfo: 0,
+                autohide: 1,
+                disablekb: 1,
+                rel: 0,
+                fs: 0,
+                mute: 1,
+                modestbranding: 1,
+                vq: 'hd1080',
+                wmode: 'opaque',
+                playsinline: 1,
+            },
+            videoId: src ?? '',
+            events: {
+                'onReady': function(event) {
+                    onPlayerReady(event, id);
+                },
+                'onStateChange': function(event) {
+                    onPlayerStateChange(event, id);
+                }
+            }
+        });
+    });
+}
+
+function onPlayerReady(event, id) {
+    var videoBlock = $('#' + id); // Get the specific video block
+    var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+
+                playerInstances[id].playVideo(); // Play video when in view
+                setTimeout(() => {
+                    videoBlock.find("img").animate({
+                        opacity: 0
+                    }, 600);
+                }, 600);
+            } else {
+                playerInstances[id].pauseVideo(); // Pause video when out of view
+                videoBlock.find("img").animate({
+                    opacity: 1
+                }, 600);
+            }
+        });
+    });
+    observer.observe(videoBlock[0]);
+
+    videoBlock.on('click', function() {
+        if (playerInstances[id].getPlayerState() === 1) {
+            playerInstances[id].pauseVideo();
+            videoBlock.find("img").animate({
+                opacity: 1
+            }, 600);
+        } else {
+            playerInstances[id].playVideo();
+            setTimeout(() => {
+                videoBlock.find("img").animate({
+                    opacity: 0
+                }, 600);
+            }, 600);
+        }
+    });
+}
+
+function onPlayerStateChange(event, id) {
+    var videoBlock = $('#' + id);
+    if (event.data === -1) {
+        playerInstances[id].playVideo();
+    }
+    if (event.data === 1) {
+        setTimeout(() => {
+            videoBlock.find("img").animate({
+                opacity: 0
+            }, 600);
+        }, 600);
+    }
+    if (event.data === 0) {
+        playerInstances[id].playVideo();
+    }
+}
+
+$(document).on('customEvent', function() {
+    // Your code here
+    playerInstances = {}; // Store player instances by ID
+    videoBlocks = $('.video-col'); // Select all video blocks
+    onYouTubeIframeAPIReady(); // Load again after AJAX completes
+});
+</script>
+<?php } ?>
 <?php
 do_action("inoby_after_shop_archive");
 get_footer("shop");
