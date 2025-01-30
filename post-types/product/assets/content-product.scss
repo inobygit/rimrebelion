@@ -22,7 +22,7 @@
       height: auto !important;
       background-color: $white;
       aspect-ratio: 6/8;
-      object-fit: cover !important;
+      object-fit: contain !important;
       @supports not (aspect-ratio: 6/8){
         min-height: 400px;
         max-height: 410px;
