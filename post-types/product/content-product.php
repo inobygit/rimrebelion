@@ -35,9 +35,9 @@ if (empty($product) || !$product->is_visible()) {
         <?php
         $attachment_ids = $product->get_gallery_image_ids();
         if(isset($attachment_ids[0])){
-            echo wp_get_attachment_image($attachment_ids[0], 'o-4', false, ['class' => 'product-image', 'loading' => "lazy"]);
+            echo wp_get_attachment_image($attachment_ids[0], 'o-6', false, ['class' => 'product-image', 'loading' => "lazy"]);
         } else {
-            echo $product->get_image("o-4", ["class" => "product-image", "loading" => "lazy", 'alt' => $product->get_title()]);
+            echo $product->get_image("o-6", ["class" => "product-image", "loading" => "lazy", 'alt' => $product->get_title()]);
         }
         ?>
         <div class="tags">
