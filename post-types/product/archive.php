@@ -412,7 +412,7 @@ if ($cat instanceof WP_Term) {
                     if(isset($article_grid[0]["style"]) && $article_grid[0]["style"] == 'video'){
                         echo '<a href="' . $article_url . '" class="article-section '. $class .' video-col" id="'. $id .'" data-src="'. $article_grid[0]['video-id'] .'">';
                     } else {
-                        echo '<a href="' . $article_url . '" class="article-section '. $class .'" style="background-image: url(' . wp_get_attachment_image_src(reset($article_grid[0]["bg"]), "o-6")[0] . ');">';
+                        echo '<a href="' . $article_url . '" class="article-section '. $class .'" style="background-image: url(' . wp_get_attachment_image_src(reset($article_grid[0]["bg"]), "o-12")[0] . ');">';
                     }
                   } else {
                     echo '<a href="' . $article_url . '" class="article-section article-section-placeholder '. $class .'">';
@@ -540,7 +540,7 @@ if ($cat instanceof WP_Term) {
                     if(isset($article_grid[1]["style"]) && $article_grid[1]["style"] == 'video'){
                         echo '<a href="' . $article_url . '" class="article-section '. $class .' video-col" id="'. $id .'" data-src="'. $article_grid[1]['video-id'] .'">';
                     } else {
-                        echo '<a href="' . $article_url . '" class="article-section '. $class .'" style="background-image: url(' . wp_get_attachment_image_src(reset($article_grid[1]["bg"]), "o-6")[0] . ');">';
+                        echo '<a href="' . $article_url . '" class="article-section '. $class .'" style="background-image: url(' . wp_get_attachment_image_src(reset($article_grid[1]["bg"]), "o-12")[0] . ');">';
                     }
                   } else {
                     echo '<a href="' . $article_url . '" class="article-section article-section-placeholder '. $class .'">';
