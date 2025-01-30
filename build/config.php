@@ -1228,5 +1228,6 @@
         "meta-box/inoby-icon-boxes-child",
         "meta-box/inoby-quotes",
         "meta-box/inoby-references-slider",
+        "meta-box/inoby-social-feed",
     ],
 ]);

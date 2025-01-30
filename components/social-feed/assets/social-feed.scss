@@ -1,0 +1,104 @@
+@import "variables";
+@import "mixins";
+
+section.social-feed {
+  padding: 4rem 0 8rem 0;
+  @include bp(md){
+    padding: 4rem 0;
+  }
+  .top-row{
+    margin-bottom: 2.4rem;
+    row-gap: 1.6rem;
+    .col-6{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      h3{
+        margin-bottom: .4rem;
+        text-transform: uppercase;
+      }
+      h4{
+        font-family: 'ItalianPlateItalic', sans-serif;
+        font-size: $fs-h3;
+        font-weight: 400;
+        margin: 0;
+      }
+      &.socials-col{
+        align-items: flex-end;
+        @include bp(md){
+          align-items: flex-start;          
+        }
+        .socials{
+          display: flex;
+          align-items: center;
+          gap: 1.6rem;
+          a{
+            margin: 0;
+            filter: invert(1);
+            padding: 0;
+            &:hover{
+              transform: none;
+              opacity: .6;
+            }
+            img{
+              &:hover{
+                transform: none;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  #sb_instagram{
+    overflow: hidden !important;
+    @include bp(xl){
+        height: auto !important;
+      }
+    #sbi_load{
+      display: none;
+    }
+    #sbi_images{
+      height: 100%;
+      padding: 0 !important;
+      grid-template-columns: 1.2fr 1fr 1fr !important;
+      @include bp(xl){
+        height: auto;
+      }
+      @include bp(md){
+        grid-template-columns: 1fr 1fr !important;
+      }
+      .sbi_item{
+        &:first-of-type{
+          grid-row: span 2;
+          @include bp(md){
+            grid-row: auto;
+            grid-column: span 2;
+          }
+          .sbi_photo_wrap{
+            height: 100%;
+            .sbi_photo{
+              height: 100% !important;
+                @include bp(md){
+                  height: 400px !important;
+                }
+                @include bp(sm){
+                  height: 300px !important;
+                }
+            }
+          }
+        }
+        .sbi_photo_wrap{
+            .sbi_photo{
+                @include bp(md){
+                  height: 300px !important;
+                }
+                @include bp(sm){
+                  height: 200px !important;
+                }
+            }
+          }
+      }
+    }
+  }
+}

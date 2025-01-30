@@ -29,7 +29,8 @@
     "meta-box/inoby-html",
     "meta-box/inoby-icon-boxes-child",
     "meta-box/inoby-quotes",
-    "meta-box/inoby-references-slider"
+    "meta-box/inoby-references-slider",
+    "meta-box/inoby-social-feed"
   ],
   "page404": {
     "title": "<?php __(\"PAGE NOT FOUND\", \"inoby\")",
