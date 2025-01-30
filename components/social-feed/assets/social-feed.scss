@@ -3,6 +3,7 @@
 
 section.social-feed {
   padding: 4rem 0 8rem 0;
+  background-color: $white;
   @include bp(md){
     padding: 4rem 0;
   }
