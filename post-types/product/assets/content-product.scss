@@ -8,6 +8,11 @@
   .content-product-thumbnail {
     overflow: hidden;
     height: auto !important;
+    aspect-ratio: 6/8 !important;
+    @supports not (aspect-ratio: 6/8){
+      min-height: 400px;
+      max-height: 410px;
+    }
     .tags{
       position: absolute;
       top: $tags-position-top;
@@ -15,9 +20,13 @@
     }
     img{
       height: auto !important;
-      aspect-ratio: 1/1;
-      object-fit: contain !important;
       background-color: $white;
+      aspect-ratio: 6/8;
+      object-fit: cover !important;
+      @supports not (aspect-ratio: 6/8){
+        min-height: 400px;
+        max-height: 410px;
+      }
     }
     .product-mask{
       opacity: 0;
