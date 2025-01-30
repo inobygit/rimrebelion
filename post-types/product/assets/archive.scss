@@ -274,8 +274,8 @@ body.archive {
         }
         .banner {
     grid-column: span 2;
-    min-height: 400px;
-    max-height: 410px;
+    min-height: 500px;
+    max-height: 510px;
     @include bp("md") {
           height: 350px;
           min-height: 350px;
@@ -291,6 +291,10 @@ body.archive {
               min-height: unset !important; 
               max-height: unset !important;
               aspect-ratio: 16/9;
+              @supports not (aspect-ratio: 16/9){
+                min-height: 500px;
+                max-height: 510px;
+              }
             }
         }
     .illustration{
@@ -348,6 +352,10 @@ body.archive {
               z-index: 1;
               aspect-ratio: 16/9;
               pointer-events: none;
+              @supports not (aspect-ratio: 16/9){
+                min-height: 500px;
+                max-height: 510px;
+              }
             }
           }
           &.style-3{
