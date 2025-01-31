@@ -352,6 +352,20 @@ body.archive {
               z-index: 1;
               aspect-ratio: 16/9;
               pointer-events: none;
+              transform: scale(1.45);
+              will-change: transform;
+              @include bp(xxl){
+              transform: scale(1.7);
+              }
+              @include bp(xl){
+              transform: scale(1.6);
+              }
+              @include bp(lg){
+              transform: scale(1.8);
+              }
+              @include bp(md){
+              transform: scale(1.45);
+              }
               @supports not (aspect-ratio: 16/9){
                 min-height: 500px;
                 max-height: 510px;
