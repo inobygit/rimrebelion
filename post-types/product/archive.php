@@ -382,6 +382,7 @@ if ($cat instanceof WP_Term) {
             $article_grid = null;
         }
         if(!empty($article_grid ) && isset($article_grid[0])){
+            if(isset($article_grid[0]['active']) && $article_grid[0]['active']){
         ?>
 
             <div class="banner banner-top">
@@ -479,7 +480,8 @@ if ($cat instanceof WP_Term) {
                   echo "</a>";
             ?>
             </div>
-            <?php } ?>
+            <?php } 
+            } ?>
 
             <?php
           while (have_posts()) {
@@ -493,6 +495,7 @@ if ($cat instanceof WP_Term) {
               wc_get_template_part("content", "product");
           } 
           if(!empty($article_grid ) && isset($article_grid[1])){
+            if(isset($article_grid[1]['active']) && $article_grid[1]['active']){
             if(isset($article_grid[1]['style'])){
                     if($article_grid[1]['style'] == 'style-1'){
                         $classBottom ='style-1';
@@ -607,7 +610,7 @@ if ($cat instanceof WP_Term) {
                   echo "</a>";
             ?>
             </div>
-            <?php } 
+            <?php } } 
           ?>
             <?php rc_shop_pagination(wc_get_loop_prop("total_pages"), wc_get_loop_prop("current_page")); ?>
             <?php

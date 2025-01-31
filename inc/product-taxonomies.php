@@ -437,6 +437,12 @@ add_filter("rwmb_meta_boxes", function ($meta_boxes) {
         'max_clone'     => 2,
         'add_button'    => __('Pridať ďalšiu sekciu', 'inoby'),
         'fields' => array(
+            [
+            'id'       => 'active',
+            'name'    => __('Aktivovať', 'inoby'),
+            'type'     => 'checkbox',
+            'std' => 0,
+          ],
           [
             'id'  => 'style',
             'name'  => __("Štýl", 'inoby'),
