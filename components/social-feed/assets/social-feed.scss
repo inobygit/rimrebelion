@@ -59,20 +59,30 @@ section.social-feed {
     #sbi_load{
       display: none;
     }
+    .sbi_type_carousel .fa-clone{
+      display: none !important;
+    }
     #sbi_images{
       height: 100%;
       padding: 0 !important;
-      grid-template-columns: 1.2fr 1fr 1fr !important;
-      @include bp(xl){
-        height: auto;
+      grid-template-columns: 645px 322px 323px !important;
+      grid-template-rows: 403px 403px !important;
+      @include bp(xxl){
+        grid-template-columns: 555px 277.5px 277.5px !important;
+        grid-template-rows: 347px 347px !important;
       }
-      @include bp(md){
+      @include bp(xl){
+        grid-template-columns: 465px 232.5px 232.5px !important;
+        grid-template-rows: 290.5px 290.5px !important;
+      }
+      @include bp(lg){
         grid-template-columns: 1fr 1fr !important;
+        grid-template-rows: unset !important;
       }
       .sbi_item{
         &:first-of-type{
           grid-row: span 2;
-          @include bp(md){
+          @include bp(lg){
             grid-row: auto;
             grid-column: span 2;
           }
@@ -80,22 +90,29 @@ section.social-feed {
             height: 100%;
             .sbi_photo{
               height: 100% !important;
-                @include bp(md){
-                  height: 400px !important;
-                }
-                @include bp(sm){
-                  height: 300px !important;
-                }
             }
           }
         }
         .sbi_photo_wrap{
+          height: 100%;
+          @include bp(lg){
+            height: unset !important;
+            width: 100% !important;
+            aspect-ratio: 4/5 !important;
+            @supports not (aspect-ratio: 4/5){
+              height: 100% !important;
+            }
+          }
             .sbi_photo{
-                @include bp(md){
-                  height: 300px !important;
-                }
-                @include bp(sm){
-                  height: 200px !important;
+              height: 100% !important;
+              @include bp(lg){
+                aspect-ratio: 4/5 !important;
+                @supports not (aspect-ratio: 4/5){
+              height: 100% !important;
+            }
+              }
+                img{
+                  height: 100% !important;
                 }
             }
           }
