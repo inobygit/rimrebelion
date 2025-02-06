@@ -34,6 +34,19 @@
       grid-template-columns: repeat(1, 1fr);
       grid-template-rows: repeat(3, 350px); 
     }
+    &.size-2{
+      grid-template-rows: 640px; 
+      @include bp(md){
+        grid-template-rows: repeat(2, 350px); 
+      }
+    }
+    &.size-1{
+      grid-template-rows: 640px; 
+      grid-template-columns: 1fr;
+      @include bp(md){
+        grid-template-rows: repeat(1, 350px); 
+      }
+    }
     a {
       position: relative;
       padding: 40px;
@@ -65,7 +78,7 @@
               bottom: unset;
             }
           }
-      &:last-child{
+      &:nth-of-type(3){
         grid-column: span 2;
         align-items: flex-end;
         justify-content: flex-start;
