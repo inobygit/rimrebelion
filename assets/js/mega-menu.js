@@ -98,7 +98,7 @@ $(function () {
     }
 
     $('.popup-step .copy').on('click', function() {
-        var couponCode = $(this).closest('.popup-step').find('.coupon-code').text();
+        var couponCode = $(this).closest('.popup-step').find('.coupon-code').text().trim();
         navigator.clipboard.writeText(couponCode);
         $(this).closest('.popup-step').find('.coupon-code').hide();
         $(this).closest('.popup-step').find('.copy').hide();
