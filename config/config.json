@@ -32,6 +32,7 @@
     "meta-box/inoby-references-slider",
     "meta-box/inoby-social-feed"
   ],
+  "trim_react_version": true,
   "page404": {
     "title": "<?php __(\"PAGE NOT FOUND\", \"inoby\")",
     "headline": "<?php __(\"THIS PAGE DOESN'T EXIST.\", \"inoby\")",
