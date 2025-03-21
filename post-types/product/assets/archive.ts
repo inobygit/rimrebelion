@@ -81,12 +81,10 @@ class ProductArchiveModule extends InobyModule {
           }
       });
 
-        $('#products-main').load(' #products-main > *', function() {
-                  $('#inoby-preloader').addClass("loaded");
-                  $('#inoby-preloader').hide();
-                  $('#inoby-preloader').css('opacity', 0);
-                  $(document).trigger('customEvent');
-        });
+      $('#inoby-preloader').addClass("loaded");
+      $('#inoby-preloader').hide();
+      $('#inoby-preloader').css('opacity', 0);
+      $(document).trigger('customEvent');
           
       });
 
