@@ -399,3 +399,11 @@ add_filter('xoo_el_registration_redirect', function($redirect, $user) {
     }
     return $redirect; // Allow normal redirect for other cases
 }, 99, 2);
+
+add_filter('wpseo_breadcrumb_single_link' ,'remove_shop', 10 ,2);
+function remove_shop($link_output, $link ){
+  if( $link['text'] == __('Obchod', 'inoby') ) {
+  $link_output = "";
+  }
+  return $link_output;
+}
