@@ -351,8 +351,6 @@ if ($cat instanceof WP_Term) {
                             }
                         }
                 }
-            wp_reset_query();
-            wp_reset_postdata();
             ?>
             </div>
             <?php if (!is_search() && Inoby_Config::show_shop_sidebar("true")): ?>
