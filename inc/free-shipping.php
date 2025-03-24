@@ -111,6 +111,9 @@ function inoby_hide_shipping_when_free_is_available( $rates ) {
       }
       if('packetery_shipping_method' === $rate->method_id){
         $rate->cost = 0;
+        if (isset($rate->taxes)) {
+          $rate->taxes = array_map(function() { return 0; }, $rate->taxes);
+        }
         $free[$rate_id] = $rate;
       }
     }
