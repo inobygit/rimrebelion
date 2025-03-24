@@ -102,14 +102,12 @@ function inoby_calculator_to_free_shipping() {
 add_action('woocommerce_before_cart_contents', 'inoby_calculator_to_free_shipping');
 
 function inoby_hide_shipping_when_free_is_available( $rates ) {
-	$free = array();
-
+  $free = array();
   
   if ((is_user_logged_in() && WC()->cart->subtotal > floatval(get_free_shipping_minimum())) || (WC()->cart->has_discount('rimfree') && is_valid_free_shipping_coupon('rimfree'))) {
     foreach ( $rates as $rate_id => $rate ) {
-      if ( 'free_shipping' === $rate->method_id ) {
+      if ( 'free_shipping' === $rate->method_id || 'packetery_shipping_method') {
         $free[ $rate_id ] = $rate;
-        break;
       }
     }
   } else {
