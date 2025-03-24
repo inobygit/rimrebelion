@@ -103,11 +103,23 @@ add_action('woocommerce_before_cart_contents', 'inoby_calculator_to_free_shippin
 
 function inoby_hide_shipping_when_free_is_available( $rates ) {
   $free = array();
-  
-  if ((is_user_logged_in() && WC()->cart->subtotal > floatval(get_free_shipping_minimum())) || (WC()->cart->has_discount('rimfree') && is_valid_free_shipping_coupon('rimfree'))) {
-    foreach ( $rates as $rate_id => $rate ) {
+  $has_virtual_product = false;
+  $has_non_virtual_product = false;
+
+   foreach (WC()->cart->get_cart() as $cart_item) {
+        if ($cart_item['data']->is_virtual()) {
+            $has_virtual_product = true;
+        } else {
+            $has_non_virtual_product = true;
+        }
+    }
+
+    
+    if ((is_user_logged_in() && WC()->cart->subtotal > floatval(get_free_shipping_minimum())) || (WC()->cart->has_discount('rimfree') && is_valid_free_shipping_coupon('rimfree'))) {
+      foreach ( $rates as $rate_id => $rate ) {
+    
       if ( 'free_shipping' === $rate->method_id) {
-        $free[ $rate_id ] = $rate;
+        unset($rates[$rate_id]);
       }
       if('packetery_shipping_method' === $rate->method_id){
         $rate->cost = 0;
@@ -122,6 +134,16 @@ function inoby_hide_shipping_when_free_is_available( $rates ) {
     foreach ( $rates as $rate_id => $rate ) {
       if ( 'free_shipping' === $rate->method_id ) {
         unset($rates[$rate_id]);
+      }
+    }
+  }
+
+  foreach($rates as $rate_id => $rate){
+    if($has_virtual_product && !$has_non_virtual_product){
+      unset($rates[$rate_id]);
+      unset($free[$rate_id]);
+      if('free_shipping' === $rate->method_id){
+        $free[$rate_id] = $rate;
       }
     }
   }
