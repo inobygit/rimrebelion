@@ -58,46 +58,84 @@ do_action("woocommerce_before_add_to_cart_form");
                             $availability_date_tomorrow = get_post_meta($product->get_id(), '_availability_date_tomorrow', true);
                             $availability_date_onbackorder = get_post_meta($product->get_id(), '_availability_date_onbackorder', true);
                             $availability_date_default = get_post_meta($product->get_id(), '_availability_date_default', true);
-$today = date('D');
+                            $today = date('D');
 
-                            $availability_date_onbackorder = date('j.n.', strtotime('+10 days'));
-                            $backorderDate = date('D', strtotime('+10 days'));
-                            $backorderDateFormated = date('Y-m-d', strtotime('+10 days'));
-                            if($today == 'Sat' || $today == 'Sun'){
-                                $availability_date_onbackorder = date('j.n.', strtotime($backorderDateFormated . ' next tuesday'));
-                            } else {
-                                if ($backorderDate == 'Sat' || $backorderDate == 'Sun') {
+                            
+                            if(ICL_LANGUAGE_CODE=='en'){
+                                $availability_date_onbackorder = date('j.n.', strtotime('+10 days'));
+                                $backorderDate = date('D', strtotime('+10 days'));
+                                $backorderDateFormated = date('Y-m-d', strtotime('+10 days'));
+                                if($today == 'Sat' || $today == 'Sun'){
                                     $availability_date_onbackorder = date('j.n.', strtotime($backorderDateFormated . ' next tuesday'));
+                                } else {
+                                    if ($backorderDate == 'Sat' || $backorderDate == 'Sun') {
+                                        $availability_date_onbackorder = date('j.n.', strtotime($backorderDateFormated . ' next tuesday'));
+                                    }
                                 }
-                            }
-
-                            $availability_date_tomorrow = date('j.n.', strtotime('tomorrow + 1 day'));
-                            $tomorrow = date('D', strtotime('tomorrow + 1 day'));
-                            if($today == 'Sat' || $today == 'Sun'){
-                                $availability_date_tomorrow = date('j.n.', strtotime('next wednesday'));
+    
+                                $availability_date_tomorrow = date('j.n.', strtotime('today'));
+                                $tomorrow = date('D', strtotime('today'));
+                                if($today == 'Sat' || $today == 'Sun'){
+                                    $availability_date_tomorrow = date('j.n.', strtotime('next monday'));
+                                } else {
+                                    if ($tomorrow == 'Sat') {
+                                        $availability_date_tomorrow = date('j.n.', strtotime('next monday'));
+                                    }
+                                }
+    
+                                $availability_date_default = date('j.n.', strtotime('tomorrow'));
+                                $default = date('D', strtotime('tomorrow'));
+                                if($today == 'Sat' || $today == 'Sun'){
+                                        $availability_date_default = date('j.n.', strtotime('next monday'));
+                                } else {
+                                    if ($default == 'Sat' || $default == 'Sun') {
+                                        $availability_date_default = date('j.n.', strtotime('next monday'));
+                                    }
+                                }
+    
+                                echo '<p class="availability-date-default">' . esc_html(__('(Shipping on: ', 'rimrebellion')) . ' ' . $availability_date_default . ')</p>';
+    
+                                echo '<p class="availability-date-tomorrow">' . esc_html(__('(Shipping on: ', 'rimrebellion')) . ' ' . $availability_date_tomorrow . ')</p>';
+    
+                                echo '<p class="availability-date-onbackorder">' . esc_html(__('(Shipping on: ', 'rimrebellion')) . ' ' . $availability_date_onbackorder . ')</p>';
                             } else {
-                                if ($tomorrow == 'Sat') {
-                                    $availability_date_tomorrow = date('j.n.', strtotime('next tuesday'));
-                                } else if($tomorrow == 'Sun'){
-                                    $availability_date_tomorrow = date('j.n.', strtotime('next wednesday'));
+                                $availability_date_onbackorder = date('j.n.', strtotime('+10 days'));
+                                $backorderDate = date('D', strtotime('+10 days'));
+                                $backorderDateFormated = date('Y-m-d', strtotime('+10 days'));
+                                if($today == 'Sat' || $today == 'Sun'){
+                                    $availability_date_onbackorder = date('j.n.', strtotime($backorderDateFormated . ' next tuesday'));
+                                } else {
+                                    if ($backorderDate == 'Sat' || $backorderDate == 'Sun') {
+                                        $availability_date_onbackorder = date('j.n.', strtotime($backorderDateFormated . ' next tuesday'));
+                                    }
                                 }
-                            }
-
-                            $availability_date_default = date('j.n.', strtotime('+2 days'));
-                            $default = date('D', strtotime('+2 days'));
-                            if($today == 'Sat' || $today == 'Sun'){
-                                    $availability_date_default = date('j.n.', strtotime('next tuesday + 1 days'));
-                            } else {
-                                if ($default == 'Sat' || $default == 'Sun') {
-                                    $availability_date_default = date('j.n.', strtotime('next tuesday + 1 days'));
+    
+                                $availability_date_tomorrow = date('j.n.', strtotime('tomorrow'));
+                                $tomorrow = date('D', strtotime('tomorrow'));
+                                if($today == 'Sat' || $today == 'Sun'){
+                                    $availability_date_tomorrow = date('j.n.', strtotime('next monday'));
+                                } else {
+                                    if ($tomorrow == 'Sat') {
+                                        $availability_date_tomorrow = date('j.n.', strtotime('next monday'));
+                                    }
                                 }
+    
+                                $availability_date_default = date('j.n.', strtotime('+2 days'));
+                                $default = date('D', strtotime('+2 days'));
+                                if($today == 'Sat' || $today == 'Sun'){
+                                        $availability_date_default = date('j.n.', strtotime('next tuesday'));
+                                } else {
+                                    if ($default == 'Sat' || $default == 'Sun') {
+                                        $availability_date_default = date('j.n.', strtotime('next tuesday'));
+                                    }
+                                }
+    
+                                echo '<p class="availability-date-default">' . esc_html(__('(Doručíme: ', 'rimrebellion')) . ' ' . $availability_date_default . ')</p>';
+    
+                                echo '<p class="availability-date-tomorrow">' . esc_html(__('(Doručíme: ', 'rimrebellion')) . ' ' . $availability_date_tomorrow . ')</p>';
+    
+                                echo '<p class="availability-date-onbackorder">' . esc_html(__('(Doručíme: ', 'rimrebellion')) . ' ' . $availability_date_onbackorder . ')</p>';
                             }
-
-                            echo '<p class="availability-date-default">' . esc_html(__('(Shipping on: ', 'rimrebellion')) . ' ' . $availability_date_default . ')</p>';
-
-                            echo '<p class="availability-date-tomorrow">' . esc_html(__('(Shipping on: ', 'rimrebellion')) . ' ' . $availability_date_tomorrow . ')</p>';
-
-                            echo '<p class="availability-date-onbackorder">' . esc_html(__('(Shipping on: ', 'rimrebellion')) . ' ' . $availability_date_onbackorder . ')</p>';
                             ?>
                             </div>
                         </div>
