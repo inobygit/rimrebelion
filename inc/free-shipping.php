@@ -140,10 +140,11 @@ function inoby_hide_shipping_when_free_is_available( $rates ) {
 
   foreach($rates as $rate_id => $rate){
     if($has_virtual_product && !$has_non_virtual_product){
-      unset($rates[$rate_id]);
       unset($free[$rate_id]);
       if('free_shipping' === $rate->method_id){
         $free[$rate_id] = $rate;
+      } else {
+        unset($rates[$rate_id]);
       }
     }
   }
