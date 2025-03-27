@@ -411,7 +411,7 @@ add_filter("rwmb_meta_boxes", function ($meta_boxes) {
     ];
 
     $meta_boxes[] = [
-        "taxonomies" => "product_tag",
+        "taxonomies" => ["product_tag", "product_brand"],
         "title" => __("Nastavenia", "rimrebellion"),
         "fields" => [
             [
@@ -424,7 +424,19 @@ add_filter("rwmb_meta_boxes", function ($meta_boxes) {
     ];
 
     $meta_boxes[] = [
-        "taxonomies" => ["product_cat", "product_specials", "product_tag"],
+        "taxonomies" => "product_brand",
+        "fields" => [
+            [
+                'id'  => 'icon',
+                'name'  => __('Icon', 'inoby'),
+                'type'  => 'image_advanced',
+                'max_file_uploads'  => 1,
+            ],
+        ],
+    ];
+
+    $meta_boxes[] = [
+        "taxonomies" => ["product_cat", "product_specials", "product_tag", "product_brand"],
         'title' => __("Bannery", 'rimrebellion'),
         "fields" => [
       [

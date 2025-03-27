@@ -94,6 +94,7 @@ if ($cat instanceof WP_Term) {
                     $mainCatID = (isset($_GET['main-category']) ? $_GET['main-category'] : null);
                     $specials = (isset($_GET['product_specials']) ? $_GET['product_specials'] : null);
                     $tags = (isset($_GET['product_tag']) ? $_GET['product_tag'] : null);
+                    $brands = (isset($_GET['product_brand']) ? $_GET['product_brand'] : null);
 
                     $args = [
                         'post_type' => 'product',
@@ -170,6 +171,14 @@ if ($cat instanceof WP_Term) {
                             ];
                         }
 
+                        if($brands){
+                            $args['tax_query'][] = [
+                                'taxonomy' => 'product_brand',
+                                'field' => 'id',
+                                'terms' => $brands,
+                            ];
+                        }
+
                         if(is_tax('product_specials')){
                             $args['tax_query'][] = [
                                 'taxonomy' => 'product_specials',
@@ -181,6 +190,14 @@ if ($cat instanceof WP_Term) {
                         if(is_tax('product_tag')){
                             $args['tax_query'][] = [
                                 'taxonomy' => 'product_tag',
+                                'field' => 'id',
+                                'terms' => get_queried_object()->term_id,
+                            ];
+                        }
+
+                        if(is_tax('product_brand')){
+                            $args['tax_query'][] = [
+                                'taxonomy' => 'product_brand',
                                 'field' => 'id',
                                 'terms' => get_queried_object()->term_id,
                             ];
@@ -310,6 +327,36 @@ if ($cat instanceof WP_Term) {
                                     // Add the query parameter to the term link
                                     echo "<div class='category-item'>
                                             <a class='cat' rel='keep-search' href='" . add_query_arg('product_tag', $term_id, get_term_link($child_id)) . "'>
+                                                <div class='img-wrp'>
+                                                    " . wp_get_attachment_image(get_term_meta($child_id, "thumbnail_id", true), "o-2", false, ['loading' => 'lazy']) . "
+                                                </div>
+                                                <div class='name'>" . get_term($child_id, "product_cat")->name . "</div>
+                                            </a>
+                                        </div>";
+                                    }
+                                }
+                                echo '</div>';
+                            }
+                        }
+                        else if (is_tax('product_brand')) {
+                            $term_id = get_queried_object()->term_id; // Get the current term ID
+                            $term_children = wp_get_object_terms($desination_ids, 'product_cat', [
+                                'hide_empty'    => true,
+                                'parent' => 0,
+                                'suppress_filters'  => true,
+                                'fields'    => 'ids',
+                                'exclude'   => 316,
+                            ]);
+
+                            $termlist = array_unique($term_children); 
+
+                            if (count($termlist) > 0) {
+                                echo '<div class="cats-wrp shop">';
+                                foreach ($termlist as $child_id) {
+                                    if($child_id != 317){
+                                    // Add the query parameter to the term link
+                                    echo "<div class='category-item'>
+                                            <a class='cat' rel='keep-search' href='" . add_query_arg('product_brand', $term_id, get_term_link($child_id)) . "'>
                                                 <div class='img-wrp'>
                                                     " . wp_get_attachment_image(get_term_meta($child_id, "thumbnail_id", true), "o-2", false, ['loading' => 'lazy']) . "
                                                 </div>
