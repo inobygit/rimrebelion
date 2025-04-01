@@ -87,7 +87,9 @@ if (empty($product) || !$product->is_visible()) {
                 } else {
                     $terms = wp_get_post_terms( get_the_id(), 'product_brand' );
                     if(!empty($terms)){
-                        echo mb_strtoupper($terms[0]->name, 'UTF-8') . ' - ';
+                        if (!is_wp_error($terms)) {
+                            echo mb_strtoupper($terms[0]->name, 'UTF-8') . ' - ';
+                        }
                     }
                 }
                 if(function_exists('icl_object_id')){
