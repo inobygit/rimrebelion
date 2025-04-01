@@ -40,7 +40,9 @@ if ($product->is_type('variable')) {
             $has_different_prices = true; // Set flag if prices differ
         }
     }
-    $lowest_price = number_format($lowest_price, 2, ',', ' ');
+    if ($lowest_price !== null) {
+        $lowest_price = number_format($lowest_price, 2, ',', ' ');
+    }
 
     // Update priceHtml only if there are different prices
     if ($has_different_prices) {
