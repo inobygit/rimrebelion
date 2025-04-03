@@ -170,6 +170,9 @@ class RC_Google_custom extends RC_Google{
 
   public static function get_product_data() {
     global $product;
+    if(!$product){
+      return;
+    }
 
     $variation = rc_get_product_current_variation($product);
     $product_data = self::get_event_product_data($variation ? $variation : $product, 0);
