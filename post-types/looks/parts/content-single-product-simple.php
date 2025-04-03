@@ -19,6 +19,10 @@ defined("ABSPATH") || exit();
 
 $product_id = $args['product_id'] ?? null;
 $product = wc_get_product($product_id);
+
+if(!$product){
+    return;
+}
 $args = apply_filters(
     "inoby_product_args",
     [
