@@ -175,7 +175,7 @@ add_action("woocommerce_after_shipping_rate", "inoby_add_info_to_local_shipping_
  */
 function inoby_add_info_to_local_shipping_rate(WC_Shipping_Rate $method) {
   if (str_starts_with($method->get_id(), "local_pickup")) {
-    printf("<span class='description'>%s</span>", __("RimRebellion HQ<br/>  Námestie Mateja Korvína 2<br/> 811 07 Bratislava<br/> 10:00 - 16:00", "inoby"));
+    printf("<span class='description'>%s</span>", __("RimRebellion Store <br/>Košická 27 (ZWIRN)<br/>821 09 Bratislava<br/>Ut - Pia 13:00 - 19:00<br/>So 9:00 - 15:00", "inoby"));
   }
 }
 
