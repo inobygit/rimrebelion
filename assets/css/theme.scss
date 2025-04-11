@@ -1518,11 +1518,13 @@ nav.breadcrumbs {
     &.menu-item-megamenu-column-2{
       > .sub-menu{
         gap: 2rem;
+        row-gap: 0;
         > li{
           padding-left: 1rem !important;
           padding-block: 2.4rem;
           max-width: calc(50% - 2rem);
-          &:first-of-type{
+          &:first-of-type,
+          &:nth-of-type(odd){
             border-right: 1px solid $gray300;
           }
           > a{
