@@ -967,6 +967,87 @@ body.single-product{
           opacity: 0;
       }
     }
+    .key-features-wrap{
+      background-color: $white;
+      padding: 2.4rem;
+      margin-bottom: $space-md;
+      @include bp('lg-up'){
+        max-width: 36.5rem;
+      }
+      h2{
+        margin-bottom: 2.4rem;
+      }
+      ul {
+        list-style: none;
+        padding-left: 2.8rem;
+        li{
+          font-size: 1.6rem;
+          margin-bottom: 1.6rem;
+          font-weight: 400;
+          line-height: 150%;
+          position: relative;
+          &:before{
+            background: url(theme-url("/assets/svg/cross.svg"));
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-position: left center;
+            display: inline-block;
+            width: 1.8rem;
+            height: 1.6rem;
+            content: '';
+            position: absolute;
+            left: -2.8rem;
+            transform: translateY(4px);
+            margin-right: 1.6rem;
+          }
+        }
+      }
+    }
+    div#tab-product-details{
+      h3:has(+ p){
+        display: inline-block;
+        position: relative;
+        width: 19rem;
+        text-transform: uppercase;
+        vertical-align: top;
+        margin: 0;
+      }
+      h3 + p{
+        display: inline-block;
+        width: calc(100% - 20rem);
+        font-size: 1.6rem;
+        font-weight: 400;
+        color: $gray500;
+        margin: 0;
+      }
+      hr{
+        border-color: $gray300;
+        margin: 1.2rem 0;
+      }
+    }
+  }
+  section.technologies{
+    margin-bottom: $space-lg;
+    .technologies-wrap{
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3rem;
+      @include bp(md){
+        grid-template-columns: repeat(2, 1fr);
+      }
+      @include bp(sm){
+        grid-template-columns: repeat(1, 1fr);
+      }
+      .technology{
+        h3{
+          margin: 2.4rem 0 0.8rem;
+          font-family: "ItalianPlateItalic";
+        }
+        p{
+          color: $gray700;
+        }
+      }
+    }
   }
   section.related.products {
         margin-top: $space-md;

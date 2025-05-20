@@ -23,12 +23,12 @@ add_filter("rwmb_meta_boxes", function ($meta_boxes) {
                 "raw" => false,
                 "options" => [
                     "textarea_rows" => 4,
-                    "teeny" => true,
+                    // "teeny" => true,
                 ],
             ],
             [
                 'id'    => 'show-delivery-info',
-                'name'  => esc_html__( 'Show custom delivery info', 'rimrebellion' ),
+                'name'  => esc_html__('Show custom delivery info', 'rimrebellion'),
                 'type'  => 'checkbox',
                 'std'   => 0,
             ],
@@ -58,6 +58,57 @@ add_filter("rwmb_meta_boxes", function ($meta_boxes) {
                 "id" => "slider-images",
                 "name" => __("Slider Images", "rimrebellion"),
                 "type" => "image_advanced",
+            ],
+            [
+                'group_title'   => __('Feature - {#}', 'rimrebellion'),
+                'name'   => __('Key features', 'rimrebellion'),
+                'id'            => 'key-features',
+                'type'          => 'group',
+                'clone'         => true,
+                'collapsible'   => true,
+                'sort_clone'    => true,
+                'add_button'    => __('+ Add feature', 'rimrebellion'),
+                'fields' => array(
+                    [
+                        'id'       => 'feature',
+                        'name'    => __('Feature', 'rimrebellion'),
+                        'type'     => 'textarea',
+                        'sanitize_callback' => 'none',
+                    ],
+                )
+            ],
+            [
+                'group_title'   => __('Technology - {headline}', 'rimrebellion'),
+                'name'   => __('Technologies', 'rimrebellion'),
+                'id'            => 'technologies',
+                'type'          => 'group',
+                'clone'         => true,
+                'collapsible'   => true,
+                'sort_clone'    => true,
+                'add_button'    => __('+ Add technology', 'rimrebellion'),
+                'fields' => array(
+                    [
+                        'id'               => "img",
+                        'name'             => __('Obrázok', 'rimrebellion'),
+                        'type'             => 'image_advanced',
+                        'force_delete'     => false,
+                        'max_file_uploads' => 1,
+                        'max_status'       => false,
+                        'image_size'       => 'thumbnail',
+                    ],
+                    [
+                        'id'       => 'headline',
+                        'name'   => __('Headline', 'rimrebellion'),
+                        'type'     => 'text',
+                        'sanitize_callback' => 'none',
+                    ],
+                    [
+                        'id'       => 'text',
+                        'name'    => __('Text', 'rimrebellion'),
+                        'type'     => 'textarea',
+                        'sanitize_callback' => 'none',
+                    ],
+                )
             ],
         ],
     ];

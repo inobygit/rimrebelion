@@ -50,6 +50,7 @@
     "wishlist" => false,
     "free_shipping_notice" => false,
     "b2b" => false,
+    "update_sale_special" => true,
     "assets" => [
         "defer_all_theme_scripts" => true,
         "defer_all_plugins_scripts" => true,

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The Template for displaying all single products
  *
@@ -35,45 +36,50 @@ get_header("shop");
 
 <?php woocommerce_output_content_wrapper_end(); ?>
 
-<?php 
+<?php
 $gallery_id = uniqid("inoby-slider-gallery-");
 $sliderImagesGallery = rwmb_meta('slider-images');
 $settings = apply_filters("inoby_slider_gallery_default_settings", [
-  "has_lightbox" => false,
-  "has_thumbs" => false,
-  "has_arrows" => true,
-  "per_view" => 1,
+    "has_lightbox" => false,
+    "has_thumbs" => false,
+    "has_arrows" => true,
+    "per_view" => 1,
 ]);
-if(!empty($sliderImagesGallery)){
+if (!empty($sliderImagesGallery)) {
 ?>
 <div class="inoby-slider-gallery" id="<?= $gallery_id ?>" data-settings=<?= json_encode($settings) ?>>
-    <div class="keen-slider gallery">
-        <?php 
-        foreach ($sliderImagesGallery as $image):
-           ?>
-        <div class="image-wrapper gallery-slide">
-            <img loading="lazy" src="<?= wp_get_attachment_image_url($image['ID'], 'o-12') ?>"
-                srcset="<?= wp_get_attachment_image_srcset($image['ID'], 'o-6') ?>" alt="gb-image" loading="lazy">
-        </div>
-        <?php 
-      endforeach; ?>
+  <div class="keen-slider gallery">
+    <?php
+            foreach ($sliderImagesGallery as $image):
+            ?>
+    <div class="image-wrapper gallery-slide">
+      <img loading="lazy" src="<?= wp_get_attachment_image_url($image['ID'], 'o-12') ?>"
+        srcset="<?= wp_get_attachment_image_srcset($image['ID'], 'o-6') ?>" alt="gb-image" loading="lazy">
     </div>
+    <?php
+            endforeach; ?>
+  </div>
 </div>
 <?php } ?>
 
+<?php
+$description = get_the_content();
+if (!empty($description)) :
+?>
 <section class="product-description">
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <div class="content-wrap">
-                    <?php 
-                the_content(); ?>
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="content-wrap">
+          <?php
+                        the_content(); ?>
 
-                </div>
-            </div>
         </div>
+      </div>
     </div>
+  </div>
 </section>
+<?php endif; ?>
 
 <?php woocommerce_output_product_data_tabs(); ?>
 
