@@ -591,3 +591,37 @@ function modify_taxonomy_product_tag()
 }
 
 add_action("init", "modify_taxonomy_product_tag");
+
+// Taxonómia product_brand
+function modify_taxonomy_product_brand()
+{
+    $args = [
+        "hierarchical"      => false, // Ak chcete hierarchickú taxonómiu ako kategórie, nastavte na true
+        "labels"            => [
+            'name'              => __( 'Brands', 'woocommerce' ),
+            'singular_name'     => __( 'Brand', 'woocommerce' ),
+            'template_name'     => _x( 'Products by Brand', 'Template name', 'woocommerce' ),
+            'search_items'      => __( 'Search Brands', 'woocommerce' ),
+            'all_items'         => __( 'All Brands', 'woocommerce' ),
+            'parent_item'       => __( 'Parent Brand', 'woocommerce' ),
+            'parent_item_colon' => __( 'Parent Brand:', 'woocommerce' ),
+            'edit_item'         => __( 'Edit Brand', 'woocommerce' ),
+            'update_item'       => __( 'Update Brand', 'woocommerce' ),
+            'add_new_item'      => __( 'Add New Brand', 'woocommerce' ),
+            'new_item_name'     => __( 'New Brand Name', 'woocommerce' ),
+            'not_found'         => __( 'No Brands Found', 'woocommerce' ),
+            'back_to_items'     => __( '&larr; Go to Brands', 'woocommerce' ),
+        ],
+        "show_ui"           => true,
+        "public"            => true,
+        "show_admin_column" => true,
+        "query_var"         => 'product_brand_custom', // Custom query var to avoid conflicts
+        "show_in_nav_menus" => true,
+        'has_archive'       => true,
+        "rewrite"           => ["slug" => __( 'brand', 'woocommerce' )],
+    ];
+
+    register_taxonomy("product_brand", ["product"], $args);
+}
+
+add_action("init", "modify_taxonomy_product_brand");
