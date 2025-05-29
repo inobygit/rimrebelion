@@ -51,6 +51,11 @@
     "free_shipping_notice" => false,
     "b2b" => false,
     "update_sale_special" => true,
+    "advanced_search" => false,
+    "cart_products" => false,
+    "icon_benefits" => false,
+    "ajax_add_to_cart" => false,
+    "adds_banner" => false,
     "assets" => [
         "defer_all_theme_scripts" => true,
         "defer_all_plugins_scripts" => true,

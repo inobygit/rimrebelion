@@ -651,6 +651,41 @@ span.active-orders{
   }
   .change-password{
     margin-top: 2rem;
+    .password-input{
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+    .show-password-input{
+      background: none;
+      position: absolute;
+      top: auto;
+      right: 1.4rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+      border: none;
+      &:hover{
+        background: none;
+      }
+      &::after{
+        content: '';
+        background-image: url("data:image/svg+xml,%3Csvg width='16' height='17' viewBox='0 0 16 17' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8 4.5C5.45 4.5 3.55 5.75 2.15 8.5C3.55 11.25 5.45 12.5 8 12.5C10.55 12.5 12.45 11.25 13.85 8.5C12.45 5.8 10.55 4.5 8 4.5ZM8 14C4.65 14 2.15 12.15 0.5 8.5C2.15 4.8 4.65 3 8 3C11.35 3 13.85 4.85 15.5 8.5C13.85 12.15 11.35 14 8 14Z' fill='%23878787'/%3E%3Cpath d='M8 10.5C9.10457 10.5 10 9.60457 10 8.5C10 7.39543 9.10457 6.5 8 6.5C6.89543 6.5 6 7.39543 6 8.5C6 9.60457 6.89543 10.5 8 10.5Z' fill='%23878787'/%3E%3C/svg%3E%0A");
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center;
+        width: 16px;
+        height: 16px;
+        min-width: 16px;
+        min-height: 16px;
+      }
+      &.display-password{
+        &::after{
+          background-image: url("data:image/svg+xml,%3Csvg width='16' height='17' viewBox='0 0 16 17' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8 4.5C5.45 4.5 3.55 5.75 2.15 8.5C3.55 11.25 5.45 12.5 8 12.5C10.55 12.5 12.45 11.25 13.85 8.5C12.45 5.8 10.55 4.5 8 4.5ZM8 14C4.65 14 2.15 12.15 0.5 8.5C2.15 4.8 4.65 3 8 3C11.35 3 13.85 4.85 15.5 8.5C13.85 12.15 11.35 14 8 14Z' fill='%23878787'/%3E%3Cpath d='M8 10.5C9.10457 10.5 10 9.60457 10 8.5C10 7.39543 9.10457 6.5 8 6.5C6.89543 6.5 6 7.39543 6 8.5C6 9.60457 6.89543 10.5 8 10.5Z' fill='%23878787'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M0 15.2534L15.2037 1L16 1.74657L0.796341 16L0 15.2534Z' fill='%23878787'/%3E%3C/svg%3E%0A");
+        }
+      }
+    }
   }
 }
 
@@ -658,6 +693,35 @@ span.active-orders{
         flex: 1 0 100%;
         max-width: 100%;
         width: 100% !important;
+        &:has(label[for="mailchimp_woocommerce_is_unsubscribed"]),
+        &:has(label[for="mailchimp_woocommerce_is_subscribed"]),
+        &:has(label[for="mailchimp_woocommerce_is_transactional"]),
+        &#wi_as_company_field
+        {
+          flex: unset !important;
+          max-width: 100% !important;
+        }
+        label[for="mailchimp_woocommerce_is_unsubscribed"],
+        label[for="mailchimp_woocommerce_is_subscribed"],
+        label[for="mailchimp_woocommerce_is_transactional"],
+        &#wi_as_company_field label{
+          display: flex;
+          align-items: center;
+          margin: 0 !important;
+          gap: .4rem;
+          padding: 0 !important;
+          position: relative !important;
+          left: 0 !important;
+          top: 0 !important;
+          cursor: pointer;
+          input{
+            border: 1px solid black;
+            min-width: 16px;
+            width: 16px;
+            padding: 0;
+            height: 16px;
+          }
+        }
     }
 
 .woocommerce-Addresses {
