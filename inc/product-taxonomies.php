@@ -618,7 +618,7 @@ function modify_taxonomy_product_brand()
         "query_var"         => 'product_brand_custom', // Custom query var to avoid conflicts
         "show_in_nav_menus" => true,
         'has_archive'       => true,
-        "rewrite"           => ["slug" => __( 'brand', 'woocommerce' )],
+        "rewrite"           => ["slug" => 'brand'],
     ];
 
     register_taxonomy("product_brand", ["product"], $args);
