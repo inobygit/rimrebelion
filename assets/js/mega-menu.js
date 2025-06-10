@@ -43,11 +43,11 @@ $(function () {
                 if (options.data.includes('xoo_el_reg_email') && options.data.includes('xoo_el_reg_fname') && options.data.includes('mailchimp_woocommerce_newsletter=yes')) {
                     const email = decodeURIComponent(options.data.split('xoo_el_reg_email=')[1].split('&')[0]);
                     const fname = options.data.split('xoo_el_reg_fname=')[1].split('&')[0];
-                    console.log(options.data);
-                    // const locality = options.data.split('merge_fields[LOCALITY]=')[1].split('&')[0];
+                    const locality = options.data.split('merge_fields%5BLOCALITY%5D=')[1].split('&')[0];
                     modifiedData.email = email;
                     modifiedData.fname = fname;
-                    // modifiedData.merge_fields[LOCALITY] = locality;
+                    modifiedData.merge_fields = {};
+                    modifiedData.merge_fields['LOCALITY'] = locality;
                 }
             }
         }
@@ -57,7 +57,6 @@ $(function () {
         if(popupShown){
         if (options.data && options.data.includes('xoo_el_form_action')) {
             if(xhr.responseJSON.error != 1){
-                console.log(modifiedData);
                 wpSendForm("inoby_newsletter_subscribe", form.get(0), modifiedData)
                 .done(() => {
                     setCookie('popupShown', 'true', 7); 
