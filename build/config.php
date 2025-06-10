@@ -50,7 +50,7 @@
     "wishlist" => false,
     "free_shipping_notice" => false,
     "b2b" => false,
-    "update_sale_special" => true,
+    "update_sale_special" => false,
     "advanced_search" => false,
     "cart_products" => false,
     "icon_benefits" => false,

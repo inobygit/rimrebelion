@@ -39,6 +39,7 @@
     "text": "<?php __(\"Try checking the link again or use the search to find what you're looking for.\", \"inoby\")",
     "btn_home_text": "<?php __(\"Back home\", \"inoby\")"
   },
+  "update_sale_special": false,
   "assets": {
     "js": {
       "core": "preload|defer",
