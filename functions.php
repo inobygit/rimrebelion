@@ -416,9 +416,13 @@ function remove_shop($link_output, $link)
 }
 
 
-add_filter('mc4wp_integration_woocommerce_data', function($data, $order_id) {
+
+function mailchimp_custom_order_merge_tags($merge_tags, $user) {
     $current_lang = apply_filters( 'wpml_current_language', NULL );
 
-	$data['LOCALITY'] = $current_lang;
-	return $data;
-}, 10, 2 );
+    $merge_tags['LOCALITY'] = $current_lang;
+
+    return $merge_tags;
+}
+
+add_filter('mailchimp_sync_user_mergetags', 'mailchimp_custom_order_merge_tags', 10, 2);
