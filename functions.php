@@ -414,3 +414,13 @@ function remove_shop($link_output, $link)
     }
     return $link_output;
 }
+
+add_action('xoo_el_form_end', function($form, $args) {
+    $current_lang = apply_filters( 'wpml_current_language', NULL );
+    if($form === 'register' ){
+		?>
+		<input type="hidden" name="merge_fields[LOCALITY]" value="<?= $current_lang ?>">
+		<?php
+	}
+
+}, 10, 2);

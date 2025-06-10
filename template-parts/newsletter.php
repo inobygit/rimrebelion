@@ -11,13 +11,16 @@
 $gdpr_label = __("Súhlasim so", "rimrebelion") . " <a class='link gdpr-link privacy-policy-link' target='__blank' href='" . get_privacy_policy_url() . "'>" . __("spracovaním osobných údajov", "rimrebelion") . "</a> ";
 $subscribe_label = __("Prihlásiť sa", "rimrebelion");
 $form_id = uniqid("newsletter_form");
+
+$current_lang = apply_filters( 'wpml_current_language', NULL );
 ?>
 <form id="<?= $form_id ?>" class="newsletter-form">
     <div class="overlay"></div>
     <div class="newsletter-inner-wrap">
         <div class="input-wrap">
+            <input type="hidden" name="merge_fields[LOCALITY]" value="<?= $current_lang ?>"/>
             <label for="email" class="inplace-label"><?= __("Vaša e-mailová adresa", "rimrebelion") ?></label>
-            <input type="email" class="input-text email" name="email"
+            <input type="email" class="input-text email" name="email" id="email"
                 placeholder="<?= __("Vaša e-mailová adresa", "rimrebelion") ?>" autocomplete="email" required />
         </div>
     </div>
