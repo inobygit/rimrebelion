@@ -424,14 +424,3 @@ add_action('xoo_el_form_end', function($form, $args) {
 	}
 
 }, 10, 2);
-
-
-function mailchimp_custom_order_merge_tags($merge_tags, $user) {
-    $current_lang = apply_filters( 'wpml_current_language', NULL );
-
-    $merge_tags['LOCALITY'] = $current_lang;
-
-    return $merge_tags;
-}
-
-add_filter('mailchimp_sync_user_mergetags', 'mailchimp_custom_order_merge_tags', 10, 2);
