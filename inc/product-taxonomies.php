@@ -170,6 +170,38 @@ function custom_taxonomy_main_category()
 }
 add_action("init", "custom_taxonomy_main_category", 0);
 
+function custom_taxonomy_season()
+{
+    $labels = [
+        "name"          => _x("Seasons", "taxonomy general name"),
+        "singular_name" => _x("Season", "taxonomy singular name"),
+        "search_items"  => __("Search Seasons"),
+        "all_items"     => __("All Seasons"),
+        "edit_item"     => __("Edit Season"),
+        "update_item"   => __("Update Season"),
+        "add_new_item"  => __("Add New Season"),
+        "new_item_name" => __("New Season Name"),
+        "menu_name"     => __("Seasons"),
+    ];
+
+    $args = [
+        "hierarchical"      => true,
+        "labels"            => $labels,
+        "show_ui"           => true,
+        "public"            => false,
+        "show_admin_column" => true,
+        "query_var"         => true,
+        "rewrite"           => ["slug" => "season"],
+        "public"            => true,
+        "query_var"         => 'season_custom', // Custom query var to avoid conflicts
+        "show_in_nav_menus" => true,
+        'has_archive'       => true,
+    ];
+
+    register_taxonomy("season", "product", $args);
+}
+add_action("init", "custom_taxonomy_season", 0);
+
 function custom_taxonomy_size_chart()
 {
     $labels = [
