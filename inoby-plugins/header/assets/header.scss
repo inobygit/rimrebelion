@@ -1,0 +1,294 @@
+@import "variables";
+@import "mixins";
+
+$fs-header-li: 1.4rem !default;
+$fw-header: 700 !default;
+$header-pd: 2.6rem 0 !default;
+$header-tt: uppercase !default;
+$sticky-header-pd: 0.6rem 0 !default;
+$fs-cart-count: 1.2rem !default;
+//active-item
+$header-item-pd: (1rem * 1.6) !default;
+$header-item-a-pd: unset !default;
+$header-item-bb: none !default;
+$header-item-active-bb: none !default;
+$header-item-active-col: $col-prm !default;
+$header-item-active-fw: unset !default;
+$header-item-active-bb: none !default;
+
+#search {
+  opacity: 0;
+  position: fixed;
+  left: 50%;
+  transform: translate(-50%, -100%);
+  transition: 0.3s;
+  top: var(--header-height);
+  width: 1360px;
+  max-width: 100%;
+  z-index: -100;
+  overflow: hidden;
+  background: $white;
+  border-top: none;
+  margin-bottom: 0;
+  height: fit-content;
+  .rc-product-search {
+    max-width: 100%;
+    margin: 1rem 4rem 2.4rem 4rem;
+    border: none !important;
+    padding: 0 !important;
+    grid-template-columns: 1fr !important;
+    position: relative;
+    @include bp(lg) {
+      margin-inline: 15px;
+      overflow-y: auto;
+      max-height: 60dvh;
+      &::-webkit-scrollbar {
+        width: 1px;
+      }
+    }
+    input {
+      border: 1px solid gray !important;
+      border-radius: 4px !important;
+      width: 400px !important;
+      min-width: 400px;
+      max-width: 400px;
+      padding-left: 3.2rem !important;
+      padding-right: .3rem !important;
+      font-size: 1.6rem !important;
+      height: 45px;
+      min-height: 45px;
+      @include bp(lg) {
+        z-index: 20;
+      }
+      @include bp(md) {
+        width: 300px !important;
+        min-width: 300px;
+        max-width: 300px;
+        height: unset;
+        min-height: unset;
+        padding-left: 2.6rem !important;
+        padding-block: .6rem !important;
+      }
+    }
+    > svg {
+      position: absolute;
+      top: 15.5px;
+      left: 8px;
+      @include bp(md) {
+        top: 10px;
+      }
+    }
+    > button {
+      position: absolute;
+      width: fit-content !important;
+      height: fit-content !important;
+      top: 3px !important;
+      left: 311px;
+      padding: 0.8rem 1.6rem !important;
+      width: 85px !important;
+      min-width: 85px;
+      max-width: 85px;
+      font-size: $fs-p;
+      font-weight: 400;
+      text-transform: none;
+      @include bp(lg) {
+        z-index: 20;
+      }
+      @include bp(md) {
+        left: 210px;
+        top: 4px !important;
+        padding: 0.4rem 1.6rem !important;
+      }
+      &:hover{
+        opacity: .8;
+      }
+    }
+  }
+  .search-results {
+    display: block !important;
+    height: auto !important;
+    box-shadow: none !important;
+    transform: none;
+    position: relative;
+    top: unset;
+    left: unset;
+    padding: 2rem 0 0 0 !important;
+    width: 100% !important;
+    z-index: 1;
+    background-color: transparent;
+    @include bp(lg) {
+      padding-top: 6rem !important;
+      margin-top: -3.5rem !important;
+      overflow-y: unset !important;
+    }
+    @include bp(md) {
+      padding-top: 5rem !important;
+      margin-top: -3rem !important;
+    }
+    .close-btn {
+      right: 0 !important;
+      top: -35px !important;
+      @include bp(lg) {
+        top: 0 !important;
+      }
+    }
+  }
+  .search-wrapper .content .products .product-card,
+  .search-wrapper .content .products-results .product-card {
+    padding: 0.8rem !important;
+  }
+  .search-overlay {
+    display: none !important;
+  }
+  .search-wrapper {
+    background: $white;
+    padding-top: 15px;
+  }
+  .product-info {
+    .title {
+      font-weight: $fw-bold;
+    }
+    .description {
+      color: $black;
+    }
+  }
+  &.active {
+    opacity: 1;
+    transform: translate(-50%, 0);
+    z-index: 10;
+    transition: 0.3s;
+  }
+  .product-search {
+    padding: 0.5rem 0rem;
+    @include bp("md") {
+      padding: 0;
+    }
+  }
+  .product-search-results-content {
+    border: none;
+    display: block !important;
+  }
+  .search-results {
+    .s_product_cat {
+      text-align: center;
+      a {
+        color: $white;
+        background: $black;
+        text-decoration: none;
+        display: block;
+        text-align: center;
+        padding: 1rem;
+      }
+      span {
+        text-decoration: none;
+      }
+      &:hover {
+        background: $black !important;
+        a {
+          color: $col-prm;
+        }
+      }
+    }
+    a {
+      text-decoration: none !important;
+    }
+  }
+  .entry {
+    transition: 0.3s;
+  }
+  .product-search-results .entry:hover,
+  .product-search-results .entry.active {
+    transition: 0.4s;
+    background-color: $gray100;
+  }
+  .product-search-form {
+    width: calc(100% - 2rem);
+    background: $white;
+    margin: 0 auto;
+  }
+  .product-search-form form input {
+    padding: 1rem 2rem;
+    margin: 0;
+    border-radius: 0px !important;
+    border: none;
+    color: $black;
+    outline: none;
+    background: transparent;
+    @include bp("md") {
+      padding: 4.8rem 2.4rem;
+      margin: 0;
+    }
+    &::placeholder {
+      color: $black;
+    }
+  }
+  div.product-search-form span.product-search-field-clear {
+    top: -0.5rem;
+    right: 16px;
+    color: $black;
+  }
+  .product-search-field {
+    border: 1px solid $gray300;
+    padding: 1rem;
+  }
+}
+
+.popup {
+  opacity: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: -1;
+  transition: 0.4s;
+  &.active {
+    display: block;
+    position: fixed;
+    z-index: 999;
+    right: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: $popup-overlay;
+    transition: 0.3s;
+    opacity: 1;
+    z-index: 999;
+  }
+  .wrp {
+    overflow-x: hidden;
+    box-shadow: 0 3px 1.5rem #00000029;
+    width: 60rem;
+    max-width: 90%;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: $col-bg;
+    max-height: 90%;
+    @include bp("lg") {
+      max-height: 90%;
+    }
+    div.close-btn {
+      position: absolute;
+      top: 0;
+      right: 0;
+      background-color: $col-bg;
+      cursor: pointer;
+      display: block;
+      border: 1px solid $gray800;
+      padding: (1rem * 1.6);
+      line-height: 0.8;
+      transition: 0.4s;
+      z-index: 10;
+      &:hover {
+        background-color: $col-prm;
+        transition: 0.3s;
+      }
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+  }
+}
+

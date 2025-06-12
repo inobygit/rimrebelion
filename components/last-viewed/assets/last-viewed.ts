@@ -10,8 +10,8 @@ class LastViewedComponent extends InobyModule {
     } );
 
     function initProductsSlick(){
-        const $sliderContainers = $(".last-seen-products .products");
-        $(".last-seen-products .products").addClass("keen-slider");
+        const $sliderContainers = $(".inoby-last-viewed .last-seen-products .products");
+        $(".inoby-last-viewed .last-seen-products .products").addClass("keen-slider");
         KeenSliderHelper.registerSlider($sliderContainers, {
             selector: ".product-card",
             slides: {

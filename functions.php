@@ -517,3 +517,18 @@ add_action('xoo_el_form_end', function($form, $args) {
 //     }
 // }
 // add_action('save_post', 'set_season_priority');
+
+add_filter('rc_brand_categories_args', 'my_custom_brand_categories_args');
+function my_custom_brand_categories_args($args)
+{
+    $args['taxonomy'] = 'product_brand';
+
+    return $args;
+}
+
+add_filter('rc_brand_category', 'rimrebellion_custom_brand_category');
+function rimrebellion_custom_brand_category($args)
+{
+    $args = 'product_brand';
+    return $args;
+}

@@ -21,11 +21,6 @@
       ?>
             <div class="right-navigation">
                 <?php do_action("inoby_right_navigation_start"); ?>
-                <?php if (
-          is_plugin_active(
-            "woocommerce-product-search/woocommerce-product-search.php",
-          )
-        ) { ?>
                 <div id="lang-switcher" class="lang-switcher">
                     <?= do_shortcode('[wpml_language_selector_widget]') ?>
                 </div>
@@ -35,7 +30,6 @@
                             src="<?= get_theme_file_uri("/assets/icons/search.svg") ?>" alt="Hladať">
                     </a>
                 </div>
-                <?php } ?>
                 <?php if (ESHOP_ENABLED && is_user_logged_in() && Inoby_Config::wishlist()) { echo '<a href="/wishlist/"><img style="max-width:48px;" src="'. get_theme_file_uri("/assets/icons/heart.svg") .'"
         alt="'.__("Wishlist", "inoby") .'"></a>'; } ?>
                 <?php if (class_exists("WooCommerce")): ?>
@@ -89,42 +83,14 @@
                     </svg>
                 </div>
             </div>
-            <?php if (
-        is_plugin_active(
-          "woocommerce-product-search/woocommerce-product-search.php",
-        )
-      ) { ?>
             <div id="search">
-                <div class="search-wrapper">
-                    <div id="search-close">✕</div>
-                    <?php echo do_shortcode(
-            '[woocommerce_product_search 
-									placeholder="' .
-              __("Vyhľadajte značku, kategóriu, produkt", "rootscope") .
-              '"
-									no_results="' .
-              __(
-                "Neboli nájdené žiadne výsledky. Skúste iné kľúčové slovo.",
-                "rootscope",
-              ) .
-              '"
-									submit_button="no"
-									tags="no"
-									sku="yes"
-									attributes="no"
-									product_thumbnails="yes"
-									show_add_to_cart="no"
-									show_price="yes"
-									excerpt="yes"
-									categories="yes"
-									category_results="yes"
-									delay="250"
-                                    wpml="yes"
-								]',
-          ); ?>
-                </div>
+                    <?php rc_search([
+    "placeholder"  => __("Write what you need, e.g.... Jerseys", "inoby"),
+    "button"       => __("Search", 'inoby'),
+    "button_class" => 'search-trigger',
+]);
+?>
             </div>
-            <?php } ?>
         </div>
     </div>
     <div class="mobile-menu">

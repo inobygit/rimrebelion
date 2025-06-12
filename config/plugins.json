@@ -27,11 +27,11 @@
       "force_activation": true
     },
     "woocommerce-product-search": {
-      "required": true,
+      "required": false,
       "name": "Woocommerce Product Search",
       "slug": "woocommerce-product-search",
       "source": "https://plugins.inoby.sk/woocommerce-product-search/woocommerce-product-search.zip",
-      "force_activation": true
+      "force_activation": false
     },
     "contact-form-7": {
       "required": true,

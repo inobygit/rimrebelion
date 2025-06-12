@@ -1611,3 +1611,161 @@ nav.breadcrumbs {
     transform: rotate(360deg);
   }
 }
+
+
+body div#main {
+  .search-wrapper .search-trigger .spinner.center {
+    display: none !important;
+  }
+  .highlight {
+    background-color: $col-prm;
+    color: $white;
+  }
+  form.rc-product-search {
+    button {
+      border-radius: 4px;
+      background-color: $col-prm;
+      &:hover {
+        background-color: $col-prm-d;
+      }
+    }
+  }
+  .search-wrapper .search-results .content .categories>h4, .search-wrapper .search-results .content .categories>h3, .search-wrapper .search-results .content .default-products-wrapper>h4, .search-wrapper .search-results .content .default-products-wrapper>h3, .search-wrapper .search-results .content .products-results-wrapper>h4, .search-wrapper .search-results .content .products-results-wrapper>h3, .search-wrapper .search-results .content .last-seen-products-wrapper>h4, .search-wrapper .search-results .content .last-seen-products-wrapper>h3{
+    font-size: $fs-h5;
+    font-weight: 400;
+    font-family: 'Roboto', sans-serif;
+    text-transform: uppercase;
+  }
+
+  .search-wrapper .search-results .content .last-searched-products-wrapper .last-searched-products-list li a{
+    border-radius: 2px;
+  }
+
+  .search-wrapper .search-results .content .categories .categories-list .pill{
+    border-radius: 2px;
+  }
+  .search-wrapper {
+    .search-results {
+      @include bp(lg) {
+        padding: 2.4rem 1.6rem;
+      }
+      .close-btn {
+        @include bp(lg) {
+          top: 17px;
+          right: 15px;
+        }
+      }
+      .content {
+        @include bp(lg) {
+          gap: 2.4rem;
+        }
+        .last-searched-products-wrapper {
+          .last-searched-products-list {
+            border-bottom: 1px solid $gray400;
+            h3 {
+              font-size: $fs-h5;
+              font-weight: 400;
+              font-family: 'Roboto', sans-serif;
+              text-transform: uppercase;
+            }
+            li {
+              a {
+                color: $gray500;
+                border: 1px solid $gray500;
+                &:hover {
+                  background-color: $black;
+                  color: $white;
+                  border-color: $black;
+                }
+              }
+            }
+          }
+        }
+        .categories {
+          background-color: $gray100;
+          .categories-list {
+            .pill {
+              color: $gray500;
+              border: 1px solid $gray500;
+              &:hover {
+                background-color: $black;
+                color: $white;
+                border-color: $black;
+              }
+            }
+          }
+          .brands-title {
+            border-top: 1px solid $gray400;
+          }
+        }
+      }
+    }
+    .content {
+      .products,
+      .products-results {
+        .product-card {
+          background-color: $gray100;
+          margin: 0;
+          box-shadow: none;
+          border-radius: 2px;
+          &:hover {
+            border-color: $gray800;
+          }
+          .product-mask{
+            display: none !important;
+          }
+          .content-product {
+            .manufacturer {
+              display: none;
+            }
+            .stock-status{
+              display: none !important;
+            }
+            .price{
+              white-space: nowrap;
+              >.amount,
+              ins .amount{
+                >bdi{
+                  font-size: $fs-h5;
+                  font-weight: 400;
+                  font-family: 'Roboto', sans-serif;
+                  color: $black;
+                  padding: .2rem .8rem;
+                  background-color: $gray200;
+                  border-radius: 2px;
+                }
+              }
+            }
+            .content-product-title {
+              h3 {
+                color: $black;
+                font-size: $fs-p;
+                font-weight: 400;
+                  font-family: 'Roboto', sans-serif;
+                  display: -webkit-box;
+                  -webkit-line-clamp: 2;
+                  line-clamp: 2;
+                  -webkit-box-orient: vertical;
+                  overflow: hidden;
+              }
+            }
+          }
+          .woocommerce-loop-product__link {
+            width: 100%;
+            div.content-product-thumbnail {
+              border: 1px solid $gray200;
+              height: 52px !important;
+              min-height: unset;
+              img {
+                height: 52px !important;
+              }
+            }
+          }
+          .brand-name {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+}

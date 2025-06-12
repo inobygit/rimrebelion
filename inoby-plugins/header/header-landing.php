@@ -1,4 +1,4 @@
-<div class="header transparent">
+<div id="header-landing" class="header transparent">
     <div class="container">
         <div class="row">
 
@@ -10,11 +10,6 @@
                 </a></div>
             <div class="right-navigation">
                 <?php do_action("inoby_right_navigation_start"); ?>
-                <?php if (
-          is_plugin_active(
-            "woocommerce-product-search/woocommerce-product-search.php",
-          )
-        ) { ?>
                 <div id="lang-switcher" class="lang-switcher">
                     <?= do_shortcode('[wpml_language_selector_widget]') ?>
                 </div>
@@ -24,7 +19,6 @@
                             src="<?= get_theme_file_uri("/assets/svg/search-white.svg") ?>" alt="Hladať">
                     </a>
                 </div>
-                <?php } ?>
                 <?php if (ESHOP_ENABLED && is_user_logged_in() && Inoby_Config::wishlist()) { echo '<a href="/wishlist/"><img loading="lazy" style="max-width:48px;" src="'. get_theme_file_uri("/assets/svg/heart.svg") .'"
         alt="'.__("Wishlist", "inoby") .'"></a>'; } ?>
                 <?php if (class_exists("WooCommerce")): ?>
@@ -78,7 +72,14 @@
                     </svg>
                 </div>
             </div>
-
+    <div id="search">
+                    <?php rc_search([
+    "placeholder"  => __("Write what you need, e.g.... Jerseys", "inoby"),
+    "button"       => __("Search", 'inoby'),
+    "button_class" => 'search-trigger',
+]);
+?>
+            </div>
         </div>
     </div>
     <div class="mobile-menu">

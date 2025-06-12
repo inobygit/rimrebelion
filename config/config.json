@@ -40,6 +40,7 @@
     "btn_home_text": "<?php __(\"Back home\", \"inoby\")"
   },
   "update_sale_special": false,
+  "advanced_search": true,
   "assets": {
     "js": {
       "core": "preload|defer",
@@ -53,6 +54,7 @@
       "product-search": "defer",
       "rc-core": "defer",
       "last-searched-products-js": "defer",
+      "last-seen-products-js": "defer",
       "posts_loadmore": "defer",
       "jquery-ui": "defer",
       "jquery-blockui": "defer",
