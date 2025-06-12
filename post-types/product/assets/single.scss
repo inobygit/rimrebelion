@@ -608,6 +608,8 @@ body.single-product{
     @include bp(md){
       order: 3;
     }
+  }
+  section.product-description:not(.template-bike){
     .content-wrap{
       display: flex;
       flex-wrap: wrap;

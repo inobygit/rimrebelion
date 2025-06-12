@@ -112,5 +112,24 @@ add_filter("rwmb_meta_boxes", function ($meta_boxes) {
             ],
         ],
     ];
+
+    $meta_boxes[] = [
+        'context' => 'side',
+        'title'      => __('Layout', 'rimrebellion'),
+        'post_types' => array('product'),
+        'fields'  => [
+            // type of layout
+            [
+                'name'    => __('Layout type', 'rimrebellion'),
+                'id'      => 'custom_product_template',
+                'type'    => 'select',
+                'options' => [
+                    'default' => __('Default', 'rimrebellion'),
+                    'bike'     => __('Bike', 'rimrebellion'),
+                ],
+            ],
+        ],
+    ];
+
     return $meta_boxes;
 });
