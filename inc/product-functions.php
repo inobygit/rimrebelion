@@ -422,4 +422,68 @@ function conditional_gutenberg_for_products($can_edit, $post_type)
 }
 add_filter('use_block_editor_for_post_type', 'conditional_gutenberg_for_products', 10, 2);
 
+// add template type to body class 
+add_filter('body_class', function ($classes) {
+    if (is_singular('product')) {
+        $template_type = rwmb_meta('custom_product_template');
+        if ($template_type) {
+            $classes[] = 'product-template-' . sanitize_html_class($template_type);
+        }
+    }
+    return $classes;
+});
+
+add_filter('woocommerce_available_payment_gateways', 'rim_block_payment_gateways_for_main_category');
+
+// disable payment gateways for bike category
+function rim_block_payment_gateways_for_main_category($gateways)
+{
+    if (is_admin() || !is_checkout()) return $gateways;
+
+    $blocked_categories = ['bike', 'bike-sk'];
+    $blocked_gateways = [
+        'gpwebpaygpebinder',
+        'gpwebpaygpebindergooglepay',
+        'gpwebpaygpebinderbankall',
+        'gpwebpaygpebinderapplepay'
+    ];
+
+    foreach (WC()->cart->get_cart_contents() as $item) {
+        $product_id = $item['product_id'];
+        $term_slugs = wp_get_post_terms($product_id, 'main-category', ['fields' => 'slugs']);
+
+        if (array_intersect($term_slugs, $blocked_categories)) {
+            foreach ($blocked_gateways as $id) {
+                unset($gateways[$id]);
+            }
+            break;
+        }
+    }
+
+    return $gateways;
+}
+
+// disable shipping methods for bike category
+add_filter('woocommerce_package_rates', 'rim_block_shipping_methods_for_main_category', 10, 2);
+function rim_block_shipping_methods_for_main_category($rates, $package)
+{
+    $blocked_categories = ['bike', 'bike-sk'];
+    $blocked_shipping_methods = ['packetery_shipping_method:packetery_carrier_zpointsk'];
+
+    foreach ($package['contents'] as $item) {
+        $product_id = $item['product_id'];
+        $term_slugs = wp_get_post_terms($product_id, 'main-category', ['fields' => 'slugs']);
+
+        if (array_intersect($term_slugs, $blocked_categories)) {
+            foreach ($blocked_shipping_methods as $id) {
+                unset($rates[$id]);
+            }
+            break;
+        }
+    }
+
+    return $rates;
+}
+
+
 ?>

@@ -1050,6 +1050,9 @@ body.single-product{
         }
       }
     }
+    @include bp('md'){
+      order: 5;
+    }
   }
   section.related.products {
         margin-top: $space-md;
@@ -1286,4 +1289,36 @@ body.single-product{
 }
 .button.disabled, button:not(.gbtn):not([class*=plyr]).disabled{
   cursor: not-allowed !important;
+}
+
+body.product-template-bike{
+  div#main{
+    @include bp('md'){
+      div#primary{
+        order: 0;
+      }
+      .inoby-slider-gallery{
+        order: 1;
+      }
+      section.product-description{
+        order: 2;
+      }
+      section.product-tabs{
+        order: 3;
+      }
+      section.technologies{
+        order: 4;
+      }
+      section.related.products{
+        order: 5;
+      }
+    }
+    section.product-tabs{
+      .row{
+        @include bp('lg'){
+          flex-direction: column-reverse;
+        }
+      }
+    }
+  }
 }
