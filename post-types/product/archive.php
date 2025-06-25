@@ -30,16 +30,22 @@
     }
 
 
-    function check_in_stock_items($child_id) {
+    function check_in_stock_items($child_id, $taxonomy, $term_id) {
         $in_stock_products = get_posts([
             'post_type'      => 'product',
             'posts_per_page' => 1,
             'fields'         => 'ids',
             'tax_query'      => [
+                'relation'  => 'AND',
                 [
                     'taxonomy' => 'product_cat',
                     'field'    => 'term_id',
                     'terms'    => $child_id,
+                ],
+                [
+                    'taxonomy' => $taxonomy,
+                    'field'    => 'term_id',
+                    'terms'    => $term_id,
                 ],
             ],
             'meta_query'     => [
@@ -338,7 +344,7 @@
                                 echo '<div class="cats-wrp shop">';
                                 foreach ($termlist as $child_id) {
                                     if ($child_id != 317) {
-                                        if (check_in_stock_items($child_id)) {
+                                        if (check_in_stock_items($child_id, 'product_specials', $term_id)) {
                                         // Add the query parameter to the term link
                                         echo "<div class='category-item'>
                                             <a class='cat' rel='keep-search' href='" . add_query_arg('product_specials', $term_id, get_term_link($child_id)) . "'>
@@ -369,7 +375,7 @@
                                 echo '<div class="cats-wrp shop">';
                                 foreach ($termlist as $child_id) {
                                     if ($child_id != 317) {
-                                        if (check_in_stock_items($child_id)) {
+                                        if (check_in_stock_items($child_id, 'product_tag', $term_id)) {
                                         // Add the query parameter to the term link
                                         echo "<div class='category-item'>
                                             <a class='cat' rel='keep-search' href='" . add_query_arg('product_tag', $term_id, get_term_link($child_id)) . "'>
@@ -400,7 +406,7 @@
                                 echo '<div class="cats-wrp shop">';
                                 foreach ($termlist as $child_id) {
                                     if ($child_id != 317) {
-                                        if (check_in_stock_items($child_id)) {
+                                        if (check_in_stock_items($child_id, 'main-collection', $term_id)) {
                                         // Add the query parameter to the term link
                                         echo "<div class='category-item'>
                                             <a class='cat' rel='keep-search' href='" . add_query_arg('main-collection', $term_id, get_term_link($child_id)) . "'>
@@ -431,7 +437,7 @@
                                 echo '<div class="cats-wrp shop">';
                                 foreach ($termlist as $child_id) {
                                     if ($child_id != 317) {
-                                        if (check_in_stock_items($child_id)) {
+                                        if (check_in_stock_items($child_id, 'product_brand', $term_id)) {
                                         // Add the query parameter to the term link
                                         echo "<div class='category-item'>
                                             <a class='cat' rel='keep-search' href='" . add_query_arg('product_brand', $term_id, get_term_link($child_id)) . "'>
