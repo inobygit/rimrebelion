@@ -92,6 +92,7 @@
                     $collectionID = (isset($_GET['collection']) ? $_GET['collection'] : null);
                     $colorID      = (isset($_GET['color']) ? $_GET['color'] : null);
                     $mainCatID    = (isset($_GET['main-category']) ? $_GET['main-category'] : null);
+                    $mainColID    = (isset($_GET['main-collection']) ? $_GET['main-collection'] : null);
                     $specials     = (isset($_GET['product_specials']) ? $_GET['product_specials'] : null);
                     $tags         = (isset($_GET['product_tag']) ? $_GET['product_tag'] : null);
                     $brands       = (isset($_GET['product_brand']) ? $_GET['product_brand'] : null);
@@ -152,6 +153,14 @@
                             'taxonomy' => 'main-category',
                             'field'    => 'id',
                             'terms'    => $mainCatID,
+                        ];
+                    }
+
+                    if ($mainColID) {
+                        $args['tax_query'][] = [
+                            'taxonomy' => 'main-collection',
+                            'field'    => 'id',
+                            'terms'    => $mainColID,
                         ];
                     }
 
