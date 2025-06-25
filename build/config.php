@@ -56,6 +56,8 @@
     "icon_benefits" => false,
     "ajax_add_to_cart" => false,
     "adds_banner" => false,
+    "advanced_order_by_wrap" => false,
+    "categories_in_empty_cart" => true,
     "assets" => [
         "defer_all_theme_scripts" => true,
         "defer_all_plugins_scripts" => true,

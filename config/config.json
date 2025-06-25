@@ -41,6 +41,7 @@
   },
   "update_sale_special": false,
   "advanced_search": true,
+  "categories_in_empty_cart": true,
   "assets": {
     "js": {
       "core": "preload|defer",
