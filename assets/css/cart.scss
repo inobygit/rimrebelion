@@ -5,6 +5,12 @@
   .wrp{
     width: 87rem;
   }
+  .empty-cart-wrapper .category-wrapper .category-item a{
+    text-decoration: none !important;
+    &:hover{
+      color: $black !important;
+    }
+  }
   .close-btn{
     margin: 0;
     padding: 5px;

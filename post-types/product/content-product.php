@@ -79,16 +79,14 @@ if (empty($product) || !$product->is_visible()) {
     </div>
     <div class="content-product">
         <?php
-        // $season_terms = wp_get_post_terms(get_the_ID(), 'season', ['fields' => 'all']);
-        // if (!empty($season_terms)) {
-        //     echo '<div class="season-info">';
-        //     foreach ($season_terms as $term) {
-        //         echo '<span class="season-term">' . esc_html($term->name) . '</span>';
-        //     }
-        //     echo '</div>';
-        // } else {
-        //     echo 'without season';
-        // }
+        $season_terms = wp_get_post_terms(get_the_ID(), 'season', ['fields' => 'all']);
+        if (!empty($season_terms)) {
+            echo '<div class="season-info" style="display: none;">';
+            foreach ($season_terms as $term) {
+                echo '<span class="season-term">' . esc_html($term->name) . '</span>';
+            }
+            echo '</div>';
+        } 
         ?>
         <div class="content-product-title">
             <h3 class="woocommerce-loop-product__title notranslate"><?php 

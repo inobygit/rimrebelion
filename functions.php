@@ -105,7 +105,7 @@ add_filter("woocommerce_catalog_orderby", "rimrebellion_change_sorting_options_o
 function rimrebellion_change_sorting_options_order($options)
 {
     $options = [
-        // "season" => __("Sezóna", "rimrebellion"),
+        "season" => __("Sezóna", "rimrebellion"),
         "rating"     => __("Najlepšie hodnotené", "rimrebellion"),
         "popularity" => __("Najpredávanejšie", "rimrebellion"),
         "price"      => __("Najnižšia cena", "rimrebellion"),
@@ -340,17 +340,17 @@ add_filter("rwmb_meta_boxes", function ($meta_boxes) {
         "context"        => "normal",
         "tab"            => "delivery-info",
         "fields"         => [
-            // [
-            //     'id'   => 'sortinig_season',
-            //     'name' => __("Sorting season", 'inoby'),
-            //     'type' => 'taxonomy_advanced',
-            //     'field_type'    => 'select_advanced',
-            //     'taxonomy'  => 'season',
-            // ],
-            // [
-            //     'name' => __("Rimrebellion delivery info", 'inoby'),
-            //     'type' => 'heading',
-            // ],
+            [
+                'id'   => 'sortinig_season',
+                'name' => __("Sorting season", 'inoby'),
+                'type' => 'taxonomy_advanced',
+                'field_type'    => 'select_advanced',
+                'taxonomy'  => 'season',
+            ],
+            [
+                'name' => __("Rimrebellion delivery info", 'inoby'),
+                'type' => 'heading',
+            ],
             [
                 'id'                => "delivery_info_text",
                 'name'              => __("Delivery info text", 'inoby'),
@@ -441,82 +441,82 @@ add_action('xoo_el_form_end', function($form, $args) {
 // /**
 //  * Modify product query based on season sorting
 //  */
-// function modify_product_query_by_season($query) {
-//     if (!is_admin() && $query->is_main_query()) {
-//         $orderby = isset($_GET['orderby']) ? sanitize_text_field($_GET['orderby']) : '';
-//         $sorting_season = rwmb_meta('sortinig_season', ["object_type" => "setting"], 'options');
+function modify_product_query_by_season($query) {
+    if (!is_admin() && $query->is_main_query()) {
+        $orderby = isset($_GET['orderby']) ? sanitize_text_field($_GET['orderby']) : '';
+        $sorting_season = rwmb_meta('sortinig_season', ["object_type" => "setting"], 'options');
         
-//         if(!empty($sorting_season)){
-//             if (strpos($orderby, 'season') === 0 || empty($orderby)) {
-//                 $season_id = str_replace('season', '', $sorting_season->term_id);
+        if(!empty($sorting_season)){
+            if (strpos($orderby, 'season') === 0 || empty($orderby)) {
+                $season_id = str_replace('season', '', $sorting_season->term_id);
                 
-//                 // Get the current sorting method from the URL or default to menu_order
-//                 $current_order = isset($_GET['order']) ? sanitize_text_field($_GET['order']) : 'ASC';
+                // Get the current sorting method from the URL or default to menu_order
+                $current_order = isset($_GET['order']) ? sanitize_text_field($_GET['order']) : 'ASC';
     
-//                 $product_visibility_terms = wc_get_product_visibility_term_ids();
-//                 $product_visibility_not_in[] = $product_visibility_terms["exclude-from-catalog"];
-//                 if (get_option("woocommerce_hide_out_of_stock_items", "no") == "yes") {
-//                     $product_visibility_not_in[] = $product_visibility_terms["outofstock"];
-//                 }
+                $product_visibility_terms = wc_get_product_visibility_term_ids();
+                $product_visibility_not_in[] = $product_visibility_terms["exclude-from-catalog"];
+                if (get_option("woocommerce_hide_out_of_stock_items", "no") == "yes") {
+                    $product_visibility_not_in[] = $product_visibility_terms["outofstock"];
+                }
 
-//                 // Base tax query for visibility
-//                 $tax_query = [
-//                     [
-//                         "taxonomy" => "product_visibility",
-//                         "field"    => "term_taxonomy_id",
-//                         "terms"    => $product_visibility_not_in,
-//                         "operator" => "NOT IN",
-//                     ]
-//                 ];
+                // Base tax query for visibility
+                $tax_query = [
+                    [
+                        "taxonomy" => "product_visibility",
+                        "field"    => "term_taxonomy_id",
+                        "terms"    => $product_visibility_not_in,
+                        "operator" => "NOT IN",
+                    ]
+                ];
 
-//                 // Add custom ordering using posts_clauses filter
-//                 add_filter('posts_clauses', function($clauses) use ($season_id) {
-//                     global $wpdb;
+                // Add custom ordering using posts_clauses filter
+                add_filter('posts_clauses', function($clauses) use ($season_id) {
+                    global $wpdb;
                     
-//                     // Add a subquery to check if the post has the season term
-//                     $clauses['join'] .= " LEFT JOIN (
-//                         SELECT object_id, COUNT(*) as has_season
-//                         FROM {$wpdb->term_relationships} tr
-//                         INNER JOIN {$wpdb->term_taxonomy} tt ON tr.term_taxonomy_id = tt.term_taxonomy_id
-//                         WHERE tt.taxonomy = 'season' AND tt.term_id = {$season_id}
-//                         GROUP BY object_id
-//                     ) season_check ON {$wpdb->posts}.ID = season_check.object_id";
+                    // Add a subquery to check if the post has the season term
+                    $clauses['join'] .= " LEFT JOIN (
+                        SELECT object_id, COUNT(*) as has_season
+                        FROM {$wpdb->term_relationships} tr
+                        INNER JOIN {$wpdb->term_taxonomy} tt ON tr.term_taxonomy_id = tt.term_taxonomy_id
+                        WHERE tt.taxonomy = 'season' AND tt.term_id = {$season_id}
+                        GROUP BY object_id
+                    ) season_check ON {$wpdb->posts}.ID = season_check.object_id";
                     
-//                     // Add the season check to the ORDER BY clause
-//                     $clauses['orderby'] = "COALESCE(season_check.has_season, 0) DESC, " . $clauses['orderby'];
+                    // Add the season check to the ORDER BY clause
+                    $clauses['orderby'] = "COALESCE(season_check.has_season, 0) DESC, " . $clauses['orderby'];
                     
-//                     return $clauses;
-//                 });
+                    return $clauses;
+                });
                 
-//                 $query->set('tax_query', $tax_query);
-//                 $query->set('orderby', $orderby);
-//                 $query->set('order', $current_order);
-//             }
-//         }
-//     }
-// }
-// add_action('pre_get_posts', 'modify_product_query_by_season');
+                $query->set('tax_query', $tax_query);
+                $query->set('orderby', $orderby);
+                $query->set('order', $current_order);
+            }
+        }
+    }
+}
+add_action('pre_get_posts', 'modify_product_query_by_season');
 
-// // Add a function to set season priority when products are saved
-// function set_season_priority($post_id) {
-//     if (get_post_type($post_id) !== 'product') {
-//         return;
-//     }
+// Add a function to set season priority when products are saved
+function set_season_priority($post_id) {
+    if (get_post_type($post_id) !== 'product') {
+        return;
+    }
 
-//     $sorting_season = rwmb_meta('sortinig_season', ["object_type" => "setting"], 'options');
-//     if (!empty($sorting_season)) {
-//         $season_id = str_replace('season', '', $sorting_season->term_id);
+    $sorting_season = rwmb_meta('sortinig_season', ["object_type" => "setting"], 'options');
+    if (!empty($sorting_season)) {
+        $season_id = str_replace('season', '', $sorting_season->term_id);
         
-//         // Check if product has the current season
-//         $terms = wp_get_post_terms($post_id, 'season', ['fields' => 'ids']);
-//         if (in_array($season_id, $terms)) {
-//             update_post_meta($post_id, '_season_priority', 1);
-//         } else {
-//             update_post_meta($post_id, '_season_priority', 0);
-//         }
-//     }
-// }
-// add_action('save_post', 'set_season_priority');
+        // Check if product has the current season
+        $terms = wp_get_post_terms($post_id, 'season', ['fields' => 'ids']);
+        if (in_array($season_id, $terms)) {
+            update_post_meta($post_id, '_season_priority', 1);
+        } else {
+            update_post_meta($post_id, '_season_priority', 0);
+        }
+    }
+}
+add_action('save_post', 'set_season_priority');
 
 add_filter('rc_brand_categories_args', 'my_custom_brand_categories_args');
 function my_custom_brand_categories_args($args)
