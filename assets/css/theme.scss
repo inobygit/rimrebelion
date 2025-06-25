@@ -1515,6 +1515,41 @@ nav.breadcrumbs {
         }
       }
     }
+    &.menu-item-megamenu-column-4{
+      > .sub-menu{
+        gap: 2rem;
+        row-gap: 0;
+        > li{
+          padding-left: 1rem !important;
+          padding-block: 2.4rem;
+          max-width: calc(25% - 1.5rem);
+          border-right: 1px solid $gray300;
+          &:last-of-type,
+          &:nth-of-type(3){
+            border-right: none;
+          }
+          > a{
+            font-weight: 700;
+            font-size: 2.4rem;
+            font-family: 'GreedNarrow', sans-serif;
+          }
+          .sub-menu{
+            display: flex;
+            flex-wrap: wrap;
+            align-items: flex-start;
+            justify-content: flex-start;
+            li{
+              flex: 1 0 100%;
+              max-width: 100%;
+              a{
+                font-size: 1.6rem;
+                font-weight: 400;
+              }
+            }
+          }
+        }
+      }
+    }
     &.menu-item-megamenu-column-2{
       > .sub-menu{
         gap: 2rem;
