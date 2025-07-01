@@ -1524,8 +1524,7 @@ nav.breadcrumbs {
           padding-block: 2.4rem;
           max-width: calc(25% - 1.5rem);
           border-right: 1px solid $gray300;
-          &:last-of-type,
-          &:nth-of-type(3){
+          &:last-of-type{
             border-right: none;
           }
           > a{
