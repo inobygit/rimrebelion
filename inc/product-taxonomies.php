@@ -453,7 +453,7 @@ add_filter("rwmb_meta_boxes", function ($meta_boxes) {
     ];
 
     $meta_boxes[] = [
-        "taxonomies" => ["product_tag", "product_brand"],
+        "taxonomies" => ["product_tag", "product_brand", 'main-collection'],
         "title"      => __("Nastavenia", "rimrebellion"),
         "fields"     => [
             [
